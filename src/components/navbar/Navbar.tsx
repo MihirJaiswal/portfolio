@@ -74,7 +74,7 @@ export const Navbar = () => {
           ease: [0.25, 0.46, 0.45, 0.94] // Custom easing for smooth animation
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-6 md:px-0 py-4">
           <div className="flex justify-between items-center">
             <motion.div
               className="text-xl tracking-wider font-bold uppercase"

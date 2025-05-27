@@ -60,7 +60,7 @@ export default function LanguageName() {
       </div>
 
       <div className="mt-8 text-center p-4">
-        <p className="text-sm opacity-70 max-w-md">
+        <p className="text-sm opacity-70 max-w-md p-5 bg-white dark:bg-neutral-950 dark:text-white border border-neutral-300 dark:border-neutral-700">
           Full stack Developer, UI/UX Designer, and a passionate learner.
         </p>
       </div>

@@ -13,11 +13,6 @@ export default function Introduction() {
   const sequenceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const typeIntervalRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Logo paths for SVG animation - your initials here
-  const logoPaths = [
-    "M15 60V15H25L50 45L75 15H85V60H75V28L50 58L25 28V60H15Z", // First initial
-    "M90 60V15H140V25H100V32H135V42H100V50H140V60H90Z", // Second initial
-  ]
 
   // Grid items for the skills section
   const skillsItems = [
@@ -357,22 +352,7 @@ export default function Introduction() {
       case "logo":
         return (
           <div className="flex flex-col items-center justify-center h-full mt-[-60px] md:mt-[-120px]">
-            <svg width="160" height="80" viewBox="0 0 160 80" fill="none">
-              {logoPaths.map((path, index) => (
-                <motion.path
-                  key={`logo-path-${index}`}
-                  d={path}
-                  stroke="white"
-                  strokeWidth={2}
-                  fill={logoRevealed ? "rgba(255,255,255,0.1)" : "none"}
-                  custom={index}
-                  initial="hidden"
-                  animate="visible"
-                  variants={logoPathVariants}
-                />
-              ))}
-            </svg>
-            
+          
             {logoRevealed && (
               <motion.p
                 initial={{ opacity: 0 }}
