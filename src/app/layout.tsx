@@ -2,6 +2,7 @@ import type React from "react"
 import "./globals.css"
 import { GeistSans } from 'geist/font/sans';
 import { ThemeProvider } from "next-themes"
+import { ScrollProvider } from "../components/animation/scroll-aniamtions"
 
 export const metadata = {
   title: "Portfolio | Designer & Developer",
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans} gpu-accelerated`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
+          <ScrollProvider>{children}</ScrollProvider>
         </ThemeProvider>
       </body>
     </html>

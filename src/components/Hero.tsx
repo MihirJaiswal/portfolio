@@ -174,7 +174,7 @@ export const HeroSection = () => {
           variants={titleVariants}
         >
           <motion.span 
-            className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-neutral-200 dark:to-neutral-50 bg-clip-text text-transparent px-2"
+            className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-400 bg-clip-text text-transparent px-2"
             initial={{ backgroundPosition: "0% 50%" }}
             animate={{ backgroundPosition: "100% 50%" }}
             transition={{
@@ -188,7 +188,7 @@ export const HeroSection = () => {
           </motion.span>
           <br />
           <motion.span 
-            className="bg-gradient-to-r from-neutral-500 via-neutral-950 to-neutral-500 dark:from-neutral-400 dark:via-neutral-200 dark:to-neutral-50 bg-clip-text text-transparent"
+            className="bg-gradient-to-r from-neutral-500 via-neutral-950 to-neutral-500 dark:from-neutral-300 dark:via-white dark:to-neutral-300 bg-clip-text text-transparent"
             initial={{ backgroundPosition: "0% 50%" }}
             animate={{ backgroundPosition: "100% 50%" }}
             transition={{

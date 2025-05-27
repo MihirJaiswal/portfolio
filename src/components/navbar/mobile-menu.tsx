@@ -144,7 +144,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-white dark:bg-zinc-950 z-40"
+            className="fixed inset-0 bg-white dark:bg-neutral-950 z-40"
             variants={menuVariants}
             initial="closed"
             animate="open"
@@ -152,7 +152,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
           >
             {/* Background blur effect */}
             <motion.div
-              className="absolute inset-0 backdrop-blur-sm bg-white/80 dark:bg-zinc-950/80"
+              className="absolute inset-0 backdrop-blur-sm bg-white/80 dark:bg-neutral-950/80"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -183,7 +183,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
                   >
                     <Link
                       href={link.href}
-                      className="text-xl font-medium hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors relative overflow-hidden"
+                      className="text-xl font-medium hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors relative overflow-hidden"
                       onClick={() => setIsOpen(false)}
                     >
                       <motion.span
@@ -202,7 +202,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
                       
                       {/* Hover underline effect */}
                       <motion.div
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-zinc-600 dark:bg-zinc-400"
+                        className="absolute bottom-0 left-0 w-full h-0.5 bg-neutral-600 dark:bg-neutral-400"
                         initial={{ scaleX: 0 }}
                         whileHover={{ scaleX: 1 }}
                         transition={{ duration: 0.3 }}
@@ -215,7 +215,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
 
               {/* Decorative animated elements */}
               <motion.div
-                className="absolute top-20 left-10 w-2 h-2 bg-zinc-300 dark:bg-zinc-700 rounded-full"
+                className="absolute top-20 left-10 w-2 h-2 bg-neutral-300 dark:bg-neutral-700 rounded-full"
                 animate={{
                   y: [0, -20, 0],
                   opacity: [0.3, 1, 0.3]
@@ -228,7 +228,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
               />
               
               <motion.div
-                className="absolute bottom-32 right-16 w-3 h-3 bg-zinc-300 dark:bg-zinc-700 rounded-full"
+                className="absolute bottom-32 right-16 w-3 h-3 bg-neutral-300 dark:bg-neutral-700 rounded-full"
                 animate={{
                   x: [0, 15, 0],
                   opacity: [0.3, 1, 0.3]
