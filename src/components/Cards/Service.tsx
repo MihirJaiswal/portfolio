@@ -3,6 +3,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import WaterRippleEffect from "../ui/water-ripple-effect";
 
 // Define service items
 const serviceItems = [
@@ -41,20 +42,14 @@ export default function Service() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative">
         {/* Left side - Big Image Only */}
-        <div className="relative">
-          <div className="shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?q=80&w=1274&auto=format&fit=crop"
-              alt="Development workspace"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-xl opacity-30"></div>
-          <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-500 rounded-full blur-lg opacity-40"></div>
+        <div className="relative flex items-center justify-center lg:block bg-neutral-950 lg:overflow-hidden">
+          <WaterRippleEffect/>
+          <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-neutral-500 to-neutral-600 rounded-full blur-xl opacity-30"></div>
+          <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-neutral-500 to-neutral-500 rounded-full blur-lg opacity-40"></div>
         </div>
 
         {/* Right side - Title and Service List */}
-        <div className="relative py-12 px-5">
+        <div className="relative py-12 px-5 lg:mt-0 md:mt-20">
           <div className="text-center mb-6">
             <h2 className="text-[40px] md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">
