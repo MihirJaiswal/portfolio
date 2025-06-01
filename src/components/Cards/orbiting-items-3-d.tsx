@@ -7,17 +7,6 @@ import Image from "next/image";
 // Inline Tailwind configuration for floating animation
 // Normally this would be in tailwind.config.js
 // Kept for reference but no longer used on the statue
-const floatAnimation = `
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-40px); }
-}
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-`;
-
-
 export const CenterIcon = (
   <div className="relative h-112 w-112 z-10">
     <Image
@@ -105,7 +94,7 @@ export default function OrbitingItems3D({
 
   useEffect(() => {
     let animationId: number;
-    let startTime = Date.now();
+    const startTime = Date.now();
 
     const animate = () => {
       const currentTime = Date.now();

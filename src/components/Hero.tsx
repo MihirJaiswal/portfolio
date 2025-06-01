@@ -160,7 +160,7 @@ export const HeroSection = () => {
         }}
       />
       
-      <div className="max-w-6xl mx-auto px-6 relative min-h-screen">
+      <div className="px-6 relative min-h-screen">
         {/* Title - now with improved dark mode colors */}
         <motion.h1
           className="absolute top-8 left-0 right-0 font-bold text-center leading-none mx-auto tracking-tight z-0 w-full font-inter"

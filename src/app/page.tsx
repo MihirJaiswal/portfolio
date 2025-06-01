@@ -2,6 +2,7 @@ import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
 import ContactForm from "@/components/Contact";
 import Footer from "@/components/Footer";
+import GalleryWall from "@/components/GalleryWall";
 import { HeroSection } from "@/components/Hero";
 import LenisProvider from "@/components/lenis/LenisProvider";
 import { Navbar } from "@/components/navbar/Navbar";
@@ -14,21 +15,25 @@ import Work from "@/components/Work";
 export default function Home() {
   return (
     <LenisProvider>
-      <ScrollProgress/>
-      <Navbar />
-      <HeroSection />
-      <About/>
-      <ProjectsSection/>
-      <Work/>
-      <ProcessSteps/>
-      <div className="pb-4 overflow-hidden">
-        <Cards/>
-      <div className="lg:hidden">
-        <ContactForm/>
-      </div>
-      </div>
-      <Footer/>
-      <ScrollToTop/>
+      <ScrollProgress />
+      <div className="max-w-7xl mx-auto overflow-hidden">
+        <Navbar />
+        <HeroSection />
+        <About />
+        <ProjectsSection />
+        <GalleryWall />
+        </div>
+        <Work />
+        <ProcessSteps />
+        <div className="pb-4 overflow-hidden">
+          <Cards />
+          <div className="lg:hidden">
+            <ContactForm />
+          </div>
+        </div>
+        <Footer />
+        <ScrollToTop />
+      
     </LenisProvider>
   );
 }

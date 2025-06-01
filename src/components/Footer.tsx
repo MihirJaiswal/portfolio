@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { siteConfig } from "@/lib/data"
 import { TextHoverEffect } from './ui/text-hover-effect'
 
@@ -9,7 +8,7 @@ function Footer() {
             <footer className="bg-black text-white pt-20 ">
                 <div className="container mx-auto px-6 flex flex-col justify-center border-b border-dashed border-neutral-700 pb-12">
                     <h2 className="text-6xl md:text-[7rem] font-bold mb-12 text-center">
-                        LET'S <span className="text-neutral-400">TALK</span>
+                        LET&apos;S <span className="text-neutral-400">TALK</span>
                     </h2>
 
                     <div className="flex flex-wrap justify-center gap-4">

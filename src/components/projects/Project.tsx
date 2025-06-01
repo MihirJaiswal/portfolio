@@ -5,8 +5,8 @@ import { ProjectListMobile } from "./project-list-mobile";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 bg-white dark:bg-neutral-950 mb-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="py-24 bg-white dark:bg-neutral-950 ">
+      <div className="px-6">
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-6xl md:text-8xl font-bold">

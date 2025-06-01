@@ -87,8 +87,16 @@ export default function Work() {
   }, []);
   
   return (
-   <div className='border-t-2 bg-black'>
-     <main className="w-full max-w-6xl mx-auto">
+   <div className='bg-black border-t-2'>
+     <div className="text-center mb-12 relative pt-12 pb-3">
+        <h2 className="text-[50px] md:text-7xl font-bold text-center mb-6">
+          <span className="bg-gradient-to-r from-neutral-400 via-white to-neutral-200 bg-clip-text text-transparent">
+            MY WORK
+          </span>
+        </h2>
+      </div>
+    <div className='bg-black'>
+     <main className="w-full max-w-7xl mx-auto">
       <div ref={gallery} className="h-[175vh] relative flex gap-8 p-8 box-border overflow-hidden">
         <Column images={[images[0], images[1], images[2]]} y={y} topOffset="-45%" />
         <Column images={[images[3], images[4], images[5]]} y={y2} topOffset="-95%" />
@@ -96,6 +104,7 @@ export default function Work() {
         <Column images={[images[9], images[10], images[11]]} y={y4} topOffset="-75%" />
       </div>
     </main>
+   </div>
    </div>
   );
 }

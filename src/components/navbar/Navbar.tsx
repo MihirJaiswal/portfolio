@@ -7,6 +7,7 @@ import { siteConfig } from "../../lib/data";
 import { navLinks } from "../../lib/data";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
+import NameTranslation from "../name-translation";
 
 export const Navbar = () => {
   const headerRef = useRef<HTMLElement>(null);
@@ -74,7 +75,7 @@ export const Navbar = () => {
           ease: [0.25, 0.46, 0.45, 0.94] // Custom easing for smooth animation
         }}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-0 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <motion.div
               className="text-xl tracking-wider font-bold uppercase"
@@ -82,7 +83,7 @@ export const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Mihir Jaiswal
+              <NameTranslation/>
             </motion.div>
 
             <motion.nav

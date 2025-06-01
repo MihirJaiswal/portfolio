@@ -1,249 +1,163 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
-import { X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X } from "lucide-react"
+import { motion } from "framer-motion"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet"
 
 interface MobileMenuProps {
   links: {
     href: string
     label: string
   }[]
+  onToggle?: (isOpen: boolean) => void
 }
 
-export function MobileMenu({ links }: MobileMenuProps) {
+export function MobileMenu({ links, onToggle }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false)
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (isOpen && !target.closest("[data-mobile-menu]")) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isOpen])
-
-  // Prevent scrolling when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
-
-  // Animation variants
-  const menuVariants = {
-    closed: {
-      x: "100%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-        when: "afterChildren"
-      }
-    },
-    open: {
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
+  
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open)
+    onToggle?.(open)
   }
 
   const itemVariants = {
-    closed: {
+    hidden: { 
+      opacity: 0, 
       x: 50,
-      opacity: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40
-      }
+      transition: { duration: 0.2 }
     },
-    open: {
-      x: 0,
+    visible: (index: number) => ({
       opacity: 1,
+      x: 0,
       transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40
+        delay: index * 0.1 + 0.2,
+        duration: 0.3,
+        ease: "easeOut"
       }
-    }
-  }
-
-
-  const topLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: 45, y: 6 }
-  }
-
-  const middleLineVariants = {
-    closed: { opacity: 1 },
-    open: { opacity: 0 }
-  }
-
-  const bottomLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: -45, y: -6 }
+    })
   }
 
   return (
-    <div data-mobile-menu className="lg:hidden">
-      {/* Hamburger Button */}
-      <motion.button
-        className="w-10 h-10 flex items-center justify-center z-50 relative"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
-        whileTap={{ scale: 0.95 }}
-      >
-        {isOpen ? (
-          <motion.div
-            initial={{ rotate: 0, scale: 0 }}
-            animate={{ rotate: 180, scale: 1 }}
-            exit={{ rotate: 0, scale: 0 }}
-            transition={{ duration: 0.2 }}
+    <div className="lg:hidden">
+      <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+        <SheetTrigger asChild>
+          <motion.button
+            className="w-10 h-10 flex items-center justify-center relative"
+            aria-label="Open menu"
+            whileTap={{ scale: 0.95 }}
           >
-            <X className="w-6 h-6" />
-          </motion.div>
-        ) : (
-          <div className="flex flex-col space-y-1.5">
-            <motion.span
-              className="w-5 h-0.5 bg-black dark:bg-white origin-center"
-              variants={topLineVariants}
-              animate={isOpen ? "open" : "closed"}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="w-5 h-0.5 bg-black dark:bg-white"
-              variants={middleLineVariants}
-              animate={isOpen ? "open" : "closed"}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="w-5 h-0.5 bg-black dark:bg-white origin-center"
-              variants={bottomLineVariants}
-              animate={isOpen ? "open" : "closed"}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
-        )}
-      </motion.button>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 bg-white dark:bg-neutral-950 z-40"
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-          >
-            {/* Background blur effect */}
             <motion.div
-              className="absolute inset-0 backdrop-blur-sm bg-white/80 dark:bg-neutral-950/80"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            
-            <div className="flex flex-col items-center justify-center h-full relative z-10">
-              <motion.nav 
-                className="flex flex-col items-center space-y-8"
-                variants={{
-                  open: {
-                    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-                  },
-                  closed: {
-                    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-                  }
-                }}
+              animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Menu className="w-6 h-6" />
+            </motion.div>
+          </motion.button>
+        </SheetTrigger>
+        
+        <SheetContent 
+          side="right" 
+          className="w-full sm:w-[400px] bg-white dark:bg-neutral-950 border-l border-neutral-200 dark:border-neutral-800"
+        >
+          <SheetHeader className="text-center mb-8">
+            <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>
+          </SheetHeader>
+
+          <div className="flex flex-col h-full">
+            <nav className="flex-1">
+              <motion.div 
+                className="space-y-6 flex flex-col items-center"
+                initial="hidden"
+                animate="visible"
               >
                 {links.map((link, index) => (
                   <motion.div
                     key={link.href}
+                    custom={index}
                     variants={itemVariants}
                     whileHover={{ 
-                      scale: 1.05,
-                      transition: { type: "spring", stiffness: 400, damping: 10 }
+                      x: 10,
+                      transition: { type: "spring", stiffness: 300, damping: 20 }
                     }}
-                    whileTap={{ scale: 0.95 }}
+                    className="w-full max-w-xs"
                   >
-                    <Link
-                      href={link.href}
-                      className="text-xl font-medium hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors relative overflow-hidden"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <motion.span
-                        className="block"
-                        initial={{ y: 50 }}
-                        animate={{ y: 0 }}
-                        transition={{ 
-                          delay: index * 0.1 + 0.3,
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 30
-                        }}
+                    <SheetClose asChild>
+                      <Link
+                        href={link.href}
+                        className="block text-xl font-medium py-3 px-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 relative overflow-hidden group text-center w-full"
                       >
-                        {link.label}
-                      </motion.span>
-                      
-                      {/* Hover underline effect */}
-                      <motion.div
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-neutral-600 dark:bg-neutral-400"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                        style={{ originX: 0 }}
-                      />
-                    </Link>
+                        <span className="relative z-10">{link.label}</span>
+                        
+                        {/* Animated background */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-neutral-100 to-neutral-200 dark:from-neutral-800 dark:to-neutral-700 opacity-0 group-hover:opacity-100"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: 0 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                        
+                        {/* Border accent */}
+                        <motion.div
+                          className="absolute left-0 top-0 w-1 h-full bg-neutral-900 dark:bg-neutral-100"
+                          initial={{ scaleY: 0 }}
+                          whileHover={{ scaleY: 1 }}
+                          transition={{ duration: 0.2 }}
+                          style={{ originY: 0 }}
+                        />
+                      </Link>
+                    </SheetClose>
                   </motion.div>
                 ))}
-              </motion.nav>
+              </motion.div>
+            </nav>
 
-              {/* Decorative animated elements */}
+            {/* Footer section with decorative elements */}
+            <motion.div 
+              className="mt-auto pb-8 relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+            >
+              {/* Decorative line */}
               <motion.div
-                className="absolute top-20 left-10 w-2 h-2 bg-neutral-300 dark:bg-neutral-700 rounded-full"
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 1, 0.3]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="w-full h-px bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mb-6"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
               />
               
-              <motion.div
-                className="absolute bottom-32 right-16 w-3 h-3 bg-neutral-300 dark:bg-neutral-700 rounded-full"
-                animate={{
-                  x: [0, 15, 0],
-                  opacity: [0.3, 1, 0.3]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {/* Animated dots */}
+              <div className="flex justify-center space-x-4">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-neutral-400 dark:bg-neutral-600 rounded-full"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 1, 0.5]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

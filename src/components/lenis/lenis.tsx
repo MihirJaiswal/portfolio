@@ -27,7 +27,6 @@ const LenisContext = createContext<LenisContextType>(null)
 export const useLenis = (): LenisContextType => useContext(LenisContext)
 
 export function ReactLenis({ 
-  root = false,
   options = {},
   children 
 }: ReactLenisProps): JSX.Element {

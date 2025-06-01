@@ -111,7 +111,7 @@ export default function About() {
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="px-6">
         <motion.div 
           className="flex flex-col md:flex-row items-start justify-center mb-20"
           variants={itemVariants}

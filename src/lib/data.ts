@@ -72,7 +72,7 @@ export const projects = [
     description: "A MODERN UI COMPONENT LIBRARY FOR REACT APPLICATIONS",
     category: "web development",
     image: "/projects/nuvyx.webp",
-    mainImage: "/projects/details/nuvyx.webp",
+    mainImage: "/nuvyxui.png",
     details: "MODULAR COMPONENTS WITH FRAMER MOTION ANIMATIONS",
     fullDescription:
       "Nuvyx UI is a curated library of modular components that can be easily integrated into your web applications. It offers a versatile selection of components, blocks, and templates designed to accelerate your development process.",
@@ -80,6 +80,7 @@ export const projects = [
     client: "Open Source",
     year: "2024",
     link: "https://nuvyxui.vercel.app/",
+    youtube: 'https://www.youtube.com/watch?v=E3R_lVYSuk8&ab_channel=MihirJaiswal',
   },
   {
     id: "digi-bazaar",
@@ -96,6 +97,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://github.com/MihirJaiswal/digibazaar-frontend",
+    youtube: 'https://www.youtube.com/watch?v=KVnkONXLbXg&list=LL',
   },
   {
     id: "storyweaver-ai",
@@ -112,6 +114,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://story-weaver-ai.vercel.app/",
+    youtube: 'https://youtu.be/zoQiy0SFk-o',
   },
   {
     id: "monster-pedia",
@@ -120,7 +123,7 @@ export const projects = [
     description: "COMPREHENSIVE POKEMON DATABASE WITH TOOLS AND FEATURES",
     category: "web application",
     image: "/projects/monsterpedia.webp",
-    mainImage: "/projects/details/monsterpedia.webp",
+    mainImage: "/monsterpedia.png",
     details: "POKEDEX, TYPE CALCULATOR, TEAM BUILDER, AND CARD GENERATOR",
     fullDescription:
       "Monster Pedia is an interactive web application designed for Pokémon fans. It includes a comprehensive Pokédex, a type weakness calculator, a team builder, and a Pokémon card maker. The project is built using Next.js, Tailwind CSS, and Framer Motion to deliver an engaging and visually appealing user experience.",
@@ -128,6 +131,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://monsterpedia-orcin.vercel.app/",
+    youtube: 'https://www.youtube.com/watch?v=hi3fNjSSy4c&t=38s',
   },
   {
     id: "hero-hq",
@@ -144,6 +148,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://hero-hq-five.vercel.app/",
+    youtube: 'https://www.youtube.com/watch?v=w3m6HlIUoLw&t=46s',
   },
   {
     id: "ink-scroll",
@@ -160,6 +165,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://github.com/MihirJaiswal/InkScroll",
+    youtube: 'https://www.youtube.com/watch?v=uP-OGbNdiZI&t=3s',
   },
   {
     id: "windows-95-portfolio",
@@ -192,6 +198,7 @@ export const projects = [
     client: "Personal Project",
     year: "2024",
     link: "https://ghibli-verse.vercel.app/",
+    youtube: 'https://www.youtube.com/watch?v=QrFH8RzUTiw&list=LL&index=3',
   },
   {
     id: "cybersphere",

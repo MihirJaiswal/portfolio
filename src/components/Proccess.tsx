@@ -55,7 +55,7 @@ export function ProcessSteps() {
       ref={containerRef}
       className="pb-24 pt-32 relative bg-black"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-20">
           {words.map((word, index) => (
             <div

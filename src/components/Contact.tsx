@@ -1,6 +1,4 @@
 "use client"
-
-import { div } from "framer-motion/client"
 import type React from "react"
 
 import { useState } from "react"
@@ -26,8 +24,8 @@ export default function ContactForm() {
   }
 
   return (
-   <div className="px-6 py-24 border-t-2 border-neutral-600 dark:border-neutral-800 relative">
-     <div className="w-full max-w-6xl mx-auto">
+   <div className="px-6 pt-12 border-t-2 border-neutral-600 dark:border-neutral-800 relative">
+     <div className="w-full max-w-7xl mx-auto">
       <h2 className="text-neutral-600 font-medium mb-8">GET IN TOUCH</h2>
 
       <form onSubmit={handleSubmit}>
@@ -79,7 +77,7 @@ export default function ContactForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-[250px,1fr] items-start">
             <label htmlFor="message" className="text-3xl md:text-4xl font-black uppercase tracking-tighter">
-              I'D LIKE TO SAY
+              I&apos;D LIKE TO SAY
             </label>
             <textarea
               id="message"
