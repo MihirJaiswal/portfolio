@@ -9,7 +9,6 @@ interface LenisProviderProps {
 }
 
 export default function LenisProvider({ children }: LenisProviderProps) {
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [lenis, setLenis] = useState<Lenis | null>(null)
   const lenisRef = useRef<any>(null)
@@ -25,11 +24,6 @@ export default function LenisProvider({ children }: LenisProviderProps) {
     
     const scrollHandler = (e: any) => {
       const currentScrollY = e.scroll
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection('down')
-      } else if (currentScrollY < lastScrollY) {
-        setScrollDirection('up')
-      }
       setLastScrollY(currentScrollY)
     }
     

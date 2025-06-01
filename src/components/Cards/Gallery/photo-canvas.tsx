@@ -252,15 +252,18 @@ function PhotoCanvasContent({
   const [items, setItems] = useState<Photo[]>([])
   const [scrollX, setScrollX] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0) // Added windowWidth state
   const containerRef = useRef<HTMLDivElement>(null)
   const cardWidth = 240 // Fixed card width
   const cardHeight = 280 // Fixed card height
 
-  // Check if we're on mobile
+  // Check if we're on mobile and track window width
   useEffect(() => {
     const checkMobile = () => {
-      const mobile = window.innerWidth < 768
+      const width = window.innerWidth
+      const mobile = width < 768
       setIsMobile(mobile)
+      setWindowWidth(width) // Track window width
     }
     
     checkMobile()
@@ -326,14 +329,17 @@ function PhotoCanvasContent({
     return (
       <div
         className={`flex items-center justify-center bg-gray-50 rounded-lg border-2 border-gray-200 ${className}`}
-        style={{ height: canvasHeight, width: Math.min(canvasWidth, window.innerWidth - 32) }}
+        style={{ 
+          height: canvasHeight, 
+          width: windowWidth > 0 ? Math.min(canvasWidth, windowWidth - 32) : canvasWidth 
+        }}
       >
         <p className="text-gray-500 text-lg">No photos to display</p>
       </div>
     )
   }
 
-  const containerWidth = isMobile ? Math.min(window.innerWidth - 32, canvasWidth) : canvasWidth
+  const containerWidth = isMobile && windowWidth > 0 ? Math.min(windowWidth - 32, canvasWidth) : canvasWidth
   const showScrollButtons = isMobile && canvasWidth > containerWidth
 
   return (

@@ -37,11 +37,18 @@ export interface MorphingBlobProps
   effect3D?: boolean;
   children?: React.ReactNode;
 }
+
 type ComplexityFactor = {
   points: number;
   variance: number;
   tension: number;
 };
+
+interface BlobPoint {
+  x: number;
+  y: number;
+}
+
 const COMPLEXITY_FACTORS = {
   1: { points: 6, variance: 0.15, tension: 0.25 },
   2: { points: 8, variance: 0.25, tension: 0.35 },
@@ -184,7 +191,7 @@ export function MorphingBlob({
       const centerY = 50;
       const baseRadius = hover ? 42 : click ? 38 : 40;
       const angleStep = (Math.PI * 2) / points;
-      const blobPoints = [];
+      const blobPoints: BlobPoint[] = [];
       for (let i = 0; i < points; i++) {
         const angle = i * angleStep;
         const waveVariation =
@@ -224,12 +231,14 @@ export function MorphingBlob({
     },
     [],
   );
+  
   const interpolatePaths = useCallback(
     (path1: string, path2: string, progress: number) => {
       if (!path1 || !path2) return path2 || path1 || "";
-      const extractPoints = (path: string) => {
+      
+      const extractPoints = (path: string): number[][] => {
         const regex = /([MC]) ?([^MC]+)/g;
-        const points = [];
+        const points: number[][] = [];
         let match;
 
         while ((match = regex.exec(path)) !== null) {
@@ -255,8 +264,9 @@ export function MorphingBlob({
       if (points1.length !== points2.length || points1.length === 0) {
         return path2;
       }
+      
       const easeProgress = easeInOutCubic(progress);
-      const interpolatedPoints = points1.map((point, i) => {
+      const interpolatedPoints: number[][] = points1.map((point: any, i: number) => {
         if (i < points2.length) {
           const x = point[0] + (points2[i][0] - point[0]) * easeProgress;
           const y = point[1] + (points2[i][1] - point[1]) * easeProgress;
@@ -267,6 +277,7 @@ export function MorphingBlob({
         }
         return point;
       });
+      
       let newPath = `M${interpolatedPoints[0][0]},${interpolatedPoints[0][1]}`;
       const tension = 0.4;
 

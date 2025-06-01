@@ -81,7 +81,7 @@ const GalleryWall: React.FC = () => {
           </span>
         </h2>
         <p className='text-[18px] tracking-tight'>
-          I also have a small collection of paintings that I've been working on.
+          I also have a small collection of paintings that I&apos;ve been working on.
         </p>
       </div>
 

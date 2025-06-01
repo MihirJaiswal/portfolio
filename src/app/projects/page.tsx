@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { FadeIn, StaggerContainer, StaggerItem } from "../../components/animation/scroll-animations"
-import { Navbar } from "@/components/navbar/Navbar"
 
 type SortOption = "name" | "year" | "category"
 type ViewMode = "grid" | "list"
@@ -19,23 +18,11 @@ export default function ProjectsPage() {
   const [sortBy, setSortBy] = useState<SortOption>("year")
   const [viewMode, setViewMode] = useState<ViewMode>("grid")
   const [showFilters, setShowFilters] = useState(false)
-  const [expandedListItems, setExpandedListItems] = useState<Set<string>>(new Set())
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  // Toggle expanded state for list items
-  const toggleListItem = (projectId: string) => {
-    const newExpanded = new Set(expandedListItems)
-    if (newExpanded.has(projectId)) {
-      newExpanded.delete(projectId)
-    } else {
-      newExpanded.add(projectId)
-    }
-    setExpandedListItems(newExpanded)
-  }
 
   // Get unique categories
   const categories = ["all", ...Array.from(new Set(projects.map((project) => project.category)))]
