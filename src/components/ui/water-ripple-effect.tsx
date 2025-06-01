@@ -1,18 +1,16 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect } from "react"
 import * as THREE from "three"
 
 export default function WaterRippleEffect() {
   const mountRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<THREE.Scene>()
-  const rendererRef = useRef<THREE.WebGLRenderer>()
-  const materialRef = useRef<THREE.ShaderMaterial>()
+  const sceneRef = useRef<THREE.Scene | null>(null)
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
+  const materialRef = useRef<THREE.ShaderMaterial | null>(null)
   const mouseRef = useRef({ x: 0.5, y: 0.5 })
   const timeRef = useRef(0)
   const isHoveredRef = useRef(false)
-  // Fix: Provide initial value and proper typing for force update
-  const [, forceUpdate] = useState<Record<string, never>>({})
 
   useEffect(() => {
     if (!mountRef.current) return
@@ -54,18 +52,18 @@ export default function WaterRippleEffect() {
         vec2 uv = vUv;
         
         // Global wavy distortion that affects the entire image
-        float wave1 = sin(uv.x * 10.0 + time * 2.0) * 0.003;
-        float wave2 = sin(uv.y * 8.0 + time * 1.5) * 0.002;
+        float wave1 = sin(uv.x * 10.0 + time * 2.0) * 0.006;
+        float wave2 = sin(uv.y * 8.0 + time * 1.5) * 0.005;
         float wave3 = sin((uv.x + uv.y) * 12.0 + time * 2.5) * 0.0015;
         
         // Mouse-based ripples that spread across the image
         float dist = distance(uv, mouse);
-        float mouseWave1 = sin(dist * 20.0 - time * 4.0) * exp(-dist * 3.0) * hoverIntensity * 0.006;
-        float mouseWave2 = sin(dist * 15.0 - time * 3.0) * exp(-dist * 2.0) * hoverIntensity * 0.004;
+        float mouseWave1 = sin(dist * 20.0 - time * 4.0) * exp(-dist * 3.0) * hoverIntensity * 0.012;
+        float mouseWave2 = sin(dist * 15.0 - time * 3.0) * exp(-dist * 2.0) * hoverIntensity * 0.008;
         
         // Additional ripples from mouse position that create expanding circles
-        float ripple1 = sin(length(uv - mouse) * 25.0 - time * 5.0) * exp(-length(uv - mouse) * 4.0) * hoverIntensity * 0.008;
-        float ripple2 = sin(length(uv - mouse) * 18.0 - time * 3.5) * exp(-length(uv - mouse) * 3.0) * hoverIntensity * 0.005;
+        float ripple1 = sin(length(uv - mouse) * 25.0 - time * 5.0) * exp(-length(uv - mouse) * 4.0) * hoverIntensity * 0.015;
+        float ripple2 = sin(length(uv - mouse) * 18.0 - time * 3.5) * exp(-length(uv - mouse) * 3.0) * hoverIntensity * 0.010;
         
         // Combine all waves
         float totalWave = wave1 + wave2 + wave3 + mouseWave1 + mouseWave2 + ripple1 + ripple2;
@@ -80,7 +78,7 @@ export default function WaterRippleEffect() {
         vec2 mouseDir = uv - mouse;
         float mouseDist = length(mouseDir);
         vec2 mouseDistortion = normalize(mouseDir) * sin(mouseDist * 20.0 - time * 4.0) * 
-                              exp(-mouseDist * 3.0) * hoverIntensity * 0.004;
+                              exp(-mouseDist * 3.0) * hoverIntensity * 0.008;
         
         // Combine distortions
         vec2 finalDistortion = distortion + mouseDistortion + vec2(totalWave * 0.3, totalWave * 0.4);
@@ -167,7 +165,9 @@ export default function WaterRippleEffect() {
         materialRef.current.uniforms.grayscaleAmount.value += (targetGrayscale - currentGrayscale) * 0.08
       }
 
-      renderer.render(scene, camera)
+      if (rendererRef.current && sceneRef.current) {
+        rendererRef.current.render(sceneRef.current, camera)
+      }
       requestAnimationFrame(animate)
     }
     animate()

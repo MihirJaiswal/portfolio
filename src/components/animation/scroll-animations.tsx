@@ -23,7 +23,10 @@ export function FadeIn({
   once = true,
 }: FadeInProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once, threshold })
+  const isInView = useInView(ref, { 
+    once, 
+    amount: threshold // Use 'amount' instead of 'threshold'
+  })
 
   const directionOffset = {
     up: { y: 40 },
@@ -61,7 +64,10 @@ export function StaggerContainer({
   className = "",
 }: StaggerContainerProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, threshold: 0.1 })
+  const isInView = useInView(ref, { 
+    once: true, 
+    amount: 0.1 // Use 'amount' instead of 'threshold'
+  })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -124,7 +130,10 @@ export function Parallax({ children, speed = 0.5, className = "" }: ParallaxProp
 
 export function SectionHeading({ children, className = "" }: { children: ReactNode; className?: string }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, threshold: 0.5 })
+  const isInView = useInView(ref, { 
+    once: true, 
+    amount: 0.5 // Use 'amount' instead of 'threshold'
+  })
 
   return (
     <motion.div
