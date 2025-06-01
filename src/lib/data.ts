@@ -94,7 +94,7 @@ export const projects = [
     fullDescription:
       "DigiBazaar is a revolutionary platform that merges eCommerce, Warehouse Management, Wholesale, and Community into a single powerful ecosystem. DigiBazaar transcends traditional eCommerce platforms by offering a full-featured business ecosystem.",
     technologies: ["Next.js", "Tailwind", "TypeScript", "Node.js", "MySQL", "Express"],
-    client: "Personal Project",
+    client: "Personal",
     year: "2024",
     link: "https://github.com/MihirJaiswal/digibazaar-frontend",
     youtube: 'https://www.youtube.com/watch?v=KVnkONXLbXg&list=LL',

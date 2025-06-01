@@ -20,6 +20,7 @@ import {
 import { projects } from "@/lib/data"
 import { motion } from "framer-motion"
 import { FadeIn, StaggerContainer, StaggerItem } from "../../../components/animation/scroll-animations"
+import { ThemeToggle } from "@/components/navbar/theme-toggle"
 
 export default function ProjectPage() {
   const params = useParams()
@@ -167,13 +168,19 @@ export default function ProjectPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex justify-between items-center mb-12">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div className="flex gap-6" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Portfolio
+            </Link>
             <Link
               href="/projects"
               className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to all projects
+              All Projects
             </Link>
           </motion.div>
 
@@ -183,19 +190,24 @@ export default function ProjectPage() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <button
-              onClick={() => setShowShareOptions(!showShareOptions)}
-              className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
-            >
-              <Share2 className="w-4 h-4 mr-2" />
-              Share
-            </button>
+            <div className="flex gap-6">
+              <button
+                onClick={() => setShowShareOptions(!showShareOptions)}
+                className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                <span className="hidden md:block">Share</span>
+              </button>
+              <motion.div>
+                <ThemeToggle />
+              </motion.div>
+            </div>
 
             {showShareOptions && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute right-0 top-full mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg p-2 z-10"
+                className="absolute right-0 top-full mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md shadow-lg p-2 z-10"
               >
                 <button
                   onClick={() => handleShare("twitter")}
@@ -216,8 +228,10 @@ export default function ProjectPage() {
                   Copy Link
                 </button>
               </motion.div>
+
             )}
           </motion.div>
+
         </div>
 
         {/* Hero Section */}
@@ -293,7 +307,7 @@ export default function ProjectPage() {
                   <Play className="w-5 h-5 mr-3 text-zinc-500" />
                   Project Video
                 </h3>
-                <div className="aspect-video w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800">
+                <div className="aspect-video w-full rounded-md overflow-hidden border border-zinc-200 dark:border-zinc-800">
                   <iframe
                     src={youtubeEmbedUrl}
                     title={`${project.title} video`}
@@ -306,13 +320,13 @@ export default function ProjectPage() {
             )}
 
             {/* Call to Action */}
-            <div className="flex flex-wrap gap-4 mt-8">
+            <div className="flex flex-col md:flex-row gap-4 mt-8 w-full">
               {project.link && (
                 <motion.a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+                  className="text-center inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -326,7 +340,7 @@ export default function ProjectPage() {
                   href={project.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-4 border border-black dark:border-white text-black dark:text-white rounded-full text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                  className="inline-flex justify-center items-center px-8 py-4 border border-black dark:border-white text-black dark:text-white rounded-full text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -347,7 +361,7 @@ export default function ProjectPage() {
                 <StaggerContainer className="grid grid-cols-2 gap-2" staggerChildren={0.05}>
                   {project.technologies?.map((tech: string) => (
                     <StaggerItem key={tech}>
-                      <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-lg text-sm">{tech}</div>
+                      <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-md text-sm">{tech}</div>
                     </StaggerItem>
                   ))}
                 </StaggerContainer>
@@ -358,7 +372,7 @@ export default function ProjectPage() {
                   <User className="w-4 h-4 mr-2 text-zinc-500" />
                   Client
                 </h3>
-                <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-lg">
+                <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-md">
                   <p className="text-sm">{project.client}</p>
                 </div>
               </div>
@@ -368,7 +382,7 @@ export default function ProjectPage() {
                   <Calendar className="w-4 h-4 mr-2 text-zinc-500" />
                   Year
                 </h3>
-                <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-lg">
+                <div className="px-4 py-3 bg-zinc-100 dark:bg-zinc-900 rounded-md">
                   <p className="text-sm">{project.year}</p>
                 </div>
               </div>
@@ -412,7 +426,7 @@ export default function ProjectPage() {
                 <StaggerItem key={relatedProject.id}>
                   <Link href={`/projects/${relatedProject.id}`}>
                     <motion.div
-                      className="group border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300"
+                      className="group border border-zinc-200 dark:border-zinc-800 rounded-md overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300"
                       whileHover={{ y: -5 }}
                     >
                       <div className="aspect-video overflow-hidden">
@@ -422,7 +436,7 @@ export default function ProjectPage() {
                           width={400}
                           height={225}
                           quality={100}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain p-4"
                         />
                       </div>
                       <div className="p-6">

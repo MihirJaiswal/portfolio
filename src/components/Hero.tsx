@@ -29,7 +29,7 @@ export const HeroSection = () => {
   const titleScale = useTransform(smoothProgress, [0, 0.5], [1, 0.8]);
   
   const imageY = useTransform(smoothProgress, [0, 1], [0, 150]);
-  const imageOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0]);
+  const imageOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0.4]);
   
   const sideElementsY = useTransform(smoothProgress, [0, 1], [0, 80]);
   const sideElementsOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
@@ -221,18 +221,10 @@ export const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-                src="/img1.png"
+                src="/img3.png"
                 alt="Designer profile"
                 fill
-                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 block dark:hidden"
-                priority
-                sizes="(max-width: 1024px) 40vw, 450px"
-              />
-              <Image
-                src="/img2.png"
-                alt="Designer profile"
-                fill
-                className="object-contain drop-shadow-[0_0_10px_rgba(55,65,85,0.2)] transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-110 hidden dark:block"
+                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
                 priority
                 sizes="(max-width: 1024px) 40vw, 450px"
               />
@@ -244,18 +236,10 @@ export const HeroSection = () => {
               variants={imageVariants}
             >
               <Image
-                src="/img1.png"
+                src="/img3.png"
                 alt="Designer profile"
                 fill
-                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 block dark:hidden"
-                priority
-                sizes="(max-width: 640px) 70vw, 400px"
-              />
-              <Image
-                src="/img2.png"
-                alt="Designer profile"
-                fill
-                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-110 hidden dark:block"
+                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
                 priority
                 sizes="(max-width: 640px) 70vw, 400px"
               />
