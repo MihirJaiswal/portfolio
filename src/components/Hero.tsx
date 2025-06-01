@@ -4,38 +4,31 @@ import Image from "next/image";
 import { heroContent } from "@/lib/data";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export const HeroSection = () => {
   const containerRef = useRef(null);
   
-  // Scroll-based animations
+  // Scroll-based animations - minimalist values only
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Smooth spring physics for scroll animations
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  // Transform values based on scroll
-  const titleY = useTransform(smoothProgress, [0, 1], [0, -100]);
-  const titleOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0]);
-  const titleScale = useTransform(smoothProgress, [0, 0.5], [1, 0.8]);
+  // Transform values based on scroll - much more subtle
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const titleScale = useTransform(scrollYProgress, [0, 1], [1, 1]);
   
-  const imageY = useTransform(smoothProgress, [0, 1], [0, 150]);
-  const imageOpacity = useTransform(smoothProgress, [0, 0.5], [1, 0.4]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -15]);
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.6]);
   
-  const sideElementsY = useTransform(smoothProgress, [0, 1], [0, 80]);
-  const sideElementsOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
+  const sideElementsY = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const sideElementsOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
-  // Parallax effect for background gradient
-  const backgroundY = useTransform(smoothProgress, [0, 1], ["0%", "50%"]);
+  // Parallax effect for background gradient - very subtle
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   
   // Animation variants
   const containerVariants = {
