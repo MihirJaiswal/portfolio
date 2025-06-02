@@ -4,7 +4,7 @@ export default function Intro() {
     return (
       <div className="relative bg-white dark:bg-black overflow-hidden flex flex-col items-center justify-center max-w-7xl mx-auto border border-zinc-300 dark:border-zinc-700">
         <div className="absolute inset-0 pointer-events-none filter grayscale contrast-200" style={{
-        backgroundImage: "url('/bg.webp')",
+        backgroundImage: "url('/bg.png')",
         backgroundSize: "contain",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",

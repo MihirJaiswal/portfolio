@@ -17,56 +17,56 @@ const GalleryWall: React.FC = () => {
       title: "Abstract Composition I",
       year: "2024",
       medium: "Oil on Canvas",
-      imageUrl: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&q=80"
+      imageUrl: "/drawings/5.png"
     },
     {
       id: 2,
       title: "Urban Reflections",
       year: "2023",
       medium: "Acrylic",
-      imageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80"
+      imageUrl: "/drawings/2.jpg"
     },
     {
       id: 3,
       title: "Serenity in Blue",
       year: "2024",
       medium: "Watercolor",
-      imageUrl: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=400&q=80"
+      imageUrl: "/drawings/4.jpg"
     },
     {
       id: 4,
       title: "Golden Hour",
       year: "2023",
       medium: "Oil on Canvas",
-      imageUrl: "https://images.unsplash.com/photo-1576508993270-6a14ba3c2b7b?w=500&q=80"
+      imageUrl: "/drawings/10.png"
     },
     {
       id: 5,
       title: "Geometric Dreams",
       year: "2024",
       medium: "Mixed Media",
-      imageUrl: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=700&q=80"
+      imageUrl: "/drawings/8.jpg"
     },
     {
       id: 6,
       title: "Forest Whispers",
       year: "2023",
       medium: "Oil on Canvas",
-      imageUrl: "https://images.unsplash.com/photo-1549887534-1541e9326642?w=450&q=80"
+      imageUrl: "/drawings/10.jpg"
     },
     {
       id: 7,
       title: "Crimson Study",
       year: "2024",
       medium: "Acrylic",
-      imageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=350&q=80"
+      imageUrl: "/drawings/7.jpg"
     },
     {
       id: 8,
       title: "Ethereal Moments",
       year: "2023",
       medium: "Watercolor",
-      imageUrl: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=550&q=80"
+      imageUrl: "/drawings/3.jpg"
     }
   ];
 
@@ -154,7 +154,7 @@ const GalleryWall: React.FC = () => {
                 <img
                   src={artworks[4].imageUrl}
                   alt={artworks[4].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  className="artwork-image !object-right filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[4].title}</h3>
@@ -184,7 +184,7 @@ const GalleryWall: React.FC = () => {
                 <img
                   src={artworks[6].imageUrl}
                   alt={artworks[6].title}
-                  className="artwork-image  filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  className="artwork-image object-top lg:!object-contain !bg-[#ffffff] filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[6].title}</h3>
