@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import { ThemeProvider } from "next-themes"
 import { ScrollProvider } from "../components/animation/scroll-aniamtions"
 import type { Metadata } from 'next'
+import {CustomCursor} from "../components/CustomCursor"
 
 // Enhanced metadata for better SEO
 export const metadata: Metadata = {
@@ -147,6 +148,7 @@ export default function RootLayout({
       </head>
       <body className={`${GeistSans.className} gpu-accelerated`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <CustomCursor />
           <ScrollProvider>{children}</ScrollProvider>
         </ThemeProvider>
       </body>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react"
@@ -25,9 +25,42 @@ interface ProjectGridProps {
 export function ProjectGrid({ projects }: ProjectGridProps) {
   const [currentPage, setCurrentPage] = useState(0)
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
-  const projectsPerPage = 2
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+  const [isHoveringCard, setIsHoveringCard] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const projectsPerPage = 3
   const totalPages = Math.ceil(projects.length / projectsPerPage)
 
+  // Dispatch custom event to hide/show main cursor
+  const dispatchProjectHover = (isHovering: boolean) => {
+    const event = new CustomEvent('projectHover', {
+      detail: { isHovering }
+    });
+    document.dispatchEvent(event);
+  };
+
+  // Update cursor position
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setCursorPos({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        })
+      }
+    }
+
+    if (isHoveringCard && containerRef.current) {
+      containerRef.current.addEventListener('mousemove', handleMouseMove)
+    }
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener('mousemove', handleMouseMove)
+      }
+    }
+  }, [isHoveringCard])
 
   const goToNextPage = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages)
@@ -64,8 +97,45 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     }
   }
 
+  const cursorVariants = {
+    default: {
+      scale: 0,
+      opacity: 0
+    },
+    hover: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25
+      }
+    }
+  }
+
   return (
-    <div className="relative w-full">
+    <div 
+      ref={containerRef}
+      className="relative w-full"
+    >
+      {/* Custom Project Cursor */}
+      <motion.div
+        className="fixed pointer-events-none z-50 mix-blend-difference"
+        style={{
+          left: cursorPos.x,
+          top: cursorPos.y,
+          transform: 'translate(-50%, -50%)'
+        }}
+        variants={cursorVariants}
+        animate={isHoveringCard ? "hover" : "default"}
+      >
+        <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
+          <span className="text-black text-xs font-bold uppercase tracking-wider">
+            Check Out
+          </span>
+        </div>
+      </motion.div>
+
       <div className="flex flex-col md:flex-row justify-end items-center mb-8 gap-4">
         <div className="flex items-center space-x-6">
           <div className="flex space-x-2">
@@ -104,7 +174,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -115,17 +185,24 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             key={project.id}
             variants={itemVariants}
             className="group"
-            onMouseEnter={() => setHoveredProject(project.id)}
-            onMouseLeave={() => setHoveredProject(null)}
+            onMouseEnter={() => {
+              setHoveredProject(project.id)
+              setIsHoveringCard(true)
+              dispatchProjectHover(true)
+            }}
+            onMouseLeave={() => {
+              setHoveredProject(null)
+              setIsHoveringCard(false)
+              dispatchProjectHover(false)
+            }}
           >
             <Link href={`/projects/${project.id}`} className="block">
               <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-neutral-100 dark:bg-neutral-800">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                {/*  */}
+                <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={project.mainImage || "/placeholder.svg"}
                     alt={project.title}
-                    width={600}
+                    width={450}
                     height={450}
                     quality={100}
                     className={cn(
@@ -137,8 +214,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300",
                   )}>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex flex-col justify-end items-end">
-
+                      <div className="flex justify-between items-center">
                         <div className="flex space-x-2">
                           <div className="rounded-full bg-white p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                             <ExternalLink className="w-3 h-3 text-black" />
