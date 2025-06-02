@@ -6,6 +6,7 @@ import { ScrollProvider } from "../components/animation/scroll-aniamtions"
 import type { Metadata } from 'next'
 // Enhanced metadata for better SEO
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mihirjaiswal.dev/'),
   title: {
     default: 'Mihir Jaiswal | Full Stack Developer & UI/UX Designer Portfolio',
     template: '%s | Mihir Jaiswal Portfolio'
