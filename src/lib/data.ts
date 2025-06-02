@@ -10,6 +10,7 @@ export const siteConfig = {
       instagram: "https://www.instagram.com/mihir_jaiswal_/",
       linkedin: "https://www.linkedin.com/in/mihir-jaiswal-322898287/",
       github: "https://github.com/MihirJaiswal",
+      youtube: "https://www.youtube.com/@MihirJaiswal-vn4vm",
     },
   }
 

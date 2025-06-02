@@ -193,7 +193,7 @@ export default function WaterRippleEffect() {
       <div className="relative">
          <div
           ref={mountRef}
-          className="cursor-pointer transition-transform duration-300 scale-50 md:scale-100"
+          className="transition-transform duration-300 scale-50 md:scale-100"
         /> 
       </div>
     </div>

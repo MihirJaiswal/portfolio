@@ -9,6 +9,7 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { FadeIn, StaggerContainer, StaggerItem } from "../../components/animation/scroll-animations"
 import { ThemeToggle } from "@/components/navbar/theme-toggle"
+import { CustomCursor } from "@/components/CustomCursor"
 
 type SortOption = "name" | "year" | "category"
 type ViewMode = "grid" | "list"
@@ -235,6 +236,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 dark:text-white">
+      <CustomCursor/>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8 sm:my-12">
         <motion.div 
           className="flex items-center justify-between w-full mb-8 sm:mb-12" 

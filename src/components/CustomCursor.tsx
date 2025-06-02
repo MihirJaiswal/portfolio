@@ -65,7 +65,7 @@ export const CustomCursor = () => {
 
   return (
     <div
-      className={`fixed w-5 h-5 bg-white/80 border border-neutral-800 rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 ${
+      className={`fixed hidden lg:block w-5 h-5 bg-white/80 border border-neutral-800 rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 ${
         isVisible && !isHoveringProject ? 'opacity-100' : 'opacity-0'
       }`}
       style={{

@@ -1,6 +1,7 @@
 import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
 import ContactForm from "@/components/Contact";
+import { CustomCursor } from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import GalleryWall from "@/components/GalleryWall";
 import { HeroSection } from "@/components/Hero";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <LenisProvider>
       <ScrollProgress />
+      <CustomCursor />
       <div className="max-w-7xl mx-auto overflow-hidden">
         <Navbar />
         <HeroSection />

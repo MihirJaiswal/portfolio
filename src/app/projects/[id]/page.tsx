@@ -21,6 +21,7 @@ import { projects } from "@/lib/data"
 import { motion } from "framer-motion"
 import { FadeIn, StaggerContainer, StaggerItem } from "../../../components/animation/scroll-animations"
 import { ThemeToggle } from "@/components/navbar/theme-toggle"
+import { CustomCursor } from "@/components/CustomCursor"
 
 export default function ProjectPage() {
   const params = useParams()
@@ -145,6 +146,7 @@ export default function ProjectPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 dark:text-white">
+      <CustomCursor/>
       {/* Project Navigation */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex items-center gap-2">
         <motion.button
