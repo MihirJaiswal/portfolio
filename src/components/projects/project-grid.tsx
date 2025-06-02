@@ -39,26 +39,21 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     document.dispatchEvent(event);
   };
 
-  // Update cursor position
+  // Update cursor position globally
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect()
-        setCursorPos({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        })
-      }
+      setCursorPos({
+        x: e.clientX,
+        y: e.clientY
+      })
     }
 
-    if (isHoveringCard && containerRef.current) {
-      containerRef.current.addEventListener('mousemove', handleMouseMove)
+    if (isHoveringCard) {
+      document.addEventListener('mousemove', handleMouseMove)
     }
 
     return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener('mousemove', handleMouseMove)
-      }
+      document.removeEventListener('mousemove', handleMouseMove)
     }
   }, [isHoveringCard])
 
@@ -118,7 +113,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
       ref={containerRef}
       className="relative w-full"
     >
-      {/* Custom Project Cursor */}
+      {/* Custom Project Cursor - Fixed positioning */}
       <motion.div
         className="fixed pointer-events-none z-50 mix-blend-difference"
         style={{
@@ -184,7 +179,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           <motion.div
             key={project.id}
             variants={itemVariants}
-            className="group"
+            className="group cursor-none" // Hide default cursor on cards
             onMouseEnter={() => {
               setHoveredProject(project.id)
               setIsHoveringCard(true)
@@ -196,7 +191,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
               dispatchProjectHover(false)
             }}
           >
-            <Link href={`/projects/${project.id}`} className="block">
+            <Link href={`/projects/${project.id}`} className="block cursor-none">
               <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-neutral-100 dark:bg-neutral-800">
                 <div className="relative aspect-square overflow-hidden">
                   <Image
