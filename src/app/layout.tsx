@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description: 'Full Stack Developer specializing in modern web technologies. Turning challenges into elegant digital solutions through creative design and expert development.',
     images: [
       {
-        url: '/img1.png',
+        url: '/assets/img1.png',
         width: 1200,
         height: 630,
         alt: 'Mihir Jaiswal - Full Stack Developer Portfolio',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mihir Jaiswal | Full Stack Developer & UI/UX Designer',
     description: 'Full Stack Developer specializing in React, Next.js, Node.js & UI/UX Design. Check out my innovative projects and solutions.',
-    images: ['/img1.jpg'],
+    images: ['/assets/img1.jpg'],
     creator: '@mihir_jaiswal_',
   },
   alternates: {
@@ -90,7 +90,7 @@ const jsonLd = {
   description: 'Full Stack Developer specializing in turning challenges into simple, elegant digital products through creative design and expert development.',
   url: 'https://mihirjaiswal.dev',
   email: 'jaiswalmihir.business@gmail.com',
-  image: '/img1.png',
+  image: '/assets/img1.png',
   sameAs: [
     'https://www.instagram.com/mihir_jaiswal_/',
     'https://www.linkedin.com/in/mihir-jaiswal-322898287/',

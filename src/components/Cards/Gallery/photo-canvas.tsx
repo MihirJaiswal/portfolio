@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect, useRef } from "react"
 import { DndProvider, useDrag, useDrop } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { GripVertical, ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 export interface Photo {
   id: string
@@ -102,11 +103,14 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
 
         {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>
-          <img
+          <Image
             src={photo.imageUrl || "/placeholder.svg"}
-            alt={photo.title}
+            alt={photo.title || "Photo"}
             className="w-full h-full object-cover object-top bg-black filter grayscale hover:grayscale-0 transition-all duration-500 border border-black"
             crossOrigin="anonymous"
+            fill
+            loading="lazy"
+            quality={100}
             draggable={false}
           />
           {/* Subtle vintage overlay */}
@@ -282,7 +286,7 @@ function PhotoCanvasContent({
       }))
       setItems(newItems)
     }
-  }, [photos.length, canvasWidth, canvasHeight])
+  }, [photos.length, photos, canvasWidth, canvasHeight])
 
   const handleMove = useCallback(
     (id: string, newPosition: { x: number; y: number }) => {

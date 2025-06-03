@@ -73,13 +73,13 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                 className="overflow-hidden"
               >
                 <div className="p-4 pt-0">
-                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
+                  <div className="w-full aspect-square h-56 overflow-hidden mb-4">
                     <Image
                       src={project.mainImage || "/placeholder.svg"}
                       alt={project.title}
                       width={400}
-                      height={300}
-                      className="w-full h-full object-contain bg-black filter md:grayscale hover:grayscale-0 transition-all duration-500"
+                      height={400}
+                      className="w-full h-full object-cover bg-black filter md:grayscale hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
 

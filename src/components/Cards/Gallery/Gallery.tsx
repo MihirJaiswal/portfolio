@@ -48,9 +48,9 @@ const samplePhotos: Photo[] = [
   },
   {
     id: "7",
-    title: "Protecting world",
-    date: "2023-07-27",
-    imageUrl: "/photos/soldiers.jpeg",
+    title: "I am also a good chef",
+    date: "2024-07-27",
+    imageUrl: "/photos/pasta.png",
     position: { x: 0, y: 0 },
   },
   {

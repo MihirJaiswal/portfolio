@@ -193,7 +193,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           >
             <Link href={`/projects/${project.id}`} className="block cursor-none">
               <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-neutral-100 dark:bg-neutral-800">
-                <div className="relative aspect-[5/4] overflow-hidden rounded-lg">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-sm">
                   <Image
                     src={project.mainImage || "/placeholder.svg"}
                     alt={project.title}

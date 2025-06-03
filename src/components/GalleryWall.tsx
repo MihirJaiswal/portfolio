@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import Image from 'next/image';
 
 interface Artwork {
   id: number;
@@ -35,28 +36,28 @@ const GalleryWall: React.FC = () => {
     },
     {
       id: 4,
-      title: "Golden Hour",
-      year: "2023",
-      medium: "Oil on Canvas",
-      imageUrl: "/drawings/10.png"
+      title: "Bakugou",
+      year: "2020",
+      medium: "Pencil Colors",
+      imageUrl: "/drawings/1.png"
     },
     {
       id: 5,
       title: "Touka Kirishima",
       year: "2020",
       medium: "Pencil Colors",
-      imageUrl: "/drawings/8.jpg"
+      imageUrl: "/drawings/8.png"
     },
     {
       id: 6,
-      title: "Muzan Kibutsuji",
-      year: "2023",
-      medium: "Pencil Colors",
-      imageUrl: "/drawings/10.jpg"
+      title: "xxxtentation",
+      year: "2022",
+      medium: "Sketch",
+      imageUrl: "/drawings/10.png"
     },
     {
       id: 7,
-      title: "Tiger",
+      title: "Snow Leopard",
       year: "2024",
       medium: "Pen Sketch",
       imageUrl: "/drawings/7.jpg"
@@ -81,7 +82,7 @@ const GalleryWall: React.FC = () => {
           </span>
         </h2>
         <p className='text-[18px] tracking-tight'>
-          I also have a small collection of paintings that I&apos;ve been working on.
+          I also have a small collection of paintings that I have drawn.
         </p>
       </div>
 
@@ -91,10 +92,13 @@ const GalleryWall: React.FC = () => {
             {/* Large Feature Piece - Top Left */}
             <div className="artwork-frame large-piece group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[0].imageUrl}
                   alt={artworks[0].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image object-cover p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 40vw"
+                  priority
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[0].title}</h3>
@@ -106,10 +110,12 @@ const GalleryWall: React.FC = () => {
             {/* Medium Piece - Top Center */}
             <div className="artwork-frame medium-piece-1 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[1].imageUrl}
                   alt={artworks[1].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[1].title}</h3>
@@ -121,10 +127,12 @@ const GalleryWall: React.FC = () => {
             {/* Small Piece - Top Right */}
             <div className="artwork-frame small-piece-1 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[2].imageUrl}
                   alt={artworks[2].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image p-1.5 object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[2].title}</h3>
@@ -136,10 +144,12 @@ const GalleryWall: React.FC = () => {
             {/* Medium Piece - Center Left */}
             <div className="artwork-frame medium-piece-2 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[3].imageUrl}
                   alt={artworks[3].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[3].title}</h3>
@@ -151,10 +161,13 @@ const GalleryWall: React.FC = () => {
             {/* Large Feature Piece - Center Right */}
             <div className="artwork-frame large-piece-2 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[4].imageUrl}
                   alt={artworks[4].title}
-                  className="artwork-image !object-right filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  quality={100}
+                  fill
+                  className="artwork-image p-1.5 !object-right object-cover filter grayscale contrast-125 hover:grayscale-0 transition-alla duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 45vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[4].title}</h3>
@@ -166,10 +179,14 @@ const GalleryWall: React.FC = () => {
             {/* Small Piece - Bottom Left */}
             <div className="artwork-frame small-piece-2 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[5].imageUrl}
                   alt={artworks[5].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  unoptimized={true}
+                  quality={100}
+                  className="artwork-image object-cover p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[5].title}</h3>
@@ -181,10 +198,12 @@ const GalleryWall: React.FC = () => {
             {/* Medium Piece - Bottom Center */}
             <div className="artwork-frame medium-piece-3 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[6].imageUrl}
                   alt={artworks[6].title}
-                  className="artwork-image object-top lg:!object-contain !bg-[#ffffff] filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image p-1.5 object-top object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[6].title}</h3>
@@ -196,10 +215,12 @@ const GalleryWall: React.FC = () => {
             {/* Small Piece - Bottom Right */}
             <div className="artwork-frame small-piece-3 group">
               <div className="frame-border">
-                <img
+                <Image
                   src={artworks[7].imageUrl}
                   alt={artworks[7].title}
-                  className="artwork-image filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  fill
+                  className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                 />
                 <div className="artwork-info">
                   <h3 className="artwork-title">{artworks[7].title}</h3>
@@ -274,8 +295,6 @@ const GalleryWall: React.FC = () => {
         }
 
         .artwork-image {
-          width: 100%;
-          height: 100%;
           object-fit: cover;
           display: block;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -292,6 +311,7 @@ const GalleryWall: React.FC = () => {
           transform: translateY(100%);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           opacity: 0;
+          z-index: 10;
         }
 
         .artwork-title {

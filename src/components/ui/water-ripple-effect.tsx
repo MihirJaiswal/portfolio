@@ -13,7 +13,9 @@ export default function WaterRippleEffect() {
   const isHoveredRef = useRef(false)
 
   useEffect(() => {
-    if (!mountRef.current) return
+    // Capture the current mount element at the start of the effect
+    const mountElement = mountRef.current
+    if (!mountElement) return
 
     // Scene setup
     const scene = new THREE.Scene()
@@ -22,12 +24,12 @@ export default function WaterRippleEffect() {
 
     renderer.setSize(920, 940)
     renderer.setClearColor(0x000000, 0)
-    mountRef.current.appendChild(renderer.domElement)
+    mountElement.appendChild(renderer.domElement)
 
     // Load texture
     const textureLoader = new THREE.TextureLoader()
     const texture = textureLoader.load(
-      "/art.jpg",
+      "/assets/art.jpg",
     )
 
     // Improved water ripple shader with grayscale
@@ -172,14 +174,15 @@ export default function WaterRippleEffect() {
     }
     animate()
 
-    // Cleanup
+    // Cleanup function now uses the captured mountElement
     return () => {
       renderer.domElement.removeEventListener("mousemove", handleMouseMove)
       renderer.domElement.removeEventListener("mouseenter", handleMouseEnter)
       renderer.domElement.removeEventListener("mouseleave", handleMouseLeave)
 
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement)
+      // Use the captured mountElement instead of mountRef.current
+      if (mountElement && renderer.domElement && mountElement.contains(renderer.domElement)) {
+        mountElement.removeChild(renderer.domElement)
       }
       renderer.dispose()
       geometry.dispose()

@@ -10,7 +10,7 @@ import Image from "next/image";
 export const CenterIcon = (
   <div className="relative h-112 w-112 z-10">
     <Image
-      src="/statue.png"
+      src="/assets/statue.png"
       alt="Statue"
       fill
       className="object-contain filter grayscale contrast-125 brightness-105 drop-shadow-lg drop-shadow-black"

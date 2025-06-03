@@ -17,18 +17,19 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Add your form submission logic here
-  }
-
   return (
    <div className="px-6 pt-12 border-t-2 border-neutral-600 dark:border-neutral-800 relative">
      <div className="w-full max-w-7xl mx-auto">
       <h2 className="text-neutral-600 font-medium mb-8">GET IN TOUCH</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form 
+        action="https://formsubmit.co/jaiswalmihir.business@gmail.com"
+        method="POST"
+      >
+        {/* Hidden FormSubmit configuration fields */}
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_subject" value="Portfolio Contact Form" />
+        
         <div className="grid gap-10">
           <div className="grid grid-cols-1 md:grid-cols-[250px,1fr] items-center">
             <label htmlFor="name" className="text-3xl md:text-4xl font-black uppercase tracking-tighter">
@@ -41,6 +42,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your name"
+              required
               className="border-0 border-b border-neutral-300 focus:border-neutral-600 focus:ring-0 focus:outline-none px-0 py-2 bg-transparent w-full autofill:bg-transparent autofill:shadow-[inset_0_0_0px_1000px_transparent]"
             />
           </div>
@@ -71,6 +73,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder="your.email@example.com"
+              required
               className="border-0 border-b border-neutral-300 focus:border-neutral-600 focus:ring-0 focus:outline-none px-0 py-2 bg-transparent w-full"
             />
           </div>
@@ -86,6 +89,7 @@ export default function ContactForm() {
               onChange={handleChange}
               placeholder="Your message"
               rows={3}
+              required
               className="border-0 border-b border-neutral-300 focus:border-neutral-600 focus:ring-0 focus:outline-none px-0 py-2 bg-transparent w-full resize-none"
             />
           </div>

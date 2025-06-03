@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+
 export const HeroSection = () => {
   const containerRef = useRef(null);
   
@@ -15,6 +16,15 @@ export const HeroSection = () => {
     target: containerRef,
     offset: ["start start", "end start"]
   });
+
+  const downloadPDF = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = '/resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Transform values based on scroll - much more subtle
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -30]);
@@ -136,6 +146,8 @@ export const HeroSection = () => {
     },
   };
 
+  
+
   return (
     <motion.div 
       ref={containerRef}
@@ -214,7 +226,7 @@ export const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-                src="/img3.png"
+                src="/assets/img3.png"
                 alt="Designer profile"
                 fill
                 className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
@@ -229,7 +241,7 @@ export const HeroSection = () => {
               variants={imageVariants}
             >
               <Image
-                src="/img3.png"
+                src="/assets/img3.png"
                 alt="Designer profile"
                 fill
                 className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
@@ -283,8 +295,8 @@ export const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button className="btn w-full max-w-xs border border-neutral-300 dark:border-neutral-700 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900">
-                  <a href="" className="flex items-center gap-1 justify-center">
+                <Button onClick={downloadPDF} className="btn w-full max-w-xs border border-neutral-300 dark:border-neutral-700 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900">
+                  <div className="flex items-center gap-1 justify-center">
                     <span>Download CV</span>
                     <motion.div
                       animate={{ y: [0, 3, 0] }}
@@ -292,7 +304,7 @@ export const HeroSection = () => {
                     >
                       <ArrowDown className="w-4 h-4" />
                     </motion.div>
-                  </a>
+                  </div>
                 </Button>
               </motion.div>
             </motion.div>
@@ -314,8 +326,8 @@ export const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Button className="btn border border-neutral-300 dark:border-neutral-700 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 bg-gradient-to-r from-neutral-500 to-black dark:from-neutral-100 dark:to-neutral-100">
-                <a href="" className="flex items-center gap-1 justify-center">
+              <Button onClick={downloadPDF} className="btn border border-neutral-300 dark:border-neutral-700 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 bg-gradient-to-r from-neutral-500 to-black dark:from-neutral-100 dark:to-neutral-100">
+                <div className="flex items-center gap-1 justify-center">
                   <span>Download CV</span>
                   <motion.div
                     animate={{ y: [0, 3, 0] }}
@@ -323,7 +335,7 @@ export const HeroSection = () => {
                   >
                     <ArrowDown className="w-4 h-4" />
                   </motion.div>
-                </a>
+                </div>
               </Button>
             </motion.div>
           </motion.div>
