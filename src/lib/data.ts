@@ -175,7 +175,7 @@ export const projects = [
     description: "NOSTALGIC PORTFOLIO WEBSITE IN WINDOWS 95 THEME",
     category: "web design",
     image: "/projects/portfolio.webp",
-    mainImage: "/projects/details/portfolio.webp",
+    mainImage: "/details/windows95portfolio.png",
     details: "NOSTALGIC DESIGN WITH MODERN FUNCTIONALITY AND EASTER EGGS",
     fullDescription:
       "A portfolio website in windows 95 theme, This project is a nostalgic journey back to the era of Windows 95, with a modern twist. Explore my work, play games, view my drawings, and much more!, also there is an easter egg in the website if you find it do let me know.",
@@ -191,7 +191,7 @@ export const projects = [
     description: "COMPREHENSIVE WEB APP EXPLORING STUDIO GHIBLI UNIVERSE",
     category: "web application",
     image: "/projects/ghibli.webp",
-    mainImage: "/projects/details/ghibliverse.webp",
+    mainImage: "/details/ghibliverse.png",
     details: "DETAILED INFORMATION ABOUT CHARACTERS, MOVIES, AND LOCATIONS",
     fullDescription:
       "Ghibli Verse is a comprehensive web application dedicated to exploring the enchanting world of Studio Ghibli. This project provides detailed information about characters, movies, and locations from the beloved Studio Ghibli films. Used Studio Ghibli API for fetching the information about the characters, movies and locations.",
@@ -208,7 +208,7 @@ export const projects = [
     description: "BROWSER EXTENSION AND WEBSITE FOR PHISHING ATTACK DETECTION",
     category: "cybersecurity",
     image: "/projects/cybersphere.webp",
-    mainImage: "/projects/details/cybersphere.webp",
+    mainImage: "/details/cybersphere.png",
     details: "MACHINE LEARNING POWERED SECURITY SOLUTION",
     fullDescription:
       "CyberSphere is a browser extension and website designed to detect phishing attacks using machine learning techniques. The machine learning model is trained using XGBoost, Random Forest, Decision Tree, and SVM algorithms.The machine learning models are trained on a dataset consisting of over 30,000 samples.It provides Browser extension for real-time phishing detection while browsing.",
@@ -224,7 +224,7 @@ export const projects = [
     description: "GENERATE AND CUSTOMIZE CERTIFICATES FOR FREE",
     category: "web tool",
     image: "/projects/certi.webp",
-    mainImage: "/projects/details/certificategenerator.webp",
+    mainImage: "/details/certificategenerator.png",
     details: "CUSTOMIZABLE TEMPLATES WITH AUTOMATED NAME INSERTION",
     fullDescription:
       "From customizable templates to automated name insertion, our tool makes certificate generation simple and efficient, perfect for events, and more.",
@@ -240,7 +240,7 @@ export const projects = [
     description: "THE OFFICIAL WEBSITE OF GDSC CDGI",
     category: "web development",
     image: "/projects/gdsc.svg",
-    mainImage: "/projects/details/gdsc.webp",
+    mainImage: "/details/gdsc.png",
     details: "MODERN RESPONSIVE DESIGN FOR DEVELOPER COMMUNITY",
     fullDescription:
       "The official website of GDSC CDGI. The website is made using Next.js, Tailwind, and TypeScript. The website is designed and developed by Mihir Jaiswal.",
@@ -256,7 +256,7 @@ export const projects = [
     description: "TOY STORE WEBSITE BUILT FOR CLIENT",
     category: "client work",
     image: "/projects/toy.webp",
-    mainImage: "/projects/details/toy.webp",
+    mainImage: "/details/toy.png",
     details: "FULL-STACK ECOMMERCE SOLUTION WITH DATABASE INTEGRATION",
     fullDescription:
       "Toy Sandook is a website that I made for a client. The website is made using Next.js, MongoDB, and Express. The website is designed and developed by Mihir Jaiswal.",
@@ -272,7 +272,7 @@ export const projects = [
     description: "ANNUAL TECHNO-MANAGEMENT FEST WEBSITE FOR CDGI, INDORE",
     category: "event website",
     image: "/projects/citro.webp",
-    mainImage: "/projects/details/citronics.webp",
+    mainImage: "/details/citronics.png",
     details: "VIBRANT DESIGN FOR COLLEGE TECHNICAL FESTIVAL",
     fullDescription:
       "Citronics is an annual techno-management fest of CDGI, Indore. The website is made using HTML, Tailwind, and JavaScript. The website is designed and developed by Mihir Jaiswal.",
