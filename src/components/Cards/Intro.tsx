@@ -11,7 +11,6 @@ export default function Intro() {
       }} */></div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#000000_40%,#ffffff_100%)]"></div>
        <div className="relative lg:max-h-[650px]">
-
            <Gallery/>
        </div>
       </div>

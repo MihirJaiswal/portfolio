@@ -148,7 +148,7 @@ const GalleryWall: React.FC = () => {
                   src={artworks[3].imageUrl}
                   alt={artworks[3].title}
                   fill
-                  className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                  className="artwork-image p-1.5 object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                 />
                 <div className="artwork-info">
