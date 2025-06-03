@@ -7,8 +7,7 @@ import { siteConfig } from "../../lib/data";
 import { navLinks } from "../../lib/data";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
-import NameTranslation from "../name-translation";
-
+import NameTranslation from "./name-translation";
 export const Navbar = () => {
   const headerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(true);

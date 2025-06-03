@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-export default function NameTranslation() {
-  const translations = [
+function NameTranslation() {
+    const translations = [
     { mihir: "MIHIR", jaiswal: "JAISWAL", language: "English" },
     { mihir: "मिहिर", jaiswal: "जायसवाल", language: "Hindi" },
     { jaiswal: "جيسوال", mihir: "ميهير",  language: "Arabic" },
@@ -14,6 +14,7 @@ export default function NameTranslation() {
     { mihir: "মিহির", jaiswal: "জায়সওয়াল", language: "Bengali" },
   ]
 
+  
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
 
@@ -30,7 +31,7 @@ export default function NameTranslation() {
   }, [])
 
   return (
-    <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center">
       <div className="relative h-8 flex items-center justify-center min-w-[160px]">
         <AnimatePresence mode="wait">
           {isVisible && (
@@ -68,3 +69,5 @@ export default function NameTranslation() {
     </div>
   )
 }
+
+export default NameTranslation
