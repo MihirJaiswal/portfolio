@@ -1,5 +1,7 @@
+// Fixed Home component
 import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
+import ClientWrapper from "@/components/ClientWrapper";
 import ContactForm from "@/components/Contact";
 import { CustomCursor } from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
@@ -14,7 +16,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import Work from "@/components/Work";
 
 export default function Home() {
-  return (
+  const MainContent = () => (
     <LenisProvider>
       <ScrollProgress />
       <CustomCursor />
@@ -24,18 +26,25 @@ export default function Home() {
         <About />
         <ProjectsSection />
         <GalleryWall />
+      </div>
+      <Work />
+      <ProcessSteps />
+      <div className="pb-4 overflow-hidden">
+        <Cards />
+        <div className="lg:hidden">
+          <ContactForm />
         </div>
-        <Work />
-        <ProcessSteps />
-        <div className="pb-4 overflow-hidden">
-          <Cards />
-          <div className="lg:hidden">
-            <ContactForm />
-          </div>
-        </div>
-        <Footer />
-        <ScrollToTop />
-      
+      </div>
+      <Footer />
+      <ScrollToTop />
     </LenisProvider>
+  )
+
+  return (
+    <div>
+      <ClientWrapper>
+        <MainContent />
+      </ClientWrapper>
+    </div>
   );
 }
