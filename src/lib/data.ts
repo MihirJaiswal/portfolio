@@ -73,7 +73,7 @@ export const projects = [
     description: "A MODERN UI COMPONENT LIBRARY FOR REACT APPLICATIONS",
     category: "web development",
     image: "/projects/nuvyx.webp",
-    mainImage: "/nuvyxui.png",
+    mainImage: "/details/nuvyxui.png",
     details: "MODULAR COMPONENTS WITH FRAMER MOTION ANIMATIONS",
     fullDescription:
       "Nuvyx UI is a curated library of modular components that can be easily integrated into your web applications. It offers a versatile selection of components, blocks, and templates designed to accelerate your development process.",
@@ -90,7 +90,7 @@ export const projects = [
     description: "THE ULTIMATE ECOMMERCE & WAREHOUSE MANAGEMENT SOLUTION",
     category: "full stack",
     image: "/projects/digi.webp",
-    mainImage: "/projects/details/digibazaar.webp",
+    mainImage: "/details/digibazaar.png",
     details: "COMPREHENSIVE BUSINESS ECOSYSTEM WITH WAREHOUSE MANAGEMENT",
     fullDescription:
       "DigiBazaar is a revolutionary platform that merges eCommerce, Warehouse Management, Wholesale, and Community into a single powerful ecosystem. DigiBazaar transcends traditional eCommerce platforms by offering a full-featured business ecosystem.",
@@ -107,7 +107,7 @@ export const projects = [
     description: "GENERATES STORY SCENES, DIALOGS, AND IMAGES BASED ON USER INPUT",
     category: "ai application",
     image: "/projects/story.webp",
-    mainImage: "/projects/details/storyweaverAI.webp",
+    mainImage: "/details/storyweaverai.png",
     details: "POWERED BY QWEN MODEL AND DALL-E FOR IMAGE GENERATION",
     fullDescription:
       "StoryWeaver AI is a web application that generates story scenes, dialogs, and images based on user input plot. The project uses Qwen/QwQ-32B-Preview model for generating story scenes and dialogs, and OpenAI's DALL-E for generating images. The application is built using Next.js, Tailwind CSS, and Framer Motion to deliver an engaging and visually appealing user experience.",
@@ -124,7 +124,7 @@ export const projects = [
     description: "COMPREHENSIVE POKEMON DATABASE WITH TOOLS AND FEATURES",
     category: "web application",
     image: "/projects/monsterpedia.webp",
-    mainImage: "/monsterpedia.png",
+    mainImage: "/details/monsterpedia.png",
     details: "POKEDEX, TYPE CALCULATOR, TEAM BUILDER, AND CARD GENERATOR",
     fullDescription:
       "Monster Pedia is an interactive web application designed for Pokémon fans. It includes a comprehensive Pokédex, a type weakness calculator, a team builder, and a Pokémon card maker. The project is built using Next.js, Tailwind CSS, and Framer Motion to deliver an engaging and visually appealing user experience.",
@@ -141,7 +141,7 @@ export const projects = [
     description: "EXPLORE AND COMPARE SUPERHEROES WITH DETAILED ANALYTICS",
     category: "web application",
     image: "/projects/herohq.webp",
-    mainImage: "/projects/details/herohq.webp",
+    mainImage: "/details/herohq.png",
     details: "SUPERHERO COMPARISON WITH POWER STATS AND WIN PROBABILITY",
     fullDescription:
       "Hero HQ is a dynamic web application where users can explore details about various superheroes and compare them side by side. The comparison feature includes visual graphs of power stats, height, and a win probability indicator to help users determine the likely winner in a hypothetical match-up.",
@@ -158,7 +158,7 @@ export const projects = [
     description: "MANGA HOSTING WEBSITE FOR UPLOADING AND READING MANGA",
     category: "web platform",
     image: "/projects/inkscroll.webp",
-    mainImage: "/projects/details/inkscroll.webp",
+    mainImage: "/details/inkscroll.png",
     details: "FULL-STACK PLATFORM FOR MANGA ENTHUSIASTS",
     fullDescription:
       "Inkscroll is a versatile platform designed for manga enthusiasts to host and read manga. Users can easily upload their manga creations and share them with a broader audience, as well as explore and read manga uploaded by others. The website is built using Next.js and Node.js, ensuring a fast, seamless, and dynamic user experience.",
@@ -288,7 +288,7 @@ export const projects = [
     description: "IMMERSIVE POKEMON GAME BUILT WITH HTML CANVAS",
     category: "game development",
     image: "/projects/dreammist.jpg",
-    mainImage: "/projects/details/dreammist.webp",
+    mainImage: "/details/dreammist.png",
     details: "RICH GAMEPLAY WITH TOWNS, SHOPS, AND INTERACTIVE ELEMENTS",
     fullDescription:
       "Dream Mist is an immersive Pokémon game built using HTML canvas, offering players a rich and dynamic experience.Explore vibrant towns and cities filled with shops, and hidden secrets. Dream Mist provides a captivating adventure filled with visual flair and interactive gameplay.",

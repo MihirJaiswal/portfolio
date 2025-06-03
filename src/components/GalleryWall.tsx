@@ -14,23 +14,23 @@ const GalleryWall: React.FC = () => {
   const artworks: Artwork[] = [
     {
       id: 1,
-      title: "Abstract Composition I",
-      year: "2024",
-      medium: "Oil on Canvas",
+      title: "Daniel Radcliffe",
+      year: "2022",
+      medium: "Sketch",
       imageUrl: "/drawings/5.png"
     },
     {
       id: 2,
-      title: "Urban Reflections",
-      year: "2023",
-      medium: "Acrylic",
+      title: "Leonardo Dicaprio",
+      year: "2022",
+      medium: "Sketch",
       imageUrl: "/drawings/2.jpg"
     },
     {
       id: 3,
-      title: "Serenity in Blue",
-      year: "2024",
-      medium: "Watercolor",
+      title: "Thomaas Shelby",
+      year: "2022",
+      medium: "Sketch",
       imageUrl: "/drawings/4.jpg"
     },
     {
@@ -42,30 +42,30 @@ const GalleryWall: React.FC = () => {
     },
     {
       id: 5,
-      title: "Geometric Dreams",
-      year: "2024",
-      medium: "Mixed Media",
+      title: "Touka Kirishima",
+      year: "2020",
+      medium: "Pencil Colors",
       imageUrl: "/drawings/8.jpg"
     },
     {
       id: 6,
-      title: "Forest Whispers",
+      title: "Muzan Kibutsuji",
       year: "2023",
-      medium: "Oil on Canvas",
+      medium: "Pencil Colors",
       imageUrl: "/drawings/10.jpg"
     },
     {
       id: 7,
-      title: "Crimson Study",
+      title: "Tiger",
       year: "2024",
-      medium: "Acrylic",
+      medium: "Pen Sketch",
       imageUrl: "/drawings/7.jpg"
     },
     {
       id: 8,
-      title: "Ethereal Moments",
-      year: "2023",
-      medium: "Watercolor",
+      title: "Heisenberg",
+      year: "2022",
+      medium: "Sketch", 
       imageUrl: "/drawings/3.jpg"
     }
   ];

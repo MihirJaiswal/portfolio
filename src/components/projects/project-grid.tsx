@@ -28,7 +28,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [isHoveringCard, setIsHoveringCard] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const projectsPerPage = 3
+  const projectsPerPage = 2
   const totalPages = Math.ceil(projects.length / projectsPerPage)
 
   // Dispatch custom event to hide/show main cursor
@@ -169,7 +169,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8"
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -193,7 +193,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           >
             <Link href={`/projects/${project.id}`} className="block cursor-none">
               <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-neutral-100 dark:bg-neutral-800">
-                <div className="relative aspect-square overflow-hidden">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-lg">
                   <Image
                     src={project.mainImage || "/placeholder.svg"}
                     alt={project.title}
@@ -201,7 +201,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     height={450}
                     quality={100}
                     className={cn(
-                      "w-full h-full object-contain transition-all duration-700 ease-in-out transform bg-neutral-900 dark:bg-neutral-950 border",
+                      "w-full h-full object-cover transition-all duration-700 ease-in-out transform bg-neutral-900 dark:bg-neutral-950 border",
                       hoveredProject === project.id ? "filter-none" : "filter grayscale"
                     )}
                   />
@@ -210,6 +210,17 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                   )}>
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex justify-between items-center">
+                        <div className="flex gap-2 items-center">
+                          <Image
+                            src={project.image || "/placeholder.svg"}
+                            alt={project.title}
+                            width={50}
+                            height={50}
+                          />
+                          <h3 className="text-md font-semibold text-white transition-colors">
+                            {project.title}
+                          </h3>
+                        </div>
                         <div className="flex space-x-2">
                           <div className="rounded-full bg-white p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                             <ExternalLink className="w-3 h-3 text-black" />
@@ -217,17 +228,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                           <div className="rounded-full bg-white p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                             <Github className="w-3 h-3 text-black" />
                           </div>
-                        </div>
-                        <div className="flex gap-2 items-center">
-                          <Image
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            width={40}
-                            height={40}
-                          />
-                          <h3 className="text-sm font-semibold text-white transition-colors">
-                            {project.title}
-                          </h3>
                         </div>
                       </div>
                     </div>
