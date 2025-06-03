@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     'GDSC CDGI',
     'Indore Developer'
   ],
-  authors: [{ name: 'Mihir Jaiswal', url: 'https://mihirjaiswal.dev' }],
+  authors: [{ name: 'Mihir Jaiswal', url: 'https://mihirjaiswal-portfolio.vercel.app/' }],
   creator: 'Mihir Jaiswal',
   publisher: 'Mihir Jaiswal',
   robots: {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mihirjaiswal.dev',
+    url: 'https://mihirjaiswal-portfolio.vercel.app/',
     siteName: 'Mihir Jaiswal Portfolio',
     title: 'Mihir Jaiswal | Full Stack Developer & UI/UX Designer',
     description: 'Full Stack Developer specializing in modern web technologies. Turning challenges into elegant digital solutions through creative design and expert development.',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     creator: '@mihir_jaiswal_',
   },
   alternates: {
-    canonical: 'https://mihirjaiswal.dev',
+    canonical: 'https://mihirjaiswal-portfolio.vercel.app/',
   },
   category: 'technology',
   classification: 'Portfolio Website',
@@ -88,7 +88,7 @@ const jsonLd = {
   name: 'Mihir Jaiswal',
   jobTitle: 'Full Stack Developer',
   description: 'Full Stack Developer specializing in turning challenges into simple, elegant digital products through creative design and expert development.',
-  url: 'https://mihirjaiswal.dev',
+  url: 'https://mihirjaiswal-portfolio.vercel.app/',
   email: 'jaiswalmihir.business@gmail.com',
   image: '/assets/img1.png',
   sameAs: [
