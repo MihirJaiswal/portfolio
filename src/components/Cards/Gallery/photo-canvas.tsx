@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useCallback, useEffect, useRef } from "react"
 import { DndProvider, useDrag, useDrop } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-import { GripVertical, ChevronLeft, ChevronRight } from "lucide-react"
+import { GripVertical, ChevronLeft, ChevronRight, X } from "lucide-react"
 import Image from "next/image"
 
 export interface Photo {
@@ -28,15 +28,86 @@ interface PhotoCanvasProps {
 interface PhotoCardProps {
   photo: Photo
   onMove: (id: string, position: { x: number; y: number }) => void
+  onPhotoClick: (photo: Photo) => void
   canvasWidth: number
   canvasHeight: number
   cardWidth: number
   cardHeight: number
 }
 
+interface PhotoPopupProps {
+  photo: Photo | null
+  isOpen: boolean
+  onClose: () => void
+}
+
 const ItemType = "PHOTO_CARD"
 
-function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHeight }: PhotoCardProps) {
+// Photo Popup Component
+function PhotoPopup({ photo, isOpen, onClose }: PhotoPopupProps) {
+  if (!isOpen || !photo) return null
+
+  const cardWidth = 320 // Larger for popup
+  const cardHeight = 380 // Larger for popup
+  const photoHeight = cardHeight - 100 // Space for caption
+
+  return (
+    <div 
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999] p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="relative animate-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          width: cardWidth,
+          height: cardHeight,
+          transform: `rotate(${photo.rotation ?? 0}deg)`,
+        }}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute -top-4 -right-4 z-10 bg-white hover:bg-gray-100 rounded-full p-2 shadow-lg transition-colors duration-200"
+          aria-label="Close popup"
+        >
+          <X className="w-5 h-5 text-gray-700" />
+        </button>
+
+        {/* Polaroid Frame - identical to PhotoCard but larger and no grayscale */}
+        <div className="w-full bg-white pt-4 px-4 shadow-[0px_8px_32px_rgba(17,17,26,0.2),_0px_16px_48px_rgba(17,17,26,0.2),_0px_32px_96px_rgba(17,17,26,0.2)] relative border-1 border-neutral-300">
+          {/* Photo Area */}
+          <div className="w-full bg-gray-100 mb-8 overflow-hidden relative" style={{ height: photoHeight }}>
+            <Image
+              src={photo.imageUrl || "/placeholder.svg"}
+              alt={photo.title || "Photo"}
+              className="w-full h-full object-cover object-top bg-black border border-black" // Removed grayscale filter
+              crossOrigin="anonymous"
+              fill
+              loading="lazy"
+              quality={100}
+              draggable={false}
+            />
+          </div>
+
+          {/* Caption Area */}
+          <div className="h-16 pb-3 flex flex-col justify-center">
+            <h3 className="font-handwriting text-gray-800 text-lg mb-2 line-clamp-2 leading-tight">{photo.title}</h3>
+            <p className="font-handwriting text-gray-600 text-base">
+              {new Date(photo.date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "2-digit",
+              })}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, cardWidth, cardHeight }: PhotoCardProps) {
   const [{ isDragging }, drag, preview] = useDrag({
     type: ItemType,
     item: { id: photo.id, position: photo.position },
@@ -45,6 +116,19 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
     }),
   })
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   // Calculate photo area height (leaving space for caption)
   const photoHeight = cardHeight - 80 // 80px for padding and caption area
 
@@ -52,6 +136,9 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
   const rotation = photo.rotation ?? 0
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    // Prevent drag on mobile to allow click
+    if (isMobile) return
+
     const startX = e.clientX - photo.position.x
     const startY = e.clientY - photo.position.y
 
@@ -75,10 +162,19 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
     document.addEventListener("mouseup", handleMouseUp)
   }
 
+  const handleClick = (e: React.MouseEvent) => {
+    // Only handle click on mobile
+    if (isMobile) {
+      e.preventDefault()
+      e.stopPropagation()
+      onPhotoClick(photo)
+    }
+  }
+
   return (
     <div
       ref={preview as any}
-      className="group absolute cursor-grab active:cursor-grabbing"
+      className={`group absolute ${isMobile ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`}
       style={{
         left: photo.position.x,
         top: photo.position.y,
@@ -90,16 +186,19 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
         transition: isDragging ? "none" : "transform 0.3s ease",
       }}
       onMouseDown={handleMouseDown}
+      onClick={handleClick}
     >
       {/* Polaroid Frame */}
       <div className="w-full h-full bg-white p-4 shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] hover:shadow-2xl transition-shadow duration-300 relative border-1 border-neutral-300">
-        {/* Drag Handle */}
-        <div
-          ref={drag as any}
-          className="absolute top-2 right-2 z-10 p-1 bg-black/20 hover:bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-grab active:cursor-grabbing"
-        >
-          <GripVertical className="w-3 h-3 text-white" />
-        </div>
+        {/* Drag Handle - only show on desktop */}
+        {!isMobile && (
+          <div
+            ref={drag as any}
+            className="absolute top-2 right-2 z-10 p-1 bg-black/20 hover:bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-grab active:cursor-grabbing"
+          >
+            <GripVertical className="w-3 h-3 text-white" />
+          </div>
+        )}
 
         {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>
@@ -113,8 +212,6 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
             quality={100}
             draggable={false}
           />
-          {/* Subtle vintage overlay */}
-{/*           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-50/20 pointer-events-none"></div> */}
         </div>
 
         {/* Caption Area */}
@@ -128,13 +225,6 @@ function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHe
             })}
           </p>
         </div>
-
-        {/* Vintage tape effect - only show when NOT dragging */}
-        {!isDragging && (
-          <>
-           {/*  <div className="absolute -top-1 left-24 w-8 h-4 bg-neutral-300 rotate-12 shadow-sm transition-opacity duration-200"></div> */}
-          </>
-        )}
       </div>
     </div>
   )
@@ -256,7 +346,9 @@ function PhotoCanvasContent({
   const [items, setItems] = useState<Photo[]>([])
   const [scrollX, setScrollX] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(0) // Added windowWidth state
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardWidth = 240 // Fixed card width
   const cardHeight = 280 // Fixed card height
@@ -267,7 +359,7 @@ function PhotoCanvasContent({
       const width = window.innerWidth
       const mobile = width < 768
       setIsMobile(mobile)
-      setWindowWidth(width) // Track window width
+      setWindowWidth(width)
     }
     
     checkMobile()
@@ -302,6 +394,16 @@ function PhotoCanvasContent({
     },
     [items, onPositionChange, canvasWidth, canvasHeight, cardWidth, cardHeight],
   )
+
+  const handlePhotoClick = useCallback((photo: Photo) => {
+    setSelectedPhoto(photo)
+    setIsPopupOpen(true)
+  }, [])
+
+  const handleClosePopup = useCallback(() => {
+    setIsPopupOpen(false)
+    setTimeout(() => setSelectedPhoto(null), 200) // Wait for animation to complete
+  }, [])
 
   // Handle horizontal scrolling
   const handleScroll = (direction: 'left' | 'right') => {
@@ -352,6 +454,25 @@ function PhotoCanvasContent({
       <style jsx global>{`
         .font-handwriting {
           font-family: 'Kalam', 'Comic Sans MS', cursive;
+        }
+        
+        @keyframes animate-in {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-in {
+          animation: animate-in 0.2s ease-out;
+        }
+        
+        .zoom-in-95 {
+          transform: scale(0.95);
         }
       `}</style>
 
@@ -423,6 +544,7 @@ function PhotoCanvasContent({
               key={photo.id}
               photo={photo}
               onMove={handleMove}
+              onPhotoClick={handlePhotoClick}
               canvasWidth={canvasWidth}
               canvasHeight={canvasHeight}
               cardWidth={cardWidth}
@@ -431,6 +553,13 @@ function PhotoCanvasContent({
           ))}
         </CanvasDropZone>
       </div>
+
+      {/* Photo Popup */}
+      <PhotoPopup
+        photo={selectedPhoto}
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+      />
 
       {/* Hide scrollbar styles */}
       <style jsx>{`
@@ -517,9 +646,9 @@ function PhotoCanvasDemo() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Photo Canvas with Mobile Scroll</h1>
+      <h1 className="text-2xl font-bold mb-4">Photo Canvas with Mobile Popup</h1>
       <p className="text-gray-600 mb-6">
-        Drag photos around on desktop, or use the scroll buttons on mobile to navigate horizontally.
+        On desktop: Drag photos around. On mobile: Click photos to open in popup, use scroll buttons to navigate.
       </p>
       <PhotoCanvas 
         photos={samplePhotos}

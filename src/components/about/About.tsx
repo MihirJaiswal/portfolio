@@ -105,7 +105,7 @@ export default function About() {
   return (
     <motion.section 
       id="about" 
-      className="bg-white dark:bg-neutral-950 relative mt-0 sm:mt-24"
+      className="bg-white dark:bg-neutral-950 relative mt-20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

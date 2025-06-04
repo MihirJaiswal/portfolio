@@ -77,7 +77,7 @@ export const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <motion.div
-              className="text-xl tracking-wider font-bold uppercase"
+              className="text-xl tracking-wider font-bold uppercase pl-1.5"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}

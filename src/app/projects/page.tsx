@@ -20,10 +20,12 @@ export default function ProjectsPage() {
   const [sortBy, setSortBy] = useState<SortOption>("year")
   const [viewMode, setViewMode] = useState<ViewMode>("grid")
   const [showFilters, setShowFilters] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts and set mounted state
   useEffect(() => {
     window.scrollTo(0, 0)
+    setIsMounted(true)
   }, [])
 
   // Get unique categories
@@ -69,19 +71,23 @@ export default function ProjectsPage() {
     <StaggerItem key={project.id}>
       <motion.div
         className="group"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        transition={{ 
+          duration: 0.4, 
+          delay: Math.min(index * 0.05, 0.5), // Cap the delay at 0.5s
+          ease: "easeOut"
+        }}
       >
-        <div className="border border-neutral-200 dark:border-neutral-800 rounded-md overflow-hidden hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
+        <div className="border border-neutral-200 w-full dark:border-neutral-800 rounded-md overflow-hidden hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300">
           <Link href={`/projects/${project.id}`}>
-            <div className="h-48 sm:h-56 md:h-64 overflow-hidden">
+            <div className="h-full w-full md:h-96 md:w-96 aspect-square overflow-hidden">
               <Image
                 src={project.mainImage || "/placeholder.svg"}
                 alt={project.title}
-                width={600}
-                height={300}
-                className="w-full h-full object-contain bg-black"
+                width={1000}
+                height={1000}
+                className="w-full h-full object-cover bg-black"
               />
             </div>
           </Link>
@@ -157,9 +163,13 @@ export default function ProjectsPage() {
     <motion.div
       key={project.id}
       className="border-b border-neutral-200 dark:border-neutral-800 last:border-b-0"
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ 
+        duration: 0.4, 
+        delay: Math.min(index * 0.05, 0.5), // Cap the delay at 0.5s
+        ease: "easeOut"
+      }}
     >
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors">
         <Link href={`/projects/${project.id}`} className="flex-shrink-0 w-full sm:w-auto">
@@ -234,15 +244,45 @@ export default function ProjectsPage() {
     </motion.div>
   )
 
+  // Show a loading state or simple content until animations are ready
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-neutral-950 dark:text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 sm:my-12">
+          <div className="flex items-center justify-between w-full mb-8 sm:mb-12">
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors touch-manipulation"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">Back to home</span>
+              <span className="sm:hidden">Back</span>
+            </Link>
+            <ThemeToggle />
+          </div>
+          <div className="animate-pulse">
+            <div className="h-12 bg-neutral-200 dark:bg-neutral-800 rounded mb-4"></div>
+            <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded mb-8"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="h-64 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 dark:text-white">
-      <CustomCursor/>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8 sm:my-12">
-        <motion.div 
-          className="flex items-center justify-between w-full mb-8 sm:mb-12" 
-          initial={{ opacity: 0, x: -20 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.5 }}
+      <CustomCursor />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+        <motion.div
+          className="flex items-center justify-between w-full mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <Link
             href="/"
@@ -253,11 +293,15 @@ export default function ProjectsPage() {
             <span className="sm:hidden">Back</span>
           </Link>
           <div>
-            <ThemeToggle/>
+            <ThemeToggle />
           </div>
         </motion.div>
 
-        <FadeIn direction="up">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+        >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-4">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
@@ -294,9 +338,14 @@ export default function ProjectsPage() {
               </button>
             </div>
           </div>
-        </FadeIn>
+        </motion.div>
 
-        <FadeIn direction="up" delay={0.2}>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          className="mb-12"
+        >
           <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-neutral-400" />
@@ -351,7 +400,7 @@ export default function ProjectsPage() {
                       )}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2, delay: index * 0.05 }}
                     >
@@ -362,7 +411,7 @@ export default function ProjectsPage() {
               </motion.div>
             )}
           </AnimatePresence>
-        </FadeIn>
+        </motion.div>
 
         <AnimatePresence mode="wait">
           {filteredAndSortedProjects.length === 0 ? (
@@ -378,22 +427,24 @@ export default function ProjectsPage() {
               <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 px-4">Try adjusting your search or filter criteria</p>
             </motion.div>
           ) : viewMode === "grid" ? (
-            <StaggerContainer
+            <motion.div
               key="grid-view"
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
-              staggerChildren={0.1}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
               {filteredAndSortedProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
-            </StaggerContainer>
+            </motion.div>
           ) : (
             <motion.div
               key="list-view"
               className="border border-neutral-200 dark:border-neutral-800 rounded-md overflow-hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
               {filteredAndSortedProjects.map((project, index) => (
                 <ProjectListItem key={project.id} project={project} index={index} />

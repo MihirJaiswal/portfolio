@@ -168,7 +168,7 @@ export default function ProjectPage() {
         </motion.button>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex justify-between items-center mb-12">
           <motion.div className="flex gap-6" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
@@ -272,7 +272,7 @@ export default function ProjectPage() {
 
         {/* Main Image */}
         <motion.div
-          className="aspect-video w-full mb-16 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800"
+          className="aspect-square md:aspect-video w-full mb-16 rounded-sm overflow-hidden border border-zinc-200 dark:border-zinc-800"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -280,9 +280,9 @@ export default function ProjectPage() {
           <Image
             src={project.mainImage || project.image || "/placeholder.svg"}
             alt={project.title}
-            width={1200}
-            height={675}
-            className="w-full h-full object-contain bg-black"
+            width={500}
+            height={500}
+            className="w-full h-full object-cover md:object-contain bg-black"
           />
         </motion.div>
 

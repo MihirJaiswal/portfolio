@@ -119,7 +119,7 @@ export default function ContactForm() {
             </button>
             </MorphingBlob>
           </div>
-           <div className="flex justify-end mt-12 lg:hidden">
+           <div className="flex justify-end lg:hidden">
             <MorphingBlob
             theme="custom"
             customColors={{
