@@ -529,7 +529,7 @@ const GalleryWall: React.FC = () => {
                   src={selectedArtwork.imageUrl}
                   alt={selectedArtwork.title}
                   fill
-                  className={`${selectedArtwork.id === 1 || selectedArtwork.id === 6 ? 'object-cover' : 'object-contain'}`}
+                  className={selectedArtwork.id !== 5 ? 'object-cover' : 'object-contain'}
                   sizes="(max-width: 640px) 90vw"
                   priority
                 />
