@@ -12,6 +12,9 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet"
+import { Instagram, Linkedin, Github, Youtube } from "lucide-react";
+import { siteConfig } from "../../lib/data";
+import { StaggerContainer } from "../animation/scroll-animations"
 
 interface MobileMenuProps {
   links: {
@@ -121,40 +124,43 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
             </nav>
 
             {/* Footer section with decorative elements */}
-            <motion.div 
-              className="mt-auto pb-8 relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.4 }}
+           <StaggerContainer>
+             <motion.div
+              className="flex justify-center items-center space-x-8 py-8 border-t"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              {/* Decorative line */}
-              <motion.div
-                className="w-full h-px bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mb-6"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              />
-              
-              {/* Animated dots */}
-              <div className="flex justify-center space-x-4">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-2 h-2 bg-neutral-400 dark:bg-neutral-600 rounded-full"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.5, 1, 0.5]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
-              </div>
+              <Link
+                href={siteConfig.social.instagram}
+                aria-label="Instagram"
+                className="group w-12 h-12 rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
+              >
+                <Instagram className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
+              </Link>
+              <Link
+                href={siteConfig.social.github}
+                aria-label="GitHub"
+                className="group w-12 h-12 rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
+              >
+                <Github className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
+              </Link>
+              <Link
+                href={siteConfig.social.linkedin}
+                aria-label="LinkedIn"
+                className="group w-12 h-12 rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
+              >
+                <Linkedin className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
+              </Link>
+               <Link
+                href={siteConfig.social.youtube}
+                aria-label="LinkedIn"
+                className="group w-12 h-12 rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
+              >
+                <Youtube className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
+              </Link>
             </motion.div>
+           </StaggerContainer>
           </div>
         </SheetContent>
       </Sheet>
