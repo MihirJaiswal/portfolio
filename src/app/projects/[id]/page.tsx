@@ -367,7 +367,7 @@ export default function ProjectPage() {
               </div>
 
               {/* Project Navigation (Small) */}
-              <div className="hidden md:block mt-12 pt-8 border-t border-dashed border-zinc-200 dark:border-zinc-800">
+              <div className="hidden md:block mt-12 pt-8 border-t border-dashed border-zinc-400 dark:border-zinc-800">
                 <div className="flex justify-between items-center">
                   <button
                     onClick={() => navigateToProject("prev")}
@@ -392,7 +392,7 @@ export default function ProjectPage() {
 
         {/* More Projects Section */}
         <FadeIn direction="up" delay={0.5}>
-          <div className="border-t border-zinc-200 dark:border-zinc-800 pt-16">
+          <div className="border-t border-dashed border-zinc-300 dark:border-zinc-800 pt-16">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold">More Projects</h2>
               <Link href="/projects" className="text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
