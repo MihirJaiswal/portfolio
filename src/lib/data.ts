@@ -170,7 +170,7 @@ export const projects = [
   },
   {
     id: "windows-95-portfolio",
-    title: "WINDOWS 95 PORTFOLIO",
+    title: "WINDOWS PORTFOLIO",
     subtitle: "RETRO PORTFOLIO",
     description: "NOSTALGIC PORTFOLIO WEBSITE IN WINDOWS 95 THEME",
     category: "web design",
@@ -219,7 +219,7 @@ export const projects = [
   },
   {
     id: "certificate-generator",
-    title: "CERTIFICATE GENERATOR",
+    title: "Certi Gen",
     subtitle: "AUTOMATION TOOL",
     description: "GENERATE AND CUSTOMIZE CERTIFICATES FOR FREE",
     category: "web tool",
