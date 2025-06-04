@@ -147,27 +147,6 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 dark:text-white">
       <CustomCursor/>
-      {/* Project Navigation */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex items-center gap-2">
-        <motion.button
-          onClick={() => navigateToProject("prev")}
-          className="p-3 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </motion.button>
-
-        <motion.button
-          onClick={() => navigateToProject("next")}
-          className="p-3 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ChevronRight className="w-5 h-5" />
-        </motion.button>
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex justify-between items-center mb-12">
           <motion.div className="flex gap-6" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
@@ -176,7 +155,7 @@ export default function ProjectPage() {
               className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Portfolio
+              Home
             </Link>
             <Link
               href="/projects"
@@ -244,7 +223,7 @@ export default function ProjectPage() {
                 <span className="inline-block px-3 py-1 bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-medium rounded-full mb-4">
                   {project.category.toUpperCase()}
                 </span>
-                <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
                   {project.title}
                 </h1>
                 <p className="text-xl text-zinc-600 dark:text-zinc-400">{project.subtitle}</p>
@@ -269,10 +248,12 @@ export default function ProjectPage() {
             </div>
           </div>
         </FadeIn>
-
-        {/* Main Image */}
+        {/* Project Details */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
+          <FadeIn direction="up" className="md:col-span-2" delay={0.3}>
+            {/* Main Image */}
         <motion.div
-          className="aspect-square md:aspect-video w-full mb-16 rounded-sm overflow-hidden border border-zinc-200 dark:border-zinc-800"
+          className="aspect-square md:aspect-[4/3] w-full mb-16 rounded-xs overflow-hidden border border-zinc-200 dark:border-zinc-800"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -282,13 +263,9 @@ export default function ProjectPage() {
             alt={project.title}
             width={500}
             height={500}
-            className="w-full h-full object-cover md:object-contain bg-black"
+            className="w-full h-full object-cover  bg-black"
           />
         </motion.div>
-
-        {/* Project Details */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
-          <FadeIn direction="up" className="md:col-span-2" delay={0.3}>
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-6 flex items-center">
                 <Layers className="w-6 h-6 mr-3 text-zinc-500" />
@@ -328,7 +305,7 @@ export default function ProjectPage() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-center inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+                  className="text-center inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-md text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -342,7 +319,7 @@ export default function ProjectPage() {
                   href={project.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center items-center px-8 py-4 border border-black dark:border-white text-black dark:text-white rounded-full text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                  className="inline-flex justify-center items-center px-8 py-4 border border-black dark:border-white text-black dark:text-white rounded-md text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -390,7 +367,7 @@ export default function ProjectPage() {
               </div>
 
               {/* Project Navigation (Small) */}
-              <div className="hidden md:block mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="hidden md:block mt-12 pt-8 border-t border-dashed border-zinc-200 dark:border-zinc-800">
                 <div className="flex justify-between items-center">
                   <button
                     onClick={() => navigateToProject("prev")}

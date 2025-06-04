@@ -103,7 +103,7 @@ export const projects = [
   },
   {
     id: "storyweaver-ai",
-    title: "STORYWEAVER AI",
+    title: "STORYWEAVER",
     subtitle: "AI STORY GENERATOR",
     description: "GENERATES STORY SCENES, DIALOGS, AND IMAGES BASED ON USER INPUT",
     category: "ai application",
