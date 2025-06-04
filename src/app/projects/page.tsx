@@ -7,7 +7,7 @@ import { projects } from "@/lib/data"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { FadeIn, StaggerContainer, StaggerItem } from "../../components/animation/scroll-animations"
+import { StaggerItem } from "../../components/animation/scroll-animations"
 import { ThemeToggle } from "@/components/navbar/theme-toggle"
 import { CustomCursor } from "@/components/CustomCursor"
 

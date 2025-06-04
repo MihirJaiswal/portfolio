@@ -151,7 +151,7 @@ export const HeroSection = () => {
   return (
     <motion.div 
       ref={containerRef}
-      className="min-h-screen bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden -mt-2"
+      className="min-h-screen bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden -mt-2 hidden md:block"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -205,6 +205,51 @@ export const HeroSection = () => {
             }}
           >
             {heroContent.title.thirdLine}
+          </motion.span>
+        </motion.h1>
+
+
+
+        {/* for mboile*/}
+
+        <motion.h1
+          className="absolute md:hidden top-8 left-0 right-0 font-bold text-center leading-none mx-auto tracking-tight z-0 w-full font-inter"
+          style={{
+            fontSize: "clamp(2rem, 12vw, 9rem)",
+            maxWidth: "100%",
+            y: titleY,
+            opacity: titleOpacity,
+            scale: titleScale,
+          }}
+          variants={titleVariants}
+        >
+          <motion.span 
+            className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-400 bg-clip-text text-transparent px-2"
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: "100% 50%" }}
+            transition={{
+              duration: 3,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          >
+            CHECK OUT
+          </motion.span>
+          <br />
+          <motion.span 
+            className="bg-gradient-to-r from-neutral-500 via-neutral-950 to-neutral-500 dark:from-neutral-300 dark:via-white dark:to-neutral-300 bg-clip-text text-transparent"
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: "100% 50%" }}
+            transition={{
+              duration: 3,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: 0.5,
+            }}
+          >
+            My Portfolio
           </motion.span>
         </motion.h1>
 
