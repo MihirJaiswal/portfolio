@@ -226,7 +226,7 @@ export default function ProjectPage() {
                 <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
                   {project.title}
                 </h1>
-                <p className="text-xl text-zinc-600 dark:text-zinc-400">{project.subtitle}</p>
+                <p className="md:text-xl text-zinc-600 dark:text-zinc-400">{project.subtitle}</p>
               </div>
 
               <div className="flex items-center gap-6">
