@@ -238,7 +238,7 @@ export default function ProjectPage() {
 
         {/* Hero Section */}
         <FadeIn direction="up">
-          <div className="mb-16">
+          <div className="mb-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
               <div>
                 <span className="inline-block px-3 py-1 bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-medium rounded-full mb-4">
