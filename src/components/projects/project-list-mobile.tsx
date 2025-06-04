@@ -41,12 +41,13 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
           layout
         >
           <div className="flex items-center cursor-pointer p-4" onClick={() => toggleExpand(project.id)}>
-            <div className="w-16 h-16 overflow-hidden mr-4 flex-shrink-0">
+            <div className="w-10 h-10 overflow-hidden mr-4 flex-shrink-0">
               <Image
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
-                width={64}
-                height={64}
+                width={200}
+                height={200}
+                quality={100}
                 className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
@@ -83,7 +84,7 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                     />
                   </div>
 
-                  {project.subtitle && <p className="text-sm mb-2">{project.subtitle}</p>}
+                  {project.subtitle && <p className="text-sm font-bold mb-2">{project.subtitle}</p>}
                   <p className="text-sm mb-4">{project.description}</p>
                   {project.details && (
                     <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-4">{project.details}</p>
@@ -91,7 +92,7 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
 
                   <Link href={`/projects/${project.id}`}>
                     <motion.div
-                      className="flex items-center justify-center w-full py-3 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium"
+                      className="flex items-center justify-center w-full py-3 bg-black dark:bg-white text-white dark:text-black rounded-sm text-sm font-medium"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                     >
