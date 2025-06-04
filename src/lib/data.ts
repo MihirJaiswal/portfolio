@@ -23,13 +23,14 @@ export const siteConfig = {
       href: "#about",
       label: "ABOUT ME",
     },
-    {
-      href: "#services",
-      label: "SERVICES",
-    },
+    
     {
       href: "#projects",
       label: "PROJECTS",
+    },
+    {
+      href: "#work",
+      label: "WORK",
     },
     {
       href: "#contact",
