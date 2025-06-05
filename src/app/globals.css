@@ -166,4 +166,6 @@
   scrollbar-color: #888 #1e1e1e;
 }
 
-
+html {
+  scroll-behavior: auto !important;
+}

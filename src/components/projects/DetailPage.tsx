@@ -31,10 +31,20 @@ export default function ProjectPage() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
   const [showShareOptions, setShowShareOptions] = useState(false)
 
+  // Force scroll to top immediately when component mounts
   useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0)
+    // Multiple approaches to ensure scroll to top
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    
+    // Also set scroll restoration to manual to prevent browser from restoring scroll position
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+  }, [])
 
+  useEffect(() => {
     const projectId = params.id
     const foundProjectIndex = projects.findIndex((p) => p.id === projectId)
 
@@ -46,7 +56,19 @@ export default function ProjectPage() {
     }
 
     setLoading(false)
+    
+    // Ensure scroll to top after state updates
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    }, 0)
   }, [params.id, router])
+
+  // Also scroll to top when navigating between projects
+  useEffect(() => {
+    if (project) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
+  }, [project])
 
   const handleShare = async (platform: string) => {
     const url = window.location.href
@@ -84,6 +106,8 @@ export default function ProjectPage() {
       newIndex = currentProjectIndex < projects.length - 1 ? currentProjectIndex + 1 : 0
     }
 
+    // Scroll to top before navigation
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     router.push(`/projects/${projects[newIndex].id}`)
   }
 
@@ -153,6 +177,7 @@ export default function ProjectPage() {
             <Link
               href="/"
               className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Home
@@ -160,6 +185,7 @@ export default function ProjectPage() {
             <Link
               href="/projects"
               className="inline-flex items-center text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
             >
               All Projects
             </Link>
@@ -263,6 +289,7 @@ export default function ProjectPage() {
             alt={project.title}
             width={500}
             height={500}
+            priority
             className="w-full h-full object-cover  bg-black"
           />
         </motion.div>
@@ -395,7 +422,11 @@ export default function ProjectPage() {
           <div className="border-t border-dashed border-zinc-300 dark:border-zinc-800 pt-16">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold">More Projects</h2>
-              <Link href="/projects" className="text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+              <Link 
+                href="/projects" 
+                className="text-sm hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
+              >
                 View All
               </Link>
             </div>
@@ -403,7 +434,10 @@ export default function ProjectPage() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.1}>
               {projectsToShow.map((relatedProject) => (
                 <StaggerItem key={relatedProject.id}>
-                  <Link href={`/projects/${relatedProject.id}`}>
+                  <Link 
+                    href={`/projects/${relatedProject.id}`}
+                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' })}
+                  >
                     <motion.div
                       className="group border border-zinc-200 dark:border-zinc-800 rounded-md overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300"
                       whileHover={{ y: -5 }}

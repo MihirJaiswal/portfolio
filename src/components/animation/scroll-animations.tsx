@@ -25,14 +25,15 @@ export function FadeIn({
   const ref = useRef(null)
   const isInView = useInView(ref, { 
     once, 
-    amount: threshold // Use 'amount' instead of 'threshold'
+    amount: threshold
   })
 
+  // Reduced offsets to prevent layout shift and scroll issues
   const directionOffset = {
-    up: { y: 40 },
-    down: { y: -40 },
-    left: { x: 40 },
-    right: { x: -40 },
+    up: { y: 15 },    // Reduced from 40 to 15
+    down: { y: -15 },  // Reduced from 40 to 15
+    left: { x: 15 },   // Reduced from 40 to 15
+    right: { x: -15 }, // Reduced from 40 to 15
   }
 
   const initialOffset = directionOffset[direction]
@@ -66,7 +67,7 @@ export function StaggerContainer({
   const ref = useRef(null)
   const isInView = useInView(ref, { 
     once: true, 
-    amount: 0.1 // Use 'amount' instead of 'threshold'
+    amount: 0.1
   })
 
   const containerVariants = {
@@ -95,7 +96,7 @@ export function StaggerContainer({
 
 export function StaggerItem({ children, className = "" }: { children: ReactNode; className?: string }) {
   const variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 }, // Reduced from 20 to 10
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] } },
   }
 
@@ -132,14 +133,14 @@ export function SectionHeading({ children, className = "" }: { children: ReactNo
   const ref = useRef(null)
   const isInView = useInView(ref, { 
     once: true, 
-    amount: 0.5 // Use 'amount' instead of 'threshold'
+    amount: 0.5
   })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }} // Reduced from 20 to 10
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
       className={className}
     >
