@@ -97,8 +97,10 @@ export default function WaterRippleEffect() {
         float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
         vec3 grayscaleColor = vec3(gray);
         
-        // Mix between original color and grayscale based on grayscaleAmount
-        color.rgb = mix(color.rgb, grayscaleColor, ${isGrayscaleEnabled ? '1.0' : '0.0'});
+        // Mix between original color and grayscale based on both global setting and hover state
+        float baseGrayscale = ${isGrayscaleEnabled ? '1.0' : '0.0'};
+        float finalGrayscaleAmount = baseGrayscale * grayscaleAmount;
+        color.rgb = mix(color.rgb, grayscaleColor, finalGrayscaleAmount);
         
         gl_FragColor = color;
       }
@@ -163,7 +165,7 @@ export default function WaterRippleEffect() {
         const currentIntensity = materialRef.current.uniforms.hoverIntensity.value
         materialRef.current.uniforms.hoverIntensity.value += (targetIntensity - currentIntensity) * 0.05
 
-        // Smooth grayscale transition
+        // Smooth grayscale transition - colorful on hover, grayscale when not hovering
         const targetGrayscale = isHoveredRef.current ? 0.0 : 1.0 // 0 = full color, 1 = full grayscale
         const currentGrayscale = materialRef.current.uniforms.grayscaleAmount.value
         materialRef.current.uniforms.grayscaleAmount.value += (targetGrayscale - currentGrayscale) * 0.08
