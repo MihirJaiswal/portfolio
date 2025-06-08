@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useGrayscaleStore } from "@/lib/store"
 
 type Project = {
   id: string
@@ -24,6 +25,7 @@ interface ProjectListMobileProps {
 
 export function ProjectListMobile({ projects }: ProjectListMobileProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   const toggleExpand = (id: string) => {
     setExpandedId(expandedId === id ? null : id)
@@ -48,7 +50,10 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                 width={200}
                 height={200}
                 quality={100}
-                className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
+                className={cn(
+                  "w-full h-full object-contain transition-all duration-500",
+                  isGrayscaleEnabled ? "filter grayscale hover:grayscale-0" : ""
+                )}
               />
             </div>
             <div className="flex-grow">
@@ -80,7 +85,10 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                       alt={project.title}
                       width={400}
                       height={400}
-                      className="w-full h-full object-cover bg-black filter md:grayscale hover:grayscale-0 transition-all duration-500"
+                      className={cn(
+                        "w-full h-full object-cover bg-black transition-all duration-500",
+                        isGrayscaleEnabled ? "filter md:grayscale hover:grayscale-0" : ""
+                      )}
                     />
                   </div>
 
