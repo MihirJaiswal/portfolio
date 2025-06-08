@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useTransform, useScroll, motion } from 'framer-motion';
+import { useGrayscaleStore } from '@/lib/store';
 
 const images: string[] = [
   "certigen.webp",
@@ -25,6 +26,8 @@ interface ColumnProps {
 }
 
 const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
+  const { isGrayscaleEnabled } = useGrayscaleStore();
+  
   return (
     <motion.div 
       className={`relative h-full flex flex-col gap-2 md:gap-8 ${
@@ -50,8 +53,8 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
             className={`w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 border border-neutral-700 ${
               // Reduce expensive effects on mobile
               isMobile 
-                ? 'filter grayscale hover:grayscale-0 transition-all duration-300' 
-                : 'filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500'
+                ? `${isGrayscaleEnabled ? 'filter grayscale' : ''} hover:grayscale-0 transition-all duration-300` 
+                : `${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500`
             }`}
             style={{
               backgroundImage: `url(/work/${src})`,

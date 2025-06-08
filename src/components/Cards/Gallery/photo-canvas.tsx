@@ -7,6 +7,7 @@ import { DndProvider, useDrag, useDrop } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { GripVertical, ChevronLeft, ChevronRight, X } from "lucide-react"
 import Image from "next/image"
+import { useGrayscaleStore } from "@/lib/store"
 
 export interface Photo {
   id: string
@@ -108,6 +109,7 @@ function PhotoPopup({ photo, isOpen, onClose }: PhotoPopupProps) {
 }
 
 function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, cardWidth, cardHeight }: PhotoCardProps) {
+  const { isGrayscaleEnabled } = useGrayscaleStore()
   const [{ isDragging }, drag, preview] = useDrag({
     type: ItemType,
     item: { id: photo.id, position: photo.position },
@@ -205,7 +207,7 @@ function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, car
           <Image
             src={photo.imageUrl || "/placeholder.svg"}
             alt={photo.title || "Photo"}
-            className="w-full h-full object-cover object-top bg-black filter grayscale hover:grayscale-0 transition-all duration-500 border border-black"
+            className={`w-full h-full object-cover object-top bg-black ${isGrayscaleEnabled ? 'filter grayscale' : ''} hover:grayscale-0 transition-all duration-500 border border-black`}
             crossOrigin="anonymous"
             fill
             loading="lazy"

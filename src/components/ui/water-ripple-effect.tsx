@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import * as THREE from "three"
+import { useGrayscaleStore } from "@/lib/store"
 
 export default function WaterRippleEffect() {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -11,6 +12,7 @@ export default function WaterRippleEffect() {
   const mouseRef = useRef({ x: 0.5, y: 0.5 })
   const timeRef = useRef(0)
   const isHoveredRef = useRef(false)
+  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   useEffect(() => {
     // Capture the current mount element at the start of the effect
@@ -96,7 +98,7 @@ export default function WaterRippleEffect() {
         vec3 grayscaleColor = vec3(gray);
         
         // Mix between original color and grayscale based on grayscaleAmount
-        color.rgb = mix(color.rgb, grayscaleColor, grayscaleAmount);
+        color.rgb = mix(color.rgb, grayscaleColor, ${isGrayscaleEnabled ? '1.0' : '0.0'});
         
         gl_FragColor = color;
       }
@@ -189,7 +191,7 @@ export default function WaterRippleEffect() {
       material.dispose()
       texture.dispose()
     }
-  }, [])
+  }, [isGrayscaleEnabled])
 
   return (
     <div className="w-full flex lg:block justify-center items-start -mt-[300px] md:-mt-[165px] lg:-ml-[153px] max-h-[640px]">

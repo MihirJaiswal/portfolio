@@ -6,10 +6,12 @@ import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useGrayscaleStore } from "@/lib/store";
 
 
 export const HeroSection = () => {
   const containerRef = useRef(null);
+  const { isGrayscaleEnabled } = useGrayscaleStore();
   
   // Scroll-based animations - minimalist values only
   const { scrollYProgress } = useScroll({
@@ -230,7 +232,7 @@ export const HeroSection = () => {
                 src="/assets/img3.png"
                 alt="Designer profile"
                 fill
-                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
+                className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${isGrayscaleEnabled ? 'filter grayscale contrast-125 dark:contrast-105' : ''}`}
                 priority
                 sizes="(max-width: 1024px) 40vw, 450px"
               />
@@ -245,7 +247,7 @@ export const HeroSection = () => {
                 src="/assets/img3.png"
                 alt="Designer profile"
                 fill
-                className="object-contain transition-all duration-300 hover:filter hover:grayscale-0 filter grayscale contrast-125 dark:contrast-105"
+                className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${isGrayscaleEnabled ? 'filter grayscale contrast-125 dark:contrast-105' : ''}`}
                 priority
                 sizes="(max-width: 640px) 70vw, 400px"
               />

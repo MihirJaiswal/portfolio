@@ -1,6 +1,8 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useGrayscaleStore } from "@/lib/store"
+import { artworks } from "@/lib/data"
 
 interface Artwork {
   id: number;
@@ -13,9 +15,10 @@ interface Artwork {
 const GalleryWall: React.FC = () => {
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   // Check if mobile on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 640);
     };
@@ -25,66 +28,6 @@ const GalleryWall: React.FC = () => {
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  // Sample artwork data - replace with your actual paintings
-  const artworks: Artwork[] = [
-    {
-      id: 1,
-      title: "Daniel Radcliffe",
-      year: "2022",
-      medium: "Sketch",
-      imageUrl: "/drawings/5.png"
-    },
-    {
-      id: 2,
-      title: "Leonardo Dicaprio",
-      year: "2022",
-      medium: "Sketch",
-      imageUrl: "/drawings/2.jpg"
-    },
-    {
-      id: 3,
-      title: "Thomaas Shelby",
-      year: "2022",
-      medium: "Sketch",
-      imageUrl: "/drawings/4.jpg"
-    },
-    {
-      id: 4,
-      title: "Bakugou",
-      year: "2020",
-      medium: "Pencil Colors",
-      imageUrl: "/drawings/1.png"
-    },
-    {
-      id: 5,
-      title: "Touka Kirishima",
-      year: "2020",
-      medium: "Pencil Colors",
-      imageUrl: "/drawings/8.png"
-    },
-    {
-      id: 6,
-      title: "xxxtentation",
-      year: "2022",
-      medium: "Sketch",
-      imageUrl: "/drawings/10.png"
-    },
-    {
-      id: 7,
-      title: "Snow Leopard",
-      year: "2024",
-      medium: "Pen Sketch",
-      imageUrl: "/drawings/7.jpg"
-    },
-    {
-      id: 8,
-      title: "Heisenberg",
-      year: "2022",
-      medium: "Sketch",
-      imageUrl: "/drawings/3.jpg"
-    }
-  ];
 
   const handleArtworkClick = (artwork: Artwork) => {
     if (isMobile) {
@@ -130,7 +73,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[0].imageUrl}
                     alt={artworks[0].title}
                     fill
-                    className="artwork-image object-cover p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image object-cover p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 40vw"
                     priority
                   />
@@ -152,7 +95,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[1].imageUrl}
                     alt={artworks[1].title}
                     fill
-                    className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -173,7 +116,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[2].imageUrl}
                     alt={artworks[2].title}
                     fill
-                    className="artwork-image p-1.5 object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -194,7 +137,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[3].imageUrl}
                     alt={artworks[3].title}
                     fill
-                    className="artwork-image p-1.5 object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -216,7 +159,7 @@ const GalleryWall: React.FC = () => {
                     alt={artworks[4].title}
                     quality={100}
                     fill
-                    className="artwork-image p-1.5 !object-right object-cover filter grayscale contrast-125 hover:grayscale-0 transition-alla duration-500 border border-neutral-700"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-alla duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 45vw"
                   />
                   <div className="artwork-info">
@@ -239,7 +182,7 @@ const GalleryWall: React.FC = () => {
                     fill
                     unoptimized={true}
                     quality={100}
-                    className="artwork-image object-cover p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -260,7 +203,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[6].imageUrl}
                     alt={artworks[6].title}
                     fill
-                    className="artwork-image p-1.5 object-top object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -281,7 +224,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[7].imageUrl}
                     alt={artworks[7].title}
                     fill
-                    className="artwork-image p-1.5 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500 border border-neutral-700"
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">

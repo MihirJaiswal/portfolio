@@ -7,7 +7,42 @@ import { siteConfig } from "../../lib/data";
 import { navLinks } from "../../lib/data";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
+import { GrayscaleToggle } from "./grayscale-toggle";
 import NameTranslation from "./name-translation";
+
+// Tooltip component
+const Tooltip = ({ children, content, position = "bottom" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div 
+      className="relative inline-block"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {children}
+      {isVisible && (
+        <div 
+          className={`absolute z-50 px-2 py-1 text-xs font-medium text-white bg-neutral-900 dark:bg-neutral-100 dark:text-neutral-900 rounded-md shadow-lg whitespace-nowrap transition-opacity duration-200 ${
+            position === "bottom" 
+              ? "top-full left-1/2 transform -translate-x-1/2 mt-2" 
+              : "bottom-full left-1/2 transform -translate-x-1/2 mb-2"
+          }`}
+        >
+          {content}
+          <div 
+            className={`absolute w-2 h-2 bg-neutral-900 dark:bg-neutral-100 transform rotate-45 ${
+              position === "bottom" 
+                ? "-top-1 left-1/2 -translate-x-1/2" 
+                : "-bottom-1 left-1/2 -translate-x-1/2"
+            }`}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const Navbar = () => {
   const headerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -135,18 +170,29 @@ export const Navbar = () => {
               >
                 <Linkedin className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
               </Link>
-               <Link
+              <Link
                 href={siteConfig.social.youtube}
-                aria-label="LinkedIn"
+                aria-label="YouTube"
                 className="group w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
                 <Youtube className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
               </Link>
-              <ThemeToggle />
+             
+              <Tooltip content="Toggle theme" position="bottom">
+                <ThemeToggle />
+              </Tooltip>
+              <Tooltip content="Toggle colors" position="bottom">
+                <GrayscaleToggle />
+              </Tooltip>
             </motion.div>
             
             <div className="lg:hidden flex items-center space-x-3">
-              <ThemeToggle />
+              <Tooltip content="Toggle theme" position="bottom">
+                <ThemeToggle />
+              </Tooltip>
+              <Tooltip content="Toggle colors" position="bottom">
+                <GrayscaleToggle />
+              </Tooltip>
               <MobileMenu links={navLinks} />
             </div>
           </div>

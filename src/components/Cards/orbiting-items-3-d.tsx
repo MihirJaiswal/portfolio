@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
 import { Apple, BadgeCent, BadgeInfo, BadgeX, Banana, Bolt } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useGrayscaleStore } from "@/lib/store";
 
 // Inline Tailwind configuration for floating animation
 // Normally this would be in tailwind.config.js
 // Kept for reference but no longer used on the statue
-export const CenterIcon = (
-  <div className="relative h-112 w-112 z-10">
-    <Image
-      src="/assets/statue.png"
-      alt="Statue"
-      fill
-      className="object-contain filter grayscale contrast-125 brightness-105 drop-shadow-lg drop-shadow-black"
-    />
-  </div>
-);
+export const CenterIcon = () => {
+  const { isGrayscaleEnabled } = useGrayscaleStore();
+  
+  return (
+    <div className="relative h-112 w-112 z-10">
+      <Image
+        src="/assets/statue.png"
+        alt="Statue"
+        fill
+        className={`object-contain ${isGrayscaleEnabled ? 'filter grayscale contrast-125 brightness-105' : ''} drop-shadow-lg drop-shadow-black`}
+      />
+    </div>
+  );
+};
 
 export const LucideIcons = [
   <Banana key="banana" className="h-8 w-8" />,
@@ -187,7 +191,7 @@ export default function OrbitingItems3D({
           className,
         )}
       >
-        {CenterIcon}
+        {CenterIcon()}
         {items.map((item, index) => {
           return (
             <div

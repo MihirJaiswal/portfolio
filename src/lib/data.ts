@@ -315,4 +315,63 @@ export const projects = [
     link: "https://mihirjaiswal.github.io/Cosmic-Onslaught/",
   }, */
 ];
+
+export const artworks = [
+  {
+    id: 1,
+    title: "Daniel Radcliffe",
+    year: "2022",
+    medium: "Sketch",
+    imageUrl: "/drawings/5.png"
+  },
+  {
+    id: 2,
+    title: "Leonardo Dicaprio",
+    year: "2022",
+    medium: "Sketch",
+    imageUrl: "/drawings/2.jpg"
+  },
+  {
+    id: 3,
+    title: "Thomaas Shelby",
+    year: "2022",
+    medium: "Sketch",
+    imageUrl: "/drawings/4.jpg"
+  },
+  {
+    id: 4,
+    title: "Bakugou",
+    year: "2020",
+    medium: "Pencil Colors",
+    imageUrl: "/drawings/1.png"
+  },
+  {
+    id: 5,
+    title: "Touka Kirishima",
+    year: "2020",
+    medium: "Pencil Colors",
+    imageUrl: "/drawings/8.png"
+  },
+  {
+    id: 6,
+    title: "xxxtentation",
+    year: "2022",
+    medium: "Sketch",
+    imageUrl: "/drawings/10.png"
+  },
+  {
+    id: 7,
+    title: "Snow Leopard",
+    year: "2024",
+    medium: "Pen Sketch",
+    imageUrl: "/drawings/7.jpg"
+  },
+  {
+    id: 8,
+    title: "Heisenberg",
+    year: "2022",
+    medium: "Sketch",
+    imageUrl: "/drawings/3.jpg"
+  }
+];
   

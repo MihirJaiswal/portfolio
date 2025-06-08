@@ -8,7 +8,6 @@ function NameTranslation() {
     { mihir: "MIHIR", jaiswal: "JAISWAL", language: "English" },
     { mihir: "मिहिर", jaiswal: "जायसवाल", language: "Hindi" },
     { jaiswal: "جيسوال", mihir: "ميهير",  language: "Arabic" },
-    { mihir: "Михир", jaiswal: "Джайсвал", language: "Russian" },
     { mihir: "米希尔", jaiswal: "贾斯瓦尔", language: "Chinese (Simplified)" },
     { mihir: "미히르", jaiswal: "자이수왈", language: "Korean" },
     { mihir: "মিহির", jaiswal: "জায়সওয়াল", language: "Bengali" },
