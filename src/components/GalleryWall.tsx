@@ -116,7 +116,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[2].imageUrl}
                     alt={artworks[2].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -224,7 +224,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[7].imageUrl}
                     alt={artworks[7].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
+                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500  object-cover border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
