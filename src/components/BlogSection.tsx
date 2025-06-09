@@ -168,7 +168,7 @@ interface BlogCardProps {
 function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredPost }: BlogCardProps) {
   return (
     <article
-      className={`group bg-white dark:bg-neutral-900 border-2 border-gray-200 dark:border-neutral-800 rounded-sm overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
+      className={`group bg-white dark:bg-neutral-900 border-2 border-gray-200 dark:border-neutral-800 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
       onMouseEnter={() => setHoveredPost(post.slug)}
       onMouseLeave={() => setHoveredPost(null)}
     >
@@ -187,7 +187,7 @@ function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredP
 
         <div className="p-6 lg:p-8">
           {/* Date */}
-          <div className="flex items-center gap-2 text-sm text-neutral-700 dark:text-neutral-300 dark:text-nneutral-400 mb-4">
+          <div className="flex items-center gap-2 text-sm text-neutral-700 dark:text-neutral-300 mb-4">
             <Calendar className="w-4 h-4" />
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
