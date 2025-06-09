@@ -60,7 +60,7 @@ export default function Service() {
           <div className="overflow-y-auto pr-2">
             {serviceItems.map((service) => (
               <div key={service.id}>
-                <div className="relative mb-4 group bg-white dark:bg-neutral-950 transition-all duration-300">
+                <div className="relative mb-4 group transition-all duration-300">
                   <div className="flex items-center p-3">
                     <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center mr-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <span className="text-sm font-semibold">{service.id}</span>

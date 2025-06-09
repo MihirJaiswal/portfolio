@@ -86,14 +86,14 @@ export default function BlogSection({ posts }: BlogSectionProps) {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-black border-2 border-black dark:border-white rounded-full flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-black border border-neutral-600 dark:border-neutral-400 rounded-full flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 z-10"
               aria-label="Previous post"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-black border-2 border-black dark:border-white rounded-full flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-black border border-neutral-600 dark:border-neutral-400 rounded-full flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 z-10"
               aria-label="Next post"
             >
               <ChevronRight className="w-5 h-5" />
@@ -108,7 +108,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide
                       ? "bg-black dark:bg-white scale-125"
-                      : "bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
+                      : "bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -145,7 +145,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
           className="text-center mt-16"
         >
           <Link
-            href="/blog"
+            href="/blogs"
             className="inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 group"
           >
             View All Posts
