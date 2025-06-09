@@ -4,23 +4,36 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export function GrayscaleToggle() {
-  const { toggleGrayscale } = useGrayscaleStore()
+  const store = useGrayscaleStore()
+  const isGrayscale = store.isGrayscaleEnabled  // Fixed: use correct property name
+  const toggleGrayscale = store.toggleGrayscale
 
   return (
     <Button
-      variant="outline"
+      variant={isGrayscale ? "default" : "outline"}
       size="icon"
-      className="w-6 h-6 rounded-full mt-2"
+      className="
+        w-8 h-8 border rounded-full transition-all duration-300 ease-in-out bg-white dark:bg-black hover:bg-neutral-200 dark:hover:bg-neutral-800" 
       onClick={toggleGrayscale}
     >
-      <span className="sr-only">Toggle grayscale</span>
-      <Image
-        src="/assets/colors.png"
-        alt="Toggle Colors"
-        width={24}
-        height={24}
-        className="object-cover h-6 w-6 transition-transform duration-300 ease-in-out transform hover:scale-110"
-      />
+      <span className="sr-only">
+        {isGrayscale ? "Enable colors" : "Disable colors"}
+      </span>
+      <div className="relative">
+        <Image
+          src="/assets/colors.png"
+          alt="Toggle Colors"
+          width={20}
+          height={20}
+          className={`
+            object-cover transition-all duration-300 ease-in-out
+            ${isGrayscale 
+              ? "grayscale brightness-75 contrast-125" 
+              : "hover:scale-110 drop-shadow-sm"
+            }
+          `}
+        />
+      </div>
     </Button>
   )
 }

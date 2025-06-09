@@ -14,8 +14,12 @@ import { ProjectsSection } from "@/components/projects/Project";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import Work from "@/components/Work";
+import BlogSection from "@/components/BlogSection";
+import { getAllBlogPosts } from '@/lib/mdx'
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllBlogPosts()
+
   const MainContent = () => (
     <LenisProvider>
       <ScrollProgress />
@@ -29,12 +33,13 @@ export default function Home() {
       </div>
       <Work />
       <ProcessSteps />
-      <div className="pb-4 overflow-hidden">
+      <div className="overflow-hidden">
         <Cards />
         <div className="lg:hidden">
           <ContactForm />
         </div>
       </div>
+      <BlogSection posts={posts} />
       <Footer />
       <ScrollToTop />
     </LenisProvider>

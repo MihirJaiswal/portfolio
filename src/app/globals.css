@@ -169,3 +169,185 @@
 html {
   scroll-behavior: auto !important;
 }
+
+/* Syntax Highlighting Styles */
+pre {
+  @apply p-4 rounded-lg my-4 overflow-x-auto;
+  background-color: #1e1e1e !important;
+}
+
+code {
+  @apply font-mono text-sm;
+}
+
+/* Line numbers */
+pre .line-number {
+  @apply text-neutral-500 mr-4 select-none;
+}
+
+/* Token colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-neutral-500;
+}
+
+.token.punctuation {
+  @apply text-neutral-400;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  @apply text-blue-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  @apply text-green-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  @apply text-yellow-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-purple-400;
+}
+
+.token.function {
+  @apply text-red-400;
+}
+
+.token.regex,
+.token.important {
+  @apply text-orange-400;
+}
+
+.token.important,
+.token.bold {
+  @apply font-bold;
+}
+
+.token.italic {
+  @apply italic;
+}
+
+/* Dark mode adjustments */
+.dark pre {
+  background-color: #1a1a1a !important;
+}
+
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata {
+  @apply text-neutral-400;
+}
+
+.dark .token.punctuation {
+  @apply text-neutral-300;
+}
+
+/* Inline code */
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100;
+}
+
+/* Code block title */
+pre[data-title] {
+  @apply pt-8;
+}
+
+pre[data-title]::before {
+  content: attr(data-title);
+  @apply absolute top-0 left-0 right-0 px-4 py-2 text-sm text-neutral-400 bg-neutral-800 dark:bg-neutral-900 rounded-t-lg;
+}
+
+/* Prose Styles */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold mb-6 mt-8;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold mb-4 mt-8;
+}
+
+.prose h3 {
+  @apply text-2xl font-bold mb-4 mt-6;
+}
+
+.prose h4 {
+  @apply text-xl font-bold mb-4 mt-6;
+}
+
+.prose p {
+  @apply mb-4 leading-7;
+}
+
+.prose ul {
+  @apply list-disc list-outside mb-4 space-y-2 pl-6;
+}
+
+.prose ol {
+  @apply list-decimal list-outside mb-4 space-y-2 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose li > ul,
+.prose li > ol {
+  @apply mt-2 ml-6;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-neutral-200 dark:border-neutral-800 pl-4 italic my-6;
+}
+
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.prose strong {
+  @apply font-bold;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose hr {
+  @apply my-8 border-neutral-200 dark:border-neutral-800;
+}
+
+.prose table {
+  @apply w-full border-collapse my-6;
+}
+
+.prose th {
+  @apply border border-neutral-200 dark:border-neutral-800 px-4 py-2 bg-neutral-100 dark:bg-neutral-800;
+}
+
+.prose td {
+  @apply border border-neutral-200 dark:border-neutral-800 px-4 py-2;
+}

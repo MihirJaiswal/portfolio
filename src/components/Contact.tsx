@@ -94,7 +94,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="lg:flex justify-end mt-12 absolute bottom-6 right-24 hidden">
+          <div className="lg:flex justify-end absolute top-[550px] right-24 hidden">
             <MorphingBlob
             theme="custom"
             customColors={{

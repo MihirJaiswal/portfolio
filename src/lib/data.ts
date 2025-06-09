@@ -23,7 +23,6 @@ export const siteConfig = {
       href: "#about",
       label: "ABOUT ME",
     },
-    
     {
       href: "#projects",
       label: "PROJECTS",
