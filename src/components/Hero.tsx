@@ -170,9 +170,9 @@ export const HeroSection = () => {
       <div className="px-6 relative min-h-screen">
         {/* Title - now with improved dark mode colors */}
         <motion.h1
-          className="absolute top-8 left-0 right-0 font-bold text-center leading-none mx-auto tracking-tight z-0 w-full font-inter"
+          className="absolute top-8 left-0 right-0 font-extrabold text-center leading-tight md:leading-none mx-auto tracking-tight z-0 w-full font-inter"
           style={{
-            fontSize: "clamp(2rem, 12vw, 9rem)",
+            fontSize: "clamp(2.5rem, 12vw, 9rem)",
             maxWidth: "100%",
             y: titleY,
             opacity: titleOpacity,
@@ -215,7 +215,7 @@ export const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen relative">
           {/* Central content */}
           <motion.div 
-            className="flex flex-col items-center justify-center z-10 pt-[5.7rem] sm:pt-40 lg:pt-0"
+            className="flex flex-col items-center justify-center z-10 sm:pt-40 lg:pt-0"
             variants={fadeInUpVariants}
           >
             {/* Desktop image */}
@@ -249,43 +249,22 @@ export const HeroSection = () => {
                 fill
                 className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${isGrayscaleEnabled ? 'filter grayscale contrast-125 dark:contrast-105' : ''}`}
                 priority
-                sizes="(max-width: 640px) 70vw, 400px"
               />
             </motion.div>
 
             {/* Mobile tagline and skills */}
             <motion.div 
-              className="lg:hidden text-center z-1 relative w-full mb-6"
+              className="lg:hidden text-center z-1 relative w-full mb-3"
               variants={fadeInUpVariants}
             >
               <motion.blockquote 
-                className="text-sm w-full mx-auto mb-3 leading-relaxed tracking-wide"
+                className="text-sm w-full mx-auto leading-relaxed tracking-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
                 {heroContent.tagline}
               </motion.blockquote>
-              <motion.div 
-                className="flex flex-wrap justify-center items-center gap-2"
-                variants={skillsContainerVariants}
-              >
-                {heroContent.skills.slice(0, 3).map((skill, index) => (
-                  <motion.li
-                    key={index}
-                    className="list-none px-3 py-1 border border-neutral-300 dark:border-neutral-700 rounded-md text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 transition-colors cursor-pointer"
-                    variants={skillVariants}
-                    whileHover={{ 
-                      scale: 1.05,
-                      backgroundColor: "rgba(0,0,0,0.1)",
-                      transition: { duration: 0.2 }
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {skill}
-                  </motion.li>
-                ))}
-              </motion.div>
             </motion.div>
 
             {/* Mobile button */}

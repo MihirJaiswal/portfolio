@@ -13,7 +13,7 @@ export function GrayscaleToggle() {
       variant={isGrayscale ? "default" : "outline"}
       size="icon"
       className="
-        w-8 h-8 border rounded-full transition-all duration-300 ease-in-out bg-white dark:bg-black hover:bg-neutral-200 dark:hover:bg-neutral-800" 
+        w-8 h-8 border border-neutral-200 dark:border-neutral-700 rounded-full transition-all duration-300 ease-in-out bg-white dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800" 
       onClick={toggleGrayscale}
     >
       <span className="sr-only">
