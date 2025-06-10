@@ -1,87 +1,183 @@
 ---
 title: "Model Context Protocol (MCP)"
-description: "Learn what Model Context Protocol (MCP) is, why it matters, and how it improves contextual understanding in AI systems like ChatGPT"
-date: "2025-06-09"
-readingTime: "6 min read"
+description: "A beginner-friendly guide to understanding and implementing Anthropic's Model Context Protocol for AI integrations"
+date: "2024-12-10"
+readingTime: "5 min read"
 author: "Mihir Jaiswal"
 image: "/blog/mcp.png"
-tags: ["AI", "OpenAI", "LLMs", "ChatGPT", "Context", "Prompting"]
+tags: ["MCP", "AI", "Anthropic", "Claude", "Integration"]
 slug: "model-context-protocol-guide"
 ---
 
-# Understanding Model Context Protocol (MCP)
+# Getting Started with Model Context Protocol (MCP)
 
-In the world of AI-powered assistants, user context is everything. The **Model Context Protocol** (MCP) is an essential design layer that governs how large language models like ChatGPT handle your information to provide consistent, personalized, and secure assistance.
+The **Model Context Protocol (MCP)** is an open standard by **Anthropic** that enables seamless, secure, and structured interactions between large language models (LLMs) and external tools, data sources, and APIs. It provides a well-defined interface for extending the capabilities of AI assistants like Claude by allowing them to read, write, and act on user data in a controlled and auditable manner.
 
-## What Is Model Context Protocol?
+## Why MCP Matters
 
-**Model Context Protocol (MCP)** is a standardized way for models to handle **contextual memory**, **permissions**, and **conversation continuity**. It ensures your model knows only what it should — and remembers what it needs — to help you better.
+AI models typically operate as black boxes, unable to interact meaningfully with personal data or tools without bespoke integrations. MCP solves this by acting as a **unified, secure middleware layer**.
 
-Think of MCP as the AI version of a smart assistant with a well-structured diary: it can remember your name, preferences, and recent projects, but only if you allow it.
-
-## Why Context Matters
-
-Without context, every conversation with an AI would be like talking to a stranger who forgets everything once the chat ends. Context improves:
-
-- ✅ **Personalization**: Remembers your name, favorite tech stack, writing style
-- ✅ **Efficiency**: Saves time by skipping repetitive instructions
-- ✅ **Continuity**: Picks up where you left off in previous sessions
+### Key Benefits:
+- ✅ **Standardized Communication** between AI models and external systems
+- 🔐 **Secure and Permissioned Access** to tools and data
+- 🧩 **Modular Tooling and Resource Sharing**
+- 🔄 **Reusability Across AI Platforms** that support MCP
 
 ## How MCP Works
 
-MCP works through three core layers:
+MCP defines a **bidirectional communication protocol** with:
+- A **Server**, which exposes tools/resources (e.g., files, databases)
+- A **Client**, typically an AI assistant (e.g., Claude Desktop)
+- A structured **Protocol** that governs how tools are listed, invoked, and resources read
 
-### 1. **Short-Term Context (Session-based)**
-This is like working memory. The model remembers the current conversation, typically up to a certain token limit (e.g., 128k tokens).
+### Communication Flow
+1. The server registers tools and resources
+2. The model requests available tools/resources
+3. It makes structured calls (e.g., `call_tool`, `read_resource`)
+4. Server returns results or errors
 
-### 2. **Long-Term Memory (Persistent Context)**
-This is opt-in memory. The model can remember things across sessions — like your name, goals, or preferred tools — but only if you allow it and can delete it anytime.
+## Build Your First MCP Server
 
-### 3. **Personalization Settings**
-Things like your tone preferences, format style, or languages are managed via personalization and can be toggled or customized.
+Here’s a basic example that lets Claude access a local text file:
 
-## User Control and Privacy
+```python
+from mcp import Server
+import mcp.server.stdio
 
-MCP is built with user agency in mind. Key principles include:
+server = Server("my-first-server")
 
-- 🔐 **Privacy-First**: Nothing is remembered permanently unless explicitly permitted
-- 🧠 **Memory Management**: Users can view, update, or delete memory anytime
-- 🔁 **Transparent Continuity**: You’re notified when memory is used to improve responses
+@server.list_resources()
+async def list_files():
+    return [
+        {
+            "uri": "file://notes.txt",
+            "name": "My Notes",
+            "description": "Personal notes file"
+        }
+    ]
 
-## Real-World Use Case
+@server.read_resource()
+async def read_file(uri: str):
+    if uri == "file://notes.txt":
+        return "These are my important notes!"
+    raise ValueError("File not found")
 
-Imagine you're a developer building a Shopify clone. With MCP:
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(mcp.server.stdio.stdio_server().run(server))
+```
 
-- The model remembers you're using **Next.js**, **ShadCN**, and **pnpm**
-- It recalls that your app involves **WMS integration** and **React animations**
-- You don’t have to repeat that you prefer “dark mode UI and modern art styles”
+## Adding Interactive Tools
 
-Result: less friction, better help, faster workflows.
+MCP lets you define actionable tools that AI can use:
 
-## Best Practices for Using MCP
+```python
+@server.list_tools()
+async def list_tools():
+    return [
+        {
+            "name": "add_task",
+            "description": "Add a task to my todo list",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "task": {"type": "string", "description": "Task description"}
+                },
+                "required": ["task"]
+            }
+        }
+    ]
 
-1. **Enable memory for complex, long-term projects**
-2. **Use natural language to guide memory** (e.g., "Remember I'm building an e-commerce dashboard")
-3. **Review your stored memory regularly** via settings
-4. **Clear memory before starting confidential or unrelated projects**
+@server.call_tool()
+async def call_tool(name: str, arguments: dict):
+    if name == "add_task":
+        task = arguments["task"]
+        with open("tasks.txt", "a") as f:
+            f.write(f"- {task}\n")
+        return f"Task added: {task}"
+```
 
-## Common Misunderstandings
+## Claude Desktop Integration
 
-| Myth | Reality |
-|------|---------|
-| AI remembers everything | Only if you enable memory |
-| Memory is creepy | It's opt-in, transparent, and editable |
-| Context is permanent | You can clear or update it any time |
+Configure Claude Desktop to connect with your MCP server by modifying its config file:
 
-## Future of Model Context Protocol
+```json
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "python",
+      "args": ["path/to/server.py"]
+    }
+  }
+}
+```
 
-MCP is just the beginning. Future updates will bring:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
 
-- 🔁 Better memory threading for project-based workflows
-- 🔄 Shared context between team members
-- 📘 Auto-summarization of long-term memory
-- 🎯 Goal-based assistants with rich, personalized behavior
+## Real-World Use Case: Database Tooling
 
-## Conclusion
+```python
+import sqlite3
+from mcp import Server
 
-Model Context Protocol is the backbone of truly useful and personalized AI. It respects your privacy, remembers what matters, and adapts to your goals. Whether you're coding, writing, or researching, MCP helps you work smarter — not harder.
+server = Server("db-server")
+
+@server.list_tools()
+async def list_db_tools():
+    return [
+        {
+            "name": "query_customers",
+            "description": "Search customer info",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "search": {"type": "string"}
+                }
+            }
+        }
+    ]
+
+@server.call_tool()
+async def query_customers(name, arguments):
+    if name == "query_customers":
+        term = arguments.get("search", "")
+        conn = sqlite3.connect("customers.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT name, email FROM customers WHERE name LIKE ?", (f"%{term}%",))
+        results = cursor.fetchall()
+        conn.close()
+        return f"Results: {results}"
+```
+
+## Best Practices
+
+- 🔒 **Validate Inputs**: Always sanitize model inputs
+- 🛑 **Graceful Error Handling**: Use structured exceptions
+- 🧼 **Simple Interfaces**: Don’t over-engineer tool schemas
+- 📋 **Auditability**: Log tool calls and data access
+
+## Common Use Cases
+
+- 🗂 **File & Document Access**: Let AI read your config/code/docs
+- 📊 **Database Interrogation**: Pull insights from local databases
+- 🔧 **API Bridging**: Connect to internal or external REST APIs
+- 📆 **Workflow Automation**: Let Claude run jobs, add todos, update calendars
+
+## Quick Start Checklist
+
+1. `pip install mcp`
+2. Build a server that lists tools/resources
+3. Test using terminal or Claude Desktop
+4. Refine schemas, handle errors, and log usage
+5. Scale by connecting to real systems (e.g., databases, APIs)
+
+## The Future of MCP
+
+MCP is shaping up to be the **standard interface layer** for making LLMs *actually useful*. As adoption grows, expect:
+
+- Better tooling around authentication
+- Support in more AI models
+- UI frameworks for interacting with MCP tools
+
+It’s a powerful step toward **autonomous, accountable AI**—securely connected to the real world.
