@@ -179,7 +179,7 @@ function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredP
             alt={post.title}
             fill
             className={cn(
-              "object-cover transition-all duration-700 ease-in-out transform",
+              "object-cover transition-all duration-700 ease-in-out transform border-b border-dashed border-neutral-400 dark:border-neutral-600",
               hoveredPost === post.slug || !isGrayscaleEnabled ? "filter-none" : "filter grayscale"
             )}
           />
