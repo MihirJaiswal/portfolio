@@ -153,7 +153,7 @@ export const HeroSection = () => {
   return (
     <motion.div 
       ref={containerRef}
-      className="min-h-screen bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden -mt-2"
+      className="md:min-h-screen bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden -mt-2"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -167,7 +167,7 @@ export const HeroSection = () => {
         }}
       />
       
-      <div className="px-6 relative min-h-screen">
+      <div className="px-6 relative md:min-h-screen">
         {/* Title - now with improved dark mode colors */}
         <motion.h1
           className="absolute top-8 left-0 right-0 font-extrabold text-center leading-tight md:leading-none mx-auto tracking-tight z-0 w-full font-inter"
@@ -212,7 +212,7 @@ export const HeroSection = () => {
         
 
         {/* Main content container - improved height handling */}
-        <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen relative">
+        <div className="flex flex-col lg:flex-row items-center justify-center h-full md:min-h-screen relative">
           {/* Central content */}
           <motion.div 
             className="flex flex-col items-center justify-center z-10 sm:pt-40 lg:pt-0"
@@ -240,7 +240,7 @@ export const HeroSection = () => {
 
             {/* Mobile image */}
             <motion.div 
-              className="relative block lg:hidden w-[clamp(280px,70vw,400px)] h-[clamp(320px,80vw,450px)] overflow-hidden rounded-lg md:mt-16"
+              className="relative block lg:hidden w-[clamp(280px,70vw,400px)] h-[clamp(320px,80vw,450px)] overflow-hidden rounded-lg mt-32 md:mt-16"
               variants={imageVariants}
             >
               <Image

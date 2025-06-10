@@ -5,9 +5,10 @@ import type React from "react"
 import { useState, useCallback, useEffect, useRef } from "react"
 import { DndProvider, useDrag, useDrop } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-import { GripVertical, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { GripVertical, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { useGrayscaleStore } from "@/lib/store"
+
 
 export interface Photo {
   id: string
@@ -29,119 +30,58 @@ interface PhotoCanvasProps {
 interface PhotoCardProps {
   photo: Photo
   onMove: (id: string, position: { x: number; y: number }) => void
-  onPhotoClick: (photo: Photo) => void
   canvasWidth: number
   canvasHeight: number
   cardWidth: number
   cardHeight: number
 }
 
-interface PhotoPopupProps {
-  photo: Photo | null
-  isOpen: boolean
-  onClose: () => void
-}
-
 const ItemType = "PHOTO_CARD"
 
-// Photo Popup Component
-function PhotoPopup({ photo, isOpen, onClose }: PhotoPopupProps) {
-  if (!isOpen || !photo) return null
-
-  const cardWidth = 320 // Larger for popup
-  const cardHeight = 380 // Larger for popup
-  const photoHeight = cardHeight - 100 // Space for caption
-
-  return (
-    <div 
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999] p-4"
-      onClick={onClose}
-    >
-      <div 
-        className="relative animate-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          width: cardWidth,
-          height: cardHeight,
-          transform: `rotate(${photo.rotation ?? 0}deg)`,
-        }}
-      >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute -top-4 -right-4 z-10 bg-white hover:bg-gray-100 rounded-full p-2 shadow-lg transition-colors duration-200"
-          aria-label="Close popup"
-        >
-          <X className="w-5 h-5 text-gray-700" />
-        </button>
-
-        {/* Polaroid Frame - identical to PhotoCard but larger and no grayscale */}
-        <div className="w-full bg-white pt-4 px-4 shadow-[0px_8px_32px_rgba(17,17,26,0.2),_0px_16px_48px_rgba(17,17,26,0.2),_0px_32px_96px_rgba(17,17,26,0.2)] relative border-1 border-neutral-300">
-          {/* Photo Area */}
-          <div className="w-full bg-gray-100 mb-8 overflow-hidden relative" style={{ height: photoHeight }}>
-            <Image
-              src={photo.imageUrl || "/placeholder.svg"}
-              alt={photo.title || "Photo"}
-              className="w-full h-full object-cover object-top bg-black border border-black" // Removed grayscale filter
-              crossOrigin="anonymous"
-              fill
-              loading="lazy"
-              quality={100}
-              draggable={false}
-            />
-          </div>
-
-          {/* Caption Area */}
-          <div className="h-16 pb-3 flex flex-col justify-center">
-            <h3 className="font-handwriting text-gray-800 text-lg mb-2 line-clamp-2 leading-tight">{photo.title}</h3>
-            <p className="font-handwriting text-gray-600 text-base">
-              {new Date(photo.date).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "2-digit",
-              })}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, cardWidth, cardHeight }: PhotoCardProps) {
-  const [{ isDragging }, drag, preview] = useDrag(
-    () => ({
-      type: ItemType,
-      item: { id: photo.id },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-      }),
-    }),
-    [photo.id],
-  )
-
-  const rotation = photo.rotation ?? Math.random() * 6 - 3
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+function PhotoCard({ photo, onMove, canvasWidth, canvasHeight, cardWidth, cardHeight }: PhotoCardProps) {
   const { isGrayscaleEnabled } = useGrayscaleStore()
-  const photoHeight = cardHeight - 80
+  const [{ isDragging }, drag, preview] = useDrag({
+    type: ItemType,
+    item: { id: photo.id, position: photo.position },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  })
+
+  // Calculate photo area height (leaving space for caption)
+  const photoHeight = cardHeight - 80 // 80px for padding and caption area
+
+  // Use stored rotation or default to 0 if not provided
+  const rotation = photo.rotation ?? 0
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (isMobile) return
-    e.preventDefault()
-  }
+    const startX = e.clientX - photo.position.x
+    const startY = e.clientY - photo.position.y
 
-  const handleClick = (e: React.MouseEvent) => {
-    if (isMobile) {
-      e.preventDefault()
-      e.stopPropagation()
-      onPhotoClick(photo)
+    const handleMouseMove = (e: MouseEvent) => {
+      const newX = e.clientX - startX
+      const newY = e.clientY - startY
+
+      // Ensure the card stays within canvas bounds
+      const clampedX = Math.max(0, Math.min(canvasWidth - cardWidth, newX))
+      const clampedY = Math.max(0, Math.min(canvasHeight - cardHeight, newY))
+
+      onMove(photo.id, { x: clampedX, y: clampedY })
     }
+
+    const handleMouseUp = () => {
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseup", handleMouseUp)
+    }
+
+    document.addEventListener("mousemove", handleMouseMove)
+    document.addEventListener("mouseup", handleMouseUp)
   }
 
   return (
     <div
       ref={preview as any}
-      className={`group absolute ${isMobile ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'}`}
+      className="group absolute cursor-grab active:cursor-grabbing"
       style={{
         left: photo.position.x,
         top: photo.position.y,
@@ -149,40 +89,37 @@ function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, car
         width: cardWidth,
         height: cardHeight,
         opacity: isDragging ? 0.5 : 1,
-        transform: isDragging ? "scale(1.05) rotate(0deg)" : `rotate(${rotation}deg)`,
+        transform: isDragging ? "scale(1.05) rotate(0deg)" : `rotate(${rotation}deg)`, // Use consistent rotation
         transition: isDragging ? "none" : "transform 0.3s ease",
       }}
       onMouseDown={handleMouseDown}
-      onClick={handleClick}
     >
-      {/* String and Clip */}
-      <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-gray-300" />
-      <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-4 h-4 bg-gray-400 rounded-full" />
-      
       {/* Polaroid Frame */}
-      <div className="relative w-full h-full bg-white p-4 shadow-lg hover:shadow-xl transition-all duration-300">
-        {/* Drag Handle - only show on desktop */}
-        {!isMobile && (
-          <div
-            ref={drag as any}
-            className="absolute top-2 right-2 z-10 p-1 bg-black/20 hover:bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-grab active:cursor-grabbing"
-          >
-            <GripVertical className="w-3 h-3 text-white" />
-          </div>
-        )}
+      <div className="w-full h-full bg-white p-4 shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] hover:shadow-2xl transition-shadow duration-300 relative border-1 border-neutral-300">
+        {/* Drag Handle */}
+        <div
+          ref={drag as any}
+          className="absolute top-2 right-2 z-10 p-1 bg-black/20 hover:bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-grab active:cursor-grabbing"
+        >
+          <GripVertical className="w-3 h-3 text-white" />
+        </div>
 
         {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>
           <Image
             src={photo.imageUrl || "/placeholder.svg"}
             alt={photo.title || "Photo"}
-            className={`w-full h-full object-cover object-top bg-black ${isGrayscaleEnabled ? 'filter grayscale' : ''} hover:grayscale-0 transition-all duration-500 border border-black`}
+            className={`w-full h-full object-cover object-top bg-black filter ${
+              isGrayscaleEnabled ? "grayscale" : ""
+            } hover:grayscale-0 transition-all duration-500 border border-black`}
             crossOrigin="anonymous"
             fill
             loading="lazy"
             quality={100}
             draggable={false}
           />
+          {/* Subtle vintage overlay */}
+{/*           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-50/20 pointer-events-none"></div> */}
         </div>
 
         {/* Caption Area */}
@@ -196,6 +133,13 @@ function PhotoCard({ photo, onMove, onPhotoClick, canvasWidth, canvasHeight, car
             })}
           </p>
         </div>
+
+        {/* Vintage tape effect - only show when NOT dragging */}
+        {!isDragging && (
+          <>
+           {/*  <div className="absolute -top-1 left-24 w-8 h-4 bg-neutral-300 rotate-12 shadow-sm transition-opacity duration-200"></div> */}
+          </>
+        )}
       </div>
     </div>
   )
@@ -317,12 +261,10 @@ function PhotoCanvasContent({
   const [items, setItems] = useState<Photo[]>([])
   const [scrollX, setScrollX] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(0)
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0) // Added windowWidth state
   const containerRef = useRef<HTMLDivElement>(null)
-  const cardWidth = 300 // Increased card width
-  const cardHeight = 360 // Increased card height
+  const cardWidth = 240 // Fixed card width
+  const cardHeight = 280 // Fixed card height
 
   // Check if we're on mobile and track window width
   useEffect(() => {
@@ -330,7 +272,7 @@ function PhotoCanvasContent({
       const width = window.innerWidth
       const mobile = width < 768
       setIsMobile(mobile)
-      setWindowWidth(width)
+      setWindowWidth(width) // Track window width
     }
     
     checkMobile()
@@ -338,14 +280,14 @@ function PhotoCanvasContent({
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Initialize items with hanging photo distribution
+  // Initialize items when photos change
   useEffect(() => {
     if (photos.length > 0) {
-      const positions = generateHangingPhotoPositions(photos.length, canvasWidth, canvasHeight, cardWidth, cardHeight)
+      const positions = generateEvenlyDistributedPositions(photos.length, canvasWidth, canvasHeight, cardWidth, cardHeight)
       const newItems = photos.map((photo, index) => ({
         ...photo,
         position: photo.position.x === 0 && photo.position.y === 0 ? positions[index] : photo.position,
-        rotation: photo.rotation ?? (Math.random() * 6 - 3)
+        rotation: photo.rotation ?? (Math.random() * 6 - 3) // Generate rotation if not provided
       }))
       setItems(newItems)
     }
@@ -365,16 +307,6 @@ function PhotoCanvasContent({
     },
     [items, onPositionChange, canvasWidth, canvasHeight, cardWidth, cardHeight],
   )
-
-  const handlePhotoClick = useCallback((photo: Photo) => {
-    setSelectedPhoto(photo)
-    setIsPopupOpen(true)
-  }, [])
-
-  const handleClosePopup = useCallback(() => {
-    setIsPopupOpen(false)
-    setTimeout(() => setSelectedPhoto(null), 200) // Wait for animation to complete
-  }, [])
 
   // Handle horizontal scrolling
   const handleScroll = (direction: 'left' | 'right') => {
@@ -426,36 +358,6 @@ function PhotoCanvasContent({
         .font-handwriting {
           font-family: 'Kalam', 'Comic Sans MS', cursive;
         }
-        
-        @keyframes animate-in {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        
-        .animate-in {
-          animation: animate-in 0.2s ease-out;
-        }
-        
-        .zoom-in-95 {
-          transform: scale(0.95);
-        }
-
-        @keyframes swing {
-          0% { transform: rotate(0deg); }
-          25% { transform: rotate(1deg); }
-          75% { transform: rotate(-1deg); }
-          100% { transform: rotate(0deg); }
-        }
-
-        .group:hover {
-          animation: swing 2s ease-in-out infinite;
-        }
       `}</style>
 
       {/* Mobile scroll buttons */}
@@ -497,30 +399,35 @@ function PhotoCanvasContent({
           cardHeight={cardHeight}
           onMove={handleMove}
         >
-          {/* Wall texture */}
+          {/* Vintage paper texture */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 206, 84, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%)
+              `,
+            }}
+          />
+
+          {/* Subtle texture overlay */}
           <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `
-                linear-gradient(45deg, #f3f4f6 25%, transparent 25%),
-                linear-gradient(-45deg, #f3f4f6 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #f3f4f6 75%),
-                linear-gradient(-45deg, transparent 75%, #f3f4f6 75%)
+                linear-gradient(45deg, rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(-45deg, rgba(0,0,0,0.05) 1px, transparent 1px)
               `,
-              backgroundSize: '20px 20px',
-              backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+              backgroundSize: "20px 20px",
             }}
           />
-
-          {/* String line at the top */}
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gray-300" />
 
           {items.map((photo) => (
             <PhotoCard
               key={photo.id}
               photo={photo}
               onMove={handleMove}
-              onPhotoClick={handlePhotoClick}
               canvasWidth={canvasWidth}
               canvasHeight={canvasHeight}
               cardWidth={cardWidth}
@@ -530,15 +437,8 @@ function PhotoCanvasContent({
         </CanvasDropZone>
       </div>
 
-      {/* Photo Popup */}
-      <PhotoPopup
-        photo={selectedPhoto}
-        isOpen={isPopupOpen}
-        onClose={handleClosePopup}
-      />
-
       {/* Hide scrollbar styles */}
-      <style jsx global>{`
+      <style jsx>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
@@ -549,28 +449,6 @@ function PhotoCanvasContent({
       `}</style>
     </div>
   )
-}
-
-// Helper function to generate positions for hanging photos
-function generateHangingPhotoPositions(
-  count: number,
-  canvasWidth: number,
-  canvasHeight: number,
-  cardWidth: number,
-  cardHeight: number
-): { x: number; y: number }[] {
-  const positions: { x: number; y: number }[] = []
-  const spacing = canvasWidth / (count + 1)
-  const startY = 100 // Start photos below the string line
-
-  for (let i = 0; i < count; i++) {
-    positions.push({
-      x: spacing * (i + 1) - cardWidth / 2,
-      y: startY + (i % 2) * 40 // Alternate heights for visual interest
-    })
-  }
-
-  return positions
 }
 
 // Demo component with updated sample data including rotations
@@ -644,9 +522,9 @@ function PhotoCanvasDemo() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Photo Canvas with Mobile Popup</h1>
+      <h1 className="text-2xl font-bold mb-4">Photo Canvas with Mobile Scroll</h1>
       <p className="text-gray-600 mb-6">
-        On desktop: Drag photos around. On mobile: Click photos to open in popup, use scroll buttons to navigate.
+        Drag photos around on desktop, or use the scroll buttons on mobile to navigate horizontally.
       </p>
       <PhotoCanvas 
         photos={samplePhotos}

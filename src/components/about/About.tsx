@@ -105,7 +105,7 @@ export default function About() {
   return (
     <motion.section 
       id="about" 
-      className="bg-white dark:bg-neutral-950 relative mt-8 md:mt-20"
+      className="bg-white dark:bg-neutral-950 relative mt-24 md:mt-20"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -113,7 +113,7 @@ export default function About() {
     >
       <div className="px-6">
         <motion.div 
-          className="flex flex-col md:flex-row items-start justify-center mb-20"
+          className="flex flex-col md:flex-row items-start justify-center mb-10 md:mb-20"
           variants={itemVariants}
         >
           <div className="md:w-1/2 mb-6 md:mb-0 flex items-start gap-4"> 
