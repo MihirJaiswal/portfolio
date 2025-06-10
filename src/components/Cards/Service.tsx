@@ -49,7 +49,7 @@ export default function Service() {
         </div>
 
         {/* Right side - Title and Service List */}
-        <div className="relative py-12 px-5 lg:mt-0 md:mt-20">
+        <div className="relative py-12 px-1 lg:mt-0 md:mt-20">
           <div className="text-center mb-6">
             <h2 className="text-[40px] md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">
@@ -57,11 +57,11 @@ export default function Service() {
               </span>
             </h2>
           </div>
-          <div className="overflow-y-auto pr-2">
+          <div className="overflow-y-auto md:pr-2">
             {serviceItems.map((service) => (
               <div key={service.id}>
                 <div className="relative mb-4 group transition-all duration-300">
-                  <div className="flex items-center p-3">
+                  <div className="flex items-center p-1.5 md:p-3">
                     <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center mr-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <span className="text-sm font-semibold">{service.id}</span>
                     </div>

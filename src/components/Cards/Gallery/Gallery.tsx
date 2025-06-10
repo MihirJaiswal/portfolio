@@ -9,7 +9,7 @@ const samplePhotos: Photo[] = [
     title: "GDSC Foster",
     date: "2023-08-22",
     imageUrl: "/photos/gdsc.jpg",
-    position: { x: 0, y: 0 }, // Will be distributed
+    position: { x: 0, y: 0 },
   },
   {
     id: "2",
@@ -67,24 +67,25 @@ export default function Gallery() {
 
   const handlePositionChange = (updatedPhotos: Photo[]) => {
     setPhotos(updatedPhotos)
-    console.log(
-      "Photo positions updated:",
-      updatedPhotos.map((p) => ({
-        title: p.title,
-        position: p.position,
-      })),
-    )
   }
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            Memory Lane
+          </h2>
+          <p className="mt-3 text-lg text-gray-500">
+            A collection of special moments and achievements
+          </p>
+        </div>
         <PhotoCanvas
           photos={photos}
           onPositionChange={handlePositionChange}
-          canvasHeight={700}
+          canvasHeight={800}
           canvasWidth={1200}
-          className="-mt-4"
+          className="rounded-2xl shadow-2xl bg-white/50 backdrop-blur-sm border border-gray-100"
         />
       </div>
     </div>
