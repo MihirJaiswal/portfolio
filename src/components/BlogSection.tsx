@@ -168,7 +168,7 @@ interface BlogCardProps {
 function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredPost }: BlogCardProps) {
   return (
     <article
-      className={`group bg-white dark:bg-neutral-900 border-2 border-gray-200 dark:border-neutral-800 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
+      className={`group bg-white dark:bg-neutral-950 border-2 border-gray-200 dark:border-neutral-800 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
       onMouseEnter={() => setHoveredPost(post.slug)}
       onMouseLeave={() => setHoveredPost(null)}
     >
@@ -208,7 +208,7 @@ function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredP
             {post.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 rounded-sm border border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300"
+                className="px-3 py-1 text-xs font-medium bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 rounded-xs border border-dashed border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-colors duration-300"
               >
                 {tag}
               </span>
