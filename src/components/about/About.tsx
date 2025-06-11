@@ -1,10 +1,9 @@
 'use client'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import React from 'react'
-import { stats, siteConfig } from "@/lib/data"
 import { motion } from 'framer-motion'
 import { MarqueeSkills } from './marquee-skills'
-
+import { stats } from '@/lib/data'
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -113,7 +112,7 @@ export default function About() {
     >
       <div className="px-6">
         <motion.div 
-          className="flex flex-col md:flex-row items-start justify-center mb-10 md:mb-20"
+          className="flex flex-col md:flex-row items-start justify-center md:mb-12"
           variants={itemVariants}
         >
           <div className="md:w-1/2 mb-6 md:mb-0 flex items-start gap-4"> 
@@ -125,7 +124,7 @@ export default function About() {
                 transition: { duration: 0.3 }
               }}
             >
-              <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent font-extrabold">
                 ABOUT
               </span>
             </motion.h2>
@@ -140,7 +139,7 @@ export default function About() {
                 whileHover={{ x: 2, rotate: -15 }}
                 transition={{ duration: 0.2 }}
               >
-                <ArrowRight className="w-6 h-6 md:w-8 md:h-8 hidden md:flex transition-transform -rotate-30" />
+                <ArrowRight className="w-6 h-6 md:w-8 md:h-8 hidden md:flex transition-transform rotate-80" />
               </motion.div>
             </motion.div>
             
@@ -154,27 +153,34 @@ export default function About() {
                 whileHover={{ x: -2, rotate: -15 }}
                 transition={{ duration: 0.2 }}
               >
-                <ArrowLeft className="w-6 h-6 md:hidden lg:hidden transition-transform -rotate-30" />
+                <ArrowLeft className="w-6 h-6 md:hidden lg:hidden transition-transform -rotate-80" />
               </motion.div>
             </motion.div>
           </div>
           
           <motion.div 
-            className="md:w-1/2 md:mt-4"
+            className="md:w-1/2 md:mt-4 mb-8"
             variants={descriptionVariants}
           >
-            <motion.p 
-              className="text-sm leading-relaxed tracking-wide uppercase"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              {siteConfig.authorDescription}
-            </motion.p>
+          
           </motion.div>
         </motion.div>
 
         <motion.div variants={statsContainerVariants}>
+        <motion.div 
+            variants={descriptionVariants}
+          >
+            <motion.p 
+              className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed tracking-wide uppercase flex items-center justify-center md:justify-start mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
+             <p className='text-justify md:text-left mb-3'>
+             <span className='text-black dark:text-white tracking-widest leading-1.5 text-center'>Mihir Jaiswal</span> crafts elegant, impactful digital solutions by blending <span className='text-black dark:text-white'>creativity</span>, <span>innovation</span> and <span className='text-black dark:text-white'>development</span>.
+             </p>
+            </motion.p>
+          </motion.div>
           <motion.div
             className="flex flex-col md:flex-row border border-neutral-200 dark:border-neutral-800 overflow-hidden"
             whileHover={{ 

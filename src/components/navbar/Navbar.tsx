@@ -152,6 +152,7 @@ export const Navbar = () => {
               <Link
                 href={siteConfig.social.instagram}
                 aria-label="Instagram"
+                target="_blank"
                 className="group w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
                 <Instagram className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
@@ -159,6 +160,7 @@ export const Navbar = () => {
               <Link
                 href={siteConfig.social.github}
                 aria-label="GitHub"
+                target="_blank"
                 className="group w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
                 <Github className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
@@ -166,6 +168,7 @@ export const Navbar = () => {
               <Link
                 href={siteConfig.social.linkedin}
                 aria-label="LinkedIn"
+                target="_blank"
                 className="group w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
                 <Linkedin className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
@@ -173,6 +176,7 @@ export const Navbar = () => {
               <Link
                 href={siteConfig.social.youtube}
                 aria-label="YouTube"
+                target="_blank"
                 className="group w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
                 <Youtube className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />

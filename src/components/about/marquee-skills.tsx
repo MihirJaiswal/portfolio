@@ -83,7 +83,7 @@ const SkillCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full cursor-pointer overflow-hidden rounded-lg border p-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+        "relative h-full cursor-pointer overflow-hidden rounded-sm border border-dashed p-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
       )}
     >
       <div className="flex items-center justify-center gap-3 px-3">
@@ -109,10 +109,10 @@ const SkillCard = ({
 
 export function MarqueeSkills() {
   return (
-    <div className="relative flex w-full flex-col items-center gap-4 justify-center overflow-hidden py-8 mt-6">
-      <div className="text-center mb-6">
-        <p className="text-foreground">Technologies I work with</p>
-      </div>
+    <div className="relative flex w-full flex-col gap-4 justify-center overflow-hidden py-8 mt-6">
+  {/*     <div className="mb-6 z-10">
+        <p className="text-foreground text-center md:text-left text-xl">Technologies I work with</p>
+      </div> */}
       <Marquee pauseOnHover reverse className="[--duration:20s]">
         {firstRow.map((skill) => (
           <SkillCard key={skill.name} {...skill} />

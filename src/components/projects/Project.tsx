@@ -9,7 +9,7 @@ export function ProjectsSection() {
       <div className="px-6">
         <div className="flex justify-center md:justify-between items-center">
           <div>
-            <h2 className="text-[53px] md:text-8xl font-bold">
+            <h2 className="text-[53px] md:text-8xl font-extrabold">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent text-center md:text-left">
                 PROJECTS
               </span>

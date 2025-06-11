@@ -32,7 +32,7 @@ export default function ContactForm() {
         
         <div className="grid gap-10">
           <div className="grid grid-cols-1 md:grid-cols-[250px,1fr] items-center">
-            <label htmlFor="name" className="text-3xl md:text-4xl font-black uppercase tracking-tighter">
+            <label htmlFor="name" className="text-3xl md:text-4xl font-extrabold uppercase tracking-tighter">
               MY NAME IS
             </label>
             <input
@@ -48,7 +48,7 @@ export default function ContactForm() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-[250px,1fr] items-center">
-            <label htmlFor="phone" className="text-3xl md:text-4xl font-black uppercase tracking-tighter">
+            <label htmlFor="phone" className="text-3xl md:text-4xl font-extrabold uppercase tracking-tighter">
               PHONE NO
             </label>
             <input

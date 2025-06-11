@@ -7,7 +7,7 @@ function Footer() {
         <div className='relative z-50 overflow-hidden border-t'>
             <footer className="bg-black text-white pt-20 ">
                 <div className="container mx-auto px-6 flex flex-col justify-center border-b border-dashed border-neutral-700 pb-12">
-                    <h2 className="text-5xl md:text-[7rem] font-bold mb-12 text-center">
+                    <h2 className="text-5xl md:text-[7rem] font-extrabold mb-12 text-center">
                         LET&apos;S <span className="text-neutral-400">TALK</span>
                     </h2>
 

@@ -51,7 +51,7 @@ export default function Service() {
         {/* Right side - Title and Service List */}
         <div className="relative py-12 px-1 lg:mt-0 md:mt-20">
           <div className="text-center mb-6">
-            <h2 className="text-[40px] md:text-5xl font-bold mb-4">
+            <h2 className="text-[40px] md:text-5xl font-extrabold mb-4">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">
                 WHAT I DO
               </span>
