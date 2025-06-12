@@ -1,19 +1,18 @@
-'use client'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import React from 'react'
-import { motion } from 'framer-motion'
-import { MarqueeSkills } from './marquee-skills'
-import { stats } from '@/lib/data'
+"use client"
+import { ArrowLeft, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
+import { MarqueeSkills } from "./marquee-skills"
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
 }
 
 const itemVariants = {
@@ -23,9 +22,9 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 }
 
 const titleVariants = {
@@ -35,9 +34,9 @@ const titleVariants = {
     x: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 }
 
 const arrowVariants = {
@@ -48,17 +47,17 @@ const arrowVariants = {
     transition: {
       duration: 0.5,
       delay: 0.5,
-      ease: "backOut"
-    }
+      ease: "backOut",
+    },
   },
   hover: {
     scale: 1.1,
     rotate: 15,
     transition: {
       duration: 0.3,
-      ease: "easeInOut"
-    }
-  }
+      ease: "easeInOut",
+    },
+  },
 }
 
 const descriptionVariants = {
@@ -69,180 +68,129 @@ const descriptionVariants = {
     transition: {
       duration: 0.8,
       delay: 0.3,
-      ease: "easeOut"
-    }
-  }
-}
-
-const statsContainerVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      delay: 0.6,
       ease: "easeOut",
-      staggerChildren: 0.1
-    }
-  }
+    },
+  },
 }
 
-const statItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
+
+const floatingVariants = {
+  animate: {
+    y: [-10, 10, -10],
+    rotate: [0, 5, -5, 0],
     transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
+      duration: 6,
+      repeat: Number.POSITIVE_INFINITY,
+      ease: "easeInOut",
+    },
+  },
 }
+
 
 export default function About() {
   return (
-    <motion.section 
-      id="about" 
-      className="bg-white dark:bg-neutral-950 relative mt-24 md:mt-20"
+    <motion.section
+      id="about"
+      className="relative py-24 md:py-32 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
-      <div className="px-6">
-        <motion.div 
-          className="flex flex-col md:flex-row items-start justify-center md:mb-12"
-          variants={itemVariants}
-        >
-          <div className="md:w-1/2 mb-6 md:mb-0 flex items-start gap-4"> 
-            <motion.h2 
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
+          variants={floatingVariants}
+          animate="animate"
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
+          variants={floatingVariants}
+          animate="animate"
+          transition={{ delay: 2 }}
+        />
+      </div>
+
+      <div className="px-6 relative z-10">
+        {/* Header Section - Original Style */}
+        <motion.div className="flex flex-col items-start justify-center md:mb-8" variants={itemVariants}>
+          <div className="md:w-1/2 mb-6 md:mb-0 flex items-start gap-4">
+            <motion.h2
               className="text-6xl md:text-8xl font-bold mb-6"
               variants={titleVariants}
               whileHover={{
                 scale: 1.05,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
             >
-              <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent font-extrabold">
+              <span className="bg-gradient-to-r z-10 from-neutral-500 via-neutral-900 to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent font-extrabold relative">
                 ABOUT
               </span>
             </motion.h2>
-            
+
             <motion.div
               className="hidden md:flex md:w-24 md:h-24 w-14 h-14 mt-12 -ml-16 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer"
               variants={arrowVariants}
               whileHover="hover"
               whileTap={{ scale: 0.95 }}
             >
-              <motion.div
-                whileHover={{ x: 2, rotate: -15 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.div whileHover={{ x: 2, rotate: -15 }} transition={{ duration: 0.2 }}>
                 <ArrowRight className="w-6 h-6 md:w-8 md:h-8 hidden md:flex transition-transform rotate-80" />
               </motion.div>
             </motion.div>
-            
+
             <motion.div
               className="md:hidden flex md:w-24 md:h-24 w-14 h-14 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer"
               variants={arrowVariants}
               whileHover="hover"
               whileTap={{ scale: 0.95 }}
             >
-              <motion.div
-                whileHover={{ x: -2, rotate: -15 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.div whileHover={{ x: -2, rotate: -15 }} transition={{ duration: 0.2 }}>
                 <ArrowLeft className="w-6 h-6 md:hidden lg:hidden transition-transform -rotate-80" />
               </motion.div>
             </motion.div>
           </div>
-          
-          <motion.div 
-            className="md:w-1/2 md:mt-4 mb-8"
-            variants={descriptionVariants}
-          >
-          
-          </motion.div>
-        </motion.div>
 
-        <motion.div variants={statsContainerVariants}>
-        <motion.div 
-            variants={descriptionVariants}
-          >
-            <motion.p 
-              className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed tracking-wide uppercase flex items-center justify-center md:justify-start mb-4"
+          <motion.div className="md:mt-4 z-10" variants={descriptionVariants}>
+            <motion.p
+              className="text-base md:text-lg text-neutral-700 dark:text-neutral-400 leading-relaxed tracking-wide uppercas flex items-center justify-center md:justify-start mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
             >
-             <p className='text-justify md:text-left mb-3'>
-             <span className='text-black dark:text-white tracking-widest leading-1.5 text-center'>Mihir Jaiswal</span> crafts elegant, impactful digital solutions by blending <span className='text-black dark:text-white'>creativity</span>, <span>innovation</span> and <span className='text-black dark:text-white'>development</span>.
-             </p>
+              <p className="text-left text-md mb-3">
+                <span className="block mb-4">Hey there! I&nbsp;am{" "}
+                <span className="text-black dark:text-white tracking-widest font-semibold leading-1.5 text-center">
+                  Mihir Jaiswal
+                </span>{" "}</span>
+                I&apos;m a digital craftsman who turns wild ideas into perfect realities. When I&apos;m not busy debugging at
+                3 AM, you&apos;ll find me obsessing over the perfect border-radius and wondering if that button needs to be
+                2px to the left.
+              </p>
             </motion.p>
           </motion.div>
-          <motion.div
-            className="flex flex-col md:flex-row border border-neutral-200 dark:border-neutral-800 overflow-hidden"
-            whileHover={{ 
-              y: -8, 
-              boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-              scale: 1.02
-            }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className={`flex-1 p-6 md:p-14 ${
-                  index !== stats.length - 1 &&
-                  "md:border-r border-b md:border-b-0 border-neutral-200 dark:border-neutral-800"
-                }`}
-                variants={statItemVariants}
-                whileHover={{ 
-                  backgroundColor: "rgba(0,0,0,0.02)",
-                  scale: 1.05,
-                  y: -5
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.h3
-                  className="text-3xl md:text-4xl font-bold mb-1 bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.8 + 0.1 * index,
-                    ease: "backOut"
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {stat.value}
-                </motion.h3>
-                <motion.p
-                  className="text-xs uppercase tracking-wider"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.4, 
-                    delay: 1 + 0.1 * index 
-                  }}
-                >
-                  {stat.label}
-                </motion.p>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
-        
+
+        {/* MS Paint Canvas */}
+        {/* <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <MSPaintCanvas />
+        </motion.div>  */}
+
+
+        {/* Skills Marquee */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <MarqueeSkills/>
+          <MarqueeSkills />
         </motion.div>
       </div>
     </motion.section>

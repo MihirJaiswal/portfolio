@@ -133,9 +133,9 @@ export const HeroSection = () => {
       <div className="px-6 relative md:min-h-screen">
         {/* Title - now with improved dark mode colors */}
         <motion.h1
-          className="absolute top-8 left-0 right-0 font-extrabold text-center leading-tight md:leading-none mx-auto tracking-tight z-0 w-full font-inter"
+          className="absolute font-[geist] top-8 left-0 right-0 font-black text-center leading-tight md:leading-none mx-auto tracking-wide md:tracking-tight z-0 w-full"
           style={{
-            fontSize: "clamp(2.5rem, 12vw, 9rem)",
+            fontSize: "clamp(2.8rem, 12vw, 9rem)",
             maxWidth: "100%",
             y: titleY,
             opacity: titleOpacity,
@@ -154,12 +154,12 @@ export const HeroSection = () => {
               repeatType: "reverse",
             }}
           >
-            <span className="hidden md:inline-flex">CHECK OUT</span>
-            <span className="md:hidden">EXPLORE</span> MY
+            <span className="hidden lg:inline-flex">CHECK OUT</span>
+            <span className="lg:hidden font-black">EXPLORE</span> MY
           </motion.span>
           <br />
           <motion.span
-            className="bg-gradient-to-r from-neutral-500 via-neutral-950 to-neutral-500 dark:from-neutral-300 dark:via-white dark:to-neutral-300 bg-clip-text text-transparent"
+            className="bg-gradient-to-r font-black from-neutral-500 via-neutral-950 to-neutral-500 dark:from-neutral-300 dark:via-white dark:to-neutral-300 bg-clip-text text-transparent"
             initial={{ backgroundPosition: "0% 50%" }}
             animate={{ backgroundPosition: "100% 50%" }}
             transition={{

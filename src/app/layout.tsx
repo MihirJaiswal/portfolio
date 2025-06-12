@@ -8,11 +8,14 @@ import type { Metadata } from 'next'
 
 const siteUrl = 'https://mihirjaiswal-portfolio.vercel.app'
 
-// Load fonts
+// Load fonts with mobile optimizations
 const manrope = Manrope({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
+  variable: '--font-manrope',
+  preload: true,
+  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
 })
 
 const geist = GeistSans // GeistSans has all weights pre-configured
@@ -153,12 +156,29 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon" type="image/png" sizes="64x64" />
+        {/* Font preloading for better mobile performance */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/manrope/v15/xn7_YHE41ni1AdIRggexSg.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${manrope.className} ${geist.className} gpu-accelerated`}>
+      <body className={`${manrope.variable} ${geist.variable} font-sans gpu-accelerated`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
           <ScrollProvider>{children}</ScrollProvider>
         </ThemeProvider>

@@ -109,7 +109,7 @@ const SkillCard = ({
 
 export function MarqueeSkills() {
   return (
-    <div className="relative flex w-full flex-col gap-4 justify-center overflow-hidden py-8 mt-6">
+    <div className="flex w-full flex-col gap-4 justify-center overflow-hidden py-8 mt-6">
   {/*     <div className="mb-6 z-10">
         <p className="text-foreground text-center md:text-left text-xl">Technologies I work with</p>
       </div> */}
