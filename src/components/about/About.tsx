@@ -73,7 +73,6 @@ const descriptionVariants = {
   },
 }
 
-
 const floatingVariants = {
   animate: {
     y: [-10, 10, -10],
@@ -86,12 +85,19 @@ const floatingVariants = {
   },
 }
 
-
 export default function About() {
+  const handleDescriptionHover = (isHovering: boolean) => {
+    // Dispatch custom event for cursor
+    const event = new CustomEvent('descriptionHover', {
+      detail: { isHovering }
+    });
+    document.dispatchEvent(event);
+  };
+
   return (
     <motion.section
       id="about"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative pt-24 pb-0 md:pb-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -130,13 +136,13 @@ export default function About() {
             </motion.h2>
 
             <motion.div
-              className="hidden md:flex md:w-24 md:h-24 w-14 h-14 mt-12 -ml-16 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer"
+              className="hidden md:flex md:w-24 md:h-24 w-14 h-14 mt-12 -ml-20 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer"
               variants={arrowVariants}
               whileHover="hover"
               whileTap={{ scale: 0.95 }}
             >
               <motion.div whileHover={{ x: 2, rotate: -15 }} transition={{ duration: 0.2 }}>
-                <ArrowRight className="w-6 h-6 md:w-8 md:h-8 hidden md:flex transition-transform rotate-80" />
+                <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-neutral-700 dark:text-neutral-400 hidden md:flex transition-transform rotate-80" />
               </motion.div>
             </motion.div>
 
@@ -152,9 +158,11 @@ export default function About() {
             </motion.div>
           </div>
 
-          <motion.div className="md:mt-4 z-10" variants={descriptionVariants}>
-            <motion.p
-              className="text-base md:text-lg text-neutral-700 dark:text-neutral-400 leading-relaxed tracking-wide uppercas flex items-center justify-center md:justify-start mb-4"
+          <motion.div className="md:mt-4 z-10 pb-3 cursor-none select-none" variants={descriptionVariants} 
+              onMouseEnter={() => handleDescriptionHover(true)}
+              onMouseLeave={() => handleDescriptionHover(false)} >
+            <motion.div
+              className="text-base md:text-lg text-neutral-700 dark:text-neutral-400 leading-relaxed tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
@@ -168,7 +176,7 @@ export default function About() {
                 3 AM, you&apos;ll find me obsessing over the perfect border-radius and wondering if that button needs to be
                 2px to the left.
               </p>
-            </motion.p>
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -181,7 +189,6 @@ export default function About() {
         >
           <MSPaintCanvas />
         </motion.div>  */}
-
 
         {/* Skills Marquee */}
         <motion.div

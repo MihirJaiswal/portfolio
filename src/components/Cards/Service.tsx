@@ -42,10 +42,8 @@ export default function Service() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative">
         {/* Left side - Big Image Only */}
-        <div className="relative flex items-center justify-center lg:block bg-neutral-950 lg:overflow-hidden">
+        <div className="relative bg-gradient-to-r from-black to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block lg:overflow-hidden">
           <WaterRippleEffect/>
-          <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-neutral-500 to-neutral-600 rounded-full blur-xl opacity-30"></div>
-          <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-neutral-500 to-neutral-500 rounded-full blur-lg opacity-40"></div>
         </div>
 
         {/* Right side - Title and Service List */}

@@ -6,6 +6,7 @@ export const CustomCursor = () => {
   const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(true);
   const [isHoveringProject, setIsHoveringProject] = useState(false);
+  const [isHoveringDescription, setIsHoveringDescription] = useState(false);
   const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -24,6 +25,11 @@ export const CustomCursor = () => {
     // Listen for project hover events
     const handleProjectHover = (e: CustomEvent) => {
       setIsHoveringProject(e.detail.isHovering);
+    };
+
+    // Listen for description hover events
+    const handleDescriptionHover = (e: CustomEvent) => {
+      setIsHoveringDescription(e.detail.isHovering);
     };
 
     // Smooth animation function
@@ -46,6 +52,7 @@ export const CustomCursor = () => {
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('projectHover', handleProjectHover as EventListener);
+    document.addEventListener('descriptionHover', handleDescriptionHover as EventListener);
     document.body.style.cursor = 'none';
     
     // Start animation loop
@@ -56,6 +63,7 @@ export const CustomCursor = () => {
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('projectHover', handleProjectHover as EventListener);
+      document.removeEventListener('descriptionHover', handleDescriptionHover as EventListener);
       document.body.style.cursor = 'auto';
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -65,12 +73,20 @@ export const CustomCursor = () => {
 
   return (
     <div
-      className={`fixed hidden lg:block w-5 h-5 bg-white/80 border border-neutral-800 rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 ${
+      className={`fixed hidden lg:block rounded-full pointer-events-none z-[9999] transform -translate-x-1/2 -translate-y-1/2 will-change-transform transition-all duration-300 ease-out ${
+        isHoveringDescription 
+          ? 'w-24 h-24' 
+          : 'w-5 h-5'
+      } ${
         isVisible && !isHoveringProject ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        left: position.x,
-        top: position.y,
+        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
+        backgroundColor: isHoveringDescription ? 'white' : 'rgba(255, 255, 255, 0.8)',
+        border: isHoveringDescription 
+          ? '2px solid transparent' 
+          : '1px solid rgb(38, 38, 38)',
+        mixBlendMode: isHoveringDescription ? 'difference' : 'normal',
       }}
     />
   );

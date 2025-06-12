@@ -24,7 +24,7 @@ export default function WaterRippleEffect() {
     const camera = new THREE.PerspectiveCamera(75, 800 / 600, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
-    renderer.setSize(920, 940)
+    renderer.setSize(920, 955)
     renderer.setClearColor(0x000000, 0)
     mountElement.appendChild(renderer.domElement)
 
