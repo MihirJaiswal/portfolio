@@ -27,64 +27,22 @@ const samplePhotos: Photo[] = [
   },
   {
     id: "4",
-    title: "AD 21-25",
+    title: "Creativity Lead",
     date: "2025-05-07",
-    imageUrl: "/photos/classPhoto.jpg",
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: "5",
-    title: "Creativity Lead 2024",
-    date: "2024-02-16",
     imageUrl: "/photos/citro24.jpg",
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: "6",
-    title: "Creativity Lead 2023",
-    date: "2023-03-21",
-    imageUrl: "/photos/citro23.jpeg",
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: "7",
-    title: "I am also a good chef",
-    date: "2024-07-27",
-    imageUrl: "/photos/pasta.png",
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: "8",
-    title: "Launched Nuvyx UI",
-    date: "2025-04-14",
-    imageUrl: "/projects/nuvyx.webp",
     position: { x: 0, y: 0 },
   },
 ]
 
 export default function Gallery() {
-  const [photos, setPhotos] = useState<Photo[]>(samplePhotos)
-
-  const handlePositionChange = (updatedPhotos: Photo[]) => {
-    setPhotos(updatedPhotos)
-    console.log(
-      "Photo positions updated:",
-      updatedPhotos.map((p) => ({
-        title: p.title,
-        position: p.position,
-      })),
-    )
-  }
+  const [photos] = useState<Photo[]>(samplePhotos)
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto">
+    <div>
+      <div className="z-20 max-w-7xl mx-auto">
         <PhotoCanvas
           photos={photos}
-          onPositionChange={handlePositionChange}
-          canvasHeight={700}
-          canvasWidth={1200}
-          className="-mt-4"
+          className="-mt-4 z-10"
         />
       </div>
     </div>

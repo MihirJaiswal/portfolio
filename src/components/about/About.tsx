@@ -2,6 +2,7 @@
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { MarqueeSkills } from "./marquee-skills"
+import Gallery from "../Cards/Gallery/Gallery"
 
 // Animation variants
 const containerVariants = {
@@ -126,7 +127,6 @@ export default function About() {
               className="text-6xl md:text-8xl font-bold mb-6"
               variants={titleVariants}
               whileHover={{
-                scale: 1.05,
                 transition: { duration: 0.3 },
               }}
             >
@@ -180,15 +180,14 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* MS Paint Canvas */}
-        {/* <motion.div
-          className="mb-16"
+        <motion.div
+          className="py-8 z-10"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <MSPaintCanvas />
-        </motion.div>  */}
+          <Gallery/>
+        </motion.div>  
 
         {/* Skills Marquee */}
         <motion.div
