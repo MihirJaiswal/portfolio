@@ -78,7 +78,7 @@ export default function Cards() {
         {/* Platforms Section - Base layer */}
         <div
           ref={platformsRef}
-          className="absolute inset-0 w-full h-screen flex items-center justify-center bg-black z-10"
+          className="absolute inset-0 w-full h-screen flex items-start justify-center bg-black z-10"
         >
           <div className="py-24 px-4 w-full">
             <Review/>
@@ -88,20 +88,20 @@ export default function Cards() {
         {/* Trophy Awards - Second layer */}
         <div
           ref={trophyRef}
-          className="absolute inset-0 w-full h-screen flex items-center border-none justify-center bg-black z-20"
+          className="absolute inset-0 w-full h-[630px] flex items-start border-none justify-center bg-transparent z-20"
         >
-          <div className="py-24 px-4 w-full">
-            <Intro />
+          <div className="pt-24 bg-gradient-to-b from-transparent  to-neutral-950 px-4 w-full">
+          <Service />
           </div>
         </div>
 
         {/* Service - Top layer */}
         <div
           ref={serviceRef}
-          className="absolute inset-0 w-full h-screen flex items-center justify-center bg-black z-30"
+          className="absolute inset-0 w-full h-screen flex items-start justify-center bg-gradient-to-b from-transparent to-neutral-950 z-30"
         >
-          <div className="px-4 w-full">
-            <Service />
+          <div className="pt-24  px-4 w-full">
+            <Intro />
           </div>
         </div>
         <ContactForm/>

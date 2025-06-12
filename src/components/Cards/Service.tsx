@@ -42,7 +42,7 @@ export default function Service() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative">
         {/* Left side - Big Image Only */}
-        <div className="relative bg-gradient-to-r from-black to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block lg:overflow-hidden">
+        <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block lg:overflow-hidden">
           <WaterRippleEffect/>
         </div>
 

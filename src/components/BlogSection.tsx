@@ -146,7 +146,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
         >
           <Link
             href="/blogs"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-sm hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all duration-300 group"
           >
             View All Posts
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
