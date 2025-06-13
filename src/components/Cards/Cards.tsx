@@ -111,9 +111,9 @@ export default function Cards() {
           <Review />
         </div>
         <div className="mb-12">
-          <Intro />
-        </div>
         <Service />
+        </div>
+        <Intro />
       </section>
     </>
   )
