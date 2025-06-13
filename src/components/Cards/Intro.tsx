@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useGrayscaleStore } from "@/lib/store"
+import { ThreeDMarqueeDemo } from "../ui/ThreeDMarqueeDemo"
 
 export default function Intro() {
   const [isHovering, setIsHovering] = useState(false)
@@ -20,14 +21,23 @@ export default function Intro() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="absolute inset-0 pointer-events-none z-[-1]">
+            <ThreeDMarqueeDemo/>
+        </div>
+        
+        {/* Full height overlay for left side - extend to full container height */}
+        <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-r from-white via-white to-transparent dark:from-black dark:via-black dark:to-transparent  h-screen -mt-44 pointer-events-none z-[-1] hidden lg:block" />
+        <div className="absolute top-0 bottom-0 right-0 w-full bg-white/70 h-screen -mt-44 pointer-events-none z-[-1] dark:hidden" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left column - Content */}
           <motion.div
-            className="flex flex-col items-start text-left order-2 lg:order-1"
+            className="relative flex flex-col items-start text-left order-2 lg:order-1 mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+            
             {/* Animated badge */}
             <motion.div
               className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8"
@@ -62,7 +72,6 @@ export default function Intro() {
               designed for modern web applications. Fast, accessible, and beautiful out of the box.
             </motion.p>
 
-
             {/* Enhanced CTA button */}
             <motion.div
               className="relative"
@@ -93,6 +102,7 @@ export default function Intro() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
+
             <div className="relative aspect-[4/3] w-full max-w-xl mx-auto">
               {/* Image frame with decorative elements */}
               <div className="absolute inset-0 rounded-md bg-gradient-to-tr from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 p-1 shadow-2xl">
