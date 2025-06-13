@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRight, Sparkles, Eye } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { motion } from "framer-motion"
