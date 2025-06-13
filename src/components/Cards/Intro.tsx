@@ -30,18 +30,17 @@ export default function Intro() {
           >
             {/* Animated badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
               <Sparkles className="w-4 h-4" />
-              <span>EXPLORE MY UI LIBRARY</span>
-              <Eye className="w-4 h-4 ml-1" />
+              <span>Explore my UI Library</span>
             </motion.div>
 
             {/* Title with animated gradient */}
             <motion.h1
-              className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-6"
+              className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.7 }}
@@ -53,7 +52,7 @@ export default function Intro() {
 
             {/* Enhanced description */}
             <motion.p
-              className="text-lg text-neutral-600 dark:text-neutral-300 max-w-xl mb-8 leading-relaxed"
+              className="text-md md:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.7 }}
@@ -106,7 +105,7 @@ export default function Intro() {
                 </div>
                 <div className="absolute inset-0 top-8 overflow-hidden rounded-b-xl">
                   <Image
-                    src="/projects/details/nuvyx.webp"
+                    src="/assets/nuvyxui.png"
                     alt="NUVYX UI"
                     fill
                     className={`object-cover object-center filter ${ isGrayscaleEnabled ? "grayscale" : "grayscale-0" } `}
@@ -119,7 +118,7 @@ export default function Intro() {
 
               {/* Floating component previews */}
               <motion.div
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-3 flex flex-col justify-between border border-neutral-200 dark:border-neutral-700"
+                className="absolute hidden  -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-3 md:flex flex-col justify-between border border-neutral-200 dark:border-neutral-700"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
@@ -131,13 +130,21 @@ export default function Intro() {
               </motion.div>
 
               <motion.div
-                className="absolute -top-4 -right-4 w-24 h-24 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-2 flex items-center justify-center border border-neutral-200 dark:border-neutral-700"
+                className="absolute -top-4 right-0  md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-1 md:p-2 flex items-center justify-center border border-neutral-200 dark:border-neutral-700"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <div className="w-full h-full rounded-md bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-600 flex items-center justify-center">
-                  <Sparkles className="w-8 h-8 text-neutral-700 dark:text-neutral-200" />
+                <div className="w-full h-full rounded-md bg-black flex items-center justify-center">
+                  <Image
+                    src="/projects/nuvyx.webp"
+                    alt="NUVYX UI"
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
               </motion.div>
             </div>
