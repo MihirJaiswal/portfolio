@@ -95,15 +95,15 @@ export default function Intro() {
           >
             <div className="relative aspect-[4/3] w-full max-w-xl mx-auto">
               {/* Image frame with decorative elements */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 p-1 shadow-2xl">
-                <div className="absolute top-0 left-0 w-full h-8 bg-neutral-100 dark:bg-neutral-800 rounded-t-xl flex items-center px-4">
+              <div className="absolute inset-0 rounded-md bg-gradient-to-tr from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 p-1 shadow-2xl">
+                <div className="absolute top-0 left-0 w-full h-8 bg-neutral-100 dark:bg-neutral-800 rounded-t-md flex items-center px-4">
                   <div className="flex space-x-2">
                     <div className={`w-3 h-3 rounded-full ${isGrayscaleEnabled ? "bg-neutral-800 dark:bg-neutral-500" : "bg-red-500"}`}></div>
                     <div className={`w-3 h-3 rounded-full ${isGrayscaleEnabled ? "bg-neutral-400 dark:bg-white" : "bg-yellow-500"}`}></div>
                     <div className={`w-3 h-3 rounded-full ${isGrayscaleEnabled ? "bg-neutral-600 dark:bg-neutral-300" : "bg-green-500"}`}></div>
                   </div>
                 </div>
-                <div className="absolute inset-0 top-8 overflow-hidden rounded-b-xl">
+                <div className="absolute inset-0 top-8 overflow-hidden rounded-b-sm border">
                   <Image
                     src="/assets/nuvyxui.png"
                     alt="NUVYX UI"
@@ -118,7 +118,7 @@ export default function Intro() {
 
               {/* Floating component previews */}
               <motion.div
-                className="absolute hidden  -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-3 md:flex flex-col justify-between border border-neutral-200 dark:border-neutral-700"
+                className="absolute hidden  -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-3 md:flex flex-col justify-between border border-neutral-200 dark:border-neutral-700"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
@@ -130,12 +130,12 @@ export default function Intro() {
               </motion.div>
 
               <motion.div
-                className="absolute -top-4 right-0  md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-white dark:bg-neutral-900 rounded-lg shadow-xl p-1 md:p-2 flex items-center justify-center border border-neutral-200 dark:border-neutral-700"
+                className="absolute -top-4 right-0  md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-1 md:p-2 flex items-center justify-center border border-neutral-200 dark:border-neutral-700"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <div className="w-full h-full rounded-md bg-black flex items-center justify-center">
+                <div className="w-full h-full rounded-sm bg-black flex items-center justify-center">
                   <Image
                     src="/projects/nuvyx.webp"
                     alt="NUVYX UI"
