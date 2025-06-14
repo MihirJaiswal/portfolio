@@ -192,7 +192,7 @@ export const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-                src="/assets/img3.png"
+                src="/assets/img5.png"
                 alt="Designer profile"
                 fill
                 className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${
@@ -211,7 +211,7 @@ export const HeroSection = () => {
               variants={imageVariants}
             >
               <Image
-                src="/assets/img3.png"
+                src="/assets/img5.png"
                 alt="Designer profile"
                 fill
                 className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${
