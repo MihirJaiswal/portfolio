@@ -179,7 +179,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${manrope.variable} ${geist.variable} font-sans gpu-accelerated`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <ScrollProvider>{children}</ScrollProvider>
         </ThemeProvider>
       </body>

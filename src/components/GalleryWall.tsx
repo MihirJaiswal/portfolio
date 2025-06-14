@@ -54,7 +54,7 @@ const GalleryWall: React.FC = () => {
                 GALLERY
               </span>
             </h2>
-            <p className='text-[18px] tracking-tight'>
+            <p className='text-[18px] tracking-tight text-neutral-600 dark:text-neutral-400'>
               I also have a small collection of paintings that I have drawn.
             </p>
           </div>

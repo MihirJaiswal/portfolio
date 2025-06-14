@@ -106,11 +106,11 @@ export default function Cards() {
         </div>
         <ContactForm/>
       </section>
-      <section className="lg:hidden bg-black pb-12">
+      <section className="lg:hidden bg-black md:pb-12">
         <div className="mb-12">
           <Review />
         </div>
-        <div className="mb-12">
+        <div className="md:mb-12">
         <Service />
         </div>
         <Intro />
