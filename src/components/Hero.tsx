@@ -20,7 +20,7 @@ export const HeroSection = () => {
 
   const downloadPDF = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
+    link.href = "/mihir-jaiswal-resume.pdf";
     link.download = "/mihir-jaiswal-resume.pdf";
     document.body.appendChild(link);
     link.click();
