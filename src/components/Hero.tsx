@@ -195,6 +195,7 @@ export const HeroSection = () => {
                 src="/assets/img5.png"
                 alt="Designer profile"
                 fill
+                quality={100}
                 className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${
                   isGrayscaleEnabled
                     ? "filter grayscale contrast-110 dark:contrast-105"
@@ -214,6 +215,7 @@ export const HeroSection = () => {
                 src="/assets/img5.png"
                 alt="Designer profile"
                 fill
+                quality={100}
                 className={`object-contain transition-all duration-300 hover:filter hover:grayscale-0 ${
                   isGrayscaleEnabled
                     ? "filter grayscale contrast-125 dark:contrast-105"
