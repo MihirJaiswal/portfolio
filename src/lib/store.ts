@@ -6,6 +6,6 @@ interface GrayscaleState {
 }
 
 export const useGrayscaleStore = create<GrayscaleState>((set) => ({
-  isGrayscaleEnabled: true,
+  isGrayscaleEnabled: false,
   toggleGrayscale: () => set((state) => ({ isGrayscaleEnabled: !state.isGrayscaleEnabled })),
 })) 

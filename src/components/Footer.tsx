@@ -13,7 +13,7 @@ function Footer() {
 
                     <div className="flex flex-wrap justify-center gap-4">
                         {[
-                            { href: siteConfig.social.instagram, label: "INSTAGRAM" },
+                            { href: siteConfig.social.twitter, label: "TWITTER" },
                             { href: siteConfig.social.github, label: "GITHUB" },
                             { href: siteConfig.social.linkedin, label: "LINKEDIN" },
                             { href: `mailto:${siteConfig.email}`, label: "CONTACT ME" }

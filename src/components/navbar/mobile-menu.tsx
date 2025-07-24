@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu} from "lucide-react"
+import { Menu, Twitter} from "lucide-react"
 import { motion } from "framer-motion"
 import {
   Sheet,
@@ -132,11 +132,11 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
               transition={{ duration: 0.6 }}
             >
               <Link
-                href={siteConfig.social.instagram}
+                href={siteConfig.social.twitter}
                 aria-label="Instagram"
                 className="group w-12 h-12 rounded-full border border-neutral-400 dark:border-neutral-600 flex items-center justify-center hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-all"
               >
-                <Instagram className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
+                <Twitter className="w-5 h-5 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-50 dark:group-hover:text-neutral-900" />
               </Link>
               <Link
                 href={siteConfig.social.github}

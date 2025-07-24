@@ -56,7 +56,7 @@ export default function Intro() {
               transition={{ delay: 0.2, duration: 0.7 }}
             >
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent animate-gradient-x">
-                NUVYX UI
+                NYX UI
               </span>
             </motion.h1>
 
@@ -83,7 +83,7 @@ export default function Intro() {
             >
               <Button
                 size="lg"
-                onClick={() => window.open("https://nuvyxui.vercel.app/", "_blank")}
+                onClick={() => window.open("https://nyxui.vercel.app/", "_blank")}
               >
                 <span className="relative flex items-center gap-2">
                   Explore Components
@@ -115,10 +115,10 @@ export default function Intro() {
                 </div>
                 <div className="absolute inset-0 top-8 overflow-hidden rounded-b-sm border">
                   <Image
-                    src="/assets/nuvyxui.png"
-                    alt="NUVYX UI"
+                    src="/assets/nyxui.png"
+                    alt="nyx UI"
                     fill
-                    className={`object-cover object-center filter ${ isGrayscaleEnabled ? "grayscale" : "grayscale-0" } `}
+                    className={`object-cover object-left filter ${ isGrayscaleEnabled ? "grayscale" : "grayscale-0" } `}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
                   />
@@ -148,7 +148,7 @@ export default function Intro() {
                 <div className="w-full h-full rounded-sm bg-black flex items-center justify-center">
                   <Image
                     src="/projects/nuvyx.webp"
-                    alt="NUVYX UI"
+                    alt="nyx UI"
                     width={100}
                     height={100}
                     className="w-full h-full object-cover object-center"

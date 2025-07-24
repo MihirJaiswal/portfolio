@@ -7,6 +7,7 @@ export const siteConfig = {
       "Mihir Jaiswal specializes in turning challenges into simple, elegant digital products through creative design and expert development.",
     email: "jaiswalmihir.business@gmail.com",
     social: {
+      twitter: "https://x.com/mihir_jaiswal_",
       instagram: "https://www.instagram.com/mihir_jaiswal_/",
       linkedin: "https://www.linkedin.com/in/mihir-jaiswal-322898287/",
       github: "https://github.com/MihirJaiswal",
@@ -67,8 +68,8 @@ export const siteConfig = {
 
 export const projects = [
   {
-    id: "nuvyx-ui",
-    title: "NUVYX UI",
+    id: "nyx-ui",
+    title: "NYX UI",
     subtitle: "UI COMPONENT LIBRARY",
     description: "A MODERN UI COMPONENT LIBRARY FOR REACT APPLICATIONS",
     category: "web development",
@@ -76,11 +77,11 @@ export const projects = [
     mainImage: "/details/nuvyxui.png",
     details: "MODULAR COMPONENTS WITH FRAMER MOTION ANIMATIONS",
     fullDescription:
-      "Nuvyx UI is a curated library of modular components that can be easily integrated into your web applications. It offers a versatile selection of components, blocks, and templates designed to accelerate your development process.",
+      "nyx UI is a curated library of modular components that can be easily integrated into your web applications. It offers a versatile selection of components, blocks, and templates designed to accelerate your development process.",
     technologies: ["React", "Tailwind", "TypeScript", "Framer Motion"],
     client: "Open Source",
     year: "2024",
-    link: "https://nuvyxui.vercel.app/",
+    link: "https://nyxui.vercel.app/",
     youtube: 'https://www.youtube.com/watch?v=E3R_lVYSuk8&ab_channel=MihirJaiswal',
   },
   {

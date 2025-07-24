@@ -107,9 +107,9 @@ const jsonLd = {
   workExample: [
     {
       '@type': 'CreativeWork',
-      name: 'NUVYX UI',
+      name: 'nyx UI',
       description: 'A modern UI component library for React applications',
-      url: 'https://nuvyxui.vercel.app/'
+      url: 'https://nyxui.vercel.app/'
     },
     {
       '@type': 'CreativeWork',
