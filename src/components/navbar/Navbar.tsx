@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import { Instagram, Linkedin, Github, Youtube, Twitter } from "lucide-react";
+import {Linkedin, Github, Youtube, Twitter } from "lucide-react";
 import { siteConfig } from "../../lib/data";
 import { navLinks } from "../../lib/data";
 import { MobileMenu } from "./mobile-menu";

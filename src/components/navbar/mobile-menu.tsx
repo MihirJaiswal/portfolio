@@ -12,7 +12,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet"
-import { Instagram, Linkedin, Github, Youtube } from "lucide-react";
+import {Linkedin, Github, Youtube } from "lucide-react";
 import { siteConfig } from "../../lib/data";
 import { StaggerContainer } from "../animation/scroll-animations"
 

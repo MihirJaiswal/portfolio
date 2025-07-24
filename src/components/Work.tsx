@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { useTransform, useScroll, motion } from 'framer-motion';
+import { useTransform, useScroll, motion, useReducedMotion } from 'framer-motion';
 import { useGrayscaleStore } from '@/lib/store';
 
 const images: string[] = [
@@ -23,9 +23,10 @@ interface ColumnProps {
   y: any; 
   topOffset?: string;
   isMobile: boolean;
+  shouldReduceMotion: boolean;
 }
 
-const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
+const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldReduceMotion }) => {
   const { isGrayscaleEnabled } = useGrayscaleStore();
   
   return (
@@ -34,10 +35,13 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
         isMobile ? 'flex-1 min-w-0' : 'w-1/4 min-w-[250px]'
       }`}
       style={{ 
-        y, 
+        y: shouldReduceMotion ? 0 : y, 
         top: topOffset,
-        // Add will-change for better mobile performance
-        willChange: 'transform'
+        // Critical mobile performance optimizations
+        willChange: 'transform',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        perspective: 1000
       }}
     >
       {images.map((src, i) => (
@@ -51,19 +55,21 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
         >
           <div 
             className={`w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 border border-neutral-700 ${
-              // Reduce expensive effects on mobile
+              // Simplified mobile effects
               isMobile 
-                ? `${isGrayscaleEnabled ? 'filter grayscale' : ''} hover:grayscale-0 transition-all duration-300` 
-                : `${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500`
+                ? `${isGrayscaleEnabled ? 'filter grayscale' : ''} transition-none` 
+                : `${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-300`
             }`}
             style={{
               backgroundImage: `url(/work/${src})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'top center',
-              minHeight: isMobile ? '250px' : 'auto',
-              // Optimize for mobile performance
-              transform: isMobile ? 'translateZ(0)' : undefined,
-              backfaceVisibility: 'hidden'
+              backgroundPosition: 'center',
+              minHeight: isMobile ? '200px' : 'auto',
+              // Mobile GPU acceleration
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              // Prevent layout thrashing
+              contain: 'layout style paint'
             }}
           />
         </div>
@@ -75,34 +81,38 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile }) => {
 export default function Work() {
   const gallery = useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const shouldReduceMotion = useReducedMotion();
   
-  // Use single state and useMemo for better performance
+  // Cache mobile check
   const isMobile = useMemo(() => dimension.width < 768, [dimension.width]);
   
+  // Use lighter scroll detection for mobile
   const { scrollYProgress } = useScroll({
     target: gallery,
-    offset: ['start end', 'end start']
+    offset: ['start end', 'end start'],
+    // Reduce scroll sampling on mobile for better performance
+    layoutEffect: false
   });
   
   const { height } = dimension;
   
-  // Optimize transforms - use simpler calculations for mobile
+  // Dramatically simplified transforms for mobile
   const y1 = useTransform(
     scrollYProgress, 
     [0, 1], 
-    isMobile ? [0, height * 1.2] : [0, height * 2]
+    isMobile ? [0, height * 0.5] : [0, height * 2]
   );
   
   const y2 = useTransform(
     scrollYProgress, 
     [0, 1], 
-    isMobile ? [0, height * 1.8] : [0, height * 3.3]
+    isMobile ? [0, height * 0.8] : [0, height * 3.3]
   );
   
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
   
-  // Debounced resize handler
+  // Throttled resize handler for better performance
   const handleResize = useCallback(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -110,24 +120,32 @@ export default function Work() {
   }, []);
   
   useEffect(() => {
-    // Use passive event listener for better scroll performance
+    let rafId: number;
     let timeoutId: NodeJS.Timeout;
     
-    const debouncedResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 100);
+    const throttledResize = () => {
+      if (rafId) return;
+      
+      rafId = requestAnimationFrame(() => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          handleResize();
+          rafId = 0;
+        }, 150);
+      });
     };
     
-    window.addEventListener("resize", debouncedResize, { passive: true });
+    window.addEventListener("resize", throttledResize, { passive: true });
     handleResize(); // Initial call
     
     return () => {
-      window.removeEventListener("resize", debouncedResize);
+      window.removeEventListener("resize", throttledResize);
+      if (rafId) cancelAnimationFrame(rafId);
       clearTimeout(timeoutId);
     };
   }, [handleResize]);
   
-  // Memoize column organization to prevent recalculation
+  // Memoize column organization
   const columnImages = useMemo(() => {
     if (isMobile) {
       return [
@@ -160,23 +178,64 @@ export default function Work() {
             ref={gallery} 
             className="relative flex gap-2 md:gap-8 px-2 md:p-8 box-border overflow-hidden"
             style={{ 
-              height: isMobile ? '180vh' : '175vh',
-              // Optimize for mobile scrolling
+              height: isMobile ? '120vh' : '175vh', // Reduced mobile height
+              // Critical mobile optimizations
               WebkitOverflowScrolling: 'touch',
-              transform: 'translateZ(0)'
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              // Contain layout calculations
+              contain: 'layout style paint',
+              // Prevent unnecessary repaints
+              isolation: 'isolate'
             }}
           >
             {isMobile ? (
               <>
-                <Column images={columnImages[0]} y={y1} topOffset="-15%" isMobile={isMobile} />
-                <Column images={columnImages[1]} y={y2} topOffset="-30%" isMobile={isMobile} />
+                <Column 
+                  images={columnImages[0]} 
+                  y={y1} 
+                  topOffset="-10%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
+                <Column 
+                  images={columnImages[1]} 
+                  y={y2} 
+                  topOffset="-20%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
               </>
             ) : (
               <>
-                <Column images={columnImages[0]} y={y1} topOffset="-45%" isMobile={isMobile} />
-                <Column images={columnImages[1]} y={y2} topOffset="-95%" isMobile={isMobile} />
-                <Column images={columnImages[2]} y={y3} topOffset="-45%" isMobile={isMobile} />
-                <Column images={columnImages[3]} y={y4} topOffset="-75%" isMobile={isMobile} />
+                <Column 
+                  images={columnImages[0]} 
+                  y={y1} 
+                  topOffset="-45%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
+                <Column 
+                  images={columnImages[1]} 
+                  y={y2} 
+                  topOffset="-95%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
+                <Column 
+                  images={columnImages[2]} 
+                  y={y3} 
+                  topOffset="-45%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
+                <Column 
+                  images={columnImages[3]} 
+                  y={y4} 
+                  topOffset="-75%" 
+                  isMobile={isMobile} 
+                  shouldReduceMotion={shouldReduceMotion || false}
+                />
               </>
             )}
           </div>

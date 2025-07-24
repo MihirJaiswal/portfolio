@@ -98,7 +98,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="relative pt-24 pb-0 md:pb-20 overflow-hidden"
+      className="relative pt-0 sm:pt-12 md:pt-24 pb-0 md:pb-20 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -107,12 +107,12 @@ export default function About() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
+          className="absolute hidden md:block top-20 left-10 w-72 h-72 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
           variants={floatingVariants}
           animate="animate"
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
+          className="absolute bottom-60 md:bottom-20 right-30 md:right-10 w-96 h-96 bg-gradient-to-r from-neutral-400/10 to-neutral-400/10 rounded-full blur-3xl"
           variants={floatingVariants}
           animate="animate"
           transition={{ delay: 2 }}

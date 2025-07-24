@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image"
-import { heroContent } from "@/lib/data"
-import { ArrowDown, ArrowLeft } from "lucide-react"
+import { ArrowDown, ArrowLeft, MailCheckIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
@@ -113,6 +112,20 @@ export const HeroSection = () => {
     },
   }
 
+
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      rotate: [0, 5, -5, 0],
+      transition: {
+        duration: 6,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "easeInOut",
+      },
+    },
+  }
+  
+
   return (
     <motion.div
       ref={containerRef}
@@ -121,15 +134,21 @@ export const HeroSection = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="absolute hidden lg:dark:block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#0c0a09)]"></div>
-
+      {/* <div className="absolute hidden lg:dark:block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#0c0a09)]"></div> */}
+      <div className="absolute inset-0 overflow-hidden md:hidden">
+        <motion.div
+          className="absolute top-40 left-30 w-32 h-32 bg-gradient-to-r from-neutral-400/60 to-neutral-400/10 rounded-full blur-3xl"
+          variants={floatingVariants}
+          animate="animate"
+        />
+      </div>
       {/* MOBILE LAYOUT - Clean & Minimal */}
       <div className="md:hidden min-h-screen flex flex-col">
         {/* Mobile Title - Cleaner positioning */}
-        <motion.div className="pt-12 px-6" variants={fadeInUpVariants}>
+        <motion.div className="pb-6 pt-8" variants={fadeInUpVariants}>
           <motion.h1
-            className="text-center font-[geist] font-black leading-none tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)" }}
+            className="text-center font-[geist] font-black leading-none tracking-tight mx-auto"
+            style={{ fontSize: "clamp(3.3rem, 10vw, 12rem)" }}
             variants={titleVariants}
           >
             <motion.span
@@ -163,10 +182,10 @@ export const HeroSection = () => {
         </motion.div>
 
         {/* Mobile Content - Better spacing and layout */}
-        <div className="flex-1 flex flex-col items-center justify-center px-6 pb-12 space-y-8">
+        <div className="flex flex-col items-center justify-center px-6 pb-12 space-y-6">
           {/* Mobile image - Better proportions */}
           <motion.div
-            className="relative w-62 h-58 overflow-hidden rounded-3xl"
+            className="relative w-66 h-64 sm:w-78 sm:h-78 overflow-hidden rounded-3xl"
             variants={imageVariants}
             whileTap={{ scale: 0.98 }}
           >
@@ -198,16 +217,16 @@ export const HeroSection = () => {
 
             {/* Tagline - Better typography */}
             <motion.blockquote
-              className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300 "
+              className="text-md leading-relaxed text-neutral-700 dark:text-neutral-300 "
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              {heroContent.tagline}
+              Crafting standout websites with passion.
             </motion.blockquote>
 
             {/* Mobile button - Minimal design */}
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={buttonVariants} className="flex items-center justify-center gap-3">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -224,6 +243,27 @@ export const HeroSection = () => {
                       transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
                     >
                       <ArrowDown className="w-4 h-4" />
+                    </motion.div>
+                  </div>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button
+                  onClick={downloadPDF}
+                  variant='outline'
+                  className="btn py-1"
+                >
+                  <div className="flex items-center gap-2 justify-center">
+                    <span>Contact Me</span>
+                    <motion.div
+                      animate={{ y: [0, 2, 0] }}
+                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                    >
+                      <MailCheckIcon className="w-4 h-4" />
                     </motion.div>
                   </div>
                 </Button>
