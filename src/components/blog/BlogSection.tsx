@@ -160,7 +160,7 @@ interface BlogCardProps {
   setHoveredPost: (slug: string | null) => void
 }
 
-function BlogCard({ post, isMobile, hoveredPost, setHoveredPost }: BlogCardProps) {
+function BlogCard({ post, isMobile, setHoveredPost }: BlogCardProps) {
   return (
     <article
       className={`group bg-white dark:bg-neutral-950 border border-dashed border-neutral-600 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}

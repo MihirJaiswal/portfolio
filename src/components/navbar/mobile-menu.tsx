@@ -61,22 +61,6 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
     }
   }
 
-  const itemVariants = reducedMotion ? {} : {
-    hidden: { 
-      opacity: 0, 
-      x: 50,
-      transition: { duration: 0.2 }
-    },
-    visible: (index: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: index * 0.1 + 0.2,
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    })
-  }
 
   const hoverVariants = reducedMotion ? {} : {
     x: 10,
