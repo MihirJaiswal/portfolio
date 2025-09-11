@@ -152,7 +152,7 @@ export const projects = [
     technologies: ["React", "Tailwind", "TypeScript", "Framer Motion"],
     client: "Open Source",
     year: "2024",
-    link: "https://nyxui.vercel.app/",
+    link: "https://nyxui.vercel.com/",
     youtube: 'https://www.youtube.com/watch?v=E3R_lVYSuk8&ab_channel=MihirJaiswal',
   },
   {

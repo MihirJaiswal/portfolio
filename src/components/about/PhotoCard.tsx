@@ -39,7 +39,7 @@ function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCa
       }}
     >
       {/* Polaroid Frame */}
-      <div className="w-full h-full bg-white p-4 shadow-md transition-shadow duration-300 relative border-1 border-neutral-300">
+      <div className="w-full h-full bg-white p-4 shadow-lg transition-shadow duration-300 relative border-1 border-neutral-300">
         
         {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>

@@ -1,5 +1,4 @@
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { MarqueeSkills } from "./marquee-skills"
 import Gallery from "./Gallery"
 import DescriptionText from "./DescriptionText"
 
@@ -7,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-0 sm:pt-12 md:pt-24 pb-0 md:pb-20 overflow-hidden"
+      className="relative pt-0 sm:pt-12 md:pt-24 overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -39,10 +38,6 @@ export default function About() {
         <div className="py-8 z-10">
           <Gallery/>
         </div>  
-        {/* Skills Marquee */}
-        <div>
-          <MarqueeSkills />
-        </div>
       </div>
     </section>
   )

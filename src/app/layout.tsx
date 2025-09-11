@@ -211,7 +211,7 @@ const jsonLd = {
       '@id': `${siteUrl}/#nyx-ui`,
       name: 'nyx UI by Mihir Jaiswal',
       description: 'Modern UI component library for React applications developed by Mihir Jaiswal',
-      url: 'https://nyxui.vercel.app/',
+      url: 'https://nyxui.vercel.com/',
       creator: {
         '@type': 'Person',
         name: 'Mihir Jaiswal'
