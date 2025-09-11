@@ -1,5 +1,5 @@
+import { projects } from '@/lib/project'
 import { MetadataRoute } from 'next'
-import { projects } from '@/lib/data' 
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mihirjaiswal-portfolio.vercel.app'

@@ -189,7 +189,7 @@ export const HeroSection = () => {
               >
                 CREATIVE DEVELOPER
               </p>
-              <p className="max-w-[15rem] xl:max-w-xs text-right mr-auto  tracking-wide leading-snug text-sm text-neutral-700 dark:text-neutral-300">
+              <p className="max-w-[15rem] xl:max-w-xs text-right  tracking-wide leading-snug text-sm text-neutral-700 dark:text-neutral-300">
                 Follow for more details.
               </p>
           </div>
