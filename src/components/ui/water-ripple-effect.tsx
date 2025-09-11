@@ -4,7 +4,8 @@ import { useRef, useEffect } from "react"
 import * as THREE from "three"
 import { useGrayscaleStore } from "@/lib/store"
 
-export default function WaterRippleEffect() {
+// Core component with all the Three.js logic
+export default function WaterRippleEffectCore() {
   const mountRef = useRef<HTMLDivElement>(null)
   const sceneRef = useRef<THREE.Scene | null>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)

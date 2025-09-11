@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Image from "next/image"
@@ -15,8 +14,8 @@ import {
   Tag,
   Layers,
 } from "lucide-react"
-import { projects } from "@/lib/data"
-import { motion } from "framer-motion"
+import { projects } from "@/lib/project"
+import { motion } from "motion/react"
 import { FadeIn, StaggerContainer, StaggerItem } from "../animation/scroll-animations"
 import { CustomCursor } from "@/components/CustomCursor"
 import PageNav from "../navbar/PageNav"

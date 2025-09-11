@@ -1,29 +1,20 @@
 "use client"
-
 import { useRef, useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 export function ProcessSteps() {
-  // Define the process steps words
   const words = ["Understand", "Design", "Implement", "Onboard"]
-  
-  // Create refs for each word
   const containerRef = useRef<HTMLDivElement>(null)
   const wordRefs = useRef<Array<HTMLDivElement | null>>([])
   
-  // Track which word is active
   const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null)
   
-  // Check scroll position and update active word
   useEffect(() => {
     if (!containerRef.current) return
     
     const handleScroll = () => {
-      // Get viewport height for calculations
       const viewportHeight = window.innerHeight
       const viewportMiddle = viewportHeight / 2
-      
-      // Find which word is closest to the middle of the viewport
       let closestToMiddle = -1
       let smallestDistance = Infinity
       
@@ -40,13 +31,10 @@ export function ProcessSteps() {
         }
       })
       
-      // If the closest word is within a reasonable threshold of the middle
       setActiveWordIndex(smallestDistance < viewportHeight / 3 ? closestToMiddle : null)
     }
     
     window.addEventListener("scroll", handleScroll)
-    handleScroll() // Call once to set initial state
-    
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
   

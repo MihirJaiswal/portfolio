@@ -1,12 +1,10 @@
 "use client"
-
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import { motion, AnimatePresence } from "motion/react"
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useGrayscaleStore } from "@/lib/store"
 
 type Project = {
   id: string
@@ -14,8 +12,8 @@ type Project = {
   subtitle?: string
   description: string
   category: string
-  image: string
-  mainImage: string
+  image: string | StaticImageData
+  mainImage: string | StaticImageData
   details?: string
 }
 
@@ -25,7 +23,6 @@ interface ProjectListMobileProps {
 
 export function ProjectListMobile({ projects }: ProjectListMobileProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
-  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   const toggleExpand = (id: string) => {
     setExpandedId(expandedId === id ? null : id)
@@ -50,10 +47,7 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                 width={200}
                 height={200}
                 quality={100}
-                className={cn(
-                  "w-full h-full object-contain transition-all duration-500",
-                  isGrayscaleEnabled ? "filter grayscale hover:grayscale-0" : ""
-                )}
+                className="w-full h-full object-contain transition-all duration-500"
               />
             </div>
             <div className="flex-grow">
@@ -85,10 +79,7 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                       alt={project.title}
                       width={400}
                       height={400}
-                      className={cn(
-                        "w-full h-full object-cover bg-black transition-all duration-500",
-                        isGrayscaleEnabled ? "filter md:grayscale hover:grayscale-0" : ""
-                      )}
+                      className="w-full h-full object-cover bg-black transition-all duration-500"
                     />
                   </div>
 

@@ -1,6 +1,4 @@
-import React from 'react'
 import { siteConfig } from "@/lib/data"
-import { TextHoverEffect } from './ui/text-hover-effect'
 
 function Footer() {
     return (
@@ -33,13 +31,6 @@ function Footer() {
                     <p className="text-xs text-center mt-20 text-neutral-400">
                         &copy; {new Date().getFullYear()} {siteConfig.author}. ALL RIGHTS RESERVED.
                     </p>
-                </div>
-                <div className=' hidden lg:block border-t border-dashed border-neutral-700 mt-1 bg-[#000000] bg-[radial-gradient(#171717_1px,#000000_1px)] bg-[size:20px_20px]'>
-                    
-                    <div className="h-[20rem] lg:h-[10rem] hidden md:flex items-center justify-center max-w-7xl mx-auto mt-12 relative scale-150">
-                        
-                        <TextHoverEffect text={siteConfig.authorTagline.toUpperCase()} />
-                    </div>
                 </div>
             </footer>
         </div>

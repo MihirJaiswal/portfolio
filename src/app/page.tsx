@@ -1,27 +1,25 @@
-// Fixed Home component
 import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
-import ClientWrapper from "@/components/ClientWrapper";
-import ContactForm from "@/components/Contact";
 import { CustomCursor } from "@/components/CustomCursor";
-import Footer from "@/components/Footer";
-import GalleryWall from "@/components/GalleryWall";
-import { HeroSection } from "@/components/Hero";
+import Footer from "@/components/footer/Footer";
+import GalleryWall from "@/components/drawing/GalleryWall";
+import { HeroSection } from "@/components/hero/Hero";
 import LenisProvider from "@/components/lenis/LenisProvider";
 import { Navbar } from "@/components/navbar/Navbar";
-import { ProcessSteps } from "@/components/Proccess";
+import { ProcessSteps } from "@/components/process/Proccess";
 import { ProjectsSection } from "@/components/projects/Project";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ScrollToTop } from "@/components/scroll-to-top";
-import Work from "@/components/Work";
-import BlogSection from "@/components/BlogSection";
+import Work from "@/components/work/Work";
+import BlogSection from "@/components/blog/BlogSection";
 import { getAllBlogPosts } from '@/lib/mdx'
+import ContactForm from "@/components/contact/Contact";
 
 export default async function Home() {
   const posts = await getAllBlogPosts()
-
-  const MainContent = () => (
-    <LenisProvider>
+  return (
+    <>
+      <LenisProvider>
       <ScrollProgress />
       <CustomCursor />
       <div className="max-w-7xl mx-auto overflow-hidden">
@@ -43,13 +41,6 @@ export default async function Home() {
       <Footer />
       <ScrollToTop />
     </LenisProvider>
-  )
-
-  return (
-    <div>
-      <ClientWrapper>
-        <MainContent />
-      </ClientWrapper>
-    </div>
+    </>
   );
 }

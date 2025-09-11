@@ -1,12 +1,9 @@
 "use client"
-
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
-import { useGrayscaleStore } from "@/lib/store"
 
 type Project = {
   id: string
@@ -14,8 +11,8 @@ type Project = {
   subtitle?: string
   description: string
   category: string
-  image: string
-  mainImage: string
+  image: string | StaticImageData
+  mainImage: string | StaticImageData
   details?: string
 }
 
@@ -31,7 +28,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const projectsPerPage = 2
   const totalPages = Math.ceil(projects.length / projectsPerPage)
-  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   // Dispatch custom event to hide/show main cursor
   const dispatchProjectHover = (isHovering: boolean) => {
@@ -72,55 +68,29 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     (currentPage + 1) * projectsPerPage
   )
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const cursorVariants = {
-    default: {
-      scale: 0,
-      opacity: 0
-    },
-    hover: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 25
-      }
-    }
-  }
-
   return (
     <div 
       ref={containerRef}
       className="relative w-full"
     >
       {/* Custom Project Cursor - Fixed positioning */}
-      <motion.div
-        className="fixed pointer-events-none z-50 mix-blend-difference"
+      <div
+        className={cn(
+          "fixed pointer-events-none z-50 mix-blend-difference transition-all duration-300 ease-out",
+          isHoveringCard ? "scale-100 opacity-100" : "scale-0 opacity-0"
+        )}
         style={{
           left: cursorPos.x,
           top: cursorPos.y,
           transform: 'translate(-50%, -50%)'
         }}
-        variants={cursorVariants}
-        animate={isHoveringCard ? "hover" : "default"}
       >
         <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
           <span className="text-black text-xs font-bold uppercase tracking-wider">
             Check Out
           </span>
         </div>
-      </motion.div>
+      </div>
 
       <div className="flex flex-col md:flex-row justify-end items-center mb-8 gap-4">
         <div className="flex items-center space-x-6">
@@ -159,30 +129,28 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
         </div>
       </div>
 
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        key={currentPage}
-      >
-        {currentProjects.map((project) => (
-          <motion.div
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
+        {currentProjects.map((project, index) => (
+          <div
             key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            onHoverStart={() => {
+            className={cn(
+              "group cursor-none",
+              `animation-delay-${index * 100}`
+            )}
+            style={{
+              animationDelay: `${index * 100}ms`,
+              animationFillMode: 'forwards'
+            }}
+            onMouseEnter={() => {
               setHoveredProject(project.id)
               setIsHoveringCard(true)
               dispatchProjectHover(true)
             }}
-            onHoverEnd={() => {
+            onMouseLeave={() => {
               setHoveredProject(null)
               setIsHoveringCard(false)
               dispatchProjectHover(false)
             }}
-            className="group cursor-none" // Hide default cursor on cards
           >
             <Link href={`/projects/${project.id}`} className="block cursor-none">
               <div className="relative overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-neutral-100 dark:bg-neutral-800">
@@ -192,11 +160,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     alt={project.title}
                     width={450}
                     height={450}
+                    loading="lazy"
                     quality={100}
-                    className={cn(
-                      "w-full h-full object-cover transition-all duration-700 ease-in-out transform bg-neutral-900 dark:bg-neutral-950 border",
-                      hoveredProject === project.id || !isGrayscaleEnabled ? "filter-none" : "filter grayscale"
-                    )}
+                    className="w-full h-full object-cover transition-all duration-700 ease-in-out transform bg-neutral-900 dark:bg-neutral-950 border"
+                    placeholder="blur"
                   />
                   <div className={cn(
                     "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300",
@@ -228,9 +195,9 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   )
 }

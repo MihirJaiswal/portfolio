@@ -1,25 +1,44 @@
 'use client';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { useTransform, useScroll, motion, useReducedMotion } from 'framer-motion';
-import { useGrayscaleStore } from '@/lib/store';
+import { useTransform, useScroll, motion, useReducedMotion } from 'motion/react';
+import Image from 'next/image';
 
-const images: string[] = [
-  "certigen.webp",
-  "citronics.webp", 
-  "cybersphere.webp",
-  "dreammist.webp",
-  "equi.webp",
-  "gdsc.webp",
-  "ghibli.webp",
-  "hero.webp",
-  "inkscroll.webp",
-  "monsterpedia.webp",
-  "riya.webp",
-  "story.webp",
+// Static imports for better optimization
+import certigenImg from '/public/work/certigen.webp';
+import citronicsImg from '/public/work/citronics.webp';
+import cybersphereImg from '/public/work/cybersphere.webp';
+import dreammistImg from '/public/work/dreammist.webp';
+import equiImg from '/public/work/equi.webp';
+import gdscImg from '/public/work/gdsc.webp';
+import ghibliImg from '/public/work/ghibli.webp';
+import heroImg from '/public/work/hero.webp';
+import inkscrollImg from '/public/work/inkscroll.webp';
+import monsterpediaImg from '/public/work/monsterpedia.webp';
+import riyaImg from '/public/work/riya.webp';
+import storyImg from '/public/work/story.webp';
+
+interface ImageData {
+  src: any;
+  alt: string;
+}
+
+const images: ImageData[] = [
+  { src: certigenImg, alt: 'Certigen Project' },
+  { src: citronicsImg, alt: 'Citronics Project' },
+  { src: cybersphereImg, alt: 'Cybersphere Project' },
+  { src: dreammistImg, alt: 'Dreammist Project' },
+  { src: equiImg, alt: 'Equi Project' },
+  { src: gdscImg, alt: 'GDSC Project' },
+  { src: ghibliImg, alt: 'Ghibli Project' },
+  { src: heroImg, alt: 'Hero Project' },
+  { src: inkscrollImg, alt: 'Inkscroll Project' },
+  { src: monsterpediaImg, alt: 'Monsterpedia Project' },
+  { src: riyaImg, alt: 'Riya Project' },
+  { src: storyImg, alt: 'Story Project' },
 ];
 
 interface ColumnProps {
-  images: string[];
+  images: ImageData[];
   y: any; 
   topOffset?: string;
   isMobile: boolean;
@@ -27,8 +46,6 @@ interface ColumnProps {
 }
 
 const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldReduceMotion }) => {
-  const { isGrayscaleEnabled } = useGrayscaleStore();
-  
   return (
     <motion.div 
       className={`relative h-full flex flex-col gap-2 md:gap-8 ${
@@ -44,34 +61,33 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldR
         perspective: 1000
       }}
     >
-      {images.map((src, i) => (
+      {images.map((imageData, i) => (
         <div 
-          key={i} 
-          className="relative w-full overflow-hidden"
+          key={`${imageData.alt}-${i}`}
+          className="relative w-full overflow-hidden border border-neutral-700"
           style={{ 
             aspectRatio: isMobile ? '3/4' : 'auto',
-            height: isMobile ? 'auto' : '100%'
+            height: isMobile ? 'auto' : '100%',
+            minHeight: isMobile ? '200px' : 'auto',
           }}
         >
-          <div 
-            className={`w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 border border-neutral-700 ${
-              // Simplified mobile effects
-              isMobile 
-                ? `${isGrayscaleEnabled ? 'filter grayscale' : ''} transition-none` 
-                : `${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-300`
-            }`}
+          <Image
+            src={imageData.src}
+            alt={imageData.alt}
+            fill
+            sizes={isMobile ? '50vw' : '25vw'}
+            className="object-cover"
+            quality={85}
+            placeholder="blur"
+            loading='lazy'
             style={{
-              backgroundImage: `url(/work/${src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              minHeight: isMobile ? '200px' : 'auto',
               // Mobile GPU acceleration
               transform: 'translateZ(0)',
               backfaceVisibility: 'hidden',
-              // Prevent layout thrashing
-              contain: 'layout style paint'
             }}
           />
+          {/* Gradient overlay for better text contrast if needed */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none" />
         </div>
       ))}
     </motion.div>

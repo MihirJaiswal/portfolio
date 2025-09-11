@@ -1,21 +1,19 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { useGrayscaleStore } from "@/lib/store"
-import { artworks } from "@/lib/data"
+import Image, { StaticImageData } from 'next/image';
+import { artworks } from "@/lib/project"
 
 interface Artwork {
   id: number;
   title: string;
   year: string;
   medium: string;
-  imageUrl: string;
+  imageUrl: string | StaticImageData;
 }
 
 const GalleryWall: React.FC = () => {
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   // Check if mobile on component mount
   useEffect(() => {
@@ -73,9 +71,10 @@ const GalleryWall: React.FC = () => {
                     src={artworks[0].imageUrl}
                     alt={artworks[0].title}
                     fill
-                    className={`artwork-image object-cover p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700`}
+                    className="artwork-image object-cover p-1.5  transition-all duration-500 border border-neutral-700"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 40vw"
-                    priority
+                    loading='lazy'
+                    placeholder='blur'
                   />
                   <div className="artwork-info">
                     <h3 className="artwork-title">{artworks[0].title}</h3>
@@ -95,7 +94,9 @@ const GalleryWall: React.FC = () => {
                     src={artworks[1].imageUrl}
                     alt={artworks[1].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -116,7 +117,9 @@ const GalleryWall: React.FC = () => {
                     src={artworks[2].imageUrl}
                     alt={artworks[2].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -137,7 +140,9 @@ const GalleryWall: React.FC = () => {
                     src={artworks[3].imageUrl}
                     alt={artworks[3].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -159,7 +164,9 @@ const GalleryWall: React.FC = () => {
                     alt={artworks[4].title}
                     quality={100}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-alla duration-500 border object-right object-cover border-neutral-700`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 transition-alla duration-500 border object-right object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 45vw"
                   />
                   <div className="artwork-info">
@@ -182,7 +189,7 @@ const GalleryWall: React.FC = () => {
                     fill
                     unoptimized={true}
                     quality={100}
-                    className={`artwork-image ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
+                    className={`artwork-image hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -203,7 +210,9 @@ const GalleryWall: React.FC = () => {
                     src={artworks[6].imageUrl}
                     alt={artworks[6].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -224,7 +233,9 @@ const GalleryWall: React.FC = () => {
                     src={artworks[7].imageUrl}
                     alt={artworks[7].title}
                     fill
-                    className={`artwork-image p-1.5 ${isGrayscaleEnabled ? 'filter grayscale contrast-125' : ''} hover:grayscale-0 transition-all duration-500  object-cover border border-neutral-700`}
+                    loading='lazy'
+                    placeholder='blur'
+                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500  object-cover border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -236,220 +247,6 @@ const GalleryWall: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          .gallery-grid {
-            display: grid;
-            grid-template-columns: 2fr 1.5fr 1fr;
-            grid-template-rows: 1.2fr 1fr 1fr;
-            grid-template-areas:
-              "large-1 medium-1 small-1"
-              "medium-2 large-2 large-2"
-              "small-2 medium-3 small-3";
-          }
-
-          .large-piece {
-            grid-area: large-1;
-          }
-
-          .large-piece-2 {
-            grid-area: large-2;
-          }
-
-          .medium-piece-1 {
-            grid-area: medium-1;
-          }
-
-          .medium-piece-2 {
-            grid-area: medium-2;
-          }
-
-          .medium-piece-3 {
-            grid-area: medium-3;
-          }
-
-          .small-piece-1 {
-            grid-area: small-1;
-          }
-
-          .small-piece-2 {
-            grid-area: small-2;
-          }
-
-          .small-piece-3 {
-            grid-area: small-3;
-          }
-
-          .artwork-frame {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .frame-border {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: #1a1a1a;
-            padding: 8px;
-            box-shadow: 
-              0 4px 12px rgba(0, 0, 0, 0.15),
-              0 2px 4px rgba(0, 0, 0, 0.1),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .artwork-image {
-            object-fit: cover;
-            display: block;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .artwork-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 24px 12px 12px;
-            transform: translateY(100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            z-index: 10;
-          }
-
-          .artwork-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-            letter-spacing: 0.025em;
-          }
-
-          .artwork-details {
-            font-size: 0.75rem;
-            opacity: 0.9;
-            font-weight: 300;
-          }
-
-          .group:hover .frame-border {
-            box-shadow: 
-              0 8px 32px rgba(0, 0, 0, 0.3),
-              0 4px 12px rgba(0, 0, 0, 0.2),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-              0 0 0 2px rgba(255, 255, 255, 0.05);
-            transform: translateY(-2px);
-          }
-
-          .group:hover .artwork-image {
-            transform: scale(1.02);
-          }
-
-          .group:hover .artwork-info {
-            transform: translateY(0);
-            opacity: 1;
-          }
-
-          /* Mobile-specific styles - add tap indication */
-          @media (max-width: 640px) {
-            .artwork-frame:active {
-              transform: scale(0.98);
-            }
-          }
-
-          /* Responsive Adjustments */
-          @media (max-width: 1024px) {
-            .gallery-grid {
-              grid-template-columns: 1.8fr 1.3fr 1fr;
-            }
-            
-            .frame-border {
-              padding: 6px;
-            }
-          }
-
-          @media (max-width: 768px) {
-            .gallery-grid {
-              grid-template-columns: 1.5fr 1.2fr 1fr;
-            }
-            
-            .frame-border {
-              padding: 4px;
-            }
-            
-            .artwork-info {
-              padding: 16px 8px 8px;
-            }
-            
-            .artwork-title {
-              font-size: 0.8rem;
-            }
-            
-            .artwork-details {
-              font-size: 0.7rem;
-            }
-          }
-
-          /* Mobile Layout - 2 images per row */
-          @media (max-width: 640px) {
-            .gallery-container {
-              height: auto !important;
-              min-height: auto !important;
-            }
-            
-            .gallery-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              grid-template-rows: repeat(4, 200px);
-              gap: 12px;
-              grid-template-areas:
-                "mobile-1 mobile-2"
-                "mobile-3 mobile-4"
-                "mobile-5 mobile-6"
-                "mobile-7 mobile-8";
-            }
-            
-            .large-piece { grid-area: mobile-1; }
-            .medium-piece-1 { grid-area: mobile-2; }
-            .small-piece-1 { grid-area: mobile-3; }
-            .medium-piece-2 { grid-area: mobile-4; }
-            .large-piece-2 { grid-area: mobile-5; }
-            .small-piece-2 { grid-area: mobile-6; }
-            .medium-piece-3 { grid-area: mobile-7; }
-            .small-piece-3 { grid-area: mobile-8; }
-            
-            .artwork-title {
-              font-size: 0.75rem;
-            }
-            
-            .artwork-details {
-              font-size: 0.65rem;
-            }
-            
-            .artwork-info {
-              padding: 12px 8px 8px;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .gallery-grid {
-              gap: 8px;
-              grid-template-rows: repeat(4, 180px);
-            }
-            
-            .frame-border {
-              padding: 3px;
-            }
-            
-            .artwork-title {
-              font-size: 0.7rem;
-            }
-            
-            .artwork-details {
-              font-size: 0.6rem;
-            }
-          }
-        `}</style>
       </section>
 
       {/* Mobile Popup Modal */}
@@ -472,6 +269,8 @@ const GalleryWall: React.FC = () => {
                   src={selectedArtwork.imageUrl}
                   alt={selectedArtwork.title}
                   fill
+                  loading='lazy'
+                  placeholder='blur'
                   className={selectedArtwork.id !== 5 ? 'object-cover' : 'object-contain'}
                   sizes="(max-width: 640px) 90vw"
                   priority

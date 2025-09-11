@@ -1,8 +1,7 @@
 "use client"
 import type React from "react"
-
 import { useState } from "react"
-import { MorphingBlob } from "../components/ui/morphing-blob"
+import { MorphingBlob } from "../../components/ui/morphing-blob"
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

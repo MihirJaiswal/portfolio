@@ -1,9 +1,6 @@
-"use client"
-
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
-import { useGrayscaleStore } from "@/lib/store";
 
 const skills = [
   {
@@ -78,8 +75,6 @@ const SkillCard = ({
   name: string;
   category: string;
 }) => {
-  const { isGrayscaleEnabled } = useGrayscaleStore();
-  
   return (
     <figure
       className={cn(
@@ -93,10 +88,7 @@ const SkillCard = ({
             alt={`${name} logo`}
             width={40}
             height={40}
-            className={cn(
-              "h-6 w-6 object-contain contrast-125 transition-all duration-500",
-              isGrayscaleEnabled ? "filter grayscale group-hover:grayscale-0" : ""
-            )}
+            className="h-6 w-6 object-contain contrast-125 transition-all duration-500"
           />
         </div>
         <div className="flex flex-col">

@@ -1,9 +1,6 @@
-"use client";
-
-import React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import WaterRippleEffect from "../ui/water-ripple-effect";
+import LazyWaterRippleEffect from "./Ripple";
 
 // Define service items
 const serviceItems = [
@@ -43,7 +40,7 @@ export default function Service() {
       <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 relative">
         {/* Left side - Big Image Only */}
         <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block lg:overflow-hidden">
-          <WaterRippleEffect/>
+          <LazyWaterRippleEffect/>
         </div>
 
         {/* Right side - Title and Service List */}

@@ -2,8 +2,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { useGrayscaleStore } from "@/lib/store"
+import { motion, AnimatePresence } from "motion/react"
 import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { BlogPost } from "@/lib/mdx"
@@ -13,7 +12,6 @@ interface BlogSectionProps {
 }
 
 export default function BlogSection({ posts }: BlogSectionProps) {
-  const { isGrayscaleEnabled } = useGrayscaleStore()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const [hoveredPost, setHoveredPost] = useState<string | null>(null)
@@ -73,8 +71,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                   className="w-full"
                 >
                   <BlogCard 
-                    post={displayPosts[currentSlide]} 
-                    isGrayscaleEnabled={isGrayscaleEnabled} 
+                    post={displayPosts[currentSlide]}  
                     isMobile={true}
                     hoveredPost={hoveredPost}
                     setHoveredPost={setHoveredPost}
@@ -127,7 +124,6 @@ export default function BlogSection({ posts }: BlogSectionProps) {
               >
                 <BlogCard 
                   post={post} 
-                  isGrayscaleEnabled={isGrayscaleEnabled} 
                   isMobile={false}
                   hoveredPost={hoveredPost}
                   setHoveredPost={setHoveredPost}
@@ -159,13 +155,12 @@ export default function BlogSection({ posts }: BlogSectionProps) {
 
 interface BlogCardProps {
   post: BlogPost
-  isGrayscaleEnabled: boolean
   isMobile: boolean
   hoveredPost: string | null
   setHoveredPost: (slug: string | null) => void
 }
 
-function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredPost }: BlogCardProps) {
+function BlogCard({ post, isMobile, hoveredPost, setHoveredPost }: BlogCardProps) {
   return (
     <article
       className={`group bg-white dark:bg-neutral-950 border border-dashed border-neutral-600 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
@@ -178,9 +173,9 @@ function BlogCard({ post, isGrayscaleEnabled, isMobile, hoveredPost, setHoveredP
             src={post.image || "/placeholder.svg"}
             alt={post.title}
             fill
+            loading="lazy"
             className={cn(
               "object-cover transition-all duration-700 ease-in-out transform border-b border-dashed border-neutral-400 dark:border-neutral-600",
-              hoveredPost === post.slug || !isGrayscaleEnabled ? "filter-none" : "filter grayscale"
             )}
           />
         </div>

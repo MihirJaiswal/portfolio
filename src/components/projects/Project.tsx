@@ -1,5 +1,4 @@
-"use client";
-import { projects } from "@/lib/data";
+import { projects } from "@/lib/project";
 import { ProjectGrid } from "./project-grid";
 import { ProjectListMobile } from "./project-list-mobile";
 
@@ -16,11 +15,9 @@ export function ProjectsSection() {
             </h2>
           </div>
         </div>
-
         <div className="md:hidden">
           <ProjectListMobile projects={projects} />
         </div>
-
         <div className="hidden md:flex">
           <ProjectGrid projects={projects} />
         </div>

@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { ArrowLeft, Share2 } from "lucide-react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { ThemeToggle } from "./theme-toggle"
 
 interface PageNavProps {

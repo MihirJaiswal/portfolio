@@ -1,22 +1,20 @@
+'use client'
 import { useEffect, useState } from "react";
 import { Apple, BadgeCent, BadgeInfo, BadgeX, Banana, Bolt } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useGrayscaleStore } from "@/lib/store";
+import statue from '../../../public/assets/statue.png'
 
-// Inline Tailwind configuration for floating animation
-// Normally this would be in tailwind.config.js
-// Kept for reference but no longer used on the statue
 export const CenterIcon = () => {
-  const { isGrayscaleEnabled } = useGrayscaleStore();
   
   return (
     <div className="relative h-112 w-112 z-10">
       <Image
-        src="/assets/statue.png"
+        src={statue}
         alt="Statue"
         fill
-        className={`object-contain ${isGrayscaleEnabled ? 'filter grayscale contrast-125 brightness-105' : ''} drop-shadow-lg drop-shadow-black`}
+        loading="lazy"
+        className="object-contain drop-shadow-lg drop-shadow-black"
       />
     </div>
   );
