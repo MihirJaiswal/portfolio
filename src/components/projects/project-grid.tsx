@@ -23,6 +23,7 @@ interface ProjectGridProps {
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
   const [currentPage, setCurrentPage] = useState(0)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [isHoveringCard, setIsHoveringCard] = useState(false)
