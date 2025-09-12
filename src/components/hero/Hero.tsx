@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
+import img from '../../../public/assets/hero-image.webp'
 
 export const HeroSection = () => {
   return (
@@ -52,7 +53,7 @@ export const HeroSection = () => {
             aria-label="Professional portrait of the designer and developer"
           >
             <Image
-              src="/assets/img5.png"
+              src={img}
               alt="Professional portrait showing the designer and developer in a creative workspace"
               fill
               quality={100}
@@ -135,9 +136,10 @@ export const HeroSection = () => {
               className="z-10 relative w-[clamp(300px,40vw,450px)] h-[clamp(350px,45vw,500px)] overflow-hidden rounded-lg lg:mt-44 md:scale-100 lg:scale-92"
             >
               <Image
-                src="/assets/img5.png"
+                src={img}
                 alt="Professional portrait of the designer and developer showcasing creative work and technical expertise"
-                fill
+                height={450}
+                width={475}
                 quality={100}
                 className="object-contain transition-all duration-300 relative"
                 priority

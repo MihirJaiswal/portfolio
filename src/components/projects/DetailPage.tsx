@@ -192,7 +192,7 @@ export default function ProjectPage() {
             alt={project.title}
             width={500}
             height={500}
-            priority
+            loading="lazy"
             className="w-full h-full object-cover  bg-black"
           />
         </motion.div>

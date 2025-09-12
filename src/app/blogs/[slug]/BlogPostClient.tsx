@@ -101,7 +101,7 @@ export default function BlogPostClient({
               width={1200}
               height={675}
               quality={100}
-              priority
+              loading="lazy"
               className="w-full h-full aspect-video border border-neutral-300 dark:border-neutral-800 object-contain bg-white"
             />
           </div>

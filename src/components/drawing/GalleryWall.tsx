@@ -273,7 +273,6 @@ const GalleryWall: React.FC = () => {
                   placeholder='blur'
                   className={selectedArtwork.id !== 5 ? 'object-cover' : 'object-contain'}
                   sizes="(max-width: 640px) 90vw"
-                  priority
                 />
               </div>
 
