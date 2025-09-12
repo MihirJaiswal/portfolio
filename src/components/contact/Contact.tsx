@@ -17,7 +17,7 @@ export default function ContactForm() {
   }
 
   return (
-   <div className="px-6 pt-12 border-t-2 border-neutral-600 dark:border-neutral-800 relative" id="contact">
+   <div className="px-6 py-20 border-t-2 border-neutral-600 dark:border-neutral-800 relative" id="contact">
      <div className="w-full max-w-7xl mx-auto">
       <h2 className="text-neutral-600 font-medium mb-8">GET IN TOUCH</h2>
 

@@ -37,7 +37,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
   const displayPosts = posts.slice(0, 3)
 
   return (
-    <section className="pb-24 pt-8 md:pt-0 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gradient-to-b dark:from-background dark:to-black">
+    <section className="px-4 sm:px-6 lg:px-8 bg-white dark:bg-gradient-to-b dark:from-background dark:to-black py-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

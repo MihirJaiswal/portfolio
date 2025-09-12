@@ -7,14 +7,14 @@ import nyx from '../../../public/assets/nyxui.webp'
 
 export default function Intro() {
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
+    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border-y lg:border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-neutral-200/30 dark:bg-neutral-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-neutral-200/40 dark:bg-neutral-800/30 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="lg:container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="absolute inset-0 pointer-events-none z-[-1]">
             <ThreeDMarqueeDemo/>
@@ -25,10 +25,10 @@ export default function Intro() {
         <div className="absolute top-0 bottom-0 right-0 w-full bg-white/70 h-screen -mt-44 pointer-events-none z-[-1] dark:hidden" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left column - Content */}
-          <div className="relative flex flex-col items-start text-left order-2 lg:order-1 mt-12">
+          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-12">
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8 mt-3">
               <Sparkles className="w-4 h-4" />
               <span>Explore my UI Library</span>
             </div>

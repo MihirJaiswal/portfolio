@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-0 sm:pt-12 md:pt-24 overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -16,13 +16,13 @@ export default function About() {
       <div className="px-6 relative z-10">
         {/* Header Section */}
         <div className="flex flex-col items-start justify-center md:mb-8">
-          <div className="md:w-1/2 mb-6 md:mb-0 flex items-start gap-4">
-            <h2 className="text-6xl md:text-8xl font-bold mb-6">
+          <div className="md:w-full mb-6 md:mb-0 flex items-start gap-4">
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r z-10 from-neutral-500 via-neutral-900 to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent font-extrabold relative">
                 ABOUT
               </span>
             </h2>
-            <div className="hidden md:flex md:w-24 md:h-24 w-14 h-14 mt-12 -ml-20 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer">
+            <div className="hidden md:flex md:w-24 md:h-24 w-14 h-14 lg:mt-12 -ml-12 lg:-ml-20 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer">
               <div className="group-hover:translate-x-0.5 group-hover:-rotate-15 transition-transform duration-200">
                 <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-neutral-700 dark:text-neutral-400 hidden md:flex transition-transform rotate-80" />
               </div>

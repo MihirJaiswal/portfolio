@@ -179,9 +179,9 @@ export default function Work() {
   }, [isMobile]);
   
   return (
-    <div className='bg-black border-t-2' id='work'>
-      <div className="text-center mb-12 relative pt-12 pb-3">
-        <h2 className="text-[50px] md:text-8xl font-extrabold text-center mb-6">
+    <div className='bg-black border-t-2 py-20' id='work'>
+      <div className="text-center mb-12 relative">
+        <h2 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-center mb-6">
           <span className="bg-gradient-to-r from-neutral-400 via-white to-neutral-200 bg-clip-text text-transparent">
             MY WORK
           </span>

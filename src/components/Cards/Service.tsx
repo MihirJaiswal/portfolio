@@ -28,7 +28,7 @@ const serviceItems = [
 
 export default function Service() {
   return (
-    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
+    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border-y lg:border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
       <div
         className={cn(
           `absolute inset-0 size-full`,

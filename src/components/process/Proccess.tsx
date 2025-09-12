@@ -41,7 +41,7 @@ export function ProcessSteps() {
   return (
     <div 
       ref={containerRef}
-      className="pb-24 pt-32 relative bg-black"
+      className="py-20 relative bg-black"
     >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-20">
@@ -55,7 +55,7 @@ export function ProcessSteps() {
             >
               <h2 
                 className={cn(
-                  "text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight transition-colors duration-500 text-center",
+                  "text-5xl md:text-8xl xl:text-9xl font-extrabold tracking-tight transition-colors duration-500 text-center",
                   activeWordIndex === index ? "text-white" : "text-neutral-700"
                 )}
               >

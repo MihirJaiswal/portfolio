@@ -3,13 +3,15 @@ import { ArrowLeft} from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
 import img from '../../../public/assets/hero-image.webp'
 import Link from "next/link"
+import MobileHeroSection from "./mobile-hero"
 
 export const HeroSection = () => {
   return (
     <section 
-      className="bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden"
+      className="bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden pb-4"
       aria-label="Portfolio hero section"
     >
+     
       {/* Decorative background elements - marked as decorative */}
        <div 
         className="absolute hidden lg:hidden lg:dark:block top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#0c0a09)] z-0"
@@ -23,92 +25,15 @@ export const HeroSection = () => {
 
       {/* MOBILE LAYOUT - Clean & Minimal */}
       <div className="md:hidden min-h-screen flex flex-col mt-14">
-        {/* Mobile Title - Cleaner positioning */}
-        <header className="pb-6 pt-8">
-          <h1
-            className="text-center font-[geist] font-black leading-none tracking-tight mx-auto"
-            style={{ fontSize: "clamp(3.3rem, 10vw, 12rem)" }}
-            aria-label="Explore my portfolio - Designer and Developer showcase"
-          >
-            <span
-              className="bg-gradient-to-r from-neutral-600 via-neutral-900 to-neutral-600 dark:from-neutral-300 dark:via-white dark:to-neutral-300 bg-clip-text text-transparent block"
-              aria-hidden="true"
-            >
-              EXPLORE MY
-            </span>
-            <span
-              className="bg-gradient-to-r from-neutral-600 via-neutral-900 to-neutral-600 dark:from-neutral-200 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent block"
-              aria-hidden="true"
-            >
-              PORTFOLIO
-            </span>
-          </h1>
-        </header>
-
-        {/* Mobile Content - Better spacing and layout */}
-        <main className="flex flex-col items-center justify-center px-6 pb-12 space-y-6">
-          {/* Mobile image - Better proportions */}
-          <div
-            className="relative w-66 h-64 sm:w-78 sm:h-78 overflow-hidden rounded-3xl"
-            role="img"
-            aria-label="Professional portrait of the designer and developer"
-          >
-            <Image
-              src={img}
-              alt="Professional portrait showing the designer and developer in a creative workspace"
-              fill
-              quality={100}
-              loading="eager"
-              className='object-cover transition-all duration-300'
-              priority
-              sizes="(max-width: 640px) 264px, 312px"
-            />
-          </div>
-
-          {/* Mobile info section - Cleaner typography */}
-          <div className="text-center space-y-4">
-            {/* Role indicator */}
-            <div className="inline-block">
-              <span 
-                className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 tracking-[0.2em] uppercase"
-                role="text"
-                aria-label="Professional roles: Designer and Developer"
-              >
-                Designer / Developer
-              </span>
-            </div>
-
-            {/* Tagline - Better typography */}
-            <blockquote
-              className="text-md leading-relaxed text-neutral-700 dark:text-neutral-300"
-              role="text"
-              aria-label="Professional tagline"
-            >
-              Crafting standout websites with passion.
-            </blockquote>
-
-            {/* Mobile button - Minimal design */}
-            <div className="flex items-center justify-center gap-3">
-              <ResumeDownload/>
-            </div>
-          </div>
-        </main>
+        <MobileHeroSection/>
       </div>
 
       {/* DESKTOP LAYOUT */}
-      <div className="hidden md:block px-6 relative md:min-h-screen mt-18">
-        <div className="flex justify-between absolute bottom-1/2 left-0 right-0 max-w-4xl mx-auto -translate-y-12">
-            <div className="flex items-center">
-              <p className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
-            </div>
-            <div className="flex items-center">
-              <p className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Designer</p>
-            </div>
-          </div>
+      <div className="hidden md:block px-6 relative mt-24 lg:mt-18">
         {/* Title - now with improved dark mode colors */}
         <header>
           <h1
-            className="absolute font-[geist] top-0 left-0 right-0 font-black text-center leading-tight md:leading-none mx-auto tracking-wide md:tracking-tight w-full mt-5"
+            className="absolute font-[geist] top-4 left-0 right-0 font-black text-center leading-tight md:leading-none mx-auto tracking-wide md:tracking-tight w-full mt-5"
             style={{
               fontSize: "clamp(2.8rem, 12vw, 9rem)",
               maxWidth: "100%",
@@ -133,7 +58,7 @@ export const HeroSection = () => {
         </header>
 
         {/* Main content container - improved height handling */}
-        <main className="flex flex-col lg:flex-row items-center justify-center h-full md:min-h-screen relative">
+        <main className="flex flex-col lg:flex-row items-center justify-center relative">
           {/* Central content */}
           <div
             className="flex flex-col items-center justify-center z-10 sm:pt-40 lg:pt-0"
@@ -142,7 +67,7 @@ export const HeroSection = () => {
           >
             {/* Desktop image */}
             <div
-              className="z-10 relative w-[clamp(300px,40vw,450px)] h-[clamp(350px,45vw,500px)] overflow-hidden rounded-lg lg:mt-44 md:scale-100 lg:scale-92"
+              className="z-10 relative w-[clamp(300px,40vw,450px)] h-[clamp(350px,45vw,500px)] overflow-hidden rounded-lg lg:mt-52 md:scale-100 lg:scale-92"
             >
               <Image
                 src={img}
@@ -168,7 +93,7 @@ export const HeroSection = () => {
           
           {/* Resume download button */}
           <div
-            className="md:absolute left-3 bottom-36 z-10 flex flex-col gap-4"
+            className="md:absolute left-3 bottom-28 z-10 flex flex-col gap-4"
             role="complementary"
             aria-label="Resume download section"
           >
@@ -180,12 +105,12 @@ export const HeroSection = () => {
           
           {/* Role indicator with arrow */}
           <div
-            className="md:absolute right-3 bottom-36 flex items-end flex-col z-10 mx-auto"
+            className="md:absolute right-3 bottom-28 flex items-end flex-col z-10 mx-auto"
             role="complementary"
             aria-label="Professional role indicator"
           >
               <Link
-                href="/nyx-ui"
+                href="https://nyxui.com/"
                 aria-label="Navigate to Nyx UI"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -204,12 +129,23 @@ export const HeroSection = () => {
               >
                 CHECKOUT NYX UI 
               </p>
-              <p className="max-w-[15rem] xl:max-w-xs text-right  tracking-wide leading-snug text-sm text-neutral-700 dark:text-neutral-300">
+              <p className="max-w-[15rem] xl:max-w-xs text-right hidden lg:block  tracking-wide leading-snug text-sm text-neutral-700 dark:text-neutral-300">
                 Explore my component library
               </p>
           </div>
         </main>
       </div>
+         <div aria-label="Professional role indicator" className="hidden md:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-20 xl:px-4">
+            <div className="flex items-center">
+              <p aria-label="Professional specialization: Developer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
+            </div>
+            <div className="flex items-center">
+              <p aria-label="Professional specialization: Product Builder" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Product Builder</p>
+            </div>
+            <div className="flex items-center">
+              <p aria-label="Professional specialization: Designer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Designer</p>
+            </div>
+          </div>
     </section>
   )
 }
