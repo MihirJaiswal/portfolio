@@ -287,6 +287,7 @@ const jsonLd = {
     }
   }
 }
+
 export default function RootLayout({
   children,
 }: {
@@ -296,23 +297,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon" type="image/png" sizes="64x64" />
-        {/* Font preloading for better mobile performance */}
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="https://fonts.gstatic.com/s/manrope/v15/xn7_YHE41ni1AdIRggexSg.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
