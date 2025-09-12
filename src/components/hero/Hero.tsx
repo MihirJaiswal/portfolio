@@ -152,8 +152,8 @@ export const HeroSection = () => {
                   maskComposite: "exclude",
                 }}
               />
-              {/* <div className="dark:hidden absolute bottom-30 right-15 bg-gradient-to-r from-transparent via-white/60 to-white/50 dark:from-background/50 dark:via-background/50 dark:to-transparent h-2 w-12 rotate-30"></div>
-               <div className="absolute bottom-27 left-23 bg-gradient-to-r from-white/50 via-white/50 to-transparent dark:from-background/50 dark:via-background/50 dark:to-transparent h-2 w-20 -rotate-25"></div> */}
+              <div className="hidden lg:block absolute bottom-0 -translate-y-[140px] -translate-x-15 right-0 bg-white dark:bg-black/5 h-1 w-14 rotate-30 rounded-3xl blur-xs"></div>
+               <div className="hidden lg:block absolute bottom-0 -translate-y-[110px] xl:-translate-y-[120px] translate-x-17 xl:translate-x-21 left-0 bg-white dark:bg-black/5 h-2 xl:h-1 w-21 rounded-3xl -rotate-25 blur-xs"></div>
             </div>
           </div>
           
