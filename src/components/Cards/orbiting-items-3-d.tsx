@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Apple, BadgeCent, BadgeInfo, BadgeX, Banana, Bolt } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import statue from '../../../public/assets/statue.png'
+import statue from '../../../public/assets/statue.webp'
 
 export const CenterIcon = () => {
   

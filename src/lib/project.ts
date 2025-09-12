@@ -1,55 +1,55 @@
 // Project Images
-import nyxMainImage from "../../public/details/nyxui.png"
+import nyxMainImage from "../../public/details/nyxui.webp"
 import nyxProjectImage from "../../public/projects/nyxui.webp"
 
-import digibazaarMainImage from "../../public/details/digibazaar.png"
+import digibazaarMainImage from "../../public/details/digibazaar.webp"
 import digibazaarProjectImage from "../../public/projects/digi.webp"
 
-import storyweaverMainImage from "../../public/details/storyweaverai.png"
+import storyweaverMainImage from "../../public/details/storyweaverai.webp"
 import storyweaverProjectImage from "../../public/projects/story.webp"
 
-import monsterpediaMainImage from "../../public/details/monsterpedia.png"
+import monsterpediaMainImage from "../../public/details/monsterpedia.webp"
 import monsterpediaProjectImage from "../../public/projects/monsterpedia.webp"
 
-import herohqMainImage from "../../public/details/herohq.png"
+import herohqMainImage from "../../public/details/herohq.webp"
 import herohqProjectImage from "../../public/projects/herohq.webp"
 
-import inkscrollMainImage from "../../public/details/inkscroll.png"
+import inkscrollMainImage from "../../public/details/inkscroll.webp"
 import inkscrollProjectImage from "../../public/projects/inkscroll.webp"
 
-import windowsPortfolioMainImage from "../../public/details/windows95portfolio.png"
+import windowsPortfolioMainImage from "../../public/details/windows95portfolio.webp"
 import windowsPortfolioProjectImage from "../../public/projects/portfolio.webp"
 
-import ghibliverseMainImage from "../../public/details/ghibliverse.png"
+import ghibliverseMainImage from "../../public/details/ghibliverse.webp"
 import ghibliverseProjectImage from "../../public/projects/ghibli.webp"
 
-import cybersphereMainImage from "../../public/details/cybersphere.png"
+import cybersphereMainImage from "../../public/details/cybersphere.webp"
 import cybersphereProjectImage from "../../public/projects/cybersphere.webp"
 
-import certificateGeneratorMainImage from "../../public/details/certificategenerator.png"
+import certificateGeneratorMainImage from "../../public/details/certificategenerator.webp"
 import certificateGeneratorProjectImage from "../../public/projects/certi.webp"
 
-import gdscMainImage from "../../public/details/gdsc.png"
+import gdscMainImage from "../../public/details/gdsc.webp"
 import gdscProjectImage from "../../public/projects/gdsc.svg"
 
-import toyMainImage from "../../public/details/toy.png"
+import toyMainImage from "../../public/details/toy.webp"
 import toyProjectImage from "../../public/projects/toy.webp"
 
-import citronicsMainImage from "../../public/details/citronics.png"
+import citronicsMainImage from "../../public/details/citronics.webp"
 import citronicsProjectImage from "../../public/projects/citro.webp"
 
-import dreammistMainImage from "../../public/details/dreammist.png"
+import dreammistMainImage from "../../public/details/dreammist.webp"
 import dreammistProjectImage from "../../public/projects/dreammist.jpg"
 
 // Artwork/Drawing Images
-import drawing1 from "../../public/drawings/1.png"
-import drawing2 from "../../public/drawings/2.jpg"
-import drawing3 from "../../public/drawings/3.jpg"
-import drawing4 from "../../public/drawings/4.jpg"
-import drawing5 from "../../public/drawings/5.png"
-import drawing7 from "../../public/drawings/7.jpg"
-import drawing8 from "../../public/drawings/8.png"
-import drawing10 from "../../public/drawings/10.png"
+import drawing1 from "../../public/drawings/1.webp"
+import drawing2 from "../../public/drawings/2.webp"
+import drawing3 from "../../public/drawings/3.webp"
+import drawing4 from "../../public/drawings/4.webp"
+import drawing5 from "../../public/drawings/5.webp"
+import drawing7 from "../../public/drawings/7.webp"
+import drawing8 from "../../public/drawings/8.webp"
+import drawing10 from "../../public/drawings/10.webp"
 
 // Export all images for easy access
 export const projectImages = {

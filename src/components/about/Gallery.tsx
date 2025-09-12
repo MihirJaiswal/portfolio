@@ -1,8 +1,8 @@
 import PhotoCanvas from "./photo-canvas"
-import img from "../../../public/photos/gdsc.jpg"
-import img2 from "../../../public/photos/soty.jpg"
-import img3 from "../../../public/photos/last.jpg"
-import img4 from "../../../public/photos/citro24.jpg"
+import img from "../../../public/photos/gdsc.webp"
+import img2 from "../../../public/photos/student-of-the-year.webp"
+import img3 from "../../../public/photos/last-day-of-college.webp"
+import img4 from "../../../public/photos/citro-24.webp"
 import { Photo } from "./PhotoCard"
 
 const samplePhotos: Photo[] = [
