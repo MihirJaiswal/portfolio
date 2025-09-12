@@ -2,11 +2,6 @@ import type React from "react"
 import Image from "next/image"
 import ResumeDownload from "./ResumeDownload"
 import img from '../../../public/assets/hero-image.webp'
-interface MobileHeroSectionProps {
-  img: string
-  ResumeDownload: React.ComponentType
-}
-
 export default function MobileHeroSection() {
   return (
     <div>
