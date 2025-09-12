@@ -187,7 +187,8 @@ const GalleryWall: React.FC = () => {
                     src={artworks[5].imageUrl}
                     alt={artworks[5].title}
                     fill
-                    unoptimized={true}
+                    loading='lazy'
+                    placeholder='blur'
                     quality={100}
                     className={`artwork-image hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
