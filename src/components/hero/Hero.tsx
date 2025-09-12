@@ -1,7 +1,8 @@
 import Image from "next/image"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft} from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
 import img from '../../../public/assets/hero-image.webp'
+import Link from "next/link"
 
 export const HeroSection = () => {
   return (
@@ -96,6 +97,14 @@ export const HeroSection = () => {
 
       {/* DESKTOP LAYOUT */}
       <div className="hidden md:block px-6 relative md:min-h-screen mt-18">
+        <div className="flex justify-between absolute bottom-1/2 left-0 right-0 max-w-4xl mx-auto -translate-y-12">
+            <div className="flex items-center">
+              <p className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
+            </div>
+            <div className="flex items-center">
+              <p className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Designer</p>
+            </div>
+          </div>
         {/* Title - now with improved dark mode colors */}
         <header>
           <h1
@@ -175,25 +184,28 @@ export const HeroSection = () => {
             role="complementary"
             aria-label="Professional role indicator"
           >
-              <button
+              <Link
+                href="/nyx-ui"
+                aria-label="Navigate to Nyx UI"
+                rel="noopener noreferrer"
+                target="_blank"
                 className="md:w-18 md:h-18 w-14 h-14 rounded-full border border-neutral-300 dark:border-neutral-700 items-center justify-center group hover:border-neutral-400 dark:hover:border-neutral-600 transition-all cursor-pointer flex focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-950"
-                aria-label="Navigate to portfolio details"
                 type="button"
               >
                 <ArrowLeft 
-                  className="w-6 h-6 md:w-8 md:h-8 transition-transform -rotate-20" 
+                  className="w-6 h-6 md:w-8 md:h-8 transition-transform rotate-125" 
                   aria-hidden="true"
                 />
-              </button>
+              </Link>
               <p 
                 className="text-sm text-right lg:text-lg text-neutral-800 dark:text-neutral-200 tracking-wide mt-4 font-bold uppercase"
                 role="text"
                 aria-label="Professional specialization: Designer and Developer"
               >
-                CREATIVE DEVELOPER
+                CHECKOUT NYX UI 
               </p>
               <p className="max-w-[15rem] xl:max-w-xs text-right  tracking-wide leading-snug text-sm text-neutral-700 dark:text-neutral-300">
-                Follow for more details.
+                Explore my component library
               </p>
           </div>
         </main>

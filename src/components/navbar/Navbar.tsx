@@ -117,7 +117,7 @@ export const Navbar = () => {
               aria-label="Social media links and settings"
             >
               <ul className="flex items-center space-x-3">
-                {socialLinks.map(({ href, icon: Icon, label }) => (
+                {socialLinks.map(({ href, icon: Icon, label}) => (
                   <li key={href}>
                     <Link
                       href={href}

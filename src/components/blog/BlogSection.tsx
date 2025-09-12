@@ -47,9 +47,9 @@ export default function BlogSection({ posts }: BlogSectionProps) {
           className="text-center mb-16"
         >
           <div className="inline-block">
-            <h2 className="text-6xl lg:text-7xl font-black tracking-tight mb-6">
+            <h2 className="text-6xl lg:text-8xl font-black tracking-tight mb-6">
               <br />
-              <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">My Blogs</span>
+              <span className="bg-gradient-to-r uppercase from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">My Blogs</span>
             </h2>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
