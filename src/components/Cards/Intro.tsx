@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Sparkles } from "lucide-react"
+import { ArrowRight, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { ThreeDMarqueeDemo } from "../ui/ThreeDMarqueeDemo"
