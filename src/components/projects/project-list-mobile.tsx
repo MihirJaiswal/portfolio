@@ -73,7 +73,7 @@ export function ProjectListMobile({ projects }: ProjectListMobileProps) {
                 className="overflow-hidden"
               >
                 <div className="p-4 pt-0">
-                  <div className="w-full aspect-square h-56 overflow-hidden mb-4">
+                  <div className="w-full aspect-4/3 overflow-hidden mb-4">
                     <Image
                       src={project.mainImage || "/placeholder.svg"}
                       alt={project.title}

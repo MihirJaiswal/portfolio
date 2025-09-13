@@ -57,10 +57,10 @@ export default function Service() {
               <div key={service.id}>
                 <div className="relative mb-2 lg:mb-4 group transition-all duration-300">
                   <div className="flex items-center p-1 md:p-3">
-                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center mr-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 hidden xs:flex items-center justify-center mr-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <span className="text-sm font-semibold">{service.id}</span>
                     </div>
-                    <div className="flex-1 py-2 px-4 rounded-4xl bg-white dark:bg-neutral-950 text-black dark:text-white border group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                    <div className="flex-1 py-2 px-4 rounded-lg xs:rounded-4xl bg-white dark:bg-neutral-950 text-black dark:text-white border group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <p className="text-center font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-black">{service.title}</p>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 hidden xs:flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">

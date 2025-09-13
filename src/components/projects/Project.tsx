@@ -4,7 +4,7 @@ import { ProjectListMobile } from "./project-list-mobile";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-neutral-950 ">
+    <section id="projects" className="py-12 md:py-20 bg-white dark:bg-neutral-950 ">
       <div className="px-6">
         <div className="flex justify-center md:justify-between items-center">
           <div className="flex flex-col items-center justify-center mb-6 md:mb-0">

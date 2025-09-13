@@ -43,7 +43,7 @@ const GalleryWall: React.FC = () => {
 
   return (
     <>
-      <section className="h-full py-20 px-4 sm:px-6 lg:px-8 flex items-start justify-center">
+      <section className="h-full py-10 md:py-20 px-6 lg:px-8 flex items-start justify-center">
         <div className="w-full">
           {/* Section Header */}
           <div className="text-center mb-12 relative">
