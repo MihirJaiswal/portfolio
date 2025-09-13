@@ -99,13 +99,13 @@ export default function Intro() {
               </div>
 
               {/* Floating component previews */}
-              <div className="absolute hidden -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-3 md:flex flex-col justify-between items-end border border-neutral-200 dark:border-neutral-700">
+              <div className="absolute hidden -bottom-6 -left-6 w-24 h-24 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-3 md:flex flex-col justify-between items-end border border-neutral-200 dark:border-neutral-700">
                 <div className="bg-black w-full h-full flex items-center justify-center">
                   <Image
                     src={cursor}
                     alt="nyx UI"
-                    width={80}
-                    height={80}
+                    width={50}
+                    height={50}
                     className="object-cover object-center rotate-45"
                     placeholder="blur"
                     loading="lazy"
