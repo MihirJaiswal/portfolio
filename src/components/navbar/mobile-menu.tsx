@@ -61,12 +61,6 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
     }
   }
 
-
-  const hoverVariants = reducedMotion ? {} : {
-    x: 10,
-    transition: { type: "spring", stiffness: 300, damping: 20 }
-  }
-
   return (
     <div className="lg:hidden">
       <Sheet open={isOpen} onOpenChange={handleOpenChange}>
@@ -120,7 +114,6 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
                   <motion.div
                     key={link.href}
                     custom={index}
-                    whileHover={hoverVariants}
                     className="w-full max-w-xs"
                   >
                     <SheetClose asChild>

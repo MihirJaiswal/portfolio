@@ -107,8 +107,6 @@ export default function Work() {
   const { scrollYProgress } = useScroll({
     target: gallery,
     offset: ['start end', 'end start'],
-    // Reduce scroll sampling on mobile for better performance
-    layoutEffect: false
   });
   
   const { height } = dimension;
