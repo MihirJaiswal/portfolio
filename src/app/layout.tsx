@@ -1,24 +1,12 @@
 import type React from "react"
 import "./globals.css"
-import { Manrope } from 'next/font/google'
-import { GeistSans } from 'geist/font/sans'
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { ThemeProvider } from "next-themes"
 import { ScrollProvider } from "../components/animation/scroll-aniamtions"
 import type { Metadata } from 'next'
 
 const siteUrl = 'https://mihirjaiswal-portfolio.vercel.app'
-
-// Load fonts with mobile optimizations
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-manrope',
-  preload: true,
-  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
-})
-
-const geist = GeistSans // GeistSans has all weights pre-configured
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -302,7 +290,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${manrope.variable} ${geist.variable} font-sans gpu-accelerated`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}  font-sans gpu-accelerated`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <ScrollProvider>{children}</ScrollProvider>
         </ThemeProvider>
