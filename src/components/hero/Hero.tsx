@@ -1,9 +1,8 @@
 import Image from "next/image"
-import { ArrowLeft, ExternalLink} from "lucide-react"
+import { ArrowLeft} from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
 import img from '../../../public/assets/hero-image.webp'
 import Link from "next/link"
-import MobileHeroSection from "./mobile-hero"
 
 export const HeroSection = () => {
   return (
