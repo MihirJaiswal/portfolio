@@ -95,11 +95,6 @@ export function StaggerContainer({
 }
 
 export function StaggerItem({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const variants = {
-    hidden: { opacity: 0, y: 10 }, // Reduced from 20 to 10
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] } },
-  }
-
   return (
     <motion.div  className={className}>
       {children}
