@@ -42,7 +42,7 @@ import dreammistMainImage from "../../public/details/dreammist.webp"
 import dreammistProjectImage from "../../public/projects/dreammist.jpg"
 
 // Artwork/Drawing Images
-import drawing1 from "../../public/drawings/1.webp"
+import drawing1 from "../../public/drawings/11.webp"
 import drawing2 from "../../public/drawings/2.webp"
 import drawing3 from "../../public/drawings/3.webp"
 import drawing4 from "../../public/drawings/4.webp"
@@ -410,7 +410,7 @@ export const artworks = [
   },
   {
     id: 6,
-    title: "xxxtentation",
+    title: "Eijiro",
     year: "2022",
     medium: "Sketch",
     imageUrl: drawing10

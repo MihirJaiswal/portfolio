@@ -24,12 +24,12 @@ export const HeroSection = () => {
       </div>
 
       {/* MOBILE LAYOUT - Clean & Minimal */}
-      <div className="md:hidden min-h-screen flex flex-col mt-14">
+      <div className="sm:hidden min-h-screen flex flex-col mt-14">
         <MobileHeroSection/>
       </div>
 
       {/* DESKTOP LAYOUT */}
-      <div className="hidden md:block px-6 relative mt-24 lg:mt-18">
+      <div className="hidden sm:block px-6 relative mt-24 lg:mt-18">
         {/* Title - now with improved dark mode colors */}
         <header>
           <h1
@@ -94,7 +94,7 @@ export const HeroSection = () => {
           
           {/* Resume download button */}
           <div
-            className="md:absolute left-3 bottom-28 z-10 flex flex-col gap-4"
+            className="sm:absolute left-3 bottom-28 z-10 flex flex-col gap-4"
             role="complementary"
             aria-label="Resume download section"
           >
@@ -106,7 +106,7 @@ export const HeroSection = () => {
           
           {/* Role indicator with arrow */}
           <div
-            className="md:absolute right-3 bottom-28 flex items-end flex-col z-10 mx-auto"
+            className="sm:absolute right-3 bottom-28 flex items-end flex-col z-10 mx-auto"
             role="complementary"
             aria-label="Professional role indicator"
           >
@@ -124,7 +124,7 @@ export const HeroSection = () => {
                 />
               </Link>
               <p 
-                className="text-sm text-right lg:text-lg text-neutral-800 dark:text-neutral-200 tracking-wide mt-4 font-bold uppercase"
+                className="text-xs md:text-sm text-right lg:text-lg text-neutral-800 dark:text-neutral-200 tracking-wide mt-4 font-bold uppercase"
                 role="text"
                 aria-label="Professional specialization: Designer and Developer"
               >
@@ -135,8 +135,11 @@ export const HeroSection = () => {
               </p>
           </div>
         </main>
+        <div className="text-sm text-neutral-700 dark:text-neutral-300 mt-2 md:hidden w-full flex items-center justify-between">
+              <p className="-mt-6 max-w-[20rem] xl:max-w-xs mx-auto tracking-wide leading-snug text-center">I am a <span className="text-black dark:text-white">designer</span> and <span className="text-black dark:text-white" >developer</span> with a passion for crafting aesthetically refined websites.</p>
+            </div>
       </div>
-         <div aria-label="Professional role indicator" className="hidden md:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-20 xl:px-4">
+         <div aria-label="Professional role indicator" className="hidden sm:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-20 xl:px-4">
             <div className="flex items-center">
               <p aria-label="Professional specialization: Developer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
             </div>

@@ -37,9 +37,9 @@ export default function Service() {
         )}
       />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-12 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 relative">
         {/* Left side - Big Image Only */}
-        <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block md:overflow-hidden">
+        <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex md:hidden items-center justify-center lg:block md:overflow-hidden">
           <LazyWaterRippleEffect/>
         </div>
 
@@ -63,7 +63,7 @@ export default function Service() {
                     <div className="flex-1 py-2 px-4 rounded-4xl bg-white dark:bg-neutral-950 text-black dark:text-white border group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <p className="text-center font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-black">{service.title}</p>
                     </div>
-                    <div className="w-12 h-12 md:hidden lg:flex rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                    <div className="w-12 h-12 flex rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <ArrowRight className="w-5 h-5 rotate-90 group-hover:rotate-180 transition-transform" />
                     </div>
                   </div>

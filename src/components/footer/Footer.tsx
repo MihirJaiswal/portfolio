@@ -5,7 +5,7 @@ function Footer() {
         <div className='relative z-50 overflow-hidden border-t py-20'>
             <footer>
                 <div className="container mx-auto px-6 flex flex-col justify-center border-y border-dashed py-10">
-                    <h2 className="text-5xl md:text-[7rem] font-extrabold mb-12 text-center">
+                    <h2 className="text-5xl sm:text-7xl md:text-[7rem] font-extrabold mb-12 text-center">
                         LET&apos;S <span className="text-neutral-400">TALK</span>
                     </h2>
 

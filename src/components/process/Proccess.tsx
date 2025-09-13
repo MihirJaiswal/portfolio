@@ -55,7 +55,7 @@ export function ProcessSteps() {
             >
               <h2 
                 className={cn(
-                  "text-5xl md:text-8xl xl:text-9xl font-extrabold tracking-tight transition-colors duration-500 text-center",
+                  "text-5xl sm:text-7xl md:text-8xl xl:text-9xl font-extrabold tracking-tight transition-colors duration-500 text-center",
                   activeWordIndex === index ? "text-white" : "text-neutral-700"
                 )}
               >

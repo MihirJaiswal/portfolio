@@ -20,7 +20,8 @@ function ResumeDownload() {
                 role="button"
             >
                 <div className="flex items-center gap-2 justify-center">
-                    <span>Download CV</span>
+                    <span className="hidden md:block">Download CV</span>
+                    <span className="md:hidden" >Resume</span>
                     <div>
                         <ArrowDown className="w-4 h-4" />
                     </div>

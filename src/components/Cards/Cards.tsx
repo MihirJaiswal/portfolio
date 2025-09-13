@@ -33,11 +33,11 @@ export default function Cards() {
         <div className="mb-12 px-6">
           <Review />
         </div>
-        <div className="md:mb-12 px-6">
-          <Service />
-        </div>
-        <div className="px-6">
+        <div className="px-6 mb-12">
           <Intro />
+        </div>
+        <div className="mb-12 px-6">
+          <Service />
         </div>
       </section>
     </>

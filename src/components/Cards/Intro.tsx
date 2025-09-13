@@ -4,6 +4,8 @@ import Image from "next/image"
 import { ThreeDMarqueeDemo } from "../ui/ThreeDMarqueeDemo"
 import Link from "next/link"
 import nyx from '../../../public/assets/nyxui.webp'
+import logo from '../../../public/projects/nyxui.webp'
+import cursor from '../../../public/assets/cursor.webp'
 
 export default function Intro() {
   return (
@@ -25,13 +27,13 @@ export default function Intro() {
         <div className="absolute top-0 bottom-0 right-0 w-full bg-white/70 h-screen -mt-44 pointer-events-none z-[-1] dark:hidden" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left column - Content */}
-          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-12">
+          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-20 lg:mt-12">
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8 mt-3">
+          {/*   <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8 mt-3">
               <Sparkles className="w-4 h-4" />
               <span>Explore my UI Library</span>
-            </div>
+            </div> */}
 
             {/* Title with gradient */}
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-6">
@@ -42,7 +44,7 @@ export default function Intro() {
 
             {/* Description */}
             <p className="text-md md:text-lg text-neutral-600 dark:text-neutral-300 lg:max-w-xl mb-8 leading-relaxed">
-              A comprehensive collection of{" "}
+              My own UI library for React. Provides{" "}
               <span className="font-semibold text-neutral-900 dark:text-neutral-100">30+ customizable components</span>{" "}
               designed for modern web applications. Fast, accessible, and beautiful out of the box.
             </p>
@@ -58,11 +60,11 @@ export default function Intro() {
               </Button>
               </Link>
               <Link href="https://nyxui.com/" target="_blank" >
-              <Button size="lg" variant={"secondary"} className="border" >
-                <Github className="w-5 h-5 transition-transform duration-300" />
+              <Button size="lg" variant={"secondary"} className="border border-neutral-300 dark:border-neutral-700 bg-background" >
+                
                 <span className="relative flex items-center gap-2">
-                  Star on GitHub ⭐
-                </span>
+                 ⭐ Star on GitHub 
+                </span><Github className="w-5 h-5 transition-transform duration-300 fill-accent" />
               </Button>
               </Link>
             </div>
@@ -76,9 +78,9 @@ export default function Intro() {
               <div className="absolute inset-0 rounded-md bg-gradient-to-tr from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 p-1 shadow-2xl">
                 <div className="absolute top-0 left-0 w-full h-8 bg-neutral-100 dark:bg-neutral-800 rounded-t-md flex items-center px-4">
                   <div className="flex space-x-2">
-                    <div className={`w-3 h-3 rounded-full`}></div>
-                    <div className={`w-3 h-3 rounded-full`}></div>
-                    <div className={`w-3 h-3 rounded-full`}></div>
+                    <div className={`w-3 h-3 rounded-full bg-red-500`}></div>
+                    <div className={`w-3 h-3 rounded-full bg-yellow-500`}></div>
+                    <div className={`w-3 h-3 rounded-full bg-green-500`}></div>
                   </div>
                 </div>
                 <div className="absolute inset-0 top-8 overflow-hidden rounded-b-sm border">
@@ -89,6 +91,7 @@ export default function Intro() {
                     className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     loading="lazy"
+                    unoptimized
                     placeholder="blur"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -96,23 +99,31 @@ export default function Intro() {
               </div>
 
               {/* Floating component previews */}
-              <div className="absolute hidden  -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-3 md:flex flex-col justify-between border border-neutral-200 dark:border-neutral-700">
-                <div className="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-sm"></div>
-                <div className="w-3/4 h-3 bg-neutral-200 dark:bg-neutral-700 rounded-sm"></div>
-                <div className="w-1/2 h-3 bg-neutral-200 dark:bg-neutral-700 rounded-sm"></div>
-                <div className="w-full h-6 bg-neutral-800 dark:bg-neutral-200 rounded-sm"></div>
+              <div className="absolute hidden -bottom-6 -left-6 w-32 h-32 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-3 md:flex flex-col justify-between items-end border border-neutral-200 dark:border-neutral-700">
+                <div className="bg-black w-full h-full flex items-center justify-center">
+                  <Image
+                    src={cursor}
+                    alt="nyx UI"
+                    width={80}
+                    height={80}
+                    className="object-cover object-center rotate-45"
+                    placeholder="blur"
+                    loading="lazy"
+                  />
+                </div>
               </div>
 
               <div className="absolute -top-4 right-0  md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-white dark:bg-neutral-900 rounded-sm shadow-xl p-1 md:p-2 flex items-center justify-center border border-neutral-200 dark:border-neutral-700">
                 <div className="w-full h-full rounded-sm bg-black flex items-center justify-center">
                   <Image
-                    src="/projects/nyxui.webp"
+                    src={logo}
                     alt="nyx UI"
                     width={100}
                     height={100}
                     className="w-full h-full object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     loading="lazy"
+                    placeholder="blur"
                   />
                 </div>
               </div>
