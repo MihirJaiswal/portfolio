@@ -190,6 +190,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     width={450}
                     height={450}
                     loading="lazy"
+                    unoptimized
                     quality={100}
                     className="w-full h-full object-cover transition-all duration-700 ease-in-out transform bg-neutral-900 dark:bg-neutral-950 border"
                     placeholder="blur"

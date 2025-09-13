@@ -50,6 +50,7 @@ function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCa
               isGrayscaleEnabled ? "grayscale" : ""
             } hover:grayscale-0 transition-all duration-500 border border-black`}
             fill
+            unoptimized
             sizes="(max-width: 768px) 240px, 240px"
             loading="lazy"
             quality={85}

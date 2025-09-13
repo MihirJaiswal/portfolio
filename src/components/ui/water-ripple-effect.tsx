@@ -197,7 +197,7 @@ export default function WaterRippleEffectCore() {
   }, [isGrayscaleEnabled])
 
   return (
-    <div className="w-full flex lg:block justify-center items-start -mt-[315px] md:-mt-[167px] lg:-ml-[160px] max-h-[640px]">
+    <div className="w-full flex lg:block justify-center items-start -mt-[315px] lg:-mt-[167px] lg:-ml-[160px] max-h-[640px]">
       <div className="relative">
          <div
           ref={mountRef}

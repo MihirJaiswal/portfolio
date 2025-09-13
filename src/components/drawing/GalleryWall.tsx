@@ -71,6 +71,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[0].imageUrl}
                     alt={artworks[0].title}
                     fill
+                    unoptimized
                     className="artwork-image object-cover p-1.5  transition-all duration-500 border border-neutral-700"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 40vw"
                     loading='lazy'
@@ -94,6 +95,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[1].imageUrl}
                     alt={artworks[1].title}
                     fill
+                    unoptimized
                     loading='lazy'
                     placeholder='blur'
                     className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover`}
@@ -118,6 +120,7 @@ const GalleryWall: React.FC = () => {
                     alt={artworks[2].title}
                     fill
                     loading='lazy'
+                    unoptimized
                     placeholder='blur'
                     className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
@@ -131,7 +134,7 @@ const GalleryWall: React.FC = () => {
 
               {/* Medium Piece - Center Left */}
               <div
-                className="artwork-frame medium-piece-2 group"
+                className="artwork-frame medium-piece-2 group "
                 onClick={() => handleArtworkClick(artworks[3])}
                 style={{ cursor: isMobile ? 'pointer' : 'default' }}
               >
@@ -142,6 +145,7 @@ const GalleryWall: React.FC = () => {
                     fill
                     loading='lazy'
                     placeholder='blur'
+                    unoptimized
                     className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
@@ -166,6 +170,7 @@ const GalleryWall: React.FC = () => {
                     fill
                     loading='lazy'
                     placeholder='blur'
+                    unoptimized
                     className={`artwork-image p-1.5 hover:grayscale-0 transition-alla duration-500 border object-right object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 45vw"
                   />
@@ -188,6 +193,7 @@ const GalleryWall: React.FC = () => {
                     alt={artworks[5].title}
                     fill
                     loading='lazy'
+                    unoptimized
                     placeholder='blur'
                     quality={100}
                     className={`artwork-image hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
@@ -211,6 +217,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[6].imageUrl}
                     alt={artworks[6].title}
                     fill
+                    unoptimized
                     loading='lazy'
                     placeholder='blur'
                     className={`artwork-image p-1.5 hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
@@ -234,6 +241,7 @@ const GalleryWall: React.FC = () => {
                     src={artworks[7].imageUrl}
                     alt={artworks[7].title}
                     fill
+                    unoptimized
                     loading='lazy'
                     placeholder='blur'
                     className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500  object-cover border border-neutral-700`}
@@ -270,6 +278,7 @@ const GalleryWall: React.FC = () => {
                   src={selectedArtwork.imageUrl}
                   alt={selectedArtwork.title}
                   fill
+                  unoptimized
                   loading='lazy'
                   placeholder='blur'
                   className={selectedArtwork.id !== 5 ? 'object-cover' : 'object-contain'}

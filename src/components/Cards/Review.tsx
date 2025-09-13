@@ -4,7 +4,7 @@ import { ReviewMarquee } from "./ReviewMarquee";
 
 export default function Review() {
   return (
-    <div className="relative bg-white dark:bg-black border-y lg:border border-zinc-300 dark:border-zinc-700 lg:max-h-[610px] py-8 md:py-12 flex flex-col justify-between max-w-7xl mx-auto">
+    <div className="relative bg-white dark:bg-black border-y sm:border border-zinc-300 dark:border-zinc-700 lg:max-h-[610px] py-8 md:py-12 flex flex-col justify-between max-w-7xl mx-auto">
       <ReviewMarquee />
       <div className="absolute -top-[104px] md:top-2 lg:top-0 -right-5 left-0 scale-75 md:scale-100">
         <OrbitingItems3D

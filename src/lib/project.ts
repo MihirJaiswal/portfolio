@@ -47,9 +47,9 @@ import drawing2 from "../../public/drawings/2.webp"
 import drawing3 from "../../public/drawings/3.webp"
 import drawing4 from "../../public/drawings/4.webp"
 import drawing5 from "../../public/drawings/5.webp"
-import drawing7 from "../../public/drawings/7.webp"
+import drawing7 from "../../public/drawings/10.webp"
 import drawing8 from "../../public/drawings/8.webp"
-import drawing10 from "../../public/drawings/10.webp"
+import drawing10 from "../../public/drawings/6.webp"
 
 // Export all images for easy access
 export const projectImages = {

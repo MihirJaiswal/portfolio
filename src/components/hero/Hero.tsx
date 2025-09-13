@@ -78,6 +78,7 @@ export const HeroSection = () => {
                 className="object-contain transition-all duration-300 relative"
                 priority
                 loading="eager"
+                unoptimized
                 fetchPriority="high"
                 sizes="(max-width: 1024px) 40vw, 450px"
                 style={{

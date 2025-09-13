@@ -30,13 +30,15 @@ export default function Cards() {
       </AnimatedSection>
 
       <section className="lg:hidden bg-black md:pb-12">
-        <div className="mb-12">
+        <div className="mb-12 px-6">
           <Review />
         </div>
-        <div className="md:mb-12">
+        <div className="md:mb-12 px-6">
           <Service />
         </div>
-        <Intro />
+        <div className="px-6">
+          <Intro />
+        </div>
       </section>
     </>
   )

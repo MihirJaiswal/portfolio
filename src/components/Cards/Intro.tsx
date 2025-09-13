@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { ThreeDMarqueeDemo } from "../ui/ThreeDMarqueeDemo"
@@ -7,7 +7,7 @@ import nyx from '../../../public/assets/nyxui.webp'
 
 export default function Intro() {
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border-y lg:border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
+    <section className="relative w-full py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border-y sm:border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-neutral-200/30 dark:bg-neutral-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -41,19 +41,27 @@ export default function Intro() {
             </h1>
 
             {/* Description */}
-            <p className="text-md md:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl mb-8 leading-relaxed">
+            <p className="text-md md:text-lg text-neutral-600 dark:text-neutral-300 lg:max-w-xl mb-8 leading-relaxed">
               A comprehensive collection of{" "}
               <span className="font-semibold text-neutral-900 dark:text-neutral-100">30+ customizable components</span>{" "}
               designed for modern web applications. Fast, accessible, and beautiful out of the box.
             </p>
 
             {/* CTA button */}
-            <div className="relative">
+            <div className="relative flex items-center gap-3">
               <Link href="https://nyxui.com/" target="_blank" >
               <Button size="lg">
                 <span className="relative flex items-center gap-2">
                   Explore Components
                   <ArrowRight className="w-5 h-5 transition-transform duration-300" />
+                </span>
+              </Button>
+              </Link>
+              <Link href="https://nyxui.com/" target="_blank" >
+              <Button size="lg" variant={"secondary"} className="border" >
+                <Github className="w-5 h-5 transition-transform duration-300" />
+                <span className="relative flex items-center gap-2">
+                  Star on GitHub ⭐
                 </span>
               </Button>
               </Link>

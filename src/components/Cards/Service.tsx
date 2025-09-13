@@ -28,7 +28,7 @@ const serviceItems = [
 
 export default function Service() {
   return (
-    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border-y lg:border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
+    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border-y sm:border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
       <div
         className={cn(
           `absolute inset-0 size-full`,
@@ -37,14 +37,14 @@ export default function Service() {
         )}
       />
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-12 relative">
         {/* Left side - Big Image Only */}
-        <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block lg:overflow-hidden">
+        <div className="relative bg-gradient-to-r from-black to-black lg:to-white dark:bg-gradient-to-r dark:from-black dark:to-black flex items-center justify-center lg:block md:overflow-hidden">
           <LazyWaterRippleEffect/>
         </div>
 
         {/* Right side - Title and Service List */}
-        <div className="relative py-12 px-1 lg:mt-0 md:mt-20">
+        <div className="relative py-12 px-1 lg:mt-0">
           <div className="text-center mb-6">
             <h2 className="text-[40px] md:text-5xl font-extrabold mb-4">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">
@@ -55,7 +55,7 @@ export default function Service() {
           <div className="overflow-y-auto md:pr-2">
             {serviceItems.map((service) => (
               <div key={service.id}>
-                <div className="relative mb-4 group transition-all duration-300">
+                <div className="relative mb-2 lg:mb-4 group transition-all duration-300">
                   <div className="flex items-center p-1 md:p-3">
                     <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center mr-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <span className="text-sm font-semibold">{service.id}</span>
@@ -63,7 +63,7 @@ export default function Service() {
                     <div className="flex-1 py-2 px-4 rounded-4xl bg-white dark:bg-neutral-950 text-black dark:text-white border group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <p className="text-center font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-black">{service.title}</p>
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                    <div className="w-12 h-12 md:hidden lg:flex rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <ArrowRight className="w-5 h-5 rotate-90 group-hover:rotate-180 transition-transform" />
                     </div>
                   </div>

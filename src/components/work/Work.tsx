@@ -76,8 +76,9 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldR
             alt={imageData.alt}
             fill
             sizes={isMobile ? '50vw' : '25vw'}
-            className="object-cover"
-            quality={85}
+            className="object-cover object-top [@media(min-width:500px)]:object-contain [@media(min-width:500px)]:object-center"
+            quality={100}
+            unoptimized
             placeholder="blur"
             loading='lazy'
             style={{
@@ -100,7 +101,7 @@ export default function Work() {
   const shouldReduceMotion = useReducedMotion();
   
   // Cache mobile check
-  const isMobile = useMemo(() => dimension.width < 768, [dimension.width]);
+  const isMobile = useMemo(() => dimension.width < 500, [dimension.width]);
   
   // Use lighter scroll detection for mobile
   const { scrollYProgress } = useScroll({
