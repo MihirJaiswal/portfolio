@@ -101,7 +101,7 @@ export function StaggerItem({ children, className = "" }: { children: ReactNode;
   }
 
   return (
-    <motion.div variants={variants} className={className}>
+    <motion.div  className={className}>
       {children}
     </motion.div>
   )
