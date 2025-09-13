@@ -28,7 +28,7 @@ const serviceItems = [
 
 export default function Service() {
   return (
-    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border-y sm:border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
+    <div className="max-w-7xl mx-auto bg-white dark:bg-gradient-to-b dark:from-black dark:from-10% dark:to-neutral-950 border border-neutral-300 dark:border-neutral-700 relative overflow-hidden">
       <div
         className={cn(
           `absolute inset-0 size-full`,
@@ -63,7 +63,7 @@ export default function Service() {
                     <div className="flex-1 py-2 px-4 rounded-4xl bg-white dark:bg-neutral-950 text-black dark:text-white border group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <p className="text-center font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-white dark:group-hover:text-black">{service.title}</p>
                     </div>
-                    <div className="w-12 h-12 flex rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                    <div className="w-12 h-12 rounded-full bg-white border border-neutral-300 dark:bg-neutral-950 dark:border-neutral-700 hidden xs:flex items-center justify-center ml-4 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
                       <ArrowRight className="w-5 h-5 rotate-90 group-hover:rotate-180 transition-transform" />
                     </div>
                   </div>

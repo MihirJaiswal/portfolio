@@ -9,7 +9,7 @@ import cursor from '../../../public/assets/cursor.webp'
 
 export default function Intro() {
   return (
-    <section className="relative w-full py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border-y sm:border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
+    <section className="relative w-full py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black max-w-7xl mx-auto border border-neutral-300 dark:border-neutral-700 lg:max-h-[610px]">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-neutral-200/30 dark:bg-neutral-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -27,7 +27,7 @@ export default function Intro() {
         <div className="absolute top-0 bottom-0 right-0 w-full bg-white/70 h-screen -mt-44 pointer-events-none z-[-1] dark:hidden" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left column - Content */}
-          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-20 lg:mt-12">
+          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-20 xs:mt-0 sm:mt-20 lg:mt-12">
             
             {/* Badge */}
           {/*   <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8 mt-3">
@@ -46,11 +46,11 @@ export default function Intro() {
             <p className="text-md md:text-lg text-neutral-600 dark:text-neutral-300 lg:max-w-xl mb-8 leading-relaxed">
               My own UI library for React. Provides{" "}
               <span className="font-semibold text-neutral-900 dark:text-neutral-100">30+ customizable components</span>{" "}
-              designed for modern web applications. Fast, accessible, and beautiful out of the box.
+              designed for modern web apps. <span className="hidden xs:block">Fast, accessible, and beautiful out of the box.</span>
             </p>
 
             {/* CTA button */}
-            <div className="relative flex items-center gap-3">
+            <div className="relative flex flex-wrap items-center justify-center lg:items-start lg:justify-start gap-3 px-3 lg:px-0">
               <Link href="https://nyxui.com/" target="_blank" >
               <Button size="lg">
                 <span className="relative flex items-center gap-2">
@@ -60,7 +60,7 @@ export default function Intro() {
               </Button>
               </Link>
               <Link href="https://nyxui.com/" target="_blank" >
-              <Button size="lg" variant={"secondary"} className="border border-neutral-300 dark:border-neutral-700 bg-background" >
+              <Button size="lg" variant={"secondary"} className="border !w-54 xs:w-auto border-neutral-300 dark:border-neutral-700 bg-background" >
                 
                 <span className="relative flex items-center gap-2">
                  ⭐ Star on GitHub 

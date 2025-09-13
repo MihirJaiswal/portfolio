@@ -17,7 +17,7 @@ export default function About() {
         {/* Header Section */}
         <div className="flex flex-col items-start justify-center md:mb-8">
           <div className="md:w-full mb-6 md:mb-0 flex items-start gap-4">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r z-10 from-neutral-500 via-neutral-900 to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent font-extrabold relative">
                 ABOUT
               </span>

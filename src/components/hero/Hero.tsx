@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ArrowLeft} from "lucide-react"
+import { ArrowLeft, ExternalLink} from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
 import img from '../../../public/assets/hero-image.webp'
 import Link from "next/link"
@@ -23,13 +23,8 @@ export const HeroSection = () => {
         />
       </div>
 
-      {/* MOBILE LAYOUT - Clean & Minimal */}
-      <div className="sm:hidden min-h-screen flex flex-col mt-14">
-        <MobileHeroSection/>
-      </div>
-
       {/* DESKTOP LAYOUT */}
-      <div className="hidden sm:block px-6 relative mt-24 lg:mt-18">
+      <div className="px-6 relative mt-18 xs:mt-24 lg:mt-18">
         {/* Title - now with improved dark mode colors */}
         <header>
           <h1
@@ -61,7 +56,7 @@ export const HeroSection = () => {
         <main className="flex flex-col lg:flex-row items-center justify-center relative">
           {/* Central content */}
           <div
-            className="flex flex-col items-center justify-center z-10 sm:pt-40 lg:pt-0"
+            className="flex flex-col items-center justify-center z-10 pt-28 xs:pt-40 lg:pt-0"
             role="img"
             aria-label="Professional portfolio showcase image"
           >
@@ -94,7 +89,7 @@ export const HeroSection = () => {
           
           {/* Resume download button */}
           <div
-            className="sm:absolute left-3 bottom-28 z-10 flex flex-col gap-4"
+            className="sm:absolute left-3 bottom-28 z-10 sm:flex flex-col gap-4 hidden"
             role="complementary"
             aria-label="Resume download section"
           >
@@ -106,9 +101,9 @@ export const HeroSection = () => {
           
           {/* Role indicator with arrow */}
           <div
-            className="sm:absolute right-3 bottom-28 flex items-end flex-col z-10 mx-auto"
+            className="sm:absolute right-3 bottom-28 hidden sm:flex items-end flex-col z-10 mx-auto"
             role="complementary"
-            aria-label="Professional role indicator"
+            aria-label="Button for my ui library"
           >
               <Link
                 href="https://nyxui.com/"
@@ -135,11 +130,18 @@ export const HeroSection = () => {
               </p>
           </div>
         </main>
-        <div className="text-sm text-neutral-700 dark:text-neutral-300 mt-2 md:hidden w-full flex items-center justify-between">
-              <p className="-mt-6 max-w-[20rem] xl:max-w-xs mx-auto tracking-wide leading-snug text-center">I am a <span className="text-black dark:text-white">designer</span> and <span className="text-black dark:text-white" >developer</span> with a passion for crafting aesthetically refined websites.</p>
+        <div className="-mt-6 text-sm text-neutral-700 dark:text-neutral-300 md:hidden w-full flex flex-col items-center justify-between">
+          <div className="hidden xs:block sm:hidden">
+            <ResumeDownload/>
+          </div>
+              <p className="mt-3 max-w-[20rem] xl:max-w-xs mx-auto tracking-wide leading-snug text-center">I am a <span className="text-black dark:text-white">designer</span> and <span className="text-black dark:text-white" >developer</span> with a passion for crafting aesthetically refined websites.</p>
+            </div>
+            <div className="flex justify-between xs:hidden mt-6 text-sm"> 
+              <p>Checkout <span className="text-black dark:text-white font-bold underline">Nyx UI</span> </p>
+              <ResumeDownload/>
             </div>
       </div>
-         <div aria-label="Professional role indicator" className="hidden sm:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-20 xl:px-4">
+         <div aria-label="Professional role indicator" className="hidden xs:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-6 sm:px-20 xl:px-4">
             <div className="flex items-center">
               <p aria-label="Professional specialization: Developer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
             </div>

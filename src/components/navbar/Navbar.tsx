@@ -84,10 +84,13 @@ export const Navbar = () => {
         className={navbarClasses}
         role="banner"
       >
-        <div className="max-w-7xl mx-auto px-6 py-3">
+        <div className="max-w-7xl mx-auto px-3 py-3">
           <div className="flex justify-between items-center">
             <div className="text-xl tracking-wider font-bold uppercase pl-1.5">
-              <NameTranslation />
+              <div className="hidden xs:block">
+                <NameTranslation />
+              </div>
+              <span className="xs:hidden">Mihir Jaiswal</span>
             </div>
 
             {/* Main Navigation */}

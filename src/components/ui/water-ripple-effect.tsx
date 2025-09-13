@@ -32,7 +32,7 @@ export default function WaterRippleEffectCore() {
     // Load texture
     const textureLoader = new THREE.TextureLoader()
     const texture = textureLoader.load(
-      "/assets/art1.webp",
+      "/assets/art.webp",
     )
 
     // Improved water ripple shader with grayscale

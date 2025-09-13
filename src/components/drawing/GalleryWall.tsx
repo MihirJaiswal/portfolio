@@ -47,7 +47,7 @@ const GalleryWall: React.FC = () => {
         <div className="w-full">
           {/* Section Header */}
           <div className="text-center mb-12 relative">
-            <h2 className="text-6xl md:Text-7xl lg:text-8xl font-extrabold text-center mb-6">
+            <h2 className="text-5xl sm:text-6xl md:Text-7xl lg:text-8xl font-extrabold text-center mb-6">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">
                 GALLERY
               </span>
