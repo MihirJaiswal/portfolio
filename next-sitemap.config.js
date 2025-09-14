@@ -8,34 +8,38 @@ module.exports = {
     generateIndexSitemap: true,
     exclude: ['/api/*', '/admin/*', '/_*'],
     
-    transform: async (path) => {
-        console.log("🔄 Transform called for path:", path);
+    // Fixed transform function - receives (config, path) parameters
+    transform: async (config, pathObj) => {
+        // Handle both string and object formats
+        const pathString = typeof pathObj === 'string' ? pathObj : pathObj.loc;
+        
+        console.log("🔄 Transform called for path:", pathString);
         
         let priority = 0.7;
         let changefreq = "weekly";
 
-        if (path === "/") {
+        if (pathString === "/") {
             priority = 1.0;
             changefreq = "daily";
-        } else if (path === "/projects" || path === "/blogs") {
+        } else if (pathString === "/projects" || pathString === "/blogs") {
             priority = 0.8;
             changefreq = "weekly";
-        } else if (path.startsWith("/projects/")) {
+        } else if (pathString.startsWith("/projects/")) {
             priority = 0.7;
             changefreq = "monthly";
-        } else if (path.startsWith("/blogs/")) {
+        } else if (pathString.startsWith("/blogs/")) {
             priority = 0.7;
             changefreq = "weekly";
         }
 
         const result = {
-            loc: path,
+            loc: pathString,
             changefreq,
             priority,
             lastmod: new Date().toISOString(),
         };
         
-        console.log("✅ Transform result for", path, ":", result);
+        console.log("✅ Transform result for", pathString, ":", result);
         return result;
     },
     
