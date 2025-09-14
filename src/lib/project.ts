@@ -46,7 +46,7 @@ import drawing1 from "../../public/drawings/11.webp"
 import drawing2 from "../../public/drawings/2.webp"
 import drawing3 from "../../public/drawings/3.webp"
 import drawing4 from "../../public/drawings/4.webp"
-import drawing5 from "../../public/drawings/5.webp"
+import drawing5 from "../../public/drawings/1.webp"
 import drawing7 from "../../public/drawings/10.webp"
 import drawing8 from "../../public/drawings/8.webp"
 import drawing10 from "../../public/drawings/6.webp"
@@ -375,9 +375,9 @@ export const projects = [
 export const artworks = [
   {
     id: 1,
-    title: "Daniel Radcliffe",
-    year: "2022",
-    medium: "Sketch",
+    title: "Van Gogh",
+    year: "2023",
+    medium: "Painting",
     imageUrl: drawing5
   },
   {
@@ -417,8 +417,8 @@ export const artworks = [
   },
   {
     id: 7,
-    title: "Snow Leopard",
-    year: "2024",
+    title: "xxxtentacion",
+    year: "2022",
     medium: "Pen Sketch",
     imageUrl: drawing7
   },
