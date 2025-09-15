@@ -140,17 +140,6 @@ export const HeroSection = () => {
           </p>
         </div>
       </div>
-      <div aria-label="Professional role indicator" className="hidden xs:flex justify-between absolute top-10 left-0 right-0 max-w-6xl mx-auto translate-y-10 px-6 sm:px-20 xl:px-4">
-        <div className="flex items-center">
-          <p aria-label="Professional specialization: Developer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Developer</p>
-        </div>
-        <div className="flex items-center">
-          <p aria-label="Professional specialization: Product Builder" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Product Builder</p>
-        </div>
-        <div className="flex items-center">
-          <p aria-label="Professional specialization: Designer" className="text-xs font-light text-neutral-900 dark:text-neutral-400 tracking-[0.2em] uppercase">Designer</p>
-        </div>
-      </div>
     </section>
   )
 }
