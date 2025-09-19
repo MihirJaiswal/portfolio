@@ -1,9 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
-import { Apple, BadgeCent, BadgeInfo, BadgeX, Banana, Bolt } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import statue from '../../../public/assets/statue.webp'
+import statue from '../../../public/assets/statue.png'
 
 export const CenterIcon = () => {
   
@@ -14,19 +13,45 @@ export const CenterIcon = () => {
         alt="Statue"
         fill
         loading="lazy"
-        className="object-contain drop-shadow-lg drop-shadow-black"
+        className="object-contain drop-shadow-2xl drop-shadow-black"
       />
     </div>
   );
 };
 
-export const LucideIcons = [
-  <Banana key="banana" className="h-8 w-8" />,
-  <Bolt key="bolt" className="h-8 w-8" />,
-  <BadgeX key="badge-x" className="h-8 w-8" />,
-  <BadgeCent key="badge-cent" className="h-8 w-8" />,
-  <BadgeInfo key="badge-info" className="h-8 w-8" />,
-  <Apple key="apple" className="h-8 w-8" />,
+// Replace with your actual image imports
+import image1 from '../../../public/assets/icons/logo-tailwind.svg'; // Replace with your actual paths
+import image2 from '../../../public/assets/icons/logo-nyx.png';
+import image3 from '../../../public/assets/icons/logo-motion.svg';
+import image4 from '../../../public/assets/icons/logo-react.svg';
+import image5 from '../../../public/assets/icons/logo-nextjs.png';
+
+export const ImageItems = [
+  {
+    src: image1,
+    alt: "Image 1",
+    key: "image1"
+  },
+  {
+    src: image2,
+    alt: "Image 2", 
+    key: "image2"
+  },
+  {
+    src: image3,
+    alt: "Image 3",
+    key: "image3"
+  },
+  {
+    src: image4,
+    alt: "Image 4",
+    key: "image4"
+  },
+  {
+    src: image5,
+    alt: "Image 5",
+    key: "image5"
+  }
 ];
 
 interface OrbitingItems3DProps {
@@ -53,7 +78,7 @@ interface OrbitingItems3DProps {
   /**
    * The items to orbit around the center of the parent element.
    */
-  items: React.ReactNode[];
+  items?: Array<{src: any, alt: string, key: string}>;
 
   /**
    * Class name for the background element.
@@ -81,17 +106,12 @@ export default function OrbitingItems3D({
   radiusY = 30,
   tiltAngle = 360 - 30,
   duration = 25,
-  items = LucideIcons,
+  items = ImageItems,
   backgroundClassName,
   containerClassName,
   className,
-  verticalOffset = -30, // Changed from -80 to -40 to move orbit lower
+  verticalOffset = -30,
 }: OrbitingItems3DProps) {
-  // The OrbitingItems3D component creates an animated elliptical orbiting effect for a set of items around a central element.
-  // It allows for a visually dynamic layout, where items revolve around the center in a smooth, continuous motion,
-  // creating the illusion of 3D movement. The component provides a range of customizable options to control the orbit,
-  // including the size of the elliptical path, tilt angle, and animation duration.
-
   const [animationTime, setAnimationTime] = useState(0);
 
   useEffect(() => {
@@ -102,8 +122,7 @@ export default function OrbitingItems3D({
       const currentTime = Date.now();
       const elapsed = currentTime - startTime;
       
-      // Convert duration from per-step to full rotation time
-      const rotationSpeed = duration * 360; // milliseconds for one full rotation
+      const rotationSpeed = duration * 360;
       const currentAngle = (elapsed / rotationSpeed) * 360;
       
       setAnimationTime(currentAngle);
@@ -136,39 +155,31 @@ export default function OrbitingItems3D({
     animationTime: number;
     verticalOffset: number;
   }) => {
-    // Calculate the base angle for this item (evenly distributed)
     const angleStep = 360 / totalItems;
     const baseAngle = index * angleStep;
     
-    // Add the animation time to create rotation
     const angle = (baseAngle + animationTime) % 360;
     const radians = (angle * Math.PI) / 180;
 
-    // X and Y positions before tilt
     const x = radiusX * Math.cos(radians);
     const y = radiusY * Math.sin(radians);
 
-    // Apply the tilt using rotation matrix
     const tiltRadians = (tiltAngle * Math.PI) / 180;
     const xTilted = x * Math.cos(tiltRadians) - y * Math.sin(tiltRadians);
     const yTilted = x * Math.sin(tiltRadians) + y * Math.cos(tiltRadians);
-    // Adjust z-index to ensure proper layering with the statue
-    // Icons in front (0-180 degrees) should be above statue, icons in back (180-360) should be below
+    
     const zIndex = angle > 180 ? 5 : 20;
-    // Use a more subtle scale difference to suggest depth without making icons disappear
     const scale = angle < 180 ? 1.1 : 0.9;
 
     return {
       left: `${50 + xTilted}%`,
-      top: `${50 + yTilted + verticalOffset}%`, // Add vertical offset to position items near the head
+      top: `${50 + yTilted + verticalOffset}%`,
       transform: `translate(-50%, -50%) scale(${scale})`,
       zIndex: zIndex,
-      opacity: 0.8 + (angle < 180 ? 0.2 : 0), // Make items slightly more transparent when in back
+      opacity: 0.8 + (angle < 180 ? 0.2 : 0),
       transition: "opacity 0.5s ease-in-out",
     };
   };
-
-  const reverse = cn("transition-transform ease-linear direction-reverse repeat-infinite");
 
   return (
     <div
@@ -185,16 +196,24 @@ export default function OrbitingItems3D({
       />
       <div
         className={cn(
-          "relative flex h-128 w-128 items-center justify-center ease-linear repeat-infinite z-10",
+          "relative flex h-[32rem] w-[32rem] items-center justify-center ease-linear repeat-infinite z-10",
           className,
         )}
       >
-        {CenterIcon()}
+        <div className="relative h-[28rem] w-[28rem] z-10">
+          <Image
+            src={statue}
+            alt="Statue"
+            fill
+            loading="lazy"
+            className="object-contain drop-shadow-lg drop-shadow-black"
+          />
+        </div>
         {items.map((item, index) => {
           return (
             <div
-              key={index}
-              className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-white/50  backdrop-blur-md transition-transform duration-500 ease-out"
+              key={item.key}
+              className="absolute flex h-14 w-14 items-center justify-center border border-black/60 dark:border-white/60 rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-md transition-transform duration-500 ease-out overflow-hidden"
               style={CalculateItemStyle({
                 index,
                 radiusX,
@@ -205,7 +224,14 @@ export default function OrbitingItems3D({
                 verticalOffset,
               })}
             >
-              <div className={reverse}>{item}</div>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={32}
+                height={32}
+                className="object-contain"
+                unoptimized
+              />
             </div>
           );
         })}

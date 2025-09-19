@@ -110,7 +110,7 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-2 sm:line-clamp-3">{project.description}</p>
+            <p className="text-sm lowercase text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-2 sm:line-clamp-3">{project.description}</p>
 
             <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
               {project.technologies.slice(0, 3).map((tech: string) => (
@@ -130,19 +130,19 @@ export default function ProjectsPage() {
 
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               {project.link && (
-                <a
+                <Link
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-sm text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors touch-manipulation"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  <span className="hidden sm:inline">Live Demo</span>
+                  <span className="hidden sm:inline">Live</span>
                   <span className="sm:hidden">Demo</span>
-                </a>
+                </Link>
               )}
               {project.youtube && (
-                <a
+                <Link
                   href={project.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -150,7 +150,7 @@ export default function ProjectsPage() {
                 >
                   <Play className="w-4 h-4" />
                   Video
-                </a>
+                </Link>
               )}
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function ProjectsPage() {
 
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               {project.link && (
-                <a
+                <Link
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -224,7 +224,7 @@ export default function ProjectsPage() {
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span className="hidden sm:inline">Demo</span>
-                </a>
+                </Link>
               )}
               {project.youtube && (
                 <a
@@ -277,11 +277,9 @@ export default function ProjectsPage() {
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
-                <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-300 dark:via-neutral-50 dark:to-neutral-300 bg-clip-text text-transparent">
-                  ALL PROJECTS
-                </span>
-              </h1>
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6">
+              <span className="bg-gradient-to-r uppercase from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">Projects</span>
+            </h2>
               <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
                 {filteredAndSortedProjects.length} of {projects.length} projects
               </p>

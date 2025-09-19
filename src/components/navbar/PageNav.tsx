@@ -8,7 +8,7 @@ import { ThemeToggle } from "./theme-toggle"
 interface PageNavProps {
   type: "blog" | "project"
   isSlug?: boolean
-  title?: string // Add optional title prop
+  title?: string
 }
 
 export default function PageNav({ type, isSlug = false, title }: PageNavProps) {
@@ -16,7 +16,6 @@ export default function PageNav({ type, isSlug = false, title }: PageNavProps) {
 
   const handleShare = async (platform: string) => {
     const url = window.location.href
-    // Method 1: Use prop title, fallback to document title, then default
     const pageTitle = title || document.title || `${type === "blog" ? "Blog Post" : "Project"}`
 
     switch (platform) {

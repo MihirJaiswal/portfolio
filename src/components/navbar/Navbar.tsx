@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
-import { Linkedin, Github, Youtube, Twitter } from "lucide-react";
+import { Linkedin, Github, Youtube } from "lucide-react";
+import { BsTwitterX } from "react-icons/bs";
 import { siteConfig } from "../../lib/data";
 import { navLinks } from "../../lib/data";
 import { MobileMenu } from "./mobile-menu";
@@ -19,7 +20,7 @@ export const Navbar = () => {
     isVisible: true,
     hasScrolled: false
   });
-  
+
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
   const updateNavbar = useCallback(() => {
@@ -30,14 +31,14 @@ export const Navbar = () => {
     if (scrollY > 100) {
       isVisible = scrollY < lastScrollY.current || scrollY < 100;
     }
-    
+
     setState(prev => {
       if (prev.isVisible !== isVisible || prev.hasScrolled !== hasScrolled) {
         return { isVisible, hasScrolled };
       }
       return prev;
     });
-    
+
     lastScrollY.current = scrollY;
     ticking.current = false;
   }, []);
@@ -54,18 +55,16 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-    state.hasScrolled 
-      ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-sm' 
-      : 'bg-transparent'
-  } ${
-    state.isVisible 
-      ? 'translate-y-0 opacity-100' 
+  const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${state.hasScrolled
+    ? 'bg-white/90 dark:bg-neutral-950/90 backdrop-blur-md shadow-sm'
+    : 'bg-transparent'
+    } ${state.isVisible
+      ? 'translate-y-0 opacity-100'
       : '-translate-y-full opacity-0'
-  }`;
+    }`;
 
   const socialLinks = [
-    { href: siteConfig.social.twitter, icon: Twitter, label: 'Follow on Twitter' },
+    { href: siteConfig.social.twitter, icon: BsTwitterX, label: 'Follow on Twitter' },
     { href: siteConfig.social.github, icon: Github, label: 'View GitHub profile' },
     { href: siteConfig.social.linkedin, icon: Linkedin, label: 'Connect on LinkedIn' },
     { href: siteConfig.social.youtube, icon: Youtube, label: 'Subscribe on YouTube' }
@@ -73,8 +72,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg"
       >
         Skip to main content
@@ -94,9 +93,9 @@ export const Navbar = () => {
             </div>
 
             {/* Main Navigation */}
-            <nav 
+            <nav
               className="hidden lg:flex items-center space-x-3"
-              role="navigation" 
+              role="navigation"
               aria-label="Main navigation"
             >
               <ul className="flex items-center space-x-3">
@@ -120,7 +119,7 @@ export const Navbar = () => {
               aria-label="Social media links and settings"
             >
               <ul className="flex items-center space-x-3">
-                {socialLinks.map(({ href, icon: Icon, label}) => (
+                {socialLinks.map(({ href, icon: Icon, label }) => (
                   <li key={href}>
                     <Link
                       href={href}
@@ -134,7 +133,7 @@ export const Navbar = () => {
                   </li>
                 ))}
               </ul>
-             
+
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div>
@@ -146,7 +145,7 @@ export const Navbar = () => {
                 </TooltipContent>
               </Tooltip>
             </div>
-            
+
             {/* Mobile Controls */}
             <div className="lg:hidden flex items-center space-x-3">
               <Tooltip>

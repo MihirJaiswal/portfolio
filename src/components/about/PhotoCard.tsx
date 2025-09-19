@@ -16,10 +16,9 @@ interface PhotoCardProps {
   photo: Photo
   cardWidth: number
   cardHeight: number
-  isGrayscaleEnabled: boolean
 }
 
-function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCardProps) {
+function PhotoCard({ photo, cardWidth, cardHeight }: PhotoCardProps) {
   // Calculate photo area height (leaving space for caption)
   const photoHeight = cardHeight - 80 // 80px for padding and caption area
   
@@ -39,16 +38,14 @@ function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCa
       }}
     >
       {/* Polaroid Frame */}
-      <div className="w-full h-full bg-white p-4 shadow-lg transition-shadow duration-300 relative border-1 border-neutral-300">
+      <div className="group hover:rotate-1 hover:scale-101 hover:-translate-y-2 duration-300 w-full h-full bg-white p-4 shadow-lg transition-all cursor-pointer relative border-1 border-neutral-300 hover:border-neutral-400">
         
         {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>
           <Image
             src={photo.imageUrl}
             alt={photo.title || "Photo"}
-            className={`w-full h-full object-cover object-top bg-black filter contrast-110 ${
-              isGrayscaleEnabled ? "grayscale" : ""
-            } hover:grayscale-0 transition-all duration-500 border border-black`}
+            className="w-full h-full object-cover object-top bg-black filter contrast-110 group-hover:scale-105 transition-all duration-500 border border-black"
             fill
             unoptimized
             sizes="(max-width: 768px) 240px, 240px"
@@ -56,14 +53,12 @@ function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCa
             quality={85}
             draggable={false}
           />
-          {/* Subtle vintage overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-50/20 pointer-events-none"></div>
         </div>
 
         {/* Caption Area */}
-        <div className="h-12 flex flex-col justify-center">
-          <h3 className="font-handwriting text-gray-800 text-sm mb-1 line-clamp-1 leading-tight">{photo.title}</h3>
-          <p className="font-handwriting text-gray-600 text-xs">
+        <div className="h-12 flex flex-col justify-center group-hover:text-gray-900 transition-colors duration-300">
+          <h3 className="font-handwriting text-gray-800 group-hover:text-gray-900 text-sm mb-1 line-clamp-1 leading-tight transition-colors duration-300">{photo.title}</h3>
+          <p className="font-handwriting text-gray-600 group-hover:text-gray-700 text-xs transition-colors duration-300">
             {new Date(photo.date).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
@@ -72,8 +67,8 @@ function PhotoCard({ photo, cardWidth, cardHeight, isGrayscaleEnabled }: PhotoCa
           </p>
         </div>
 
-        {/* Vintage tape effect */}
-        <div className={`absolute -top-1 left-24 w-8 h-4 ${isGrayscaleEnabled ? "bg-neutral-300" : "bg-yellow-100"} rotate-12 shadow-sm opacity-80`}></div>
+        {/* Vintage tape effect with hover animation */}
+        <div className={`absolute -top-1 left-24 w-8 h-4 bg-yellow-100 group-hover:bg-yellow-200 rotate-12 group-hover:rotate-6 shadow-sm group-hover:shadow-md opacity-80 group-hover:opacity-100 transition-all duration-300`}></div>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ const reviews = [
   {
     name: "Mira Shah",
     username: "@mirashah",
-    body: "Mihir's attention to detail is exceptional.",
+    body: "Mihir's attention to detail is exceptional. 🔥",
     img: "https://avatar.vercel.sh/mira",
   },
   {
@@ -17,13 +17,13 @@ const reviews = [
   {
     name: "Sara Khan",
     username: "@sarak",
-    body: "Mihir's work is always top-notch, and he's a great collaborator.",
+    body: "Mihir is one of the best design engineer i worked with.",
     img: "https://avatar.vercel.sh/sara",
   },
   {
     name: "Rahul Mehta",
     username: "@rahulmehta",
-    body: "Mihir’s knowledge of frontend frameworks and backend is solid.",
+    body: "Most creative and inovative boy i know. ",
     img: "https://avatar.vercel.sh/rahul",
   },
   {
@@ -55,7 +55,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 bg-zinc-100 dark:bg-zinc-900/70",
       )}
     >
       <div className="flex flex-row items-center gap-2">
@@ -68,7 +68,7 @@ const ReviewCard = ({
 
 export function ReviewMarquee() {
   return (
-    <div className="relative flex w-full flex-col items-center gap-4 justify-center overflow-hidden">
+    <div className="relative flex w-full flex-col items-center gap-4 justify-center overflow-hidden ">
       <Marquee pauseOnHover className="[--duration:20s] hidden md:flex">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
@@ -79,8 +79,8 @@ export function ReviewMarquee() {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {secondRow.map((review) => (
+      <Marquee pauseOnHover className="[--duration:20s] md:flex">
+        {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
@@ -89,9 +89,15 @@ export function ReviewMarquee() {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
+      <Marquee pauseOnHover className="[--duration:20s] md:flex">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background/60 via-transparent to-transparent"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background/60 via-transparent to-transparent"></div>
     </div>
   );
 }

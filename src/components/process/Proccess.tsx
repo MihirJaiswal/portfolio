@@ -44,7 +44,7 @@ export function ProcessSteps() {
       className="py-20 relative bg-black"
     >
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-20">
+        <div className="grid grid-cols-1 gap-32">
           {words.map((word, index) => (
             <div
               key={index}

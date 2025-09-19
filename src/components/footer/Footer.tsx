@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="relative z-50 overflow-hidden border-t">
       <footer>
-        <div className="container mx-auto flex flex-col justify-center border-y border-dashed py-10">
+        <div className="container mx-auto flex flex-col justify-center border-y py-10">
           <h2 className="text-5xl sm:text-7xl md:text-[7rem] font-extrabold mb-12 text-center px-6">
             LET&apos;S <span className="text-neutral-400">TALK</span>
           </h2>
@@ -30,7 +30,7 @@ function Footer() {
           </div>
 
 
-          <div className="border-t border-dashed pt-8 mt-8">
+          <div className="border-t pt-8 mt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-6">
               <p className="text-xs text-neutral-400 text-center md:text-left">
                 &copy; {new Date().getFullYear()} {siteConfig.author}. ALL RIGHTS RESERVED.

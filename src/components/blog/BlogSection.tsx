@@ -163,19 +163,19 @@ interface BlogCardProps {
 function BlogCard({ post, isMobile, setHoveredPost }: BlogCardProps) {
   return (
     <article
-      className={`group bg-white dark:bg-neutral-950 border border-dashed border-neutral-600 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
+      className={`group bg-white dark:bg-neutral-950 border  border-neutral-600 rounded-sm shadow-lg overflow-hidden hover:border-black dark:hover:border-neutral-600 transition-all duration-500 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-white/10 ${isMobile ? "mx-2" : ""}`}
       onMouseEnter={() => setHoveredPost(post.slug)}
       onMouseLeave={() => setHoveredPost(null)}
     >
       <Link href={`/blogs/${post.slug}`} className="block">
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="relative aspect-video overflow-hidden">
           <Image
             src={post.image || "/placeholder.svg"}
             alt={post.title}
             fill
             loading="lazy"
             className={cn(
-              "object-cover transition-all duration-700 ease-in-out transform border-b border-dashed border-neutral-400 dark:border-neutral-600",
+              "object-cover transition-all duration-700 ease-in-out transform border-b border-neutral-400 dark:border-neutral-600",
             )}
           />
         </div>

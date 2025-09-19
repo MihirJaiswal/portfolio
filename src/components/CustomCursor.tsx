@@ -7,6 +7,7 @@ export const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isHoveringProject, setIsHoveringProject] = useState(false);
   const [isHoveringDescription, setIsHoveringDescription] = useState(false);
+  const [isHoveringHeroImage, setIsHoveringHeroImage] = useState(false);
   const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -32,6 +33,11 @@ export const CustomCursor = () => {
       setIsHoveringDescription(e.detail.isHovering);
     };
 
+    // Listen for hero image hover events
+    const handleHeroImageHover = (e: CustomEvent) => {
+      setIsHoveringHeroImage(e.detail.isHovering);
+    };
+
     // Smooth animation function
     const animateCursor = () => {
       setPosition(prev => {
@@ -53,6 +59,7 @@ export const CustomCursor = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('projectHover', handleProjectHover as EventListener);
     document.addEventListener('descriptionHover', handleDescriptionHover as EventListener);
+    document.addEventListener('heroImageHover', handleHeroImageHover as EventListener);
     document.body.style.cursor = 'none';
     
     // Start animation loop
@@ -64,6 +71,7 @@ export const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('projectHover', handleProjectHover as EventListener);
       document.removeEventListener('descriptionHover', handleDescriptionHover as EventListener);
+      document.removeEventListener('heroImageHover', handleHeroImageHover as EventListener);
       document.body.style.cursor = 'auto';
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -78,11 +86,13 @@ export const CustomCursor = () => {
           ? 'w-24 h-24' 
           : 'w-5 h-5'
       } ${
-        isVisible && !isHoveringProject ? 'opacity-100' : 'opacity-0'
+        isVisible && !isHoveringProject && !isHoveringHeroImage ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
         transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
-        backgroundColor: isHoveringDescription ? 'white' : 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: isHoveringDescription 
+          ? 'white' 
+          : 'rgba(255, 255, 255, 0.8)',
         border: isHoveringDescription 
           ? '2px solid transparent' 
           : '1px solid rgb(38, 38, 38)',

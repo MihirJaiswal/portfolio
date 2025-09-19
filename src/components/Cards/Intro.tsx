@@ -1,4 +1,4 @@
-import { ArrowRight, Github } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { ThreeDMarqueeDemo } from "../ui/ThreeDMarqueeDemo"
@@ -60,11 +60,14 @@ export default function Intro() {
               </Button>
               </Link>
               <Link href="https://nyxui.com/" target="_blank" >
-              <Button size="lg" variant={"secondary"} className="border !w-54 xs:w-auto border-neutral-300 dark:border-neutral-700 bg-background" >
+              <Button size="lg" variant={"secondary"} className="border !w-54 xs:w-auto border-neutral-300 dark:border-neutral-700 bg-background flex gap-2" >
                 
                 <span className="relative flex items-center gap-2">
-                 ⭐ Star on GitHub 
-                </span><Github className="w-5 h-5 transition-transform duration-300 fill-accent" />
+                  Star the repository
+                </span>
+                <span>
+                  ⭐
+                </span>
               </Button>
               </Link>
             </div>

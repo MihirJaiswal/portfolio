@@ -626,6 +626,7 @@ h6 {
   .gallery-container {
     height: auto !important;
     min-height: auto !important;
+    margin-bottom: 100px !important;
   }
 
   .gallery-grid {
@@ -683,7 +684,9 @@ h6 {
 }
 
 @media (max-width: 530px) {
-
+.gallery-container {
+    margin-bottom: 10px !important;
+  }
   .artwork-frame{
     height: 100%;
   }

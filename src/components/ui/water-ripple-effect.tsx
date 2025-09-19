@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from "react"
 import * as THREE from "three"
-import { useGrayscaleStore } from "@/lib/store"
 
 // Core component with all the Three.js logic
 export default function WaterRippleEffectCore() {
@@ -13,7 +12,6 @@ export default function WaterRippleEffectCore() {
   const mouseRef = useRef({ x: 0.5, y: 0.5 })
   const timeRef = useRef(0)
   const isHoveredRef = useRef(false)
-  const { isGrayscaleEnabled } = useGrayscaleStore()
 
   useEffect(() => {
     // Capture the current mount element at the start of the effect
@@ -35,7 +33,7 @@ export default function WaterRippleEffectCore() {
       "/assets/art.webp",
     )
 
-    // Improved water ripple shader with grayscale
+    // Water ripple shader
     const vertexShader = `
       varying vec2 vUv;
 
@@ -50,7 +48,6 @@ export default function WaterRippleEffectCore() {
       uniform float time;
       uniform vec2 mouse;
       uniform float hoverIntensity;
-      uniform float grayscaleAmount;
       varying vec2 vUv;
 
       void main() {
@@ -94,15 +91,6 @@ export default function WaterRippleEffectCore() {
         // Sample texture with distorted coordinates
         vec4 color = texture2D(texture1, distortedUv);
         
-        // Apply grayscale effect
-        float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-        vec3 grayscaleColor = vec3(gray);
-        
-        // Mix between original color and grayscale based on both global setting and hover state
-        float baseGrayscale = ${isGrayscaleEnabled ? '1.0' : '0.0'};
-        float finalGrayscaleAmount = baseGrayscale * grayscaleAmount;
-        color.rgb = mix(color.rgb, grayscaleColor, finalGrayscaleAmount);
-        
         gl_FragColor = color;
       }
     `
@@ -114,7 +102,6 @@ export default function WaterRippleEffectCore() {
         time: { value: 0 },
         mouse: { value: new THREE.Vector2(0.5, 0.5) },
         hoverIntensity: { value: 0.3 },
-        grayscaleAmount: { value: 1.0 }, // Start with full grayscale
       },
       vertexShader,
       fragmentShader,
@@ -165,11 +152,6 @@ export default function WaterRippleEffectCore() {
         const targetIntensity = isHoveredRef.current ? 1.2 : 0.3
         const currentIntensity = materialRef.current.uniforms.hoverIntensity.value
         materialRef.current.uniforms.hoverIntensity.value += (targetIntensity - currentIntensity) * 0.05
-
-        // Smooth grayscale transition - colorful on hover, grayscale when not hovering
-        const targetGrayscale = isHoveredRef.current ? 0.0 : 1.0 // 0 = full color, 1 = full grayscale
-        const currentGrayscale = materialRef.current.uniforms.grayscaleAmount.value
-        materialRef.current.uniforms.grayscaleAmount.value += (targetGrayscale - currentGrayscale) * 0.08
       }
 
       if (rendererRef.current && sceneRef.current) {
@@ -194,7 +176,7 @@ export default function WaterRippleEffectCore() {
       material.dispose()
       texture.dispose()
     }
-  }, [isGrayscaleEnabled])
+  })
 
   return (
     <div className="w-full flex lg:block justify-center items-start -mt-[315px] lg:-mt-[167px] lg:-ml-[160px] max-h-[640px]">

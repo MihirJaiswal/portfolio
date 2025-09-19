@@ -30,7 +30,7 @@ const samplePhotos: Photo[] = [
   {
     id: "4",
     title: "Creativity Lead",
-    date: "2025-05-07",
+    date: "2024-03-07",
     imageUrl: img4,
     position: { x: 0, y: 0 },
   },

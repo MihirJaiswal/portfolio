@@ -98,7 +98,7 @@ const GalleryWall: React.FC = () => {
                     unoptimized
                     loading='lazy'
                     placeholder='blur'
-                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border border-neutral-700 object-cover`}
+                    className={`artwork-image p-1.5 transition-all duration-500 border border-neutral-700 object-cover`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -122,7 +122,7 @@ const GalleryWall: React.FC = () => {
                     loading='lazy'
                     unoptimized
                     placeholder='blur'
-                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
+                    className={`artwork-image p-1.5 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -146,7 +146,7 @@ const GalleryWall: React.FC = () => {
                     loading='lazy'
                     placeholder='blur'
                     unoptimized
-                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500 border object-cover border-neutral-700`}
+                    className={`artwork-image p-1.5 transition-all duration-500 border object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -171,7 +171,7 @@ const GalleryWall: React.FC = () => {
                     loading='lazy'
                     placeholder='blur'
                     unoptimized
-                    className={`artwork-image p-1.5 hover:grayscale-0 transition-alla duration-500 border object-right object-cover border-neutral-700`}
+                    className={`artwork-image p-1.5 transition-alla duration-500 border object-right object-cover border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 45vw"
                   />
                   <div className="artwork-info">
@@ -196,7 +196,7 @@ const GalleryWall: React.FC = () => {
                     unoptimized
                     placeholder='blur'
                     quality={100}
-                    className={`artwork-image p-1.5 hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
+                    className={`artwork-image p-1.5 object-cover transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">
@@ -220,7 +220,7 @@ const GalleryWall: React.FC = () => {
                     unoptimized
                     loading='lazy'
                     placeholder='blur'
-                    className={`artwork-image p-1.5 hover:grayscale-0 object-cover transition-all duration-500 border border-neutral-700`}
+                    className={`artwork-image p-1.5 object-cover transition-all duration-500 border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 30vw"
                   />
                   <div className="artwork-info">
@@ -244,7 +244,7 @@ const GalleryWall: React.FC = () => {
                     unoptimized
                     loading='lazy'
                     placeholder='blur'
-                    className={`artwork-image p-1.5 hover:grayscale-0 transition-all duration-500  object-cover border border-neutral-700`}
+                    className={`artwork-image p-1.5 transition-all duration-500  object-cover border border-neutral-700`}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 20vw, 20vw"
                   />
                   <div className="artwork-info">

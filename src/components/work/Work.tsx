@@ -12,7 +12,7 @@ import equiImg from '/public/work/equi.webp';
 import gdscImg from '/public/work/gdsc.webp';
 import ghibliImg from '/public/work/ghibli.webp';
 import heroImg from '/public/work/hero.webp';
-import inkscrollImg from '/public/work/inkscroll.webp';
+import nyxImg from '/public/work/nyx.webp';
 import monsterpediaImg from '/public/work/monsterpedia.webp';
 import riyaImg from '/public/work/riya.webp';
 import storyImg from '/public/work/story.webp';
@@ -26,15 +26,16 @@ const images: ImageData[] = [
   { src: certigenImg, alt: 'Certigen Project' },
   { src: citronicsImg, alt: 'Citronics Project' },
   { src: cybersphereImg, alt: 'Cybersphere Project' },
-  { src: dreammistImg, alt: 'Dreammist Project' },
   { src: equiImg, alt: 'Equi Project' },
-  { src: gdscImg, alt: 'GDSC Project' },
+  { src: nyxImg, alt: 'Nyx Project' },
   { src: ghibliImg, alt: 'Ghibli Project' },
-  { src: heroImg, alt: 'Hero Project' },
-  { src: inkscrollImg, alt: 'Inkscroll Project' },
-  { src: monsterpediaImg, alt: 'Monsterpedia Project' },
-  { src: riyaImg, alt: 'Riya Project' },
   { src: storyImg, alt: 'Story Project' },
+  { src: heroImg, alt: 'Hero Project' },
+  { src: dreammistImg, alt: 'Dreammist Project' },
+  { src: riyaImg, alt: 'Riya Project' },
+  { src: monsterpediaImg, alt: 'Monsterpedia Project' },
+  { src: gdscImg, alt: 'GDSC Project' },
+  
 ];
 
 interface ColumnProps {
@@ -76,7 +77,7 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldR
             alt={imageData.alt}
             fill
             sizes={isMobile ? '50vw' : '25vw'}
-            className="object-cover object-top [@media(min-width:500px)]:object-contain [@media(min-width:500px)]:object-center"
+            className="object-cover object-top-left"
             quality={100}
             unoptimized
             placeholder="blur"

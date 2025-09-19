@@ -67,7 +67,7 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
         <SheetTrigger asChild>
           <motion.button
             ref={menuButtonRef}
-            className="w-10 h-10 flex items-center justify-center relative focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 rounded-md"
+            className="w-10 h-10 flex items-center justify-center relative focus:outline-none  focus:ring-neutral-900 dark:focus:ring-neutral-100 rounded-md"
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
@@ -120,7 +120,7 @@ export function MobileMenu({ links, onToggle }: MobileMenuProps) {
                       <Link
                         ref={index === 0 ? firstLinkRef : undefined}
                         href={link.href}
-                        className="block text-xl font-medium py-3 px-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 transition-all duration-200 relative overflow-hidden group text-center w-full"
+                        className="block text-xl font-medium py-3 px-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:bg-neutral-100 dark:focus:bg-neutral-800 focus:outline-none transition-all duration-200 relative overflow-hidden group text-center w-full"
                         tabIndex={0}
                       >
                         <span className="relative z-10">{link.label}</span>

@@ -1,8 +1,7 @@
-import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import ResumeDownload from "./ResumeDownload"
-import img from '../../../public/assets/hero-image.webp'
 import Link from "next/link"
+import { HeroImage } from "./HeroImage"
 
 export const HeroSection = () => {
   return (
@@ -10,7 +9,7 @@ export const HeroSection = () => {
       className="bg-white dark:bg-neutral-950 will-change-transform relative overflow-hidden pb-4"
       aria-label="Portfolio hero section"
     >
-      {/* Decorative background elements - marked as decorative */}
+      {/* Decorative background elements */}
       <div
         className="absolute hidden lg:hidden lg:dark:block top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#0c0a09)] z-0"
         aria-hidden="true"
@@ -20,9 +19,7 @@ export const HeroSection = () => {
           className="absolute top-40 left-30 w-32 h-32 bg-gradient-to-r from-neutral-400/60 to-neutral-400/10 rounded-full blur-3xl"
         />
       </div>
-      {/* DESKTOP LAYOUT */}
       <div className="px-6 relative mt-18 xs:mt-24 lg:mt-18">
-        {/* Title - now with improved dark mode colors */}
         <header>
           <h1
             className="absolute font-[geist] top-4 left-0 right-0 font-black text-center leading-tight md:leading-none mx-auto tracking-wide md:tracking-tight w-full mt-5"
@@ -48,42 +45,14 @@ export const HeroSection = () => {
             </span>
           </h1>
         </header>
-
-        {/* Main content container - improved height handling */}
         <main className="flex flex-col lg:flex-row items-center justify-center relative">
-          {/* Central content */}
           <div
             className="flex flex-col items-center justify-center z-10 pt-28 xs:pt-40 lg:pt-0"
             role="img"
             aria-label="Professional portfolio showcase image"
           >
-            {/* Desktop image */}
-            <div
-              className="z-10 relative w-[clamp(300px,40vw,450px)] h-[clamp(350px,45vw,500px)] overflow-hidden rounded-lg lg:mt-52 md:scale-100 lg:scale-92"
-            >
-              <Image
-                src={img}
-                alt="Professional portrait of the designer and developer showcasing creative work and technical expertise"
-                height={450}
-                width={475}
-                quality={100}
-                className="object-contain transition-all duration-300 relative"
-                priority
-                loading="eager"
-                unoptimized
-                fetchPriority="high"
-                sizes="(max-width: 1024px) 40vw, 450px"
-                style={{
-                  WebkitMaskImage: "text",
-                  maskImage: "text",
-                  maskComposite: "exclude",
-                }}
-              />
-              <div className="hidden lg:block absolute bottom-0 -translate-y-[140px] -translate-x-15 right-0 bg-white dark:bg-black/5 h-1 w-14 rotate-30 rounded-3xl blur-xs"></div>
-              <div className="hidden lg:block absolute bottom-0 -translate-y-[110px] xl:-translate-y-[120px] translate-x-17 xl:translate-x-21 left-0 bg-white dark:bg-black/5 h-2 xl:h-1 w-21 rounded-3xl -rotate-25 blur-xs"></div>
-            </div>
+            <HeroImage/>
           </div>
-
           {/* Resume download button */}
           <div
             className="sm:absolute left-3 bottom-28 z-10 sm:flex flex-col gap-4 hidden"
@@ -96,7 +65,7 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Role indicator with arrow */}
+          {/* Link for nyx ui */}
           <div
             className="sm:absolute right-3 bottom-28 hidden sm:flex items-end flex-col z-10 mx-auto"
             role="complementary"

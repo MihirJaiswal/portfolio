@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { useGrayscaleStore } from "@/lib/store";
 
 export const ThreeDMarquee = ({
   images,
@@ -11,7 +10,6 @@ export const ThreeDMarquee = ({
   images: string[];
   className?: string;
 }) => {
-  const { isGrayscaleEnabled } = useGrayscaleStore();
   // Split the images array into 4 equal parts
   const chunkSize = Math.ceil(images.length / 4);
   const chunks = Array.from({ length: 4 }, (_, colIndex) => {
@@ -61,7 +59,6 @@ export const ThreeDMarquee = ({
                       alt={`Image ${imageIndex + 1}`}
                       className={cn(
                         "aspect-[970/700] rounded-sm object-cover ring ring-gray-950/5 hover:shadow-2xl",
-                        isGrayscaleEnabled && "grayscale transition-all duration-300"
                       )}
                       width={970}
                       height={700}

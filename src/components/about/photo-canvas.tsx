@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useGrayscaleStore } from "@/lib/store"
 import PhotoCard, { type Photo } from "./PhotoCard"
 import { generateEvenlyDistributedPositions } from "@/lib/utils"
 
@@ -20,7 +19,6 @@ function PhotoCanvas({
   canvasHeight = 320,
   canvasWidth = 1200,
 }: PhotoCanvasProps) {
-  const { isGrayscaleEnabled } = useGrayscaleStore()
   const [scrollX, setScrollX] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const [windowWidth, setWindowWidth] = useState(0)
@@ -32,7 +30,7 @@ function PhotoCanvas({
   useEffect(() => {
     const checkMobile = () => {
       const width = window.innerWidth
-      const mobile = width < 768
+      const mobile = width < 1200
       setIsMobile(mobile)
       setWindowWidth(width)
     }
@@ -151,7 +149,6 @@ function PhotoCanvas({
               photo={photo}
               cardWidth={cardWidth}
               cardHeight={cardHeight}
-              isGrayscaleEnabled={isGrayscaleEnabled}
             />
           ))}
         </div>
