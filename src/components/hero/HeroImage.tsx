@@ -1,11 +1,10 @@
-'use client';
 import Image from "next/image";
-import { useState, useRef, } from "react";
 import img from '../../../public/assets/hero-image.webp';
-import skeleton from '../../../public/assets/skeleton.webp';
+/* import skeleton from '../../../public/assets/skeleton.webp';
+import { useState, useRef, } from "react"; */
 
 export const HeroImage = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+ /*  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [hasHovered, setHasHovered] = useState(false);
   const [maskScale, setMaskScale] = useState(0); 
@@ -46,16 +45,15 @@ export const HeroImage = () => {
     }
   };
 
-  const maskRadius = isHovering ? maskScale * 45 : 0;
+  const maskRadius = isHovering ? maskScale * 45 : 0; */
 
   return (
     <div
-      ref={containerRef}
       id="hero-image-container"
       className="group z-10 relative w-[clamp(300px,40vw,450px)] h-[clamp(350px,45vw,500px)] overflow-hidden rounded-lg lg:mt-52 md:scale-100 lg:scale-92"
-      onMouseEnter={handleImageMouseEnter}
+      /* onMouseEnter={handleImageMouseEnter}
       onMouseLeave={handleImageMouseLeave}
-      onMouseMove={handleMouseMove}
+      onMouseMove={handleMouseMove} */
     >
       {/* Main hero image */}
       <Image
@@ -74,7 +72,7 @@ export const HeroImage = () => {
       />
       
       {/* Skeleton image with smooth circular mask reveal effect */}
-      {hasHovered && (
+      {/* {hasHovered && (
         <div
           className={`absolute inset-0 pointer-events-none transition-opacity hidden lg:block duration-200 ease-out ${
             isHovering ? 'opacity-100' : 'opacity-0'
@@ -100,7 +98,7 @@ export const HeroImage = () => {
             sizes="(max-width: 1024px) 40vw, 450px"
           />
         </div>
-      )}
+      )} */}
       
       {/* elements lighting the shoulder of image lol*/}
       <div className="pointer-events-none">
