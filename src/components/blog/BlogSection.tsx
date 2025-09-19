@@ -52,9 +52,9 @@ export default function BlogSection({ posts }: BlogSectionProps) {
               <span className="bg-gradient-to-r uppercase from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent">My Blogs</span>
             </h2>
           </div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Blogs you might find interesting and useful.
-          </p>
+           <p className='text-[18px] tracking-tight text-neutral-600 dark:text-neutral-400'>
+              Blogs you might find interesting and useful.
+            </p>
         </motion.div>
 
         {/* Mobile Slider */}
