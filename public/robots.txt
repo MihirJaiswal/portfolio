@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/*
+Disallow: /admin/*
+
+# Host
+Host: https://mihirjaiswal-portfolio.vercel.app/
+
+# Sitemaps
+Sitemap: https://mihirjaiswal-portfolio.vercel.app/sitemap.xml
