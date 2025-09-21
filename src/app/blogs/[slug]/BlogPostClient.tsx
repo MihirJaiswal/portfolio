@@ -15,7 +15,7 @@ export default function BlogDetail({
 }: BlogPostClientProps) {
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 dark:text-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mb-12">
         <PageNav type="blog" isSlug />
         <BlogPostHero post={post} />
         <div className="flex flex-col lg:flex-row gap-10">

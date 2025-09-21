@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Add this import
 import { Linkedin, Github, Youtube } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { siteConfig } from "../../lib/data";
@@ -16,6 +17,8 @@ interface NavbarState {
 }
 
 export const Navbar = () => {
+  const pathname = usePathname(); // Get current pathname
+  
   const [state, setState] = useState<NavbarState>({
     isVisible: true,
     hasScrolled: false
@@ -70,6 +73,13 @@ export const Navbar = () => {
     { href: siteConfig.social.youtube, icon: Youtube, label: 'Subscribe on YouTube' }
   ];
 
+  // Helper function to check if route is active
+  const isActiveRoute = (href: string) => {
+    if (href === '/' && pathname === '/') return true;
+    if (href !== '/' && pathname.startsWith(href)) return true;
+    return false;
+  };
+
   return (
     <>
       <header
@@ -92,17 +102,25 @@ export const Navbar = () => {
               aria-label="Main navigation"
             >
               <ul className="flex items-center space-x-3">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-xs font-medium px-5 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-900 hover:border-neutral-900 hover:text-white dark:hover:bg-neutral-50 dark:hover:text-black dark:hover:border-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 transition-all ease-in-out duration-300"
-                      tabIndex={0}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = isActiveRoute(link.href);
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={`text-xs font-medium px-5 py-2 rounded-full border transition-all ease-in-out duration-300 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 ${
+                          isActive
+                            ? 'border-neutral-900/20 dark:border-neutral-50/20 bg-neutral-900/10 dark:bg-zinc-50/10'
+                            : 'border-neutral-200 dark:border-neutral-800 hover:bg-neutral-900 hover:border-neutral-900 hover:text-white dark:hover:bg-neutral-50 dark:hover:text-black dark:hover:border-neutral-50'
+                        }`}
+                        tabIndex={0}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
 
