@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { ThemeProvider } from "next-themes"
 import type { Metadata } from 'next'
 import Footer from "@/components/footer/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const siteUrl = 'https://mihirjaiswal.me'
 
@@ -295,6 +296,7 @@ export default function RootLayout({
             {children}
             <Footer/>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
