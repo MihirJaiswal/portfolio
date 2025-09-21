@@ -1,17 +1,7 @@
-'use client'
 export default function DescriptionText() {
-  const handleDescriptionHover = (isHovering: boolean) => {
-    const event = new CustomEvent('descriptionHover', {
-      detail: { isHovering }
-    });
-    document.dispatchEvent(event);
-  };
-
   return (
     <div 
       className="md:mt-4 z-10 pb-3 cursor-none select-none" 
-      onMouseEnter={() => handleDescriptionHover(true)}
-      onMouseLeave={() => handleDescriptionHover(false)}
     >
       <div className="text-base md:text-lg text-neutral-700 dark:text-neutral-400 leading-relaxed tracking-wide">
         <p className="text-left text-md mb-3">

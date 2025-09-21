@@ -13,7 +13,28 @@ import {
 } from "@/components/ui/sheet"
 import {Linkedin, Github, Youtube } from "lucide-react";
 import { siteConfig } from "../../lib/data";
-import { StaggerContainer } from "../animation/scroll-animations"
+
+// Inline StaggerContainer component
+const StaggerContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+          }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 interface MobileMenuProps {
   links: {

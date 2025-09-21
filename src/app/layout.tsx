@@ -3,8 +3,8 @@ import "./globals.css"
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { ThemeProvider } from "next-themes"
-import { ScrollProvider } from "../components/animation/scroll-aniamtions"
 import type { Metadata } from 'next'
+import Footer from "@/components/footer/Footer";
 
 const siteUrl = 'https://mihirjaiswal-portfolio.vercel.app'
 
@@ -292,7 +292,8 @@ export default function RootLayout({
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable}  font-sans gpu-accelerated`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <ScrollProvider>{children}</ScrollProvider>
+            {children}
+            <Footer/>
         </ThemeProvider>
       </body>
     </html>

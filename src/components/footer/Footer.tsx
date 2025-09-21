@@ -31,7 +31,7 @@ function Footer() {
 
 
           <div className="border-t pt-8 mt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-6 max-w-7xl mx-auto">
               <p className="text-xs text-neutral-400 text-center md:text-left">
                 &copy; {new Date().getFullYear()} {siteConfig.author}. ALL RIGHTS RESERVED.
               </p>

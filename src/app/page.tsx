@@ -1,7 +1,5 @@
 import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
-import { CustomCursor } from "@/components/CustomCursor";
-import Footer from "@/components/footer/Footer";
 import GalleryWall from "@/components/drawing/GalleryWall";
 import { HeroSection } from "@/components/hero/Hero";
 import LenisProvider from "@/components/lenis/LenisProvider";
@@ -21,7 +19,6 @@ export default async function Home() {
     <>
       <LenisProvider>
       <ScrollProgress />
-      <CustomCursor />
       <div className="max-w-7xl mx-auto overflow-hidden">
         <Navbar />
         <HeroSection />
@@ -38,7 +35,6 @@ export default async function Home() {
         </div>
       </div>
       <BlogSection posts={posts} />
-      <Footer />
       <ScrollToTop />
     </LenisProvider>
     </>
