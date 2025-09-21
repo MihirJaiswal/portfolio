@@ -74,20 +74,20 @@ export const MDXComponents = {
 
   // Paragraphs
   p: ({ children, ...props }: any) => (
-    <p className="mb-5 text-neutrl-800 dark:text-neutral-100 leading-7 md:leading-relaxed" {...props}>
+    <p className="mb-5 text-neutral-800 dark:text-neutral-200 leading-7 md:leading-relaxed" {...props}>
       {children}
     </p>
   ),
 
   // Lists
   ul: ({ children, ...props }: any) => (
-    <ul className="mb-6 space-y-2 list-disc list-outside ml-6 text-neutrl-800 dark:text-neutral-100" {...props}>
+    <ul className="mb-6 space-y-2 list-disc list-outside ml-6 text-neutral-800 dark:text-neutral-200" {...props}>
       {children}
     </ul>
   ),
 
   ol: ({ children, ...props }: any) => (
-    <ol className="mb-6 space-y-2 list-decimal list-outside ml-6 text-neutrl-800 dark:text-neutral-100" {...props}>
+    <ol className="mb-6 space-y-2 list-decimal list-outside ml-6 text-neutral-800 dark:text-neutral-200" {...props}>
       {children}
     </ol>
   ),
