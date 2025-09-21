@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes"
 import type { Metadata } from 'next'
 import Footer from "@/components/footer/Footer";
 
-const siteUrl = 'https://mihirjaiswal-portfolio.vercel.app'
+const siteUrl = 'https://mihirjaiswal.me'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

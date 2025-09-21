@@ -8,7 +8,7 @@ Disallow: /api/*
 Disallow: /admin/*
 
 # Host
-Host: https://mihirjaiswal-portfolio.vercel.app/
+Host: https://mihirjaiswal.me/
 
 # Sitemaps
-Sitemap: https://mihirjaiswal-portfolio.vercel.app/sitemap.xml
+Sitemap: https://mihirjaiswal.me/sitemap.xml

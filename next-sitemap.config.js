@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-    siteUrl: "https://mihirjaiswal-portfolio.vercel.app/", 
+    siteUrl: "https://mihirjaiswal.me", 
     generateRobotsTxt: true,
     sitemapSize: 7000,
     generateIndexSitemap: true,

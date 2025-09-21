@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mihirjaiswal-portfolio.vercel.app/sitemap.xml",
-    host: "https://mihirjaiswal-portfolio.vercel.app",
+    sitemap: "https://mihirjaiswal.me/sitemap.xml",
+    host: "https://mihirjaiswal.me",
   };
 }
