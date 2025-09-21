@@ -32,40 +32,41 @@ function NameTranslation() {
   return (
     <div className="flex items-center justify-center">
       <div className="relative h-8 flex items-center justify-center min-w-[160px]">
-        <Link href="/" >
-          <AnimatePresence mode="wait">
-            {isVisible && (
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  },
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -10,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  },
-                }}
-                className="absolute flex space-x-2"
-              >
+        <AnimatePresence mode="wait">
+          {isVisible && (
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: -10,
+                transition: {
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
+              className="absolute flex space-x-2"
+            >
+              <Link href="/" className="flex gap-1.5" >
                 <h1 className="text-xl font-bold tracking-tight">
                   {translations[currentIndex].mihir}
                 </h1>
                 <h1 className="text-xl font-bold tracking-tight">
                   {translations[currentIndex].jaiswal}
                 </h1>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </Link>
+              </Link>
+
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )
