@@ -1,11 +1,11 @@
 ---
 title: "Next.js Image Component"
-description: "Learn how to use Next.js Image component to optimize images and improve site performance"
-date: "2024-11-28"
+description: "Learn how to use Next.js Image component."
+date: "2025-05-28"
 readingTime: "7 min read"
 author: "Mihir Jaiswal"
-image: "/blog/image.webp"
-tags: ["Next.js", "Images", "Performance", "Web Development"]
+image: "/blog/image.png"
+tags: ["Next.js", "Images", "Performance"]
 slug: "nextjs-image-optimization-guide"
 ---
 
@@ -75,7 +75,7 @@ export default function ProfilePage() {
 
 When using images from external domains, you need to configure your `next.config.js` file:
 
-```jsx
+```tsx
 // next.config.ts - Configure allowed domains
 module.exports = {
   images: {
@@ -91,7 +91,7 @@ module.exports = {
 
 Component using remote images:
 
-```jsx
+```tsx
 import Image from 'next/image'
 
 export default function ProductGallery({ products }) {
@@ -123,7 +123,7 @@ export default function ProductGallery({ products }) {
 
 For full-width responsive images, you can use the `fill` prop:
 
-```jsx
+```tsx
 import Image from 'next/image'
 
 // Hero section with full-width responsive image
@@ -150,113 +150,12 @@ export default function HeroSection() {
 }
 ```
 
-CSS for the hero section:
-
-```css
-/* globals.css */
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 500px;
-}
-
-.hero-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 1;
-}
-```
-
-## Building an Image Gallery
-
-Here's how to create an interactive image gallery with different sizes:
-
-```jsx
-import Image from 'next/image'
-import { useState } from 'react'
-
-export default function ImageGallery({ images }) {
-  const [selectedImage, setSelectedImage] = useState(null)
-  
-  return (
-    <div>
-      {/* Thumbnail grid */}
-      <div className="thumbnail-grid">
-        {images.map((image, index) => (
-          <div 
-            key={index} 
-            className="thumbnail"
-            onClick={() => setSelectedImage(image)}
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={150}
-              height={150}
-              style={{
-                objectFit: 'cover',
-                cursor: 'pointer'
-              }}
-            />
-          </div>
-        ))}
-      </div>
-      
-      {/* Modal for selected image */}
-      {selectedImage && (
-        <div 
-          className="modal" 
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="modal-content">
-            <Image
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              width={800}
-              height={600}
-              style={{
-                objectFit: 'contain'
-              }}
-            />
-            <button 
-              className="close-button"
-              onClick={() => setSelectedImage(null)}
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-```
-
-Usage example:
-
-```jsx
-const galleryImages = [
-  { src: '/gallery/photo1.jpg', alt: 'Beautiful landscape' },
-  { src: '/gallery/photo2.jpg', alt: 'City skyline' },
-  { src: '/gallery/photo3.jpg', alt: 'Mountain view' }
-]
-```
 
 ## Advanced Configuration
 
 For maximum performance, you can configure advanced image settings:
 
-```jsx
+```tsx
 // next.config.js - Advanced image configuration
 const imageConfig = {
   images: {
@@ -278,74 +177,6 @@ const imageConfig = {
 }
 
 module.exports = imageConfig
-```
-
-Component with advanced usage:
-
-```jsx
-import Image from 'next/image'
-
-export default function OptimizedImageCard({ product }) {
-  const handleImageLoad = () => {
-    console.log('Image loaded!')
-  }
-  
-  const handleImageError = () => {
-    console.log('Image failed to load')
-  }
-  
-  return (
-    <div className="card">
-      <div className="image-container">
-        <Image
-          src={product.image}
-          alt={product.name}
-          width={400}
-          height={300}
-          sizes="(max-width: 768px) 100vw, 
-                 (max-width: 1200px) 50vw, 
-                 33vw"
-          style={{
-            objectFit: 'cover',
-            borderRadius: '8px'
-          }}
-          placeholder="blur"
-          blurDataURL={product.blurDataUrl}
-          onLoad={handleImageLoad}
-          onError={handleImageError}
-        />
-      </div>
-      
-      <div className="content">
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <span className="price">${product.price}</span>
-      </div>
-    </div>
-  )
-}
-```
-
-CSS styles:
-
-```css
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.image-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
 ```
 
 ## Key Features and Best Practices

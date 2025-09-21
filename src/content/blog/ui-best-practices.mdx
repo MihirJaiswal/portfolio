@@ -1,0 +1,57 @@
+---
+title: "UI Best Practices"
+description: "Key principles for building web interfaces."
+date: "2025-08-19"
+readingTime: "3 min read"
+author: "Mihir Jaiswal"
+image: "/blog/best-practices.png"
+tags: ["Best Practices", "Accessibility", "Frontend"]
+slug: "ui-best-practices"
+---
+
+# UI Best Practices
+
+Designing a great web interface is about making hundreds of small, thoughtful decisions. Here are key principles I follow when building modern, usable web apps.
+
+## Interactions
+
+- **Keyboard-friendly:** Every flow should work with the keyboard. Follow WAI-ARIA patterns.  
+- **Focus clarity:** Visible focus rings matter; use `:focus-visible` to avoid distraction.  
+- **Touch targets:** Hit areas should be ≥24px on desktop, ≥44px on mobile.  
+- **Optimistic updates:** Update the UI immediately, provide undo on failure.  
+- **Confirm destructive actions:** Ask for confirmation or allow undo.  
+- **Accessible links:** Use `<a>` for navigation; avoid `<div>` or `<button>` for links.  
+
+## Animations
+
+- **Reduce motion support:** Honor `prefers-reduced-motion`.  
+- **GPU-friendly:** Animate `opacity` and `transform` only. Avoid layout-triggering properties.  
+- **Interruptible & input-driven:** Animations should respond to user actions and be cancelable.  
+
+## Layout & Content
+
+- **Responsive design:** Test mobile, desktop, and wide screens.  
+- **Safe areas:** Respect notches and insets.  
+- **Clear states:** Design for empty, sparse, dense, and error states.  
+- **Accessible text & icons:** Use labels, alt text, and redundant cues for clarity.  
+- **Locale-aware formatting:** Handle dates, numbers, and currencies per user locale.  
+
+## Forms & Inputs
+
+- **Labels everywhere:** Associate inputs with `<label>`.  
+- **Smart submission:** Keep submit enabled until request starts; show spinner.  
+- **User-friendly validation:** Allow typing freely; show inline errors.  
+- **Autocomplete & input types:** Use meaningful names and types to improve UX.  
+
+## Performance & Design
+
+- **Efficient rendering:** Minimize reflows, batch updates, virtualize large lists.  
+- **Image & font optimization:** Preload critical assets, lazy-load the rest.  
+- **Contrast & readability:** Ensure sufficient contrast, use layered shadows, and align elements intentionally.  
+
+Following these guidelines ensures web interfaces are **usable, accessible, and delightful**. Every decision—from focus rings to animations, adds up to a better experience for your users.
+
+---
+
+💛  
+**Mihir Jaiswal**

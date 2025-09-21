@@ -11,7 +11,7 @@ export function BlogPostImage({ post }: BlogPostImageProps) {
     <div
       className="mb-16"
     >
-      <div className="relative aspect-[4/3] md:aspect-video w-full overflow-hidden rounded-sm border">
+      <div className="relative aspect-video w-full overflow-hidden rounded-sm border">
         <Image
           src={post.image || "/placeholder.svg"}
           alt={post.title}
@@ -19,7 +19,7 @@ export function BlogPostImage({ post }: BlogPostImageProps) {
           height={675}
           quality={100}
           loading="lazy"
-          className="w-full h-full aspect-video border border-neutral-300 dark:border-neutral-800 object-contain bg-white"
+          className="w-full h-full aspect-video border border-neutral-300 dark:border-neutral-800 object-contain bg-white dark:bg-neutral-900"
         />
       </div>
     </div>
