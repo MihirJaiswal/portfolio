@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   category: 'technology',
   classification: 'Personal Website',
   verification: {
-    google: 'XNSEycxa9cfRCuvJ0zP9yC5u_J0R-oriqXxyEM4Yp-Q',
+    google: 'qbhl-AHgSBR--Uq3f1CZJgovCp7J-_wE59AYyRNvX5Q',
   },
   // Add this for better local SEO
   other: {
