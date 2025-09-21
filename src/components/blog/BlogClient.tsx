@@ -9,6 +9,7 @@ import { ContentGrid } from "../content/ContentGrid"
 import { ContentList } from "../content/ContentList"
 import { BlogCard } from "./BlogCard"
 import { BlogListItem } from "./BlogListItem"
+import React from 'react'
 
 interface BlogClientProps {
   posts: BlogPost[]

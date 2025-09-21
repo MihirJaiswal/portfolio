@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import React from 'react'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Calendar, BookOpen, ArrowUpRight } from 'lucide-react'

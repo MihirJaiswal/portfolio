@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Calendar } from 'lucide-react'
+import React from 'react'
 
 interface BlogPost {
   slug: string

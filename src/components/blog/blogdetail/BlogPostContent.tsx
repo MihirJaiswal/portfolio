@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { MDXComponents } from "@/components/blog/blogdetail/MDXComponents";
 import { BlogPostImage } from "./BlogPostImage";
 import type { BlogPost } from "@/lib/mdx";
+import React from 'react'
 
 interface BlogPostContentProps {
   post: BlogPost;

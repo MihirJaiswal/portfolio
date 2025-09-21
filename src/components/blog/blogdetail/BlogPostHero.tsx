@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Calendar, Clock } from "lucide-react";
 import type { BlogPost } from "@/lib/mdx";
+import React from 'react'
 
 interface BlogPostHeroProps {
   post: BlogPost;

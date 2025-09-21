@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { z } from "zod"
 import { MorphingBlob } from "../../components/ui/morphing-blob"
+import React from "react"
 
 // Validation schema
 const contactSchema = z.object({

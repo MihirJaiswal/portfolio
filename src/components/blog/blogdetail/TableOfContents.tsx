@@ -1,5 +1,6 @@
 'use client'
 import type { TOCItem } from '@/lib/mdx'
+import React from 'react'
 
 interface TableOfContentsProps {
   items: TOCItem[]

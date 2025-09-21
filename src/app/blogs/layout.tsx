@@ -1,6 +1,7 @@
 import { ScrollProgress } from '@/components/scroll/scroll-progress';
 import { ScrollToTop } from '@/components/scroll/scroll-to-top';
 import LenisProvider from '@/components/lenis/LenisProvider';
+import React from 'react';
 
 export default function BlogLayout({
   children,

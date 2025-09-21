@@ -1,5 +1,6 @@
 import TableOfContents from "@/components/blog/blogdetail/TableOfContents";
 import type { BlogPost } from "@/lib/mdx";
+import React from 'react'
 
 interface BlogPostSidebarProps {
   post: BlogPost;

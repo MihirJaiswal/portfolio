@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { BlogPost } from "@/lib/mdx";
+import React from 'react'
 
 interface BlogPostImageProps {
   post: BlogPost;

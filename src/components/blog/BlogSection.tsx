@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { BlogPost } from "@/lib/mdx"
+import React from "react"
 
 interface BlogSectionProps {
   posts: BlogPost[]

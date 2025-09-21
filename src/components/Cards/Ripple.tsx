@@ -1,6 +1,7 @@
 "use client"
 import { useRef, useEffect, useState, Suspense } from "react"
 import dynamic from 'next/dynamic'
+import React from "react"
 
 const WaterRippleEffectDynamic = dynamic(() => import('../ui/water-ripple-effect'), {
   ssr: false, 
