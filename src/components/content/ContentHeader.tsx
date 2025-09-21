@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'motion/react'
 import { ViewToggle } from './ViewToggle'
 import type { ViewMode } from '../../../types/common'

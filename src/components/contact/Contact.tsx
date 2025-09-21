@@ -1,5 +1,4 @@
 "use client"
-import type React from "react"
 import { useState } from "react"
 import { z } from "zod"
 import { MorphingBlob } from "../../components/ui/morphing-blob"
@@ -43,8 +42,6 @@ export default function ContactForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-    
-    // Clear error for this field when user starts typing
     if (errors[name as keyof ContactFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
@@ -76,7 +73,6 @@ export default function ContactForm() {
     setSubmitStatus({ type: null, message: '' })
     setErrors({})
 
-    // Validate all fields
     try {
       const validatedData = contactSchema.parse(formData)
       

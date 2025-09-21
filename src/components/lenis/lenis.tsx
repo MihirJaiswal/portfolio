@@ -1,6 +1,5 @@
 "use client"
-
-import React, { ReactNode, useEffect, createContext, useContext, useState, JSX } from 'react'
+import { ReactNode, useEffect, createContext, useContext, useState, JSX } from 'react'
 import Lenis from '@studio-freight/lenis'
 
 type LenisContextType = Lenis | null

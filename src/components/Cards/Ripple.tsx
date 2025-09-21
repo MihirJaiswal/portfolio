@@ -15,21 +15,19 @@ function WaterRippleEffectSkeleton() {
   )
 }
 
-// Main component that handles lazy loading
+// Main component 
 export default function LazyWaterRippleEffect() {
   const [shouldLoad, setShouldLoad] = useState(false)
   const observerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Option 1: Load after page load
     const timer = setTimeout(() => {
       setShouldLoad(true)
-    }, 100) // Small delay after page load
+    }, 100) 
 
     return () => clearTimeout(timer)
   }, [])
 
-  // Option 2: Load when component comes into viewport (Intersection Observer)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +39,7 @@ export default function LazyWaterRippleEffect() {
         })
       },
       {
-        rootMargin: '100px', // Start loading 100px before it's visible
+        rootMargin: '100px', 
         threshold: 0.1
       }
     )
@@ -57,7 +55,6 @@ export default function LazyWaterRippleEffect() {
     <div ref={observerRef}>
       {shouldLoad ? (
         <Suspense fallback={<WaterRippleEffectSkeleton />}>
-          {/* Use either the lazy loaded component or dynamic import */}
           <WaterRippleEffectDynamic />
         </Suspense>
       ) : (

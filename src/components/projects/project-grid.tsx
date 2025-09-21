@@ -34,7 +34,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
   const projectsPerPage = 2
   const totalPages = Math.ceil(projects.length / projectsPerPage)
 
-  // Optimized cursor position update using RAF
   const updateCursorPosition = useCallback((e: MouseEvent) => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current)
@@ -48,7 +47,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     })
   }, [])
 
-  // Dispatch custom event to hide/show main cursor
   const dispatchProjectHover = useCallback((isHovering: boolean) => {
     const event = new CustomEvent('projectHover', {
       detail: { isHovering }
@@ -56,7 +54,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     document.dispatchEvent(event);
   }, []);
 
-  // Optimized mouse move handler
   useEffect(() => {
     if (isHoveringCard) {
       document.addEventListener('mousemove', updateCursorPosition, { passive: true })
@@ -70,7 +67,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     }
   }, [isHoveringCard, updateCursorPosition])
 
-  // Use transform instead of left/top for better performance
   useEffect(() => {
     if (cursorRef.current) {
       cursorRef.current.style.transform = `translate3d(${cursorPos.x}px, ${cursorPos.y}px, 0) translate(-50%, -50%)`
@@ -107,7 +103,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
       ref={containerRef}
       className="relative w-full"
     >
-      {/* Optimized Custom Project Cursor */}
       <div
         ref={cursorRef}
         className={cn(

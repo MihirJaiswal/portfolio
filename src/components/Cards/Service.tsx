@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LazyWaterRippleEffect from "./Ripple";
 
-// Define service items
 const serviceItems = [
   {
     id: "1",
@@ -43,7 +42,6 @@ export default function Service() {
           <LazyWaterRippleEffect/>
         </div>
 
-        {/* Right side - Title and Service List */}
         <div className="relative py-12 px-1 lg:mt-0">
           <div className="text-center mb-6">
             <h2 className="text-[40px] md:text-5xl font-extrabold mb-4">

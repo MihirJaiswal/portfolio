@@ -1,3 +1,4 @@
+import React from "react";
 import About from "@/components/about/About";
 import Cards from "@/components/Cards/Cards";
 import GalleryWall from "@/components/drawing/GalleryWall";
@@ -6,8 +7,8 @@ import LenisProvider from "@/components/lenis/LenisProvider";
 import { Navbar } from "@/components/navbar/Navbar";
 import { ProcessSteps } from "@/components/process/Proccess";
 import { ProjectsSection } from "@/components/projects/Project";
-import { ScrollProgress } from "@/components/scroll-progress";
-import { ScrollToTop } from "@/components/scroll-to-top";
+import { ScrollProgress } from "@/components/scroll/scroll-progress";
+import { ScrollToTop } from "@/components/scroll/scroll-to-top";
 import Work from "@/components/work/Work";
 import BlogSection from "@/components/blog/BlogSection";
 import { getAllBlogPosts } from '@/lib/mdx'

@@ -8,28 +8,19 @@ interface LenisProviderProps {
   children: ReactNode
 }
 
-// Fixed function to detect if smooth scrolling should be enabled
+
 function shouldEnableSmoothScroll(): boolean {
-  // Check if we're in a browser environment
   if (typeof window === 'undefined') return false
-  
-  // Primary mobile detection via user agent
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-  
-  // More refined touch device detection - only disable if it's primarily a touch device
   const isPrimaryTouchDevice = (
     'ontouchstart' in window && 
     navigator.maxTouchPoints > 0 && 
     !window.matchMedia('(hover: hover) and (pointer: fine)').matches
   )
   
-  // Screen size check with more reasonable threshold
-  const isSmallScreen = window.innerWidth <= 640 // Reduced from 768
-  
-  // Enable smooth scroll if not mobile, not primarily touch, and not small screen
+  const isSmallScreen = window.innerWidth <= 640 
   const shouldEnable = !isMobile && !isPrimaryTouchDevice && !isSmallScreen
   
-  // Debug logging to help troubleshoot
   console.log('Device Detection:', {
     isMobile,
     isPrimaryTouchDevice,
@@ -50,7 +41,6 @@ export default function LenisProvider({ children }: LenisProviderProps) {
   const [enableSmoothScroll, setEnableSmoothScroll] = useState(false)
   const lenisRef = useRef<any>(null)
   
-  // Check if smooth scrolling should be enabled on mount and resize
   useEffect(() => {
     const checkDevice = () => {
       setEnableSmoothScroll(shouldEnableSmoothScroll())
@@ -58,7 +48,6 @@ export default function LenisProvider({ children }: LenisProviderProps) {
     
     checkDevice()
     
-    // Re-check on window resize
     window.addEventListener('resize', checkDevice)
     return () => window.removeEventListener('resize', checkDevice)
   }, [])
@@ -84,7 +73,6 @@ export default function LenisProvider({ children }: LenisProviderProps) {
     }
   }, [lenis, lastScrollY])
 
-  // If smooth scrolling is disabled, render children without Lenis
   if (!enableSmoothScroll) {
     return <>{children}</>
   }
@@ -98,9 +86,9 @@ export default function LenisProvider({ children }: LenisProviderProps) {
         smoothWheel: true,
         wheelMultiplier: 0.8,
         easing: (t: number) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
-        smoothTouch: false, // Disabled for touch devices
+        smoothTouch: false, 
         touchMultiplier: 1.5,
-        syncTouch: false, // Disabled
+        syncTouch: false, 
         syncTouchLerp: 0.075,
         normalizeWheel: true,
         autoResize: true,

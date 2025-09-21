@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect, useMemo } from "react"
 import { Grid3X3, List, BookOpen } from "lucide-react"
 import type { BlogPost } from '@/lib/mdx'

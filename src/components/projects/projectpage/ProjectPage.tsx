@@ -2,10 +2,8 @@
 import { useState, useEffect, useMemo } from "react"
 import { Grid3X3, List, Code2 } from "lucide-react"
 import { projects } from "@/lib/project"
-
 import ProjectCard from "./ProjectCard"
 import { ProjectListItem } from "./ProjectsListItems"
-
 import { ContentHeader } from "@/components/content/ContentHeader"
 import { SearchAndFilters } from "@/components/content/SearchAndFilters"
 import { EmptyState } from "@/components/content/EmptyState"

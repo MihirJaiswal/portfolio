@@ -2,8 +2,6 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useTransform, useScroll, motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
-
-// Static imports for better optimization
 import certigenImg from '/public/work/certigen.webp';
 import citronicsImg from '/public/work/citronics.webp';
 import cybersphereImg from '/public/work/cybersphere.webp';
@@ -55,7 +53,6 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldR
       style={{ 
         y: shouldReduceMotion ? 0 : y, 
         top: topOffset,
-        // Critical mobile performance optimizations
         willChange: 'transform',
         transform: 'translateZ(0)',
         backfaceVisibility: 'hidden',
@@ -83,12 +80,10 @@ const Column: React.FC<ColumnProps> = ({ images, y, topOffset, isMobile, shouldR
             placeholder="blur"
             loading='lazy'
             style={{
-              // Mobile GPU acceleration
               transform: 'translateZ(0)',
               backfaceVisibility: 'hidden',
             }}
           />
-          {/* Gradient overlay for better text contrast if needed */}
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none" />
         </div>
       ))}
@@ -152,7 +147,7 @@ export default function Work() {
     };
     
     window.addEventListener("resize", throttledResize, { passive: true });
-    handleResize(); // Initial call
+    handleResize(); 
     
     return () => {
       window.removeEventListener("resize", throttledResize);
@@ -161,7 +156,6 @@ export default function Work() {
     };
   }, [handleResize]);
   
-  // Memoize column organization
   const columnImages = useMemo(() => {
     if (isMobile) {
       return [
@@ -194,14 +188,11 @@ export default function Work() {
             ref={gallery} 
             className="relative flex gap-2 md:gap-8 px-2 md:p-8 box-border overflow-hidden"
             style={{ 
-              height: isMobile ? '120vh' : '175vh', // Reduced mobile height
-              // Critical mobile optimizations
+              height: isMobile ? '120vh' : '175vh', 
               WebkitOverflowScrolling: 'touch',
               transform: 'translateZ(0)',
               backfaceVisibility: 'hidden',
-              // Contain layout calculations
               contain: 'layout style paint',
-              // Prevent unnecessary repaints
               isolation: 'isolate'
             }}
           >

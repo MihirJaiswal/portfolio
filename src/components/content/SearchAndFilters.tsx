@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Search, Filter } from 'lucide-react'
 import { cn } from "@/lib/utils"

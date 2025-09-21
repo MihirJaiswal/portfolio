@@ -3,7 +3,6 @@ import { StaticImageData } from "next/image"
 export type ViewMode = "grid" | "list"
 export type SortOption = string
 
-// Generic interfaces that can be extended
 export interface BaseItem {
   id: string
   title: string

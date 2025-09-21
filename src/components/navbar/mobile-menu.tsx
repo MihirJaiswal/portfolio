@@ -14,7 +14,6 @@ import {
 import {Linkedin, Github, Youtube } from "lucide-react";
 import { siteConfig } from "../../lib/data";
 
-// Inline StaggerContainer component
 const StaggerContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div

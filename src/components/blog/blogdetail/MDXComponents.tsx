@@ -62,7 +62,7 @@ const getHeadingStyles = (level: number): string => {
 
 
 
-// MDX component mapping with improved styling
+// MDX component mapping 
 export const MDXComponents = {
   // Headings with auto-generated IDs
   h1: createHeading(1),

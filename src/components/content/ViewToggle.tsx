@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid3X3, List } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import type { ViewMode } from '../../../types/common'

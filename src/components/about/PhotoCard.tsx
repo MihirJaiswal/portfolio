@@ -1,6 +1,3 @@
-// PhotoCard.tsx - Server Component (no "use client" needed)
-
-import type React from "react"
 import Image, { type StaticImageData } from "next/image"
 
 export interface Photo {
@@ -19,10 +16,8 @@ interface PhotoCardProps {
 }
 
 function PhotoCard({ photo, cardWidth, cardHeight }: PhotoCardProps) {
-  // Calculate photo area height (leaving space for caption)
-  const photoHeight = cardHeight - 80 // 80px for padding and caption area
-  
-  // Use stored rotation or default to 0 if not provided
+ 
+  const photoHeight = cardHeight - 80 
   const rotation = photo.rotation ?? 0
 
   return (
@@ -39,8 +34,6 @@ function PhotoCard({ photo, cardWidth, cardHeight }: PhotoCardProps) {
     >
       {/* Polaroid Frame */}
       <div className="group hover:rotate-1 hover:scale-101 hover:-translate-y-2 duration-300 w-full h-full bg-white p-4 shadow-lg transition-all cursor-pointer relative border-1 border-neutral-300 hover:border-neutral-400">
-        
-        {/* Photo Area */}
         <div className="w-full bg-gray-100 mb-4 overflow-hidden relative" style={{ height: photoHeight }}>
           <Image
             src={photo.imageUrl}
@@ -67,7 +60,7 @@ function PhotoCard({ photo, cardWidth, cardHeight }: PhotoCardProps) {
           </p>
         </div>
 
-        {/* Vintage tape effect with hover animation */}
+        {/*tape */}
         <div className={`absolute -top-1 left-24 w-8 h-4 bg-yellow-100 group-hover:bg-yellow-200 rotate-12 group-hover:rotate-6 shadow-sm group-hover:shadow-md opacity-80 group-hover:opacity-100 transition-all duration-300`}></div>
       </div>
     </div>

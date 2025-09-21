@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Add this import
+import { usePathname } from "next/navigation"; 
 import { Linkedin, Github, Youtube } from "lucide-react";
 import { BsTwitterX } from "react-icons/bs";
 import { siteConfig } from "../../lib/data";
@@ -17,7 +17,7 @@ interface NavbarState {
 }
 
 export const Navbar = () => {
-  const pathname = usePathname(); // Get current pathname
+  const pathname = usePathname(); 
   
   const [state, setState] = useState<NavbarState>({
     isVisible: true,
@@ -73,7 +73,6 @@ export const Navbar = () => {
     { href: siteConfig.social.youtube, icon: Youtube, label: 'Subscribe on YouTube' }
   ];
 
-  // Helper function to check if route is active
   const isActiveRoute = (href: string) => {
     if (href === '/' && pathname === '/') return true;
     if (href !== '/' && pathname.startsWith(href)) return true;

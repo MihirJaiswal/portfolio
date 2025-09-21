@@ -19,8 +19,7 @@ export const CenterIcon = () => {
   );
 };
 
-// Replace with your actual image imports
-import image1 from '../../../public/assets/icons/logo-tailwind.svg'; // Replace with your actual paths
+import image1 from '../../../public/assets/icons/logo-tailwind.svg';
 import image2 from '../../../public/assets/icons/logo-nyx.png';
 import image3 from '../../../public/assets/icons/logo-motion.svg';
 import image4 from '../../../public/assets/icons/logo-react.svg';
@@ -55,49 +54,14 @@ export const ImageItems = [
 ];
 
 interface OrbitingItems3DProps {
-  /**
-   * The radius of the ellipse on X-axis in percentage, relative to the container.
-   */
   radiusX: number;
-
-  /**
-   * The radius of the ellipse on Y-axis in percentage, relative to the container.
-   */
   radiusY: number;
-
-  /**
-   * The angle at which ellipse is tilted to x-axis.
-   */
   tiltAngle: number;
-
-  /**
-   * The time taken for the revolution around the center element.
-   */
   duration: number;
-
-  /**
-   * The items to orbit around the center of the parent element.
-   */
   items?: Array<{src: any, alt: string, key: string}>;
-
-  /**
-   * Class name for the background element.
-   */
   backgroundClassName?: string;
-
-  /**
-   * Class name for the container element.
-   */
   containerClassName?: string;
-
-  /**
-   * Additional classes for the item container.
-   */
   className?: string;
-
-  /**
-   * Vertical offset for orbiting items (negative moves up)
-   */
   verticalOffset?: number;
 }
 

@@ -3,6 +3,7 @@ import { BlogPostHero } from "@/components/blog/blogdetail/BlogPostHero";
 import { BlogPostSidebar } from "@/components/blog/blogdetail/BlogPostSidebar";
 import PageNav from "@/components/navbar/PageNav"
 import type { BlogPost } from "@/lib/mdx";
+import React from "react";
 
 interface BlogPostClientProps {
   post: BlogPost;

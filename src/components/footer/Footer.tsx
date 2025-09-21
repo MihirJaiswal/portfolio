@@ -9,7 +9,6 @@ function Footer() {
           <h2 className="text-5xl sm:text-7xl md:text-[7rem] font-extrabold mb-12 text-center px-6">
             LET&apos;S <span className="text-neutral-400">TALK</span>
           </h2>
-
           <div className="flex flex-wrap justify-center gap-4 mb-8 px-6">
             {[
               { href: siteConfig.social.twitter, label: "TWITTER" },
@@ -28,14 +27,11 @@ function Footer() {
               </a>
             ))}
           </div>
-
-
           <div className="border-t pt-8 mt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-6 max-w-7xl mx-auto">
               <p className="text-xs text-neutral-400 text-center md:text-left">
                 &copy; {new Date().getFullYear()} {siteConfig.author}. ALL RIGHTS RESERVED.
               </p>
-
               <div className="flex gap-6 text-xs text-neutral-400">
                 <Link href="/projects" className="hover:text-foreground transition-colors">
                   Projects

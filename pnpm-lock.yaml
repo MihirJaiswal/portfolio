@@ -41,9 +41,6 @@ importers:
       '@tsparticles/slim':
         specifier: ^3.9.1
         version: 3.9.1
-      Desktop:
-        specifier: link:..
-        version: link:..
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1

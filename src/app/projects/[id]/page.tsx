@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { projects } from "@/lib/project"
 import { ProjectDetailClient } from "@/components/projects/projectdetail/ProjectDetailClient"
+import React from "react"
 
 interface ProjectPageProps {
   params: Promise<{

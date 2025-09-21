@@ -28,14 +28,6 @@ export default function Intro() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left column - Content */}
           <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-20 xs:mt-0 sm:mt-20 lg:mt-12">
-            
-            {/* Badge */}
-          {/*   <div className="inline-flex items-center gap-2 px-5 py-2 rounded-sm bg-gradient-to-r from-neutral-100/80 to-neutral-200/80 dark:from-neutral-800/80 dark:to-neutral-700/80 text-neutral-800 dark:text-neutral-200 text-sm font-medium border border-neutral-300/50 dark:border-neutral-600/50 hover:scale-105 transition-all duration-300 cursor-pointer mb-8 mt-3">
-              <Sparkles className="w-4 h-4" />
-              <span>Explore my UI Library</span>
-            </div> */}
-
-            {/* Title with gradient */}
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-6">
               <span className="bg-gradient-to-r from-neutral-500 via-black to-neutral-500 dark:from-neutral-400 dark:via-white dark:to-neutral-200 bg-clip-text text-transparent animate-gradient-x">
                 NYX UI
@@ -75,9 +67,7 @@ export default function Intro() {
 
           {/* Right column - Image */}
           <div className="relative order-1 lg:order-2">
-
             <div className="relative aspect-[4/3] w-full max-w-xl mx-auto">
-              {/* Image frame with decorative elements */}
               <div className="absolute inset-0 rounded-md bg-gradient-to-tr from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 p-1 shadow-2xl">
                 <div className="absolute top-0 left-0 w-full h-8 bg-neutral-100 dark:bg-neutral-800 rounded-t-md flex items-center px-4">
                   <div className="flex space-x-2">

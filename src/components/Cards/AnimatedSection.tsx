@@ -1,7 +1,6 @@
 // @ts-nocheck
 'use client'
 import { useCardStackAnimation } from '@/hooks/useCardStackAnimation'
-import React from 'react'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
