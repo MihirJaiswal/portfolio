@@ -31,6 +31,7 @@ I’m **Mihir Jaiswal**, a passionate **Frontend Developer** and creative proble
 - LinkedIn: [https://www.linkedin.com/in/mihir-jaiswal-322898287/](https://www.linkedin.com/in/mihir-jaiswal-322898287/)  
 - GitHub: [https://github.com/mihirjaiswal](https://github.com/mihirjaiswal)  
 - Twitter: [https://x.com/mihir_jaiswal_](https://x.com/mihir_jaiswal_)
+- Peerlist: [https://peerlist.io/notifications](https://peerlist.io/notifications)
 - Nyx UI: [https://nyxui.com/](https://nyxui.com/)
 
 ---
