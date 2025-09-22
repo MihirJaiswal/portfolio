@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mihir Jaiswal Portfolio
 
-## Getting Started
+Welcome to my personal portfolio! 👋  
+I’m **Mihir Jaiswal**, a passionate **Frontend Developer** and creative problem solver. This portfolio showcases my projects, skills, and work experience.  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 About Me
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 💻 I love building **interactive, responsive, and modern web applications**.  
+- 🎨 I have a keen eye for **UI/UX design** and enjoy creating intuitive interfaces.  
+- 🛠 Currently focusing on **Next.js, React, Tailwind CSS, and building SaaS projects**.  
+- 🌱 Always learning **new technologies** and experimenting with creative solutions.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Skills
 
-## Learn More
+- **Frontend:** HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Framer Motion  
+- **Backend (Basics):** Node.js, Express, MySQL  
+- **Tools & Platforms:** Git, GitHub, Vercel, Figma  
+- **Other:** Responsive design, UI animations, API integrations  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📫 Contact Me
 
-## Deploy on Vercel
+- Email: [jaiswalmihir.business@gmail.com](mailto:jaiswalmihir.business@gmail.com)  
+- Portfolio: [https://mihirjaiswal.me](https://mihirjaiswal.me)  
+- LinkedIn: [https://www.linkedin.com/in/mihir-jaiswal-322898287/](https://www.linkedin.com/in/mihir-jaiswal-322898287/)  
+- GitHub: [https://github.com/mihirjaiswal](https://github.com/mihirjaiswal)  
+- Twitter: [https://x.com/mihir_jaiswal_](https://x.com/mihir_jaiswal_)
+- Nyx UI: [https://nyxui.com/](https://nyxui.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌟 Support
+
+If you like my work, **consider giving me a star** ⭐ on GitHub or connecting with me on LinkedIn!  
+
+
