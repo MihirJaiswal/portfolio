@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     description: 'Official website of Mihir Jaiswal - Full Stack Developer specializing in React, Next.js, AI applications. GDSC CDGI member with expertise in modern web technologies.',
     images: [
       {
-        url: '/assets/img1.png',
+        url: '/mihir.webp',
         width: 1200,
         height: 630,
         alt: 'Mihir Jaiswal - Full Stack Developer from Indore, India',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mihir Jaiswal | Official Website - Full Stack Developer',
     description: 'Mihir Jaiswal - Full Stack Developer from Indore, India. Expert in React, Next.js, Node.js, AI applications. GDSC CDGI member.',
-    images: ['/assets/img1.png'],
+    images: ['/mihir.webp'],
     creator: '@mihir_jaiswal_',
     site: '@mihir_jaiswal_',
   },
