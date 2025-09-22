@@ -3,7 +3,7 @@ import { getBlogPostBySlug } from '@/lib/mdx'
 import { serialize } from 'next-mdx-remote/serialize'
 import rehypePrism from 'rehype-prism-plus'
 import remarkGfm from 'remark-gfm'
-import BlogPostClient from './BlogPostClient'
+import BlogPostClient from '../../../components/blog/blogdetail/BlogPostClient'
 
 interface BlogPostPageProps {
   params: Promise<{
