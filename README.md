@@ -1,28 +1,34 @@
-# Mihir Jaiswal Portfolio
+# [mihirjaiswal.me](https://mihirjaiswal.me)
+
+A minimal portfolio and blog to showcase my work as a Design Engineer.
+
+Check out the live site: [mihirjaiswal.me](https://mihirjaiswal.me)
 
 Welcome to my personal portfolio! 👋  
 I’m **Mihir Jaiswal**, a passionate **Frontend Developer** and creative problem solver. This portfolio showcases my projects, skills, and work experience.  
 
 ---
 
-## 🚀 About Me
+### Tech Stack
 
-- 💻 I love building **interactive, responsive, and modern web applications**.  
-- 🎨 I have a keen eye for **UI/UX design** and enjoy creating intuitive interfaces.  
-- 🛠 Currently focusing on **Next.js, React, Tailwind CSS, and building SaaS projects**.  
-- 🌱 Always learning **new technologies** and experimenting with creative solutions.  
+- Next.js 15
+- Tailwind CSS v4
+- shadcn/ui
 
----
+### Featured
 
-## 🛠 Skills
+- Clean & modern design
+- Light & Dark theme support
+- SEO optimization
+- Spam-protected email
+- Installable PWA
 
-- **Frontend:** HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Framer Motion  
-- **Backend (Basics):** Node.js, Express, MySQL  
-- **Tools & Platforms:** Git, GitHub, Vercel, Figma  
-- **Other:** Responsive design, UI animations, API integrations  
+### Blog
 
----
-
+- MDX & Markdown support
+- Access markdown by adding `.mdx`
+- Syntax Highlighting for better readability
+- Dynamic OG Images for rich previews
 
 ## 📫 Contact Me
 
@@ -40,4 +46,10 @@ I’m **Mihir Jaiswal**, a passionate **Frontend Developer** and creative proble
 
 If you like my work, **consider giving me a star** ⭐ on GitHub or connecting with me on LinkedIn!  
 
+
+## License
+
+Licensed under the [MIT license](./LICENSE).
+
+You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone
 
