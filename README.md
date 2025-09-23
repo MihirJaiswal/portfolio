@@ -4,6 +4,10 @@ A minimal portfolio and blog to showcase my work as a Design Engineer.
 
 Check out the live site: [mihirjaiswal.me](https://mihirjaiswal.me)
 
+
+<img width="1918" height="910" alt="Screenshot 2025-09-22 091254" src="https://github.com/user-attachments/assets/b25e501d-012f-4658-b2c9-c06e5b50ce2d" />
+
+
 Welcome to my personal portfolio! 👋  
 I’m **Mihir Jaiswal**, a passionate **Frontend Developer** and creative problem solver. This portfolio showcases my projects, skills, and work experience.  
 
