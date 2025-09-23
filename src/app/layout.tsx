@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Mihir Jaiswal - Official Website',
+    siteName: 'Mihir Jaiswal - Software Engineer',
     title: 'Mihir Jaiswal – Full Stack Developer & UI/UX Designer | Indore, India',
     description:
       'Creator of Nyx UI (used by 200+ developers). Full Stack Developer specializing in React, Next.js, Node.js, AI/ML. Explore portfolio, projects, blog & contact.',

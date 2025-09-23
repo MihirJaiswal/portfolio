@@ -65,7 +65,7 @@ export async function generateMetadata({
           alt: post.title
         }
       ],
-      siteName: 'Mihir Jaiswal - Official Website',
+      siteName: 'Mihir Jaiswal - Software Engineer',
       publishedTime: publishedDate,
       authors: [post.author || 'Mihir Jaiswal'],
       tags: post.tags,

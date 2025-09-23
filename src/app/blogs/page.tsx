@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         alt: 'Mihir Jaiswal - Technical Blog & Programming Tutorials'
       }
     ],
-    siteName: 'Mihir Jaiswal - Official Website'
+    siteName: 'Mihir Jaiswal - Software Engineer'
   },
   twitter: {
     card: 'summary_large_image',
