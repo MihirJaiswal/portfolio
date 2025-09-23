@@ -5,16 +5,12 @@ module.exports = {
     siteUrl: "https://mihirjaiswal.me", 
     generateRobotsTxt: true,
     sitemapSize: 7000,
-    
-    // FIXED: Set to false to avoid sitemap index issues
+    output: 'standalone',
     generateIndexSitemap: false,
     
     // Clean exclusions
-    exclude: [
-        '/api/*', 
-        '/admin/*', 
+    exclude: [ 
         '/_*',
-        // IMPORTANT: Exclude static files that were causing issues
         '/icon.png',
         '/robots.txt',
         '/*.png',
@@ -22,9 +18,7 @@ module.exports = {
         '/*.txt'
     ],
     
-    // Simplified transform function
     transform: async (config, path) => {
-        // Handle the path parameter correctly
         const pathString = typeof path === 'string' ? path : path.loc || path.route || path;
         
         let priority = 0.7;
