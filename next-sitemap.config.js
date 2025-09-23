@@ -5,15 +5,27 @@ module.exports = {
     siteUrl: "https://mihirjaiswal.me", 
     generateRobotsTxt: true,
     sitemapSize: 7000,
-    generateIndexSitemap: true,
-    exclude: ['/api/*', '/admin/*', '/_*'],
     
-    // Fixed transform function - receives (config, path) parameters
-    transform: async (config, pathObj) => {
-        // Handle both string and object formats
-        const pathString = typeof pathObj === 'string' ? pathObj : pathObj.loc;
-        
-        console.log("🔄 Transform called for path:", pathString);
+    // FIXED: Set to false to avoid sitemap index issues
+    generateIndexSitemap: false,
+    
+    // Clean exclusions
+    exclude: [
+        '/api/*', 
+        '/admin/*', 
+        '/_*',
+        // IMPORTANT: Exclude static files that were causing issues
+        '/icon.png',
+        '/robots.txt',
+        '/*.png',
+        '/*.ico',
+        '/*.txt'
+    ],
+    
+    // Simplified transform function
+    transform: async (config, path) => {
+        // Handle the path parameter correctly
+        const pathString = typeof path === 'string' ? path : path.loc || path.route || path;
         
         let priority = 0.7;
         let changefreq = "weekly";
@@ -26,21 +38,18 @@ module.exports = {
             changefreq = "weekly";
         } else if (pathString.startsWith("/projects/")) {
             priority = 0.7;
-            changefreq = "monthly";
+            changefreq = "weekly";
         } else if (pathString.startsWith("/blogs/")) {
             priority = 0.7;
             changefreq = "weekly";
         }
 
-        const result = {
+        return {
             loc: pathString,
             changefreq,
             priority,
             lastmod: new Date().toISOString(),
         };
-        
-        console.log("✅ Transform result for", pathString, ":", result);
-        return result;
     },
     
     robotsTxtOptions: {
@@ -48,42 +57,36 @@ module.exports = {
             { userAgent: "*", allow: "/" },
             { userAgent: "*", disallow: ["/api/*", "/admin/*"] },
         ],
+        additionalSitemaps: [
+            "https://mihirjaiswal.me/sitemap.xml"
+        ]
     },
     
     additionalPaths: async (config) => {
-        console.log("🚀 additionalPaths function called");
-        console.log("📝 Config received:", config);
-        
         const projectRoot = process.cwd();
-        console.log("📁 Project root:", projectRoot);
 
         const listContentSlugs = (dirPath) => {
             try {
                 const fullPath = path.join(projectRoot, dirPath);
-                console.log(`🔍 Checking directory: ${fullPath}`);
                 
                 if (!fs.existsSync(fullPath)) {
-                    console.log(`❌ Directory does not exist: ${fullPath}`);
+                    console.log(`Directory does not exist: ${fullPath}`);
                     return [];
                 }
                 
-                console.log(`✅ Directory exists: ${fullPath}`);
                 const files = fs.readdirSync(fullPath);
-                console.log(`📂 Files found in ${dirPath}:`, files);
-                
                 const slugs = files
                     .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"))
                     .map((f) => f.replace(/\.(mdx|md)$/, ""));
                 
-                console.log(`🏷️ Slugs extracted from ${dirPath}:`, slugs);
                 return slugs;
             } catch (error) {
-                console.error(`💥 Error reading directory ${dirPath}:`, error.message);
+                console.error(`Error reading directory ${dirPath}:`, error.message);
                 return [];
             }
         };
 
-        // Project slugs from your projects data
+        // Your project slugs
         const projectSlugs = [
             "nyx-ui",
             "digi-bazaar", 
@@ -101,52 +104,33 @@ module.exports = {
             "dream-mist"
         ];
         
-        console.log("📋 Project slugs from data:", projectSlugs);
-        
-        const blogSlugs = listContentSlugs("src/content/blog");
-        console.log("📖 Blog slugs from content:", blogSlugs);
-
-        const staticRoutes = [
-            "/",
-            "/projects", 
-            "/blogs"
+        // Get blog slugs from your content directory
+        const blogSlugs = [
+            "nextjs-image-optimization",
+            "nyx-ui",
+            "ui-best-practices"
         ];
-        console.log("🏠 Static routes:", staticRoutes);
 
-        // Fixed route generation to match your file structure (/projects/[id])
-        const projectRoutes = projectSlugs.map((slug) => `/projects/${slug}`);
-        console.log("🔗 Generated project routes:", projectRoutes);
+        // Generate all paths
+        const staticRoutes = [
+            { loc: "/" },
+            { loc: "/projects" }, 
+            { loc: "/blogs" }
+        ];
+
+        const projectRoutes = projectSlugs.map((slug) => ({ 
+            loc: `/projects/${slug}` 
+        }));
         
-        const blogRoutes = blogSlugs.map((slug) => `/blogs/${slug}`);
-        console.log("📝 Generated blog routes:", blogRoutes);
+        const blogRoutes = blogSlugs.map((slug) => ({ 
+            loc: `/blogs/${slug}` 
+        }));
 
-        const dynamicRoutes = [...projectRoutes, ...blogRoutes];
-        console.log("⚡ All dynamic routes:", dynamicRoutes);
-
-        const allRoutes = [...staticRoutes, ...dynamicRoutes];
-        console.log("🌐 All routes combined:", allRoutes);
-        console.log("📊 Total route count:", allRoutes.length);
-
-        const finalResult = allRoutes.map((loc) => {
-            const entry = {
-                loc,
-                changefreq: loc === "/" ? "daily" : 
-                           loc === "/projects" || loc === "/blogs" ? "weekly" :
-                           loc.startsWith("/blogs/") || loc.startsWith("/projects/") ? "weekly" : "monthly",
-                priority: loc === "/" ? 1.0 : 
-                         loc === "/projects" || loc === "/blogs" ? 0.8 :
-                         loc.startsWith("/blogs/") || loc.startsWith("/projects/") ? 0.7 : 0.6,
-                lastmod: new Date().toISOString(),
-            };
-            
-            console.log(`📄 Created sitemap entry for ${loc}:`, entry);
-            return entry;
-        });
+        // Combine all routes
+        const allRoutes = [...staticRoutes, ...projectRoutes, ...blogRoutes];
         
-        console.log("🎯 Final result array:", finalResult);
-        console.log("📈 Final result count:", finalResult.length);
-        console.log("=== END additionalPaths ===");
+        console.log(`Generated ${allRoutes.length} routes for sitemap`);
         
-        return finalResult;
+        return allRoutes;
     },
 };
